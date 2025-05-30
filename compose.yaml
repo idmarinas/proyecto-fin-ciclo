@@ -1,25 +1,58 @@
+name: pfc
 
 services:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database:
-    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    image: mysql:8.4.5
+    restart: always
+    ports:
+      - "13306:3306"
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_password
     healthcheck:
-      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+      test: mysqladmin ping
+      start_period: 10s
+      interval: 10s
       timeout: 5s
-      retries: 5
-      start_period: 60s
+      retries: 3
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - database_data:/var/lib/mysql
+    secrets:
+      - db_password
+  ###< doctrine/doctrine-bundle ###
+
+  apache:
+    image: idmarinas/apache:2.4
+    restart: always
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost || exit 1
+    volumes:
+      - ./:/var/www/html
+      ## Config
+      - ./.docker/apache/conf/headers.conf:/usr/local/apache2/conf/x/headers.conf:ro
+      - ./.docker/apache/sites/common.conf:/usr/local/apache2/conf/x/common.conf:ro
+    depends_on:
+      - php
+      - database
+
+  php:
+    image: idmarinas/php:8.4
+    restart: always
+    healthcheck:
+      test: php -v || exit 1
+    volumes:
+      - ./:/var/www/html
+      ## PHP Conf
+      - ./.docker/php/conf.d/date_timezone.ini:/usr/local/etc/php/conf.d/date_timezone.ini:ro
 
 volumes:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database_data:
-###< doctrine/doctrine-bundle ###
+  ###< doctrine/doctrine-bundle ###
+
+secrets:
+  db_password:
+    environment: DATABASE_PASSWORD

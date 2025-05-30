@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Prod - Webserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="F:\Projects\ProyectoFinCiclo\.env" />
+        <option name="envFilePaths">
+          <list>
+            <option value="F:\Projects\ProyectoFinCiclo\.env" />
+          </list>
+        </option>
+        <option name="secondarySourceFiles">
+          <list>
+            <option value="compose.prod.yaml" />
+          </list>
+        </option>
+        <option name="sourceFilePath" value="compose.yaml" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>

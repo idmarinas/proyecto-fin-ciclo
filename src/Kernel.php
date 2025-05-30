@@ -2,10 +2,10 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 30/05/2025, 16:32
+ * Last modified by "IDMarinas" on 30/05/2025, 18:01
  *
  * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/
+ * @see     https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file    Kernel.php
  * @date    30/05/2025
