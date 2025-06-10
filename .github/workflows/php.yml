@@ -1,0 +1,64 @@
+name: Foro de Ayuda y Soporte Test Suite
+
+on:
+  pull_request:
+    branches: [ master ]
+    types: [ opened, synchronize, reopened ]
+    tags-ignore: [ dependencies, documentation, meta, 'docker configuration', 'deployer configuration' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
+    strategy:
+      matrix:
+        php: [ '8.4' ]
+        symfony: [ '7.3.*' ]
+
+    services:
+      database_test:
+        image: mysql:8.4.5
+        env:
+          DATABASE_HOST: 127.0.0.1
+          MYSQL_AUTO_UPGRADE: true
+          MYSQL_DATABASE: database_db_test
+          MYSQL_USER: database_user_test
+          MYSQL_PASSWORD: '!ChangeMe!'
+          MYSQL_ROOT_PASSWORD: '!ChangeMe!'
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: ${{ (matrix.php == '8.4' && matrix.symfony == '7.3.*') && '0' || '1' }}
+
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: flex
+
+      - name: Download dependencies
+        env:
+          SYMFONY_REQUIRE: ${{ matrix.symfony }}
+        uses: ramsey/composer-install@v3
+
+      - name: Built Tailwind CSS files
+        run: 'php bin/console tailwind:build'
+
+      - name: Create Database
+        run: 'php bin/console doctrine:schema:create --env=test && php bin/console doctrine:fixtures:load --env=test -n'
+        env:
+          DATABASE_HOST: 127.0.0.1
+
+      - name: Run test suite on PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
+        run: ./vendor/bin/phpunit --exclude ignore
+        env:
+          DATABASE_HOST: 127.0.0.1
