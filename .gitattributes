@@ -1,0 +1,7 @@
+* text=lf
+
+.idea/ merge=ours
+composer.json merge=ours
+composer.lock merge=ours
+.gitattributes merge=ours
+symfony.lock merge=ours
