@@ -3,17 +3,48 @@ framework:
         # Unique name of your app: used to compute stable namespaces for cache keys.
         prefix_seed: idmarinas/proyecto-fin-ciclo
 
-          # The "app" cache stores to the filesystem by default.
-          # The data in this cache should persist between deploys.
-          # Other options include:
+        # The "app" cache stores to the filesystem by default.
+        # The data in this cache should persist between deploys.
+        # Other options include:
 
-          # Redis
-          #app: cache.adapter.redis
-          #default_redis_provider: redis://localhost
+        # Redis
+        # app: cache.adapter.redis
+        # default_redis_provider: redis://localhost
 
-          # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
-          #app: cache.adapter.apcu
+        # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
+        # app: cache.adapter.apcu
 
-          # Namespaced pools use the above "app" backend by default
-        #pools:
-        #my.dedicated.cache: null
+        # Namespaced pools use the above "app" backend by default
+        pools:
+            # Cache pool encrypting stored data
+            encrypt.cache:
+                adapter: cache.adapter.encrypt
+                tags: true
+            support.forum.cache:
+                adapter: support.forum.service.cache_adapter
+                tags: true
+
+services:
+    cache.adapter.encrypt:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        arguments:
+            - ''
+            - '0'
+            - '%kernel.cache_dir%/pools/encrypt'
+            - '@marshaller.sodium.marshaller'
+    marshaller.sodium.marshaller:
+        class: Symfony\Component\Cache\Marshaller\SodiumMarshaller
+        arguments:
+            - [ '%env(base64:CACHE_DECRYPTION_KEY)%' ]
+            # use multiple keys in order to rotate them
+            #- ['%env(base64:CACHE_DECRYPTION_KEY)%', '%env(base64:OLD_CACHE_DECRYPTION_KEY)%']
+            - '@cache.default_marshaller'
+
+    support.forum.service.cache_adapter:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        public: false
+        arguments:
+            - ''
+            - '0'
+            - '%kernel.cache_dir%/pools/support'
+            - '@cache.default_marshaller'
