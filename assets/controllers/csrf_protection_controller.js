@@ -1,7 +1,26 @@
-const nameCheck = /^[-_a-zA-Z0-9]{4,22}$/;
-const tokenCheck = /^[-_\/+a-zA-Z0-9]{24,}$/;
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 27/08/2025, 21:05
+ *
+ * @project Foro de Ayuda y Soporte
+ * @see https://github.com/idmarinas/template-symfony
+ *
+ * @file csrf_protection_controller.js
+ * @date 27/08/2025
+ * @time 21:06
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license BSD 3-Clause License
+ *
+ * @since 1.0.0
+ */
 
-// Generate and double-submit a CSRF token in a form field and a cookie, as defined by Symfony's SameOriginCsrfTokenManager
+const nameCheck = /^[-_a-zA-Z0-9]{4,22}$/;
+const tokenCheck = /^[-_/+a-zA-Z0-9]{24,}$/;
+
+// Generate and double-submit a CSRF token in a form field and a cookie, as defined by Symfony's
+// SameOriginCsrfTokenManager
 document.addEventListener('submit', function (event) {
     generateCsrfToken(event.target);
 }, true);
@@ -20,7 +39,7 @@ document.addEventListener('turbo:submit-end', function (event) {
     removeCsrfToken(event.detail.formSubmission.formElement);
 });
 
-export function generateCsrfToken (formElement) {
+export function generateCsrfToken(formElement) {
     const csrfField = formElement.querySelector('input[data-controller="csrf-protection"], input[name="_csrf_token"]');
 
     if (!csrfField) {
@@ -33,7 +52,7 @@ export function generateCsrfToken (formElement) {
     if (!csrfCookie && nameCheck.test(csrfToken)) {
         csrfField.setAttribute('data-csrf-protection-cookie-value', csrfCookie = csrfToken);
         csrfField.defaultValue = csrfToken = btoa(String.fromCharCode.apply(null, (window.crypto || window.msCrypto).getRandomValues(new Uint8Array(18))));
-        csrfField.dispatchEvent(new Event('change', { bubbles: true }));
+        csrfField.dispatchEvent(new Event('change', {bubbles: true}));
     }
 
     if (csrfCookie && tokenCheck.test(csrfToken)) {
@@ -42,7 +61,7 @@ export function generateCsrfToken (formElement) {
     }
 }
 
-export function generateCsrfHeaders (formElement) {
+export function generateCsrfHeaders(formElement) {
     const headers = {};
     const csrfField = formElement.querySelector('input[data-controller="csrf-protection"], input[name="_csrf_token"]');
 
@@ -59,7 +78,7 @@ export function generateCsrfHeaders (formElement) {
     return headers;
 }
 
-export function removeCsrfToken (formElement) {
+export function removeCsrfToken(formElement) {
     const csrfField = formElement.querySelector('input[data-controller="csrf-protection"], input[name="_csrf_token"]');
 
     if (!csrfField) {
