@@ -3,7 +3,7 @@ name: pfc
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    image: mysql:8.4.6
+    image: mysql:${DATABASE_VERSION_NUMBER}
     ports:
       - "13306:3306"
     environment:
