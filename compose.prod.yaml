@@ -11,7 +11,21 @@ services:
         max_attempts: 10
         window: 5s
 
+  database:
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 5s
+
   apache:
+    restart: always
     ports:
       - "80:80"
       - "443:443"
