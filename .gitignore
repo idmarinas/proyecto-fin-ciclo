@@ -1,5 +1,11 @@
-###> idmarinas/proyecto-fin-ciclo
-###< idmarinas/proyecto-fin-ciclo
+###> idmarinas/proyecto-fin-ciclo ###
+**/*.dist
+/build/
+/node_modules/
+/.env.docker
+/composer.lock
+/package*.json
+###< idmarinas/proyecto-fin-ciclo ###
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -20,3 +26,7 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
