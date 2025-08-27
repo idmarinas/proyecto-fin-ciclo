@@ -1,7 +1,6 @@
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    restart: on-failure
     environment:
       MARIADB_DATABASE: ${DATABASE_NAME}_dev
       MARIADB_USER: ${DATABASE_USER}_dev
@@ -10,7 +9,6 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   database_test:
-    restart: on-failure
     extends:
       file: compose.yaml
       service: database
@@ -22,7 +20,6 @@ services:
       - database_data_test:/var/lib/mysql
 
   apache:
-    restart: on-failure
     ports:
       - "8080:80"
       - "8443:443"
@@ -42,7 +39,6 @@ services:
       - database_test
 
   php:
-    restart: on-failure
     image: idmarinas/php:8.4-xdebug
     expose:
       - 9000
