@@ -2,10 +2,10 @@
   <configuration default="false" name="Prod - Webserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
     <deployment type="docker-compose.yml">
       <settings>
-        <option name="envFilePath" value="F:\Projects\ProyectoFinCiclo\.env" />
+        <option name="envFilePath" value="M:\proyecto\.env" />
         <option name="envFilePaths">
           <list>
-            <option value="F:\Projects\ProyectoFinCiclo\.env" />
+            <option value="M:\proyecto\.env" />
           </list>
         </option>
         <option name="secondarySourceFiles">

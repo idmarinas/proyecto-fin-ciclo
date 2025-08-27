@@ -3,6 +3,7 @@
   <component name="Symfony2PluginSettings">
     <option name="directoryToApp" value="src" />
     <option name="pluginEnabled" value="true" />
+    <option name="twigBundleNamespaceSupport" value="true" />
     <option name="profilerCsvPath" value="" />
     <option name="containerFiles">
       <list>
