@@ -4,6 +4,11 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    app.title: '%env(APP_TITLE)%'
+    app.route_prefix.admin: '%env(APP_ROUTE_PREFIX_ADMIN)%'
+    app.route_prefix.public: '%env(APP_ROUTE_PREFIX_PUBLIC)%'
+    app.server_name: '%env(APP_SERVER_NAME)%'
+    app.server_name.regexp: '%env(preg_quote:APP_SERVER_NAME)%'
 
 services:
     # default configuration for services in *this* file
@@ -15,6 +20,21 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/'
+        exclude: '../src/{DependencyInjection|Entity}'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+when@dev: &dev
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+
+        Factory\:
+            resource: '../factories/'
+
+        DataFixtures\:
+            resource: '../fixtures/'
+
+when@test: *dev
