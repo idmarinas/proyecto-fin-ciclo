@@ -2,10 +2,10 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/08/2025, 20:17
+ * Last modified by "IDMarinas" on 28/08/2025, 15:21
  *
  * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/template-symfony
+ * @see     https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file    index.php
  * @date    27/08/2025
@@ -21,4 +21,4 @@ use App\Kernel;
 
 require_once dirname(__DIR__) . '/vendor/autoload_runtime.php';
 
-return fn(array $context) => new Kernel($context['APP_ENV'], (bool)$context['APP_DEBUG'], $context['APP_ID']);
+return fn(array $context) => new Kernel($context['APP_ENV'], (bool)$context['APP_DEBUG']);
