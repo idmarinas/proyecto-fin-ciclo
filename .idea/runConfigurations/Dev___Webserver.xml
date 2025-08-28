@@ -2,7 +2,12 @@
   <configuration default="false" name="Dev - Webserver" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
     <deployment type="docker-compose.yml">
       <settings>
-        <option name="envFilePath" value="F:\Projects\template-symfony\.env.docker" />
+        <option name="envFilePath" value="M:\proyecto\.env.docker" />
+        <option name="envFilePaths">
+          <list>
+            <option value="M:\proyecto\.env.docker" />
+          </list>
+        </option>
         <option name="secondarySourceFiles">
           <list>
             <option value="compose.override.yaml" />

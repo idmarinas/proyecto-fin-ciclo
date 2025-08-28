@@ -6,12 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/factories" isTestSource="true" packagePrefix="Factory\" />
       <sourceFolder url="file://$MODULE_DIR$/fixtures" isTestSource="true" packagePrefix="DataFixtures\" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/admin/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/api/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/blog/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/cron/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/forum/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/apps/web/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/assets/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/var" />
       <excludeFolder url="file://$MODULE_DIR$/vendor" />
