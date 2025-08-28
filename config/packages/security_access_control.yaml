@@ -1,0 +1,24 @@
+security:
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # Admin panel
+        - { path: ^/%app.route_prefix.admin%/(login|logout)$, roles: PUBLIC_ACCESS }
+        - { path: ^/%app.route_prefix.admin%(|/.*)$, roles: ROLE_ADMIN }
+
+        # La ruta principal es siempre pública
+        - { path: ^/(|nelmio/csp/report)$, roles: PUBLIC_ACCESS }
+
+        # Páginas públicas
+        - { path: ^/%app.route_prefix.public%(|/.*)$, roles: PUBLIC_ACCESS }
+
+        # Rutas para el usuario
+        - { path: ^/user/(token|login/web|connect)$, roles: PUBLIC_ACCESS }
+        - { path: ^/user/registration/(register|verify/email)$, roles: PUBLIC_ACCESS }
+        - { path: ^/user/reset-password/reset(|/[ ^\/. ]++)$, roles: PUBLIC_ACCESS }
+        - { path: ^/user/reset-password(|/check-email)$, roles: PUBLIC_ACCESS }
+        - { path: ^/user/.*$, roles: ROLE_USER }
+
+        # De forma predeterminada, todas las rutas que no cumplen con los requisitos anteriores
+        # se marcan como privadas para evitar problemas.
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
