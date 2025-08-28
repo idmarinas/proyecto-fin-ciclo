@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/08/2025, 20:08
+ * Last modified by "IDMarinas" on 28/08/2025, 13:10
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -37,4 +37,5 @@ return [
     Symfony\UX\TwigComponent\TwigComponentBundle::class               => ['all' => true],
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
     Nelmio\SecurityBundle\NelmioSecurityBundle::class                 => ['all' => true],
+    EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class            => ['all' => true],
 ];
