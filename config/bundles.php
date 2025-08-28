@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/06/2025, 17:58
+ * Last modified by "IDMarinas" on 27/08/2025, 20:08
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -18,19 +18,23 @@
  */
 
 return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
-    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
-    Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
-    Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
-    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
-    Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
-    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
-    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
-    Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
-    Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class => ['all' => true],
-    Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
+    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class             => ['all' => true],
+    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class              => ['all' => true],
+    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class  => ['all' => true],
+    Symfony\Bundle\DebugBundle\DebugBundle::class                     => ['dev' => true],
+    Symfony\Bundle\TwigBundle\TwigBundle::class                       => ['all' => true],
+    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class         => ['dev' => true, 'test' => true],
+    Symfony\UX\StimulusBundle\StimulusBundle::class                   => ['all' => true],
+    Symfony\UX\Turbo\TurboBundle::class                               => ['all' => true],
+    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class                 => ['all' => true],
+    Symfony\Bundle\SecurityBundle\SecurityBundle::class               => ['all' => true],
+    Symfony\Bundle\MonologBundle\MonologBundle::class                 => ['all' => true],
+    Symfony\Bundle\MakerBundle\MakerBundle::class                     => ['dev' => true],
+    Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class      => ['dev' => true, 'test' => true],
+    Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class     => ['dev' => true],
+    Zenstruck\Foundry\ZenstruckFoundryBundle::class                   => ['dev' => true, 'test' => true],
+    DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class             => ['test' => true],
+    Symfony\UX\TwigComponent\TwigComponentBundle::class               => ['all' => true],
+    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
+    Nelmio\SecurityBundle\NelmioSecurityBundle::class                 => ['all' => true],
 ];
