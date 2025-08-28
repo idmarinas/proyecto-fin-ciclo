@@ -12,6 +12,13 @@ security:
         main:
             lazy: true
             provider: users_in_memory
+            logout:
+                path: /logout
+                target: app_home
+                enable_csrf: true
+                clear_site_data:
+                    - cookies
+                    - storage
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
