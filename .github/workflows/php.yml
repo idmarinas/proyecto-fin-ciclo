@@ -5,7 +5,20 @@ on:
     branches: [ master ]
     types: [ opened, synchronize, reopened ]
     tags-ignore: [ dependencies, documentation, meta, 'docker configuration', 'deployer configuration' ]
-  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '.deployer/**'
+      - '.docker/**'
+      - '.idea/**'
+      - 'migrations/**'
+      - '**/*.md'
+      - .editorconfig
+      - .gitignore
+      - .dockerignore
+      - deploy.php
+      - rector.php
+      - compose*.yaml
 
 jobs:
   build:
@@ -18,7 +31,7 @@ jobs:
 
     services:
       database_test:
-        image: mysql:8.4.5
+        image: mysql:8.4.6
         env:
           DATABASE_HOST: 127.0.0.1
           MYSQL_AUTO_UPGRADE: true
@@ -59,6 +72,6 @@ jobs:
           DATABASE_HOST: 127.0.0.1
 
       - name: Run test suite on PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
-        run: ./vendor/bin/phpunit --exclude ignore
+        run: ./vendor/bin/phpunit --exclude-group ignore
         env:
           DATABASE_HOST: 127.0.0.1
