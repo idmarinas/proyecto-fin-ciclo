@@ -9,6 +9,22 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
+        # Admin Firewall
+        admin:
+            lazy: true
+            host: '^/%app.route_prefix.admin%/'
+            provider: users_in_memory
+            logout:
+                path: '/%app.route_prefix.admin%/logout'
+                target: admin_login
+                enable_csrf: true
+                clear_site_data:
+                    - cache
+                    - cookies
+                    - executionContexts
+                    - storage
+            switch_user: false
+        # Main Firewall
         main:
             lazy: true
             provider: users_in_memory
