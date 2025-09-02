@@ -3,6 +3,9 @@
   <name>Tests</name>
   <description />
   <settings>
+    <disabled-settings>
+      <setting-ref ref="DockerCompose" />
+    </disabled-settings>
     <build-runners>
       <runner id="Dev_Generate_env_docker" name="Dev: Generate .env.docker" type="simpleRunner">
         <parameters>
