@@ -14,6 +14,9 @@
       <setting-ref ref="DockerCompose" />
       <setting-ref ref="Importmap_Install" />
     </disabled-settings>
+    <parameters>
+      <param name="docker_container_php" value="%docker_project_name%-php-1" />
+    </parameters>
     <build-runners>
       <runner id="Dev_Init_PHP_Container" name="Init PHP Container" type="simpleRunner">
         <parameters>
