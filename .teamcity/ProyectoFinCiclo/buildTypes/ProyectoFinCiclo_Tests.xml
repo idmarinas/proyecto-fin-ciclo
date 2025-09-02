@@ -24,6 +24,13 @@
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
+      <runner id="Dev_Init_PHP_Container" name="Dev: Init PHP Container" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="docker compose -f compose.yaml -f compose.override.yaml up -d php" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="ProyectoFinCiclo_HttpsGithubComIdmarinasProyectoFinCicloRefsHeadsMaster1" />
