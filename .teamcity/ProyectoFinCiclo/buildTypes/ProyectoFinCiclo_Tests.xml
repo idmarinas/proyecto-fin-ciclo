@@ -4,18 +4,18 @@
   <description />
   <settings>
     <build-runners>
-      <runner id="DockerCompose" name="Tests: Docker Compose" type="DockerCompose">
-        <parameters>
-          <param name="dockerCompose.file" value="compose.yaml, compose.override.yaml" />
-          <param name="teamcity.step.mode" value="default" />
-        </parameters>
-      </runner>
       <runner id="Dev_Generate_env_docker" name="Dev: Generate .env.docker" type="simpleRunner">
         <parameters>
           <param name="plugin.docker.imagePlatform" value="linux" />
           <param name="script.content" value="composer dev:dump:env" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="DockerCompose" name="Tests: Docker Compose" type="DockerCompose">
+        <parameters>
+          <param name="dockerCompose.file" value="compose.yaml, compose.override.yaml" />
+          <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
     </build-runners>
