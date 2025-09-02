@@ -19,9 +19,8 @@
       </runner>
       <runner id="Composer_Install" name="Composer Install" type="simpleRunner">
         <parameters>
-          <param name="plugin.docker.imageId" value="idmarinas/php:8.4-xdebug" />
           <param name="plugin.docker.imagePlatform" value="linux" />
-          <param name="script.content" value="docker exec pfc-php-1 composer install --verbose --no-progress --no-interaction" />
+          <param name="script.content" value="docker exec teamcity-php-1 composer install --verbose --no-progress --no-interaction" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
         </parameters>
