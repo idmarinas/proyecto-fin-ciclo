@@ -24,10 +24,10 @@
           <param name="use.custom.script" value="true" />
         </parameters>
       </runner>
-      <runner id="Dev_Generate_env_docker" name="Dev: Generate .env.docker" type="simpleRunner">
+      <runner id="Dev_Generate_env_docker" name="Generate .env.docker" type="simpleRunner">
         <parameters>
           <param name="plugin.docker.imagePlatform" value="linux" />
-          <param name="script.content" value="composer dev:dump:env" />
+          <param name="script.content" value="docker exec pfc-php-1 composer dev:dump:env" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
         </parameters>
