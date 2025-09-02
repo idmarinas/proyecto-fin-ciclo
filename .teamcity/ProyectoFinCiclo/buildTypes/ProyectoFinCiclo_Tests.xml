@@ -10,7 +10,6 @@
     </options>
     <disabled-settings>
       <setting-ref ref="DockerCompose" />
-      <setting-ref ref="Importmap_Install" />
     </disabled-settings>
     <parameters>
       <param name="docker_container_php" value="%docker_project_name%-php-1" />
@@ -44,13 +43,6 @@
           <param name="script.content"><![CDATA[docker exec %docker_container_php% php bin/console cache:clear
 docker exec %docker_container_php% php bin/console assets:install
 docker exec %docker_container_php% php bin/console importmap:install]]></param>
-          <param name="teamcity.step.mode" value="default" />
-          <param name="use.custom.script" value="true" />
-        </parameters>
-      </runner>
-      <runner id="Importmap_Install" name="Importmap Install" type="simpleRunner">
-        <parameters>
-          <param name="script.content" value="docker exec teamcity-php-1 php bin/console importmap:install" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
         </parameters>
