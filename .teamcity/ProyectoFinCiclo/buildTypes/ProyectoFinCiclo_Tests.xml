@@ -9,7 +9,6 @@
       <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
     </options>
     <disabled-settings>
-      <setting-ref ref="Assets_Install" />
       <setting-ref ref="DockerCompose" />
       <setting-ref ref="Importmap_Install" />
     </disabled-settings>
@@ -45,13 +44,6 @@
           <param name="script.content"><![CDATA[docker exec %docker_container_php% php bin/console cache:clear
 docker exec %docker_container_php% php bin/console assets:install
 docker exec %docker_container_php% php bin/console importmap:install]]></param>
-          <param name="teamcity.step.mode" value="default" />
-          <param name="use.custom.script" value="true" />
-        </parameters>
-      </runner>
-      <runner id="Assets_Install" name="Assets Install" type="simpleRunner">
-        <parameters>
-          <param name="script.content" value="docker exec teamcity-php-1 php bin/console assets:install" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
         </parameters>
