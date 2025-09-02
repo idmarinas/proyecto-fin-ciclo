@@ -4,15 +4,15 @@
   <description />
   <settings>
     <build-runners>
-      <runner id="DockerCompose" name="" type="DockerCompose">
-        <parameters>
-          <param name="dockerCompose.file" value="compose.override.yaml" />
-          <param name="teamcity.step.mode" value="default" />
-        </parameters>
-      </runner>
       <runner id="DockerCompose_1" name="" type="DockerCompose">
         <parameters>
           <param name="dockerCompose.file" value="compose.yaml" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="DockerCompose" name="" type="DockerCompose">
+        <parameters>
+          <param name="dockerCompose.file" value="compose.override.yaml" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
