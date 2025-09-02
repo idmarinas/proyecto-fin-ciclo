@@ -39,6 +39,13 @@
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
+      <runner id="Cache_Clear" name="Cache Clear" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="docker exec teamcity-php-1 php bin/console cache:clear" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="ProyectoFinCiclo_HttpsGithubComIdmarinasProyectoFinCicloRefsHeadsMaster1" />
