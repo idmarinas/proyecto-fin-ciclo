@@ -17,7 +17,7 @@
     <build-runners>
       <runner id="Dev_Init_PHP_Container" name="Init PHP Container" type="simpleRunner">
         <parameters>
-          <param name="script.content" value="docker compose -f compose.yaml -f compose.override.yaml -p teamcity-%teamcity.agent.name% up -d php" />
+          <param name="script.content" value="docker compose -f compose.yaml -f compose.override.yaml -p %env.TEAMCITY_BUILDCONF_NAME%-%teamcity.agent.name% up -d php" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
         </parameters>
