@@ -3,6 +3,7 @@
   <name>Proyecto Fin Ciclo</name>
   <parameters>
     <param name="docker_project_name" value="pfc-teamcity-%teamcity.agent.name%" spec="text display='normal' description='Nombre del proyecto, para usar como nombre del proyecto en Docker' readOnly='true' label='Docker Project Name' validationMode='any'" />
+    <param name="teamcity.internal.pipelines.creation.enabled" value="true" spec="checkbox uncheckedValue='false' checkedValue='true' display='normal'" />
   </parameters>
   <project-extensions>
     <extension id="PROJECT_EXT_3" type="IssueTracker">
