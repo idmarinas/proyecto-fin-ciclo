@@ -3,6 +3,14 @@
   <name>Tests</name>
   <description />
   <settings>
+    <build-runners>
+      <runner id="DockerCompose" name="" type="DockerCompose">
+        <parameters>
+          <param name="dockerCompose.file" value="compose.yaml" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="ProyectoFinCiclo_HttpsGithubComIdmarinasProyectoFinCicloRefsHeadsMaster1" />
     </vcs-settings>
