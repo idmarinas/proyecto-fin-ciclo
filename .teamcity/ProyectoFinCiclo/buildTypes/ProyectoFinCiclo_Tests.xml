@@ -10,7 +10,6 @@
     </options>
     <disabled-settings>
       <setting-ref ref="Assets_Install" />
-      <setting-ref ref="Cache_Clear" />
       <setting-ref ref="DockerCompose" />
       <setting-ref ref="Importmap_Install" />
     </disabled-settings>
