@@ -10,7 +10,7 @@
       <setting-ref ref="DockerCompose" />
     </disabled-settings>
     <build-runners>
-      <runner id="Dev_Init_PHP_Container" name="Dev: Init PHP Container" type="simpleRunner">
+      <runner id="Dev_Init_PHP_Container" name="Init PHP Container" type="simpleRunner">
         <parameters>
           <param name="script.content" value="docker compose -f compose.yaml -f compose.override.yaml up -d php" />
           <param name="teamcity.step.mode" value="default" />
