@@ -10,6 +10,13 @@
       <setting-ref ref="DockerCompose" />
     </disabled-settings>
     <build-runners>
+      <runner id="Dev_Init_PHP_Container" name="Dev: Init PHP Container" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="docker compose -f compose.yaml -f compose.override.yaml up -d php" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
       <runner id="Dev_Generate_env_docker" name="Dev: Generate .env.docker" type="simpleRunner">
         <parameters>
           <param name="plugin.docker.imagePlatform" value="linux" />
@@ -22,13 +29,6 @@
         <parameters>
           <param name="dockerCompose.file" value="compose.yaml compose.override.yaml" />
           <param name="teamcity.step.mode" value="default" />
-        </parameters>
-      </runner>
-      <runner id="Dev_Init_PHP_Container" name="Dev: Init PHP Container" type="simpleRunner">
-        <parameters>
-          <param name="script.content" value="docker compose -f compose.yaml -f compose.override.yaml up -d php" />
-          <param name="teamcity.step.mode" value="default" />
-          <param name="use.custom.script" value="true" />
         </parameters>
       </runner>
     </build-runners>
