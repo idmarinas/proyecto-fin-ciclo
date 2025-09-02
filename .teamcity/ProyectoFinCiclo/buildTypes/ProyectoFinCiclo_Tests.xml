@@ -5,6 +5,9 @@
   <settings>
     <options>
       <option name="allowExternalStatus" value="true" />
+      <option name="allowPersonalBuildTriggering" value="false" />
+      <option name="buildConfigurationType" value="DEPLOYMENT" />
+      <option name="maximumNumberOfBuilds" value="1" />
       <option name="publishArtifactCondition" value="SUCCESSFUL" />
       <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
     </options>
