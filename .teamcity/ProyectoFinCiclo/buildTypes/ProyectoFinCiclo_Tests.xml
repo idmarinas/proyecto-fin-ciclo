@@ -53,6 +53,13 @@ docker exec %docker_container_php% php bin/console importmap:install]]></param>
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
+      <runner id="Up_ss" name="Up ss" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="docker compose -f compose.yaml -f compose.override.yaml -p %docker_project_name% up -d" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="ProyectoFinCiclo_HttpsGithubComIdmarinasProyectoFinCicloRefsHeadsMaster1" />
