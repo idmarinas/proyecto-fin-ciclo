@@ -7,6 +7,7 @@
       <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
     </options>
     <disabled-settings>
+      <setting-ref ref="Assets_Install" />
       <setting-ref ref="DockerCompose" />
       <setting-ref ref="Importmap_Install" />
     </disabled-settings>
