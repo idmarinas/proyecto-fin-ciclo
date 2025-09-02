@@ -31,6 +31,13 @@
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
+      <runner id="Composer_Install" name="Composer Install" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="docker exec pfc-php-1 composer install --no-progress --no-interaction" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="ProyectoFinCiclo_HttpsGithubComIdmarinasProyectoFinCicloRefsHeadsMaster1" />
