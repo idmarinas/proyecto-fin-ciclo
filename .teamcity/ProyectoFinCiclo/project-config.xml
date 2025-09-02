@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="a6c5ab2f-2024-408e-9a4f-76520d1ef524" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2025.3/project-config.xsd">
   <name>Proyecto Fin Ciclo</name>
+  <project-extensions>
+    <extension id="PROJECT_EXT_3" type="IssueTracker">
+      <parameters>
+        <param name="authType" value="accesstoken" />
+        <param name="name" value="idmarinas/proyecto-fin-ciclo" />
+        <param name="pattern" value="#(\d+)" />
+        <param name="repository" value="https://github.com/idmarinas/proyecto-fin-ciclo" />
+        <param name="secure:accessToken" value="credentialsJSON:3587149b-62ba-4bec-b563-b6784a282a47" />
+        <param name="secure:password" value="" />
+        <param name="tokenId" value="" />
+        <param name="type" value="GithubIssues" />
+        <param name="username" value="" />
+      </parameters>
+    </extension>
+  </project-extensions>
 </project>
 
