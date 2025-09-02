@@ -20,7 +20,7 @@
       <runner id="Composer_Install" name="Composer Install" type="simpleRunner">
         <parameters>
           <param name="plugin.docker.imagePlatform" value="linux" />
-          <param name="script.content" value="docker exec teamcity-php-1 composer install --verbose --no-progress --no-interaction" />
+          <param name="script.content" value="docker exec teamcity-php-1 composer install --verbose --no-progress --no-interaction --no-scripts" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
         </parameters>
