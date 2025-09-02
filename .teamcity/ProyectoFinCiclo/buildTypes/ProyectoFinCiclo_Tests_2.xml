@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="fee2cc92-d7fc-4a21-a618-d97ea0e7c50c" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2025.3/project-config.xsd">
+  <name>Tests</name>
+  <settings />
+</template>
+
