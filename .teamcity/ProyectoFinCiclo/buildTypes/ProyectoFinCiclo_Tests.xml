@@ -20,7 +20,7 @@
       </runner>
       <runner id="DockerCompose" name="Tests: Docker Compose" type="DockerCompose">
         <parameters>
-          <param name="dockerCompose.file" value="compose.yaml, compose.override.yaml" />
+          <param name="dockerCompose.file" value="compose.yaml compose.override.yaml" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
