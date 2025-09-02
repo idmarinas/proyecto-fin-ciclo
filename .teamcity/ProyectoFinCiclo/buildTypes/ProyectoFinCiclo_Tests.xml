@@ -8,9 +8,6 @@
       <option name="publishArtifactCondition" value="SUCCESSFUL" />
       <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
     </options>
-    <disabled-settings>
-      <setting-ref ref="DockerCompose" />
-    </disabled-settings>
     <parameters>
       <param name="docker_container_php" value="%docker_project_name%-php-1" />
     </parameters>
@@ -45,12 +42,6 @@ docker exec %docker_container_php% php bin/console assets:install
 docker exec %docker_container_php% php bin/console importmap:install]]></param>
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
-        </parameters>
-      </runner>
-      <runner id="DockerCompose" name="Tests: Docker Compose" type="DockerCompose">
-        <parameters>
-          <param name="dockerCompose.file" value="compose.yaml compose.override.yaml" />
-          <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
       <runner id="Up_ss" name="Docker Compose: Up Services" type="simpleRunner">
