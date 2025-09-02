@@ -33,12 +33,6 @@
           <param name="use.custom.script" value="true" />
         </parameters>
       </runner>
-      <runner id="DockerCompose" name="Tests: Docker Compose" type="DockerCompose">
-        <parameters>
-          <param name="dockerCompose.file" value="compose.yaml compose.override.yaml" />
-          <param name="teamcity.step.mode" value="default" />
-        </parameters>
-      </runner>
       <runner id="Cache_Clear" name="Cache Clear" type="simpleRunner">
         <parameters>
           <param name="script.content" value="docker exec teamcity-php-1 php bin/console cache:clear" />
@@ -58,6 +52,12 @@
           <param name="script.content" value="docker exec teamcity-php-1 php bin/console importmap:install" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="DockerCompose" name="Tests: Docker Compose" type="DockerCompose">
+        <parameters>
+          <param name="dockerCompose.file" value="compose.yaml compose.override.yaml" />
+          <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
     </build-runners>
