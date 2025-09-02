@@ -3,6 +3,9 @@
   <name>Tests</name>
   <description />
   <settings>
+    <options>
+      <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
+    </options>
     <disabled-settings>
       <setting-ref ref="DockerCompose" />
     </disabled-settings>
