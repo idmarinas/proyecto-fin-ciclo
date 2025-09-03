@@ -1,6 +1,7 @@
 services:
   ###> doctrine/doctrine-bundle ###
   database:
+    restart: on-failure
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}_dev
       MYSQL_USER: ${DATABASE_USER}_dev
@@ -9,6 +10,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   database_test:
+    restart: on-failure
     extends:
       file: compose.yaml
       service: database
@@ -19,26 +21,21 @@ services:
     volumes:
       - database_data_test:/var/lib/mysql
 
-  apache:
-    ports:
-      - "8080:80"
-      - "8443:443"
+  caddy:
+    restart: on-failure
     volumes:
-      ## Certs
-      - ./.docker/apache/conf/localhost.crt:/usr/local/apache2/conf/localhost.crt:ro
-      - ./.docker/apache/conf/localhost.key:/usr/local/apache2/conf/localhost.key:ro
-      ## Conf
-      - ./.docker/apache/conf/dev/server_name.conf:/usr/local/apache2/conf/d/server-name.conf:ro
-      - ./.docker/apache/sites/dev/certs.conf:/usr/local/apache2/conf/x/dev-certs.conf:ro
-      ## Sites
-      - ./.docker/apache/sites/dev/000-default.conf:/usr/local/apache2/conf/sites/000-default.conf:ro
-      - ./.docker/apache/sites/dev/default-ssl.conf:/usr/local/apache2/conf/sites/default-ssl.conf:ro
+      # Global config
+      - .docker/caddy/globals/dev.Caddyfile:/etc/caddy/globals/Caddyfile:ro
+      # Snippets
+      - .docker/caddy/snippets/dev.Caddyfile:/etc/caddy/snippets/Caddyfile:ro
+    tty: true
     depends_on: !override
       - php
       - database
       - database_test
 
   php:
+    restart: on-failure
     image: idmarinas/php:8.4-xdebug
     expose:
       - 9000
