@@ -1,6 +1,0 @@
-"api.{$SERVER_NAME:localhost}" {
-	import a-common api
-	import a-headers
-
-	import a-php api
-}

@@ -1,6 +1,0 @@
-"admin.{$SERVER_NAME:localhost}" {
-	import a-common admin
-	import a-headers
-
-	import a-php admin
-}
