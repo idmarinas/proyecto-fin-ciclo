@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--~
   ~ Copyright 2025 (C) IDMarinas - All Rights Reserved
   ~
-  ~ Last modified by "IDMarinas" on 27/08/2025, 20:18
+  ~ Last modified by "IDMarinas" on 04/09/2025, 16:59
   ~
   ~ @project Foro de Ayuda y Soporte
-  ~ @see https://github.com/idmarinas/template-symfony
+  ~ @see https://github.com/idmarinas/proyecto-fin-ciclo
   ~
   ~ @file phpunit.dist.xml
-  ~ @date 30/05/2025
-  ~ @time 17:58
+  ~ @date 04/09/2025
+  ~ @time 16:59
   ~
   ~ @author Iván Diaz Marinas (IDMarinas)
   ~ @license BSD 3-Clause License
@@ -68,6 +69,7 @@
   </source>
 
   <extensions>
+    <bootstrap class="Zenstruck\Foundry\PHPUnit\FoundryExtension" />
     <bootstrap class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
   </extensions>
 </phpunit>
