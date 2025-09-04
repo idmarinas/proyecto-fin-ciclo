@@ -1,14 +1,14 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/08/2025, 21:05
+ * Last modified by "IDMarinas" on 04/09/2025, 16:44
  *
  * @project Foro de Ayuda y Soporte
- * @see https://github.com/idmarinas/template-symfony
+ * @see https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file csrf_protection_controller.js
- * @date 27/08/2025
- * @time 21:06
+ * @date 04/09/2025
+ * @time 17:00
  *
  * @author Iván Diaz Marinas (IDMarinas)
  * @license BSD 3-Clause License
@@ -52,8 +52,8 @@ export function generateCsrfToken(formElement) {
     if (!csrfCookie && nameCheck.test(csrfToken)) {
         csrfField.setAttribute('data-csrf-protection-cookie-value', csrfCookie = csrfToken);
         csrfField.defaultValue = csrfToken = btoa(String.fromCharCode.apply(null, (window.crypto || window.msCrypto).getRandomValues(new Uint8Array(18))));
-        csrfField.dispatchEvent(new Event('change', {bubbles: true}));
     }
+    csrfField.dispatchEvent(new Event('change', {bubbles: true}));
 
     if (csrfCookie && tokenCheck.test(csrfToken)) {
         const cookie = csrfCookie + '_' + csrfToken + '=' + csrfCookie + '; path=/; samesite=strict';
