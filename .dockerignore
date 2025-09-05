@@ -39,6 +39,7 @@ var/
 .aiignore
 .editorconfig
 .env.*.local
+.env.docker
 .env.local
 .env.local.php
 .env.test
