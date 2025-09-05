@@ -149,15 +149,5 @@
       "require": "7.3.*",
       "docker": true
     }
-  },
-  "funding": [
-    {
-      "type": "paypal",
-      "url": "https://www.paypal.me/idmarinas"
-    },
-    {
-      "type": "github-sponsors",
-      "url": "https://github.com/sponsors/idmarinas"
-    }
-  ]
+  }
 }
