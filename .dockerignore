@@ -20,7 +20,9 @@
 **/docker-compose.yaml
 **/docker-compose.yml
 **/Dockerfile
+**/node_modules/
 **/Thumbs.db
+**/vendor/
 
 .aiassistant/
 .deployer/
@@ -30,11 +32,9 @@ build/
 docs/
 factories/
 fixtures/
-node_modules/
 public/bundles/
 tests/
 var/
-vendor/
 
 .aiignore
 .editorconfig
@@ -42,6 +42,7 @@ vendor/
 .env.local
 .env.local.php
 .env.test
+*.md
 deploy.php
 phpunit.xml
 phpunit.*.xml
