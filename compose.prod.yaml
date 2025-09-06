@@ -1,16 +1,4 @@
 services:
-  #  deploy:
-  #    deploy:
-  #      resources:
-  #        limits:
-  #          cpus: '0.3'
-  #          memory: 350M
-  #      restart_policy:
-  #        condition: on-failure
-  #        delay: 5s
-  #        max_attempts: 10
-  #        window: 5s
-
   database:
     restart: always
     deploy:
@@ -24,27 +12,11 @@ services:
         max_attempts: 10
         window: 5s
 
-  caddy:
+  webserver:
     restart: always
     volumes:
       # Shared files between deployments
-      - source_uploads:/srv/public/uploads # For example, files uploaded by users
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 500M
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 10
-        window: 5s
-
-  php:
-    restart: always
-    volumes:
-      # Shared files between deployments
-      - source_uploads:/var/www/html/public/uploads # For example, files uploaded by users
+      - source_uploads:/app/public/uploads # For example, files uploaded by users
     deploy:
       resources:
         limits:

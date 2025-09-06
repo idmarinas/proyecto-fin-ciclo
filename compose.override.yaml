@@ -21,28 +21,17 @@ services:
     volumes:
       - database_data_test:/var/lib/mysql
 
-  caddy:
+  webserver:
     restart: on-failure
+    image: idmarinas/pfc:${APP_VERSION}-dev
     volumes:
-      # Global config
-      - .docker/caddy/globals/dev.Caddyfile:/etc/caddy/globals/Caddyfile:ro
-      # Snippets
-      - .docker/caddy/snippets/dev.Caddyfile:/etc/caddy/snippets/Caddyfile:ro
-    tty: true
+      - ./:/app
+        ## SSH
+        - ssh_key:/root/.ssh
     depends_on: !override
-      - php
       - database
       - database_test
-
-  php:
-    restart: on-failure
-    image: idmarinas/php:8.4-xdebug
-    expose:
-      - 9000
-    volumes:
-      - ./.docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
-      ## SSH
-      - ssh_key:/root/.ssh
+      - mailer
 
   ###> symfony/mailer ###
   mailer:
