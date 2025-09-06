@@ -13,6 +13,11 @@
             <option value="compose.override.yaml" />
           </list>
         </option>
+        <option name="services">
+          <list>
+            <option value="webserver" />
+          </list>
+        </option>
         <option name="sourceFilePath" value="compose.yaml" />
       </settings>
     </deployment>
