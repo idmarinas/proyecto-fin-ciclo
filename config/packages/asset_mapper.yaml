@@ -5,7 +5,7 @@ framework:
             - assets/
         missing_import_mode: strict
         precompress:
-            format: gzip
+            format: zstandard
 
 when@prod:
     framework:
