@@ -26,8 +26,8 @@ services:
     image: idmarinas/pfc:${APP_VERSION}-dev
     volumes:
       - ./:/app
-        ## SSH
-        - ssh_key:/root/.ssh
+      ## SSH
+      - ssh_key:/root/.ssh
     depends_on: !override
       - database
       - database_test
