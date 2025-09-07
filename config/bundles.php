@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/08/2025, 13:10
+ * Last modified by "IDMarinas" on 07/09/2025, 19:40
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -31,7 +31,7 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class                 => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class                     => ['dev' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class      => ['dev' => true, 'test' => true],
-    Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class     => ['dev' => true],
+    Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle::class     => ['all' => true],
     Zenstruck\Foundry\ZenstruckFoundryBundle::class                   => ['dev' => true, 'test' => true],
     DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class             => ['test' => true],
     Symfony\UX\TwigComponent\TwigComponentBundle::class               => ['all' => true],
