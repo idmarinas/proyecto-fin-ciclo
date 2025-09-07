@@ -32,6 +32,7 @@ build/
 docs/
 factories/
 fixtures/
+public/assets/
 public/bundles/
 tests/
 var/
