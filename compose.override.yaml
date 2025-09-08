@@ -1,7 +1,7 @@
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    restart: on-failure
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}_dev
       MYSQL_USER: ${DATABASE_USER}_dev
@@ -10,7 +10,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   database_test:
-    restart: on-failure
+    restart: unless-stopped
     extends:
       file: compose.yaml
       service: database
@@ -22,7 +22,7 @@ services:
       - database_data_test:/var/lib/mysql
 
   webserver:
-    restart: on-failure
+    restart: unless-stopped
     image: idmarinas/pfc:${APP_VERSION}-dev
     volumes:
       - ./:/app
@@ -35,7 +35,7 @@ services:
 
   ###> symfony/mailer ###
   mailer:
-    restart: on-failure
+    restart: unless-stopped
     image: axllent/mailpit
     ports:
       - "1025"
