@@ -79,7 +79,7 @@ RUN apk add --no-cache \
     bash \
 #    git \
     openssh \
-#    rsync \
+    rsync \
 #    && git config --global --add safe.directory /var/www/html \
     && composer global require deployer/deployer --no-interaction --no-progress \
     && echo 'alias sf="php bin/console"' >> /etc/bash/bashrc \
