@@ -26,7 +26,6 @@ services:
     image: idmarinas/pfc:${APP_VERSION}-dev
     volumes:
       - ./:/app
-      - /var/run/docker.sock:/var/run/docker.sock
       ## SSH
       - ssh_key:/root/.ssh
     depends_on: !override
