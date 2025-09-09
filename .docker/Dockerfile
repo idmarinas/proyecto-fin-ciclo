@@ -127,3 +127,4 @@ RUN chmod 440 .env.local.php .env.docker \
 
 RUN rm -rf .docker/
 RUN rm -rf assets/
+RUN rm -rf /etc/frankenphp/sites/dev_redir.caddyfile
