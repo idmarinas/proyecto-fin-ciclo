@@ -1,5 +1,6 @@
 ###> idmarinas/proyecto-fin-ciclo ###
 **/*.dist
+.deployer/*.tar
 /build/
 /node_modules/
 /.env.docker
