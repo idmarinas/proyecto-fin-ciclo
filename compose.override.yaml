@@ -27,6 +27,7 @@ services:
     privileged: true
     volumes:
       - ./:/app
+      - docker_dev_data:/var/lib/docker
       ## SSH
       - ssh_key:/root/.ssh
     depends_on: !override
@@ -49,5 +50,6 @@ services:
 volumes:
   database_data_dev:
   database_data_test:
+  docker_dev_data:
   ssh_key:
     external: true
