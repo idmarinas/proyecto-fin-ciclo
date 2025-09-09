@@ -54,7 +54,6 @@ COPY --link ./.docker/php/conf.d/date_timezone.ini /usr/local/etc/php/conf.d/00_
 COPY --link ./.docker/php/conf.d/disable_functions.ini /usr/local/etc/php/conf.d/00_disable_functions.ini
 
 COPY --link --chmod=755 ./.docker/scripts/run_secrets.sh /usr/local/bin/run_secrets.sh
-RUN chmod +x /usr/local/bin/run_secrets.sh
 
 CMD ["/usr/local/bin/run_secrets.sh"]
 
@@ -77,15 +76,19 @@ COPY --link ./.docker/php/conf.d/dev/php.ini /usr/local/etc/php/conf.d/01_php.in
 
 RUN apk add --no-cache \
     bash \
-#    git \
+    git \
     openssh \
     rsync \
-    docker-cli \
+    docker \
 #    && git config --global --add safe.directory /var/www/html \
     && composer global require deployer/deployer --no-interaction --no-progress \
     && echo 'alias sf="php bin/console"' >> /etc/bash/bashrc \
     && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc\
     && echo 'export PATH="$PATH:/config/composer/vendor/bin"' >> /etc/bash/bashrc
+
+COPY --link --chmod=755 ./.docker/scripts/entrypoint.sh /usr/local/bin/custom_docker_entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/custom_docker_entrypoint.sh"]
 
 ###
 # Production Image
