@@ -1,7 +1,7 @@
 services:
   ###> doctrine/doctrine-bundle ###
   database:
-    restart: unless-stopped
+    restart: no
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}_dev
       MYSQL_USER: ${DATABASE_USER}_dev
@@ -10,7 +10,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   database_test:
-    restart: unless-stopped
+    restart: no
     extends:
       file: compose.yaml
       service: database
@@ -22,7 +22,7 @@ services:
       - database_data_test:/var/lib/mysql
 
   webserver:
-    restart: unless-stopped
+    restart: no
     image: idmarinas/pfc:${APP_VERSION}-dev
     volumes:
       - ./:/app
