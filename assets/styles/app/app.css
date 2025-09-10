@@ -1,0 +1,32 @@
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 10/09/2025, 11:18
+ *
+ * @project Foro de Ayuda y Soporte
+ * @see https://github.com/idmarinas/proyecto-fin-ciclo
+ *
+ * @file app.css
+ * @date 10/09/2025
+ * @time 11:17
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license BSD 3-Clause License
+ *
+ * @since 1.0.0
+ */
+
+@import "tailwindcss" source(none);
+
+/* Neutral Theme of UI Bundle */
+/*@import "../../vendor/idmarinas/ui-bundle/assets/styles/neutral.css";*/
+
+/* Plugins */
+/*@plugin '@tailwindcss/typography';*/
+/*@plugin '@tailwindcss/forms';*/
+
+/***********
+ * Sources *
+ ***********/
+@source '../../../templates/**/*.html.twig';
+@source not '../../../templates/bundles/TwigBundle/**/*.html.twig';
