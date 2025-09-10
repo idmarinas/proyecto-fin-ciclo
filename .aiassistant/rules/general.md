@@ -30,5 +30,5 @@ apply: always
 - Symfony 7.3.*
 - PHP 8.4
 - Doctrine ORM 3.5.0
-- MariaDB database
+- MySQL database
 - PHPUnit 12 para testing
