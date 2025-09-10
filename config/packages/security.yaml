@@ -4,7 +4,11 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
@@ -13,7 +17,7 @@ security:
         admin:
             lazy: true
             host: '^/%app.route_prefix.admin%/'
-            provider: users_in_memory
+            provider: app_user_provider
             logout:
                 path: '/%app.route_prefix.admin%/logout'
                 target: admin_login
@@ -27,7 +31,7 @@ security:
         # Main Firewall
         main:
             lazy: true
-            provider: users_in_memory
+            provider: app_user_provider
             logout:
                 path: /logout
                 target: app_home
