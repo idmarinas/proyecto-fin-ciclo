@@ -2,6 +2,9 @@ twig:
     file_name_pattern: '*.twig'
     globals:
         app_version: '%env(APP_VERSION)%'
+    paths:
+        # point this wherever your CSS files live
+        '%kernel.project_dir%/public': Public
 
 when@test:
     twig:
