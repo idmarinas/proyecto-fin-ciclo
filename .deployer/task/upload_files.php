@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/09/2025, 20:45
+ * Last modified by "IDMarinas" on 09/09/2025, 18:06
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -30,8 +30,11 @@ task('deploy:upload_files', function () {
             '--include=compose.yaml',
             '--include=compose.prod.yaml',
             '--exclude=**/*',
+            '--chmod=F440',
         ],
     ]);
     writeln('<fg=blue>Subiendo idmarinas_pfc_{{app_version}}.tar a {{text_prod}}...</>');
-    upload('./.deployer/idmarinas_pfc_{{app_version}}.tar', '{{release_path}}');
+    upload('./.deployer/idmarinas_pfc_{{app_version}}.tar', '{{release_path}}', [
+        'options' => ['--chmod=F750'],
+    ]);
 });
