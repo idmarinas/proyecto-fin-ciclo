@@ -1,4 +1,18 @@
 "pfc.{$SERVER_NAME:localhost}" {
+    @maintenance file /maintenance.flag {
+        root /app
+    }
+
+    error @maintenance 503
+    handle_errors {
+        root * /app/var/cache/error_pages
+    	rewrite * /{err.status_code}.html
+    	templates {
+    	    root /app
+    	}
+    	file_server
+    }
+
 	log pfc {
 		output file "/data/logs/pfc/access.log"
 	}
