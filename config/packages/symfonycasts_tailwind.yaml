@@ -3,7 +3,9 @@ symfonycasts_tailwind:
     binary_version: 'v4.1.12'
     input_css:
         # APP Default:
-        - '%kernel.project_dir%/assets/styles/app.css'
+        - '%kernel.project_dir%/assets/styles/app/app.css'
+        # Exceptions Errors
+        - '%kernel.project_dir%/assets/styles/exception_error.css'
 
     # Alternatively, you can specify the path to the binary that you manage yourself
     #binary: 'node_modules/.bin/tailwindcss'
