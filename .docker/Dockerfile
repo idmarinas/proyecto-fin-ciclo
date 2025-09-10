@@ -117,9 +117,11 @@ ENV APP_ENV=prod
 
 RUN php bin/console cache:clear \
 #    && php bin/console assets:install \
-    && php bin/console tailwind:build --minify \
+    && php bin/console tailwind:build assets/styles/app/app.css --minify \
+    && php bin/console tailwind:build assets/styles/exception_error.css --minify \
     && php bin/console importmap:install \
     && php bin/console asset-map:compile \
+    && php bin/console error:dump var/cache/error_pages/ -f \
     && composer prod:dump:env
 
 RUN chmod 440 .env.local.php .env.docker \
