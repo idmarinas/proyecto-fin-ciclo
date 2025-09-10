@@ -2,10 +2,10 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/08/2025, 20:22
+ * Last modified by "IDMarinas" on 10/09/2025, 11:01
  *
  * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/template-symfony
+ * @see     https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file    importmap.php
  * @date    27/08/2025
@@ -31,6 +31,10 @@
 return [
     'app'                      => [
         'path'       => './assets/app.js',
+        'entrypoint' => true,
+    ],
+    'exception_error'          => [
+        'path'       => './assets/styles/exception_error.js',
         'entrypoint' => true,
     ],
     '@hotwired/stimulus'       => [
