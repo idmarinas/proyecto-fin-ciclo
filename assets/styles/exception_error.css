@@ -1,0 +1,42 @@
+/**
+ * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 10/09/2025, 10:40
+ *
+ * @project Foro de Ayuda y Soporte
+ * @see https://github.com/idmarinas/proyecto-fin-ciclo
+ *
+ * @file exception_error.css
+ * @date 02/09/2025
+ * @time 14:20
+ *
+ * @author Iván Diaz Marinas (IDMarinas)
+ * @license BSD 3-Clause License
+ *
+ * @since 1.0.0
+ */
+
+@import "tailwindcss" source(none);
+
+/***********
+ * Sources *
+ ***********/
+@source '../../templates/layouts/exception_error.html.twig';
+@source '../../templates/bundles/TwigBundle/Exception/*.html.twig';
+
+.dialog-content h1 {
+    @apply relative text-8xl font-sans text-red-600 font-bold;
+}
+
+.dialog-content a {
+    @apply py-3 px-6 duration-500 ease-in-out bg-transparent text-white font-bold uppercase tracking-wide;
+    @apply border-2 border-gray-200 ring-white rounded-lg hover:ring-4 inline-block;
+}
+
+.tracking-tighter-less {
+    letter-spacing: -0.75rem;
+}
+
+.text-shadow {
+    text-shadow: -8px 0 0 rgb(254, 202, 202);
+}
