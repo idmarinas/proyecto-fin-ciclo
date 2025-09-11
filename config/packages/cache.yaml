@@ -23,6 +23,8 @@ framework:
             support.forum.cache:
                 adapter: support.forum.service.cache_adapter
                 tags: true
+            storage.scheduler.cache:
+                adapter: storage.scheduler.cache
 
 services:
     cache.adapter.encrypt:
@@ -47,4 +49,13 @@ services:
             - ''
             - '0'
             - '%kernel.cache_dir%/pools/support'
+            - '@cache.default_marshaller'
+
+    storage.scheduler.cache:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        public: false
+        arguments:
+            - ''
+            - '0'
+            - '%kernel.project_dir%/var/scheduler'
             - '@cache.default_marshaller'
