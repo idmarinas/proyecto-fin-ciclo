@@ -90,9 +90,9 @@ RUN apk add --no-cache \
     && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc\
     && echo 'export PATH="$PATH:/config/composer/vendor/bin"' >> /etc/bash/bashrc
 
-COPY --link --chmod=755 ./.docker/scripts/dev_entrypoint.sh /usr/local/bin/dev_docker_entrypoint.sh
+COPY --link --chmod=755 ./.docker/scripts/dev_entrypoint.sh /usr/local/bin/dev_entrypoint.sh
 
-ENTRYPOINT ["/usr/local/bin/custom_docker_entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/dev_entrypoint.sh"]
 
 ###
 # Production Image
