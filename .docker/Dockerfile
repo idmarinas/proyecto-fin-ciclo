@@ -67,6 +67,8 @@ CMD ["/usr/local/bin/run_secrets.sh"]
 
 FROM base AS dev
 
+WORKDIR /app
+
 RUN install-php-extensions xdebug
 
 # Caddy config files
