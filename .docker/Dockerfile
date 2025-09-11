@@ -53,6 +53,10 @@ COPY --link ./.docker/php/conf.d/opcache.ini /usr/local/etc/php/conf.d/00_opcach
 COPY --link ./.docker/php/conf.d/date_timezone.ini /usr/local/etc/php/conf.d/00_date_timezone.ini
 COPY --link ./.docker/php/conf.d/disable_functions.ini /usr/local/etc/php/conf.d/00_disable_functions.ini
 
+# Symfony Messenger Workers
+COPY --link --chmod=755 ./.docker/scripts/entrypoints/worker_msn_async.sh /usr/local/bin/msn_async_entrypoint.sh
+COPY --link --chmod=755 ./.docker/scripts/entrypoints/worker_msn_scheduler.sh /usr/local/bin/msn_scheduler_entrypoint.sh
+
 COPY --link --chmod=755 ./.docker/scripts/run_secrets.sh /usr/local/bin/run_secrets.sh
 
 CMD ["/usr/local/bin/run_secrets.sh"]
@@ -86,7 +90,7 @@ RUN apk add --no-cache \
     && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc\
     && echo 'export PATH="$PATH:/config/composer/vendor/bin"' >> /etc/bash/bashrc
 
-COPY --link --chmod=755 ./.docker/scripts/entrypoint.sh /usr/local/bin/custom_docker_entrypoint.sh
+COPY --link --chmod=755 ./.docker/scripts/dev_entrypoint.sh /usr/local/bin/dev_docker_entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/custom_docker_entrypoint.sh"]
 
