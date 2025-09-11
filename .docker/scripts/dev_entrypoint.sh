@@ -3,12 +3,12 @@
 ##
 # Copyright 2025 (C) IDMarinas - All Rights Reserved
 #
-# Last modified by "IDMarinas" on 09/09/2025, 14:52
+# Last modified by "IDMarinas" on 11/09/2025, 10:31
 #
 # @project Foro de Ayuda y Soporte
 # @see https://github.com/idmarinas/proyecto-fin-ciclo
 #
-# @file entrypoint.sh
+# @file dev_entrypoint.sh
 # @date 09/09/2025
 # @time 10:28
 #
