@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/09/2025, 13:53
+ * Last modified by "IDMarinas" on 12/09/2025, 21:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -32,7 +32,7 @@ import(__DIR__ . '/.deployer/task/upload_files.php');
 import(__DIR__ . '/.deployer/task/doctrine.php');
 import(__DIR__ . '/.deployer/task/maintenance.php');
 import(__DIR__ . '/.deployer/task/symfony_workers.php');
-////import(__DIR__ . '/.deployer/task/download_files.php');
+import(__DIR__ . '/.deployer/task/download_files.php');
 
 //
 // Config
@@ -49,10 +49,10 @@ set('keep_releases', 5);
 set('what', get('project_name'));
 set('app_version', $_ENV['APP_VERSION'] ?? '0.0.0');
 set('cleanup_use_sudo', true);
-set('docker_services_to_start', 'webserver database messenger_worker_async messenger_worker_scheduler');
+set('docker_services_to_start', 'webserver database '); // messenger_worker_scheduler messenger_worker_async
 set('msn_workers_container_names', [
-    'Worker Async'     => 'pfc-messenger_worker_async-1',
-    'Worker Scheduler' => 'pfc-messenger_worker_scheduler-1',
+//    'Worker Async' => 'pfc-messenger_worker_async-1',
+//    'Worker Scheduler' => 'pfc-messenger_worker_scheduler-1',
 ]);
 
 // Path to the bin *.
@@ -80,6 +80,7 @@ host('s2.prod')
 //
 task('deploy', [
     'deploy:prepare',
+    'download:backups',
     'deploy:upload_files',
     'docker:image:load',
     'docker:copy:env_docker',
