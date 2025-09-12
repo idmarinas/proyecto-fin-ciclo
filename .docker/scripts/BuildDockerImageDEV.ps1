@@ -20,3 +20,4 @@ Write-Host "$appTitle" -BackgroundColor Green
 Write-Host "Tag: $appVersion" -BackgroundColor Blue
 
 docker build --target dev -f .docker/Dockerfile -t "idmarinas/pfc:$appVersion-dev" .
+docker image prune -f
