@@ -31,6 +31,7 @@ import(__DIR__ . '/.deployer/task/docker.php');
 import(__DIR__ . '/.deployer/task/upload_files.php');
 import(__DIR__ . '/.deployer/task/doctrine.php');
 import(__DIR__ . '/.deployer/task/maintenance.php');
+import(__DIR__ . '/.deployer/task/symfony_workers.php');
 ////import(__DIR__ . '/.deployer/task/download_files.php');
 
 //
@@ -49,6 +50,10 @@ set('what', get('project_name'));
 set('app_version', $_ENV['APP_VERSION'] ?? '0.0.0');
 set('cleanup_use_sudo', true);
 set('docker_services_to_start', 'webserver database messenger_worker_async messenger_worker_scheduler');
+set('msn_workers_container_names', [
+    'Worker Async'     => 'pfc-messenger_worker_async-1',
+    'Worker Scheduler' => 'pfc-messenger_worker_scheduler-1',
+]);
 
 // Path to the bin *.
 set('bin/webserver', 'docker exec pfc-webserver-1');
