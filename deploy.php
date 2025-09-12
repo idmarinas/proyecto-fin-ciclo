@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/09/2025, 17:19
+ * Last modified by "IDMarinas" on 12/09/2025, 13:09
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -72,9 +72,7 @@ host('s2.prod')
     ->setPort(63496)
     ->set('remote_user', 'debian')
     ->set('deploy_path', '/home/debian/project_fp')
-    ->setLabels(
-        ['stage' => 'prod', 'role' => 'web', 'server_name' => 'Docker Server']
-    )
+    ->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Docker Server'])
 ;
 
 //
