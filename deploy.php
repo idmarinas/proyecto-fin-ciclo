@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/09/2025, 13:09
+ * Last modified by "IDMarinas" on 12/09/2025, 13:53
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -83,6 +83,7 @@ task('deploy', [
     'deploy:upload_files',
     'docker:image:load',
     'docker:copy:env_docker',
+    'deploy:symfony:workers:stop',
     'docker:container:start',
     'doctrine:migrations',
     //    'deploy:env',
