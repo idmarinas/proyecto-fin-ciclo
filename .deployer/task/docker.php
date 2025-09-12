@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/09/2025, 17:12
+ * Last modified by "IDMarinas" on 12/09/2025, 13:01
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -24,6 +24,7 @@ namespace Deployer;
 import('recipe/common.php');
 
 set('env_compose_files', '--env-file .env.docker -f compose.yaml -f compose.prod.yaml');
+set('docker_services_to_start', 'webserver database');
 
 //
 // Tasks
@@ -65,7 +66,7 @@ desc('Iniciar de los contenedores Docker');
 task('docker:container:start', function () {
     writeln('<info>Creando contenedor Docker en "{{text_prod}}"</>');
     within('{{release_or_current_path}}', function () {
-        run('docker compose {{env_compose_files}} up --force-recreate -d --wait webserver database');
+        run('docker compose {{env_compose_files}} up --force-recreate -d --wait {{docker_services_to_start}}');
     });
 });
 
