@@ -48,6 +48,7 @@ set('keep_releases', 5);
 set('what', get('project_name'));
 set('app_version', $_ENV['APP_VERSION'] ?? '0.0.0');
 set('cleanup_use_sudo', true);
+set('docker_services_to_start', 'webserver database messenger_worker_async messenger_worker_scheduler');
 
 // Path to the bin *.
 set('bin/webserver', 'docker exec pfc-webserver-1');
@@ -74,6 +75,19 @@ host('s2.prod')
 //
 // Deploy Task - Upload a new version
 //
+task('deploy', [
+    'deploy:prepare',
+    'deploy:upload_files',
+    'docker:image:load',
+    'docker:copy:env_docker',
+    'docker:container:start',
+    'doctrine:migrations',
+    //    'deploy:env',
+    //    'deploy:shared',
+    //    'deploy:writable',
+    'deploy:publish',
+]);
+
 task('deploy:prepare', [
     'deploy:info',
     'deploy:setup',
@@ -87,16 +101,4 @@ task('deploy:publish', [
     'maintenance:off',
     'deploy:cleanup',
     'deploy:success',
-]);
-task('deploy', [
-    'deploy:prepare',
-    'deploy:upload_files',
-    'docker:image:load',
-    'docker:copy:env_docker',
-    'docker:container:start',
-    'doctrine:migrations',
-    //    'deploy:env',
-    //    'deploy:shared',
-    //    'deploy:writable',
-    'deploy:publish',
 ]);
