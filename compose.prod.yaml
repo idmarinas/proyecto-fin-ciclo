@@ -28,5 +28,43 @@ services:
         max_attempts: 10
         window: 5s
 
+  messenger_worker_async:
+    image: idmarinas/pfc:${APP_VERSION}
+    entrypoint: '/usr/local/bin/msn_async_entrypoint.sh'
+    restart: always
+    healthcheck:
+      test: [ "CMD", "php", "bin/console", "about" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - database
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+
+
+  messenger_worker_scheduler:
+    image: idmarinas/pfc:${APP_VERSION}
+    entrypoint: '/usr/local/bin/msn_scheduler_entrypoint.sh'
+    restart: always
+    healthcheck:
+      test: [ "CMD", "php", "bin/console", "about" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - scheduler_cache:/app/var/scheduler
+    depends_on:
+      - database
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+
 volumes:
   source_uploads:
+  scheduler_cache:
