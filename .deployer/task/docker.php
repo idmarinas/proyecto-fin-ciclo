@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/09/2025, 13:01
+ * Last modified by "IDMarinas" on 12/09/2025, 14:00
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,7 +29,7 @@ set('docker_services_to_start', 'webserver database');
 //
 // Tasks
 //
-desc('Construir la imagen Docker');
+desc('Construir la imagen Docker (PROD)');
 task('docker:image:build', function () {
     if (!testLocally('[ -f .deployer/idmarinas_pfc_{{app_version}}.tar ]')) {
         writeln('<info>Construyendo imagen Docker</>');
