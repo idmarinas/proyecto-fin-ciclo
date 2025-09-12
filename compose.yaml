@@ -51,8 +51,6 @@ services:
       retries: 3
     depends_on:
       - database
-    volumes:
-      - scheduler_cache:/app/var/scheduler
     deploy:
       resources:
         limits:
@@ -64,6 +62,8 @@ services:
     image: idmarinas/pfc:${APP_VERSION}
     entrypoint: '/usr/local/bin/msn_scheduler_entrypoint.sh'
     restart: always
+    volumes:
+      - scheduler_cache:/app/var/scheduler
     depends_on:
       - database
     deploy:
