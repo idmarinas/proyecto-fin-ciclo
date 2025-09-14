@@ -2,10 +2,10 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/08/2025, 10:21
+ * Last modified by "IDMarinas" on 14/09/2025, 11:27
  *
  * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/template-symfony
+ * @see     https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file    Kernel.php
  * @date    30/05/2025
