@@ -8,6 +8,10 @@ import snippets/Caddyfile
 
     import globals/Caddyfile
 
+    servers :80 {
+        name "{$SERVER_NAME:localhost}"
+    }
+
     servers :443 {
         name "{$SERVER_NAME:localhost}_ssl"
         import a-trusted-proxies
