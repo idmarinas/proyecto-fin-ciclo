@@ -86,7 +86,9 @@ RUN apk add --no-cache \
     openssh \
     rsync \
     docker \
-#    && git config --global --add safe.directory /var/www/html \
+    && git config --global --add safe.directory /var/app \
+    && git config --global core.eol lf \
+    && git config --global core.autocrlf input \
     && composer global require deployer/deployer --no-interaction --no-progress \
     && echo 'alias sf="php bin/console"' >> /etc/bash/bashrc \
     && echo 'alias symfony="php bin/console"' >> /etc/bash/bashrc\
