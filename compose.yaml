@@ -23,10 +23,6 @@ services:
 
   webserver:
     image: idmarinas/pfc:${APP_VERSION}
-    ports:
-      - "80:80" # HTTP
-      - "443:443" # HTTPS
-      - "443:443/udp" # HTTP/3
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
@@ -39,6 +35,18 @@ services:
     tty: true
     depends_on:
       - database
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      # Admin web
+      - "traefik.tcp.routers.pfc.rule=HostSNI(`pfc.${APP_SERVER_NAME}`)"
+      - "traefik.tcp.routers.pfc.service=pfc"
+      - "traefik.tcp.routers.pfc.entrypoints=web,websecure"
+      - "traefik.tcp.services.pfc.loadbalancer.server.port=443"
+      - "traefik.tcp.routers.pfc.tls=true"
+      - "traefik.tcp.routers.pfc.tls.passthrough=true"
+      - "traefik.tcp.routers.pfc.priority=2"
 
 volumes:
   caddy_data:
@@ -52,3 +60,7 @@ secrets:
     environment: DATABASE_PASSWORD
   cloudflare_api_token:
     environment: CLOUDFLARE_API_TOKEN
+
+networks:
+  proxy:
+    external: true
