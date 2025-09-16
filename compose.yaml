@@ -37,6 +37,7 @@ services:
       - database
     networks:
       - proxy
+      - default
     labels:
       - "traefik.enable=true"
       # Admin web
