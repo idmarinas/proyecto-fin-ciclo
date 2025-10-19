@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/08/2025, 10:56
+ * Last modified by "IDMarinas" on 19/10/2025, 19:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -12,7 +12,7 @@
  * @time    10:55
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license proprietary
  *
  * @since   1.0.0
  */

@@ -1,19 +1,21 @@
 #!/bin/sh
 
+
+
 ##
 # Copyright 2025 (C) IDMarinas - All Rights Reserved
 #
-# Last modified by "IDMarinas" on 12/09/2025, 21:41
+# Last modified by "IDMarinas" on 19/10/2025, 19:37
 #
 # @project Foro de Ayuda y Soporte
 # @see https://github.com/idmarinas/proyecto-fin-ciclo
 #
-# @file worker_msn_async.sh
-# @date 11/09/2025
-# @time 10:22
+# @file worker_async.sh
+# @date 17/10/2025
+# @time 18:41
 #
 # @author Iván Diaz Marinas (IDMarinas)
-# @license BSD 3-Clause License
+# @license proprietary
 #
 # @since 1.0.0
 #

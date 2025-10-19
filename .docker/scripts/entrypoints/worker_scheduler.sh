@@ -1,5 +1,7 @@
 #!/bin/sh
 
+
+
 ##
 # Copyright 2025 (C) IDMarinas - All Rights Reserved
 #
@@ -8,9 +10,9 @@
 # @project Foro de Ayuda y Soporte
 # @see https://github.com/idmarinas/proyecto-fin-ciclo
 #
-# @file dev_entrypoint.sh
-# @date 09/09/2025
-# @time 10:28
+# @file worker_scheduler.sh
+# @date 17/10/2025
+# @time 18:41
 #
 # @author Iván Diaz Marinas (IDMarinas)
 # @license proprietary
@@ -18,6 +20,6 @@
 # @since 1.0.0
 #
 
-dockerd &
+# Scheduler parece que no es compatible con la opción --limit
 docker-php-entrypoint
-exec frankenphp run --config '/etc/frankenphp/Caddyfile' "$@"
+php bin/console messenger:consume scheduler_default --time-limit=3600 --memory-limit=128M
