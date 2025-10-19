@@ -23,7 +23,7 @@ framework:
             support.forum.cache:
                 adapter: support.forum.service.cache_adapter
                 tags: true
-            storage.scheduler.cache:
+            scheduler.cache:
                 adapter: storage.scheduler.cache
 
 services:
@@ -57,5 +57,5 @@ services:
         arguments:
             - ''
             - '0'
-            - '%kernel.project_dir%/var/scheduler'
+            - '%kernel.project_dir%/storage/scheduler'
             - '@cache.default_marshaller'
