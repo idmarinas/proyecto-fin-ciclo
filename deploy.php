@@ -67,11 +67,11 @@ set('http_group', 'www-data');
 //
 // Hosts
 //
-host('s2.prod')
-    ->setHostname('54.37.156.195')
-    ->setPort(63496)
+host('s1.docker.pfc')
+    ->setHostname('137.74.43.42')
+    ->setPort(64217)
     ->set('remote_user', 'debian')
-    ->set('deploy_path', '/home/debian/project_fp')
+    ->set('deploy_path', '/home/debian/www/project_fp')
     ->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Docker Server'])
 ;
 
