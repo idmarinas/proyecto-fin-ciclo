@@ -1,10 +1,11 @@
-name: pfc
+name: ${APP_PROJECT_NAME}
 
 services:
   ###> doctrine/doctrine-bundle ###
   database:
     image: mysql:${DATABASE_VERSION_NUMBER}
     environment:
+      MYSQL_AUTO_UPGRADE: true
       MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_USER: ${DATABASE_USER}
       MYSQL_PASSWORD_FILE: /run/secrets/db_password
@@ -22,7 +23,7 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   webserver:
-    image: idmarinas/pfc:${APP_VERSION}
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-build.${APP_VERSION_BUILD}
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
@@ -33,21 +34,19 @@ services:
     secrets:
       - cloudflare_api_token
     tty: true
-    depends_on:
-      - database
     networks:
       - proxy
       - default
     labels:
-      traefik.enable: true
-      # Web principal en un subdonimio
-      traefik.tcp.routers.pfc.rule: HostSNI(`pfc.${APP_SERVER_NAME}`)
-      traefik.tcp.routers.pfc.service: pfc
-      traefik.tcp.routers.pfc.entrypoints: web,websecure
-      traefik.tcp.services.pfc.loadbalancer.server.port: 443
-      traefik.tcp.routers.pfc.tls: true
-      traefik.tcp.routers.pfc.tls.passthrough: true
-      traefik.tcp.routers.pfc.priority: 20
+      - 'traefik.enable=true'
+      # Main web and subdomains
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.rule=HostSNI(`pfc.${APP_SERVER_NAME}`)'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.service=${APP_PROJECT_NAME}'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.entrypoints=web,websecure'
+      - 'traefik.tcp.services.${APP_PROJECT_NAME}.loadbalancer.server.port=443'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.tls=true'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.tls.passthrough=true'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.priority=20'
 
 volumes:
   caddy_data:

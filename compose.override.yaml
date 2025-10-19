@@ -3,7 +3,7 @@ services:
   database:
     restart: no
     ports:
-      - "23306:3306"
+      - "13306:3306"
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}_dev
       MYSQL_USER: ${DATABASE_USER}_dev
@@ -16,7 +16,8 @@ services:
     extends:
       file: compose.yaml
       service: database
-    ports: !reset [ ]
+    ports:
+      - "13307:3306"
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}_test
       MYSQL_USER: ${DATABASE_USER}_test
@@ -25,14 +26,13 @@ services:
 
   webserver:
     restart: no
-    image: idmarinas/pfc:${APP_VERSION}-dev
+    image: idmarinas/${APP_PROJECT_NAME}:${APP_VERSION}-dev-build.${APP_VERSION_BUILD}
     privileged: true
     volumes:
       - ./:/app
       - docker_dev_data:/var/lib/docker
       ## SSH
       - ssh_key:/root/.ssh
-    depends_on: !reset [ ]
 
   ###> symfony/mailer ###
   mailer:
@@ -45,6 +45,14 @@ services:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
   ###< symfony/mailer ###
+
+  # Used initially to generate the .env.docker file.
+  php:
+    image: idmarinas/php:8.4-xdebug
+    healthcheck:
+      test: php -v || exit 1
+    volumes:
+      - ./:/var/www/html
 
 volumes:
   database_data_dev:

@@ -2,17 +2,17 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/09/2025, 21:46
+ * Last modified by "IDMarinas" on 19/10/2025, 19:41
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file    deploy.php
- * @date    28/08/2025
- * @time    14:15
+ * @date    17/07/2025
+ * @time    20:01
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license proprietary
  *
  * @since   1.0.0
  */
@@ -24,20 +24,21 @@ require __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\Dotenv\Dotenv;
 
 // Obtener las variables .env en $_ENV
-new Dotenv()->bootEnv(__DIR__ . '/.env');
+new Dotenv()->loadEnv(__DIR__ . '/.env');
 
-import(__DIR__ . '/.deployer/common_text_vars.php');
+import(__DIR__ . '/.deployer/common.php');
 import(__DIR__ . '/.deployer/task/docker.php');
 import(__DIR__ . '/.deployer/task/upload_files.php');
 import(__DIR__ . '/.deployer/task/doctrine.php');
 import(__DIR__ . '/.deployer/task/maintenance.php');
 import(__DIR__ . '/.deployer/task/symfony_workers.php');
 import(__DIR__ . '/.deployer/task/download_files.php');
+import(__DIR__ . '/.deployer/task/restore_volumes.php');
 
 //
 // Config
 //
-set('project_name', 'Foro de Ayuda y Soporte');
+set('project_name', $_ENV['APP_TITLE'] ?? 'Your Project Name');
 set('user', 'IDMarinas');
 // Release number
 set('release_name', fn() => within('{{deploy_path}}', function () {
@@ -47,16 +48,18 @@ set('release_name', fn() => within('{{deploy_path}}', function () {
 }));
 set('keep_releases', 5);
 set('what', get('project_name'));
-set('app_version', $_ENV['APP_VERSION'] ?? '0.0.0');
 set('cleanup_use_sudo', true);
-set('docker_services_to_start', 'webserver database '); // messenger_worker_scheduler messenger_worker_async
-set('msn_workers_container_names', [
-//    'Worker Async' => 'pfc-messenger_worker_async-1',
-//    'Worker Scheduler' => 'pfc-messenger_worker_scheduler-1',
-]);
+
+//
+// Project Config
+//
+set('app/version', $_ENV['APP_VERSION'] ?? '0.0.0');
+set('app/version/build', $_ENV['APP_VERSION_BUILD'] ?? 1);
+set('docker/project_name', $_ENV['APP_PROJECT_NAME'] ?? 'your_project_name');
+set('docker/services/start', 'webserver database worker_async worker_scheduler');
 
 // Path to the bin *.
-set('bin/webserver', 'docker exec pfc-webserver-1');
+set('bin/webserver', 'docker exec {{docker/project_name}}-webserver-1');
 set('bin/php', '{{bin/webserver}} php');
 set('bin/composer', '{{bin/webserver}} composer');
 set('bin/console', '{{bin/php}} bin/console');
@@ -70,10 +73,12 @@ set('http_group', 'www-data');
 host('s1.docker.pfc')
     ->setHostname('137.74.43.42')
     ->setPort(64217)
-    ->set('remote_user', 'debian')
-    ->set('deploy_path', '/home/debian/www/project_fp')
-    ->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'Docker Server'])
+    ->setRemoteUser('debian')
+    ->setDeployPath('/home/debian/www/project_fp')
+    ->setLabels(['stage' => 'prod', 'role' => 'web', 'server_name' => 'S1 - Docker Server Production'])
 ;
+
+task('docker:volume:restore')->disable();
 
 //
 // Deploy Task - Upload a new version
@@ -85,11 +90,8 @@ task('deploy', [
     'docker:image:load',
     'docker:copy:env_docker',
     'deploy:symfony:workers:stop',
-    'docker:container:start',
+    'docker:service:start',
     'doctrine:migrations',
-    //    'deploy:env',
-    //    'deploy:shared',
-    //    'deploy:writable',
     'deploy:publish',
 ]);
 
