@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/09/2025, 20:15
+ * Last modified by "IDMarinas" on 23/09/2025, 18:25
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -36,9 +36,11 @@ task('download:backups:logs', function () {
     writeln('<info>Descargando los archivos logs del contenedor web a <fg=blue>{{storage_backup}}</>.</>');
 
     run('mkdir -p {{deploy_path}}/backups');
-    run('docker cp pfc-webserver-1:/app/var/log {{deploy_path}}/backups');
-    download('{{deploy_path}}/backups/log', '{{storage_backup}}');
-    run('rm -r {{deploy_path}}/backups/log');
+    if (test('[ -d docker cp pfc-webserver-1:/app/var/log ]')) {
+        run('docker cp pfc-webserver-1:/app/var/log {{deploy_path}}/backups');
+        download('{{deploy_path}}/backups/log', '{{storage_backup}}');
+        run('rm -r {{deploy_path}}/backups/log');
+    }
 });
 
 desc('Descargar una copia de subidas "uploads".');
