@@ -1,39 +1,9 @@
 "pfc.{$SERVER_NAME:localhost}" {
-    @maintenance file /maintenance.flag {
-        root /app
-    }
+	import a-common forum
+	import a-headers
 
-    error @maintenance 503
-    handle_errors {
-        root * /app/var/cache/error_pages
-    	rewrite * /{err.status_code}.html
-    	templates {
-    	    root /app
-    	}
-    	file_server
-    }
-
-	log pfc {
-		output file "/data/logs/pfc/access.log"
-	}
-
-	root {$SERVER_ROOT:public/}
-	encode
-
-	# Disable Topics tracking if not enabled explicitly: https://github.com/jkarlin/topics
-	header ?Permissions-Policy "browsing-topics=()"
-	header ?X-XSS-Protection 1
-	header ?X-Content-Type-Options nosniff
-	header ?X-Frame-Options sameorigin
-	header ?X-Robots-Tag noindex
-	header ?Cross-Origin-Resource-Policy same-origin
-	header ?Cross-Origin-Opener-Policy same-origin-allow-popups
-	header ?Referrer-Policy no-referrer strict-origin strict-origin same-origin-when-cross-origin
-
-	php_server
-
-	file_server {
-		precompressed
-		hide *.php
+	import a-maintenance
+	php_server {
+		env APP_ID pfc
 	}
 }

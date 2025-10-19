@@ -1,3 +1,0 @@
-"{$SERVER_NAME:localhost}" {
-	redir https://pfc.{host}{uri}
-}
