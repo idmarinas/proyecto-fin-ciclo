@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/09/2025, 17:16
+ * Last modified by "IDMarinas" on 19/10/2025, 19:37
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -12,7 +12,7 @@
  * @time    13:27
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license proprietary
  *
  * @since   1.0.0
  */
@@ -25,15 +25,17 @@ import('recipe/common.php');
 
 set('need_db_migration', false);
 set('doctrine_schema_validate_config', '--skip-mapping');
-set('doctrine_migrations_estimated_duration', '1m');
-set('doctrine_migrations_options', '--no-interaction --allow-no-migration');
+set('doctrine/migration/duration', '1m');
+set('migrations/options', '--no-interaction --allow-no-migration');
 
-desc('Crear contenedor temporal de la base de datos');
-task('doctrine:docker:container:db', function () {
-    run('docker run --rm -d --name idmarinas_pfc_db_temp idmarinas/pfc:{{app_version}}');
-    run('docker cp idmarinas_pfc_db_temp:/app/var/db.sql {{release_path}}/var/db.sql');
-    run('docker rm idmarinas_pfc_db_temp');
-});
+//desc('Crear contenedor temporal de la base de datos');
+//task('doctrine:docker:container:db', function () {
+//	run(
+//		'docker run --rm -d --name deployer_{{docker/project_name}}_db_temp idmarinas/{{docker/project_name}}:{{app/version}}'
+//	);
+//	run('docker cp deployer_{{docker/project_name}}_db_temp:/app/var/db.sql {{release_path}}/var/db.sql');
+//	run('docker rm deployer_{{docker/project_name}}_db_temp');
+//});
 
 desc('Comprobar si se necesitan migraciones de Doctrine');
 task('doctrine:check', function () {
@@ -53,16 +55,16 @@ desc('Ejecutar migraciones de Doctrine');
 task('doctrine:migrate', function () {
     if (get('need_db_migration')) {
         writeln('<info>Activando el modo mantenimiento</>');
-        invoke('migration:estimate:real');
+        invoke('migration:estimate:time');
         invoke('maintenance:on');
 
         writeln('<info>Ejecutando migraciones de Doctrine</>');
-        run('{{bin/console}} doctrine:migrations:migrate {{doctrine_migrations_options}}', real_time_output: true);
+        run('{{bin/console}} doctrine:migrations:migrate {{migrations/options}}', real_time_output: true);
     }
 });
 
 desc('Estimar tiempo de migración real');
-task('migration:estimate:real', function () {
+task('migration:estimate:time', function () {
     // 1. Obtener estadísticas de la base de datos
     $tableStats = run(
         '{{bin/console}} doctrine:query:sql "SELECT table_name, table_rows, ROUND(((data_length + index_length) / 1024 / 1024), 2) AS size_mb FROM information_schema.TABLES WHERE table_schema = DATABASE() ORDER BY table_rows DESC"'
@@ -81,7 +83,7 @@ task('migration:estimate:real', function () {
     writeln("<comment>Tiempo estimado: <options=bold>{$estimation['duration']}</></comment>");
     writeln("<comment>Factores considerados: <options=bold>{$estimation['factors']}</></comment>");
 
-    set('doctrine_migrations_estimated_duration', $estimation['duration']);
+    set('doctrine/migration/duration', $estimation['duration']);
 });
 
 desc('Ejecutar migraciones de Doctrine');

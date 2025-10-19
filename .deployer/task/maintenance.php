@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/09/2025, 17:58
+ * Last modified by "IDMarinas" on 19/10/2025, 19:37
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -12,7 +12,7 @@
  * @time    11:56
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license proprietary
  *
  * @since   1.0.0
  */
@@ -22,26 +22,29 @@ namespace Deployer;
 use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
+use Symfony\Component\Console\Input\InputOption;
 
 import('recipe/common.php');
 
+option(
+    name       : 'duration',
+    mode       : InputOption::VALUE_OPTIONAL,
+    description: 'The duration of the maintenance mode in minutes or hours (e.g. 30m, 1h)',
+    default    : '5m'
+);
+
 desc('Activa el modo mantenimiento');
 task('maintenance:on', function () {
-    $duration = get('doctrine_migrations_estimated_duration');
-
     // fecha de inicio en formato ISO8601
     $start = new DateTimeImmutable('now', new DateTimeZone('UTC'));
 
-    // calcular fecha de fin según duración
-    if (preg_match('/^(\d+)([mh])$/', $duration, $matches)) {
-        $value = (int)$matches[1];
-        $unit = strtoupper($matches[2]);
-    } else {
-        $value = 30;
-        $unit = 'M';
-    }
-
+    extract(getDuration(input()->getOption('duration')));
     $end = $start->add(new DateInterval("PT{$value}{$unit}"));
+
+    extract(getDuration(get('doctrine/migration/duration')));
+    $end = $end->add(new DateInterval("PT{$value}{$unit}"));
+
+    $duration = $end->diff($start, true)->format('%yy %mm %hh %im');
 
     // JSON con datos
     $json = json_encode([
@@ -60,3 +63,17 @@ task('maintenance:off', function () {
     writeln('<info>Desactivando modo mantenimiento...</>');
     run('{{bin/webserver}} rm -f /app/maintenance.flag');
 });
+
+function getDuration ($duration): array
+{
+    // calcular fecha de fin según duración
+    if (preg_match('/^(\d+)([mh])$/', $duration, $matches)) {
+        $value = (int)$matches[1];
+        $unit = strtoupper($matches[2]);
+    } else {
+        $value = 10;
+        $unit = 'M';
+    }
+
+    return compact('value', 'unit');
+}

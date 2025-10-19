@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/09/2025, 18:25
+ * Last modified by "IDMarinas" on 19/10/2025, 19:37
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -12,48 +12,81 @@
  * @time    22:07
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license proprietary
  *
  * @since   1.0.0
  */
 
 namespace Deployer;
 
+use Exception;
+
 import('recipe/common.php');
 
-set('storage_backup', '.deployer/.storage/{{app_version}}');
-
-/*
- * descargar volúmenes Docker como copia de seguridad
- * También los logs del contenedor, que no están en un volumen
- */
+set('local/storage/backup', '.storage/{{app/version}}/' . date('Y-m-d'));
 
 //
 // Task
 //
-desc('Descargar los archivos logs del contenedor web.');
-task('download:backups:logs', function () {
-    writeln('<info>Descargando los archivos logs del contenedor web a <fg=blue>{{storage_backup}}</>.</>');
+task('backup:logs', function () {
+    writeln('<info>Descargando los "logs" del contenedor web a <fg=blue>{{local/storage/backup}}</>.</>');
 
-    run('mkdir -p {{deploy_path}}/backups');
-    if (test('[ -d docker cp pfc-webserver-1:/app/var/log ]')) {
-        run('docker cp pfc-webserver-1:/app/var/log {{deploy_path}}/backups');
-        download('{{deploy_path}}/backups/log', '{{storage_backup}}');
+    run('mkdir -p {{deploy_path}}/backups/log');
+
+    if (test('{{bin/webserver}} sh -c "[ -d "/app/var/log" ]"')) {
+        run('docker cp {{docker/project_name}}-webserver-1:/app/var/log {{deploy_path}}/backups/');
+        download('{{deploy_path}}/backups/log/', '{{local/storage/backup}}/logs/', ['options' => ['--mkpath']]);
         run('rm -r {{deploy_path}}/backups/log');
+    } else {
+        writeln('<fg=red>El contenedor web no tiene un directorio de logs.</>');
     }
-});
+})->desc('Descargar los archivos logs del contenedor web.');
 
-desc('Descargar una copia de subidas "uploads".');
-task('download:backups:uploads', function () {
-    writeln('<info>Descargando una copia de los archivos en subidas "uploads" a <fg=blue>{{storage_backup}}</>.</>');
+task('backup:volumes', function () {
+    info('Creando una copia de los volúmenes Docker.');
 
+    $services = get('docker/services/start');
+    $services = explode(' ', $services);
+
+    try {
+        $containers = parseServicesToContainers($services);
+    } catch (Exception $exception) {
+        warning($exception->getMessage());
+
+        return;
+    }
+
+    foreach ($containers as $container) {
+        info("<options=bold>Procesando el contenedor $container</>");
+
+        try {
+            doBackupVolumes($container);
+        } catch (Exception $exception) {
+            warning($exception->getMessage());
+        }
+    }
+})->desc('Descargar una copia de los volúmenes Docker.');
+
+task('download:backups', ['backup:logs', 'backup:volumes'])->hidden();
+
+/**
+ * @throws Exception
+ */
+function doBackupVolumes (string $container): void
+{
+    $fileName = date('H.i.s') . '_' . $container . '_backup.tar';
+    $localFile = "{{local/storage/backup}}/$fileName";
+    $backupFile = "/backup/$fileName";
+
+    writeln('Creando la copia de los volúmenes de ' . currentHost()->getTag());
+
+    $dirs = getVolumeDirs($container);
+    writeln('Dirs: ' . $dirs);
     run(
-        'docker run --rm -v pfc_source_uploads:/volume debian:stable-slim \
-                    tar -cz -C /volume . > {{deploy_path}}/backups/pfc_source_uploads_backup.tar.gz'
+        "docker run --rm --volumes-from $container -v {{deploy_path}}:/backup debian:stable-slim tar cvf $backupFile $dirs --ignore-failed-read"
     );
-    run('mkdir -p {{deploy_path}}/backups');
-    download('{{deploy_path}}/backups/pfc_source_uploads_backup.tar.gz', '{{storage_backup}}');
-    run('rm -r {{deploy_path}}/backups/pfc_source_uploads_backup.tar.gz');
-});
 
-task('download:backups', ['download:backups:logs', 'download:backups:uploads']);
+    writeln('Descargando el archivo al sistema local...');
+    download("{{deploy_path}}/$fileName", $localFile, ['options' => ['--mkpath']]);
+    run("sudo rm -rf {{deploy_path}}/$fileName");
+}

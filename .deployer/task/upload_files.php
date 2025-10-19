@@ -2,7 +2,7 @@
 /**
  * Copyright 2025 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 09/09/2025, 18:06
+ * Last modified by "IDMarinas" on 19/10/2025, 19:37
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -12,7 +12,7 @@
  * @time    11:48
  *
  * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license proprietary
  *
  * @since   1.0.0
  */
@@ -33,8 +33,8 @@ task('deploy:upload_files', function () {
             '--chmod=F440',
         ],
     ]);
-    writeln('<fg=blue>Subiendo idmarinas_pfc_{{app_version}}.tar a {{text_prod}}...</>');
-    upload('./.deployer/idmarinas_pfc_{{app_version}}.tar', '{{release_path}}', [
+    writeln('<fg=blue>Subiendo {{docker/image/tar}} a {{text_prod}}...</>');
+    upload('./.deployer/{{docker/image/tar}}', '{{release_path}}', [
         'options' => ['--chmod=F750'],
     ]);
 });
