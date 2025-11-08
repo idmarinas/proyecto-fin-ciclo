@@ -69,12 +69,3 @@ done
 
 docker-php-entrypoint
 exec frankenphp run --config '/etc/frankenphp/Caddyfile' "$@"
-
-#CMD [ "frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile" ]
-# Solo ejecutar el comando si se proporcionaron argumentos
-#if [ $# -gt 0 ]; then
-#    exec "$@"
-##else
-#    # Si no hay argumentos, ejecutar el comando por defecto de caddy
-##    exec caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
-#fi
