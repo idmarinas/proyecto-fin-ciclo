@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "InitEnvDocker",
+			"type": "shell",
+			"command": "${workspaceFolder}/.docker/scripts/dev/init-env-docker",
+			"problemMatcher": [],
+			"group": "none"
+		}
+	]
+}
