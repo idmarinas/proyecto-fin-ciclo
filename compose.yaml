@@ -1,4 +1,4 @@
-name: pfc
+name: ${APP_PROJECT_NAME}
 
 services:
   ###> doctrine/doctrine-bundle ###
@@ -22,11 +22,8 @@ services:
   ###< doctrine/doctrine-bundle ###
 
   webserver:
-    image: idmarinas/pfc:${APP_VERSION}
-    ports:
-      - "80:80" # HTTP
-      - "443:443" # HTTPS
-      - "443:443/udp" # HTTP/3
+    image: ${DOCKER_IMAGE_NAME_WEBSERVER}
+    pull_policy: never
     environment:
       SERVER_NAME: ${APP_SERVER_NAME}
       CLOUDFLARE_API_TOKEN_FILE: /run/secrets/cloudflare_api_token
@@ -37,8 +34,19 @@ services:
     secrets:
       - cloudflare_api_token
     tty: true
-    depends_on:
-      - database
+    networks:
+      - proxy
+      - default
+    labels:
+      - 'traefik.enable=true'
+      # Main web and subdomains
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.rule=HostSNI(`${APP_SERVER_NAME}`) || HostSNI(`www.${APP_SERVER_NAME}`)'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.service=${APP_PROJECT_NAME}'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.entrypoints=web,websecure'
+      - 'traefik.tcp.services.${APP_PROJECT_NAME}.loadbalancer.server.port=443'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.tls=true'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.tls.passthrough=true'
+      - 'traefik.tcp.routers.${APP_PROJECT_NAME}.priority=20'
 
 volumes:
   caddy_data:
@@ -52,3 +60,7 @@ secrets:
     environment: DATABASE_PASSWORD
   cloudflare_api_token:
     environment: CLOUDFLARE_API_TOKEN
+
+networks:
+  proxy:
+    external: true
