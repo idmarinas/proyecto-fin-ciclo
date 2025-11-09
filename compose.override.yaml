@@ -16,7 +16,8 @@ services:
     extends:
       file: compose.yaml
       service: database
-    ports: !reset [ ]
+    ports:
+      - "13307:3306"
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}_test
       MYSQL_USER: ${DATABASE_USER}_test
@@ -25,17 +26,8 @@ services:
 
   webserver:
     restart: no
-    image: idmarinas/pfc:${APP_VERSION}-dev
-    privileged: true
     volumes:
       - ./:/app
-      - docker_dev_data:/var/lib/docker
-      ## SSH
-      - ssh_key:/root/.ssh
-    depends_on: !override
-      - database
-      - database_test
-      - mailer
 
   ###> symfony/mailer ###
   mailer:
@@ -48,6 +40,18 @@ services:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
   ###< symfony/mailer ###
+
+  # Used to publish the application
+  deployer:
+    image: idmarinas/php:8.4-deployer
+    privileged: true
+    healthcheck:
+      test: php -v || exit 1
+    volumes:
+      - ./:/app
+      - /var/lib/docker  # Volumen anónimo temporal
+      ## SSH
+      - ssh_key:/root/.ssh
 
 volumes:
   database_data_dev:
