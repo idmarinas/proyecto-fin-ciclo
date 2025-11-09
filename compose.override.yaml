@@ -28,6 +28,10 @@ services:
     restart: no
     volumes:
       - ./:/app
+    secrets: !reset []
+    environment: !reset 
+      SERVER_NAME: ${APP_SERVER_NAME}
+
 
   ###> symfony/mailer ###
   mailer:
