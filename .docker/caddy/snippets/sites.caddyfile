@@ -1,12 +1,3 @@
-<<<<<<<< HEAD:.docker/caddy/sites/pfc.caddyfile
-"pfc.{$SERVER_NAME:localhost}" {
-	import a-common forum
-	import a-headers
-
-	import a-maintenance
-	php_server {
-		env APP_ID pfc
-========
 (a-common) {
 	root {$SERVER_ROOT:public/}
 
@@ -19,7 +10,6 @@
 	file_server {
 		precompressed
 		hide *.php
->>>>>>>> origin/master:.docker/caddy/snippets/sites.caddyfile
 	}
 }
 
