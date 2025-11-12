@@ -1,25 +1,24 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Init Env Docker",
-			"type": "shell",
-			"command": "${workspaceFolder}/.docker/scripts/dev/init-env-docker.ps1",
-			"problemMatcher": [],
-			"group": "none"
-		},
-		{
-			"label": "Build Docker Image DEV",
-			"type": "shell",
-			"command": "${workspaceFolder}/.docker/scripts/dev/BuildDockerImage.ps1",
-			"problemMatcher": [],
-			"group": "none"
-		},
-		{
-			"label": "Dev - Webserver",
-			"type": "shell",
-			"command": "docker compose -f ${workspaceFolder}/compose.yaml -f ${workspaceFolder}/compose.override.yaml up -d webserver database database_test",
-
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Init Env Docker",
+      "type": "shell",
+      "command": "${workspaceFolder}/.docker/scripts/dev/init-env-docker.ps1",
+      "problemMatcher": [],
+      "group": "none"
+    },
+    {
+      "label": "Build Docker Image DEV",
+      "type": "shell",
+      "command": "${workspaceFolder}/.docker/scripts/dev/BuildDockerImage.ps1",
+      "problemMatcher": [],
+      "group": "none"
+    },
+    {
+      "label": "Dev - Webserver",
+      "type": "shell",
+      "command": "docker compose -f ${workspaceFolder}/compose.yaml -f ${workspaceFolder}/compose.override.yaml up -d webserver database database_test"
+    }
+  ]
 }
