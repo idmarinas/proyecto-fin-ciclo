@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Dev - PHP" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+  <configuration default="false" name="Dev - Deployer" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
     <deployment type="docker-compose.yml">
       <settings>
         <option name="envFilePath" value="M:\proyecto\.env.docker" />
@@ -15,7 +15,7 @@
         </option>
         <option name="services">
           <list>
-            <option value="php" />
+            <option value="deployer" />
           </list>
         </option>
         <option name="sourceFilePath" value="compose.yaml" />
