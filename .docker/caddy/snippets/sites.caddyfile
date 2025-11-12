@@ -1,3 +1,12 @@
+<<<<<<<< HEAD:.docker/caddy/sites/pfc.caddyfile
+"pfc.{$SERVER_NAME:localhost}" {
+	import a-common forum
+	import a-headers
+
+	import a-maintenance
+	php_server {
+		env APP_ID pfc
+========
 (a-common) {
 	root {$SERVER_ROOT:public/}
 
@@ -10,6 +19,7 @@
 	file_server {
 		precompressed
 		hide *.php
+>>>>>>>> origin/master:.docker/caddy/snippets/sites.caddyfile
 	}
 }
 
@@ -20,8 +30,17 @@
 	header ?X-XSS-Protection 1
 	header ?X-Content-Type-Options nosniff
 	header ?X-Frame-Options sameorigin
-	header ?X-Robots-Tag noindex
+#	header ?X-Robots-Tag noindex
 	header ?Cross-Origin-Resource-Policy same-origin
 	header ?Cross-Origin-Opener-Policy same-origin-allow-popups
 	header ?Referrer-Policy no-referrer strict-origin strict-origin same-origin-when-cross-origin
+
+	# Headers for images
+	@images path *.jpg *.jpeg *.png *.gif *. *.webp *.bmp *.ico
+	header @images {
+		X-Content-Type-Options nosniff
+		X-Robots-Tag noindex
+		Cross-Origin-Resource-Policy cross-origin
+		Cross-Origin-Embedder-Policy unsafe-none
+	}
 }

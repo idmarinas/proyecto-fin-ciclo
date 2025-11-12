@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Detect the operating system
+if [[ "$OSTYPE" == "darwin"* ]] || [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # macOS or Linux
+    chmod +x "$(dirname "$0")/init-env-docker.sh"
+    "$(dirname "$0")/init-env-docker.sh"
+elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "win32" ]]; then
+    # Windows
+    if command -v pwsh &> /dev/null; then
+        pwsh -File "$(dirname "$0")/init-env-docker.ps1"
+    else
+        powershell -ExecutionPolicy ByPass -File "$(dirname "$0")/init-env-docker.ps1"
+    fi
+else
+    echo "Sistema operativo no soportado: $OSTYPE"
+    exit 1
+fi

@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 14/09/2025, 11:32
- *
- * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/proyecto-fin-ciclo
- *
- * @file    importmap.php
- * @date    27/08/2025
- * @time    20:22
- *
- * @author  Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
- *
- * @since   1.0.0
- */
 
 /**
  * Returns the importmap for this application.
@@ -29,21 +12,36 @@
  * The "importmap:require" command can be used to add new entries to this file.
  */
 return [
-    'app'                      => [
-        'path'       => './assets/app.js',
+    'app' => [
+        'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    'exception_error'          => [
-        'path'       => './assets/exception_error.js',
+    'exception_error' => [
+        'path' => './assets/exception_error.js',
         'entrypoint' => true,
     ],
-    '@hotwired/stimulus'       => [
+    '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
-    '@hotwired/turbo'          => [
+    '@hotwired/turbo' => [
         'version' => '7.3.0',
+    ],
+    '@stimulus-components/notification' => [
+        'version' => '3.0.0',
+    ],
+    'stimulus-use' => [
+        'version' => '0.52.3',
+    ],
+    '@stimulus-components/dialog' => [
+        'version' => '1.0.1',
+    ],
+    'hotkeys-js' => [
+        'version' => '3.13.15',
+    ],
+    '@idmarinas/ui-bundle' => [
+        'path' => './vendor/idmarinas/ui-bundle/assets/dist/loader.js',
     ],
 ];

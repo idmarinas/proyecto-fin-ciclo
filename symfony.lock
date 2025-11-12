@@ -71,6 +71,12 @@
             "config/routes/easyadmin.yaml"
         ]
     },
+    "idmarinas/seo-bundle": {
+        "version": "1.x-dev"
+    },
+    "idmarinas/ui-bundle": {
+        "version": "1.x-dev"
+    },
     "nelmio/security-bundle": {
         "version": "3.5",
         "recipe": {
@@ -375,6 +381,18 @@
             "ref": "0df5844274d871b37fc3816c57a768ffc60a43a5"
         }
     },
+    "symfony/ux-icons": {
+        "version": "2.31",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.17",
+            "ref": "803a3bbd5893f9584969ab8670290cdfb6a0a5b5"
+        },
+        "files": [
+            "assets/icons/symfony.svg"
+        ]
+    },
     "symfony/ux-turbo": {
         "version": "2.30",
         "recipe": {
@@ -435,6 +453,15 @@
         "files": [
             "config/packages/symfonycasts_tailwind.yaml"
         ]
+    },
+    "tales-from-a-dev/twig-tailwind-extra": {
+        "version": "0.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.2",
+            "ref": "7243ab070ed66198eb82c026684e9b9773e7b64a"
+        }
     },
     "twig/extra-bundle": {
         "version": "v3.21.0"

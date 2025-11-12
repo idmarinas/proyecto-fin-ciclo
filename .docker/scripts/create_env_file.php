@@ -27,15 +27,15 @@ $envFile = fopen("$dir/.env.docker", 'w');
 
 // Recorre el array y escribe cada clave-valor en el archivo .env
 foreach ($config as $key => $value) {
-    if ('DATABASE_NAME' === $key || 'DATABASE_USER' === $key) {
-        $value = str_replace('_dev', '', $value);
-    }
+	if ('DATABASE_NAME' === $key || 'DATABASE_USER' === $key) {
+		$value = str_replace(['_dev', '_test'], '', $value);
+	}
 
-    if (str_contains($value, ' ')) {
-        $value = '"' . $value . '"';
-    }
+	if (str_contains($value, ' ')) {
+		$value = '"' . $value . '"';
+	}
 
-    fwrite($envFile, "$key=$value\n");
+	fwrite($envFile, "$key=$value\n");
 }
 
 // Cierra el archivo

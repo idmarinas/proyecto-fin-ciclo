@@ -1,9 +1,9 @@
 "pfc.{$SERVER_NAME:localhost}" {
-	import a-common forum
+	import a-common www
 	import a-headers
 
 	import a-maintenance
 	php_server {
-		env APP_ID pfc
+		env APP_ID web
 	}
 }

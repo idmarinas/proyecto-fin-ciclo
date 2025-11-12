@@ -17,8 +17,10 @@
  */
 
 import {startStimulusApp} from '@symfony/stimulus-bundle'
+import registerIdmUiBundle from '@idmarinas/ui-bundle'
 
 const app = startStimulusApp()
+registerIdmUiBundle(app)
 
 // register any custom, 3rd party controllers here
 // app.register('some_controller_name', SomeImportedController);
