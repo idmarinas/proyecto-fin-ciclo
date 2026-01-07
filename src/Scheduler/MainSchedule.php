@@ -1,8 +1,8 @@
 <?php
 /**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/10/2025, 20:12
+ * Last modified by "IDMarinas" on 07/01/2026, 21:25
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -40,6 +40,7 @@ final readonly class MainSchedule implements ScheduleProviderInterface
         return new Schedule()
             ->stateful($this->cache)
             ->lock($this->lockFactory->createLock('scheduler_default'))
+            ->processOnlyLastMissedRun(true)
         ;
     }
 }
