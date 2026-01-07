@@ -2,10 +2,10 @@
   <configuration default="false" name="Dev - Deployer" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
     <deployment type="docker-compose.yml">
       <settings>
-        <option name="envFilePath" value="M:\proyecto\.env.docker" />
+        <option name="envFilePath" value="M:\project\.env.docker" />
         <option name="envFilePaths">
           <list>
-            <option value="M:\proyecto\.env.docker" />
+            <option value="M:\project\.env.docker" />
           </list>
         </option>
         <option name="secondarySourceFiles">
