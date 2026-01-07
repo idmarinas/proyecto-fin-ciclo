@@ -27,8 +27,8 @@ apply: always
 
 ## Información técnica del proyecto
 
-- Symfony 7.3.*
+- Symfony 8.0.*
 - PHP 8.4
-- Doctrine ORM 3.5.0
+- Doctrine ORM 3.6
 - MySQL database
 - PHPUnit 12 para testing
