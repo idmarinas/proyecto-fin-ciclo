@@ -1,17 +1,17 @@
 /**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
+ * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/09/2025, 16:44
+ * Last modified by "IDMarinas" on 07/01/2026, 19:41
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file csrf_protection_controller.js
- * @date 04/09/2025
- * @time 17:00
+ * @date 07/01/2026
+ * @time 21:33
  *
  * @author Iván Diaz Marinas (IDMarinas)
- * @license BSD 3-Clause License
+ * @license proprietary
  *
  * @since 1.0.0
  */
@@ -20,7 +20,8 @@ const nameCheck = /^[-_a-zA-Z0-9]{4,22}$/;
 const tokenCheck = /^[-_/+a-zA-Z0-9]{24,}$/;
 
 // Generate and double-submit a CSRF token in a form field and a cookie, as defined by Symfony's
-// SameOriginCsrfTokenManager
+// SameOriginCsrfTokenManager Use `form.requestSubmit()` to ensure that the submit event is triggered. Using
+// `form.submit()` will not trigger the event and thus this event-listener will not be executed.
 document.addEventListener('submit', function (event) {
     generateCsrfToken(event.target);
 }, true);
