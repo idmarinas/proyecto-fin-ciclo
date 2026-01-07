@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 19/10/2025, 19:42
- *
- * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/proyecto-fin-ciclo
- *
- * @file    rector.php
- * @date    25/08/2025
- * @time    19:49
- *
- * @author  Iván Diaz Marinas (IDMarinas)
- * @license proprietary
- *
- * @since   1.0.0
- */
 
 declare(strict_types=1);
 
