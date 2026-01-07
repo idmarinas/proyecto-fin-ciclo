@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--~
-  ~ Copyright 2025 (C) IDMarinas - All Rights Reserved
-  ~
-  ~ Last modified by "IDMarinas" on 14/09/2025, 11:32
-  ~
-  ~ @project Foro de Ayuda y Soporte
-  ~ @see https://github.com/idmarinas/proyecto-fin-ciclo
-  ~
-  ~ @file phpunit.dist.xml
-  ~ @date 04/09/2025
-  ~ @time 16:59
-  ~
-  ~ @author Iván Diaz Marinas (IDMarinas)
-  ~ @license BSD 3-Clause License
-  ~
-  ~ @since 1.0.0
-  -->
-
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          colors="true"
+         failOnDeprecation="true"
          failOnNotice="true"
          failOnWarning="true"
          bootstrap="tests/bootstrap.php"
@@ -35,7 +18,7 @@
   </php>
 
   <testsuites>
-    <testsuite name="app">
+    <testsuite name="Foro de Ayuda y Soporte Test Suite">
       <directory>tests</directory>
     </testsuite>
   </testsuites>
