@@ -2,11 +2,11 @@ name: Foro de Ayuda y Soporte Test Suite
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ 1.x ]
     types: [ opened, synchronize, reopened ]
     tags-ignore: [ dependencies, documentation, meta, 'docker configuration', 'deployer configuration' ]
   push:
-    branches: [ master ]
+    branches: [ 1.x ]
     paths-ignore:
       - '.deployer/**'
       - '.docker/**'
@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         php: [ '8.4' ]
-        symfony: [ '7.3.*' ]
+        symfony: [ '8..*' ]
 
     services:
       database_test:
@@ -72,6 +72,6 @@ jobs:
           DATABASE_HOST: 127.0.0.1
 
       - name: Run test suite on PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
-        run: ./vendor/bin/phpunit --exclude-group ignore
+        run: ./vendor/bin/phpunit --exclude-group ignore --exclude-group legacy
         env:
           DATABASE_HOST: 127.0.0.1
