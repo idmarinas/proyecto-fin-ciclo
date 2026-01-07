@@ -6,9 +6,8 @@ use Rector\Config\RectorConfig;
 
 return RectorConfig::configure()
     ->withPaths([
+        __DIR__ . '/assets',
         __DIR__ . '/config',
-        __DIR__ . '/factories',
-        __DIR__ . '/fixtures',
         __DIR__ . '/public',
         __DIR__ . '/src',
         __DIR__ . '/tests',
@@ -24,7 +23,6 @@ return RectorConfig::configure()
     ->withTypeCoverageLevel(0)
     ->withDeadCodeLevel(0)
     ->withCodeQualityLevel(0)
-    ->withImportNames(importDocBlockNames: false, removeUnusedImports: true)
     ->withComposerBased(twig: true, doctrine: true, symfony: true)
     ->withSymfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml')
     ->withSkip([
