@@ -1,11 +1,7 @@
 ###> idmarinas/proyecto-fin-ciclo ###
 **/*.dist
-.deployer/*.tar
-.deployer/.storage/*
 /build/
-/node_modules/
 /.env.docker
-/package*.json
 ###< idmarinas/proyecto-fin-ciclo ###
 
 ###> symfony/framework-bundle ###
