@@ -1,6 +1,53 @@
 security:
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
+        ROLE_USER:
+            # Permisos para los hilos públicos
+            - ROLE_PUBLIC_THREAD_VIEW
+            - ROLE_PUBLIC_THREAD_CREATE
+            - ROLE_PUBLIC_THREAD_EDIT
+            - ROLE_PUBLIC_THREAD_DELETE
+            - ROLE_PUBLIC_THREAD_REMOVE
+            # Permisos para los mensajes públicos
+            - ROLE_PUBLIC_MESSAGE_VIEW
+            - ROLE_PUBLIC_MESSAGE_CREATE
+            - ROLE_PUBLIC_MESSAGE_EDIT
+            - ROLE_PUBLIC_MESSAGE_DELETE
+            - ROLE_PUBLIC_MESSAGE_REMOVE
+            # Permisos para los hilos privados
+            - ROLE_PRIVATE_THREAD_VIEW
+            - ROLE_PRIVATE_THREAD_CREATE
+            - ROLE_PRIVATE_THREAD_EDIT
+            - ROLE_PRIVATE_THREAD_DELETE
+            - ROLE_PRIVATE_THREAD_REMOVE
+            # Permisos para los mensajes privados
+            - ROLE_PRIVATE_MESSAGE_VIEW
+            - ROLE_PRIVATE_MESSAGE_CREATE
+            - ROLE_PRIVATE_MESSAGE_EDIT
+            - ROLE_PRIVATE_MESSAGE_DELETE
+            - ROLE_PRIVATE_MESSAGE_REMOVE
+        ROLE_CLIENT:
+            - ROLE_USER
+            - ROLE_EDIT_REMOVE_UNLIMITED_TIME
+        ROLE_SUPPORT:
+            - ROLE_CLIENT
+            - ROLE_PUNISHMENT_USER
+            - ROLE_PUNISHMENT_CLIENT
+            - ROLE_ALLOW_VIEW_ACCOUNTS
+            - ROLE_ALLOW_VIEW_PUBLIC_THREADS
+            - ROLE_ALLOW_VIEW_PRIVATE_THREADS
+            - ROLE_ALLOW_VIEW_PUBLIC_MESSAGES
+            - ROLE_ALLOW_VIEW_PRIVATE_MESSAGES
+        ROLE_ADMIN:
+            - ROLE_SUPPORT
+            - ROLE_ALLOW_CREATE_ACCOUNT
+            - ROLE_ALLOW_EDIT_ACCOUNT
+            - ROLE_ALLOW_DELETE_ACCOUNT
+            - ROLE_ALLOW_CHANGE_USER_ROLE
+            - ROLE_ALLOW_CHANGE_CLIENT_ROLE
+            - ROLE_ALLOW_CHANGE_SUPPORT_ROLE
+            - ROLE_ALLOW_CHANGE_ADMIN_ROLE
         ROLE_SUPER_ADMIN:
             - ROLE_ADMIN
             - ROLE_ALLOWED_TO_SWITCH
+            - ROLE_ALLOW_REMOVE_ACCOUNT
+            - ROLE_ALLOW_CHANGE_SUPER_ADMIN_ROLE
