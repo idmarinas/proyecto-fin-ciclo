@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/01/2026, 11:09
+ * Last modified by "IDMarinas" on 10/01/2026, 21:24
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -27,10 +27,14 @@ return App::config([
             ],
         ],
         'seo'     => [
-            'title'      => [
-                'default' => 'Foro de Ayuda y Soporte',
+            'title'       => [
+                'default'   => 'F.A.S',
+                'separator' => '🤔',
+                'suffix'    => 'Foro de Ayuda y Soporte',
+
             ],
-            'open_graph' => [
+            'description' => 'Foro de ayuda y soporte para clientes y no de nuestros servicios gratuitos y de pago.',
+            'open_graph'  => [
                 'site_name' => 'Foro de Ayuda y Soporte',
             ],
         ],
