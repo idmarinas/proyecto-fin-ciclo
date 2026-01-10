@@ -26,4 +26,6 @@ return [
     Idm\Bundle\Ui\IdmUiBundle::class => ['all' => true],
     Idm\Bundle\Common\IdmCommonBundle::class => ['all' => true],
     Idm\Bundle\Seo\IdmSeoBundle::class => ['all' => true],
+    SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle::class => ['all' => true],
+    SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle::class => ['all' => true],
 ];
