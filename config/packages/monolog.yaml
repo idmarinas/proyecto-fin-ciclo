@@ -33,9 +33,6 @@ when@dev:
                 path: "%kernel.logs_dir%/%kernel.environment%.log"
                 level: debug
                 channels: [ "!event", "!deprecation", "!security", "!doctrine", "!console", "!csp" ]
-            console:
-                type: console
-                channels: [ "!event", "!doctrine", "!console" ]
 
 when@test:
     monolog:
@@ -66,7 +63,3 @@ when@prod:
                 path: '%kernel.logs_dir%/%kernel.environment%.log'
                 level: debug
             #                formatter: monolog.formatter.json
-            console:
-                type: console
-                process_psr_3_messages: false
-                channels: [ "!event", "!doctrine" ]
