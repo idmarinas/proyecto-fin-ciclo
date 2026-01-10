@@ -8,4 +8,25 @@
 #   bin/console debug:router
 
 controllers:
-    resource: routing.controllers
+    resource: ../src/Controller/*
+    type: attribute
+    name_prefix: app_
+    exclude:
+        - ../src/Controller/Admin/
+        - ../src/Controller/User/
+
+easyadmin:
+    resource: .
+    type: easyadmin.routes
+
+admin:
+    resource: ../src/Controller/Admin/
+    type: attribute
+    prefix: '/%app.route_prefix.admin%'
+    name_prefix: admin_
+
+user:
+    resource: ../src/Controller/User/
+    type: attribute
+    prefix: /user
+    name_prefix: app_user_
