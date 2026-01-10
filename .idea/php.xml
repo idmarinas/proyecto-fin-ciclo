@@ -169,6 +169,15 @@
       <path value="$PROJECT_DIR$/vendor/ua-parser/uap-php" />
       <path value="$PROJECT_DIR$/vendor/nelmio/security-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/tailwind-bundle" />
+      <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
+      <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
+      <path value="$PROJECT_DIR$/vendor/tales-from-a-dev/tailwind-merge-php" />
+      <path value="$PROJECT_DIR$/vendor/tales-from-a-dev/twig-tailwind-extra" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-icons" />
+      <path value="$PROJECT_DIR$/vendor/idmarinas/ui-bundle" />
+      <path value="$PROJECT_DIR$/vendor/idmarinas/common-bundle" />
+      <path value="$PROJECT_DIR$/vendor/idmarinas/seo-bundle" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
