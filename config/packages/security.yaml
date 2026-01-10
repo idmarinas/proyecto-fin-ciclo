@@ -2,8 +2,6 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-        App\Entity\User\User:
-            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
@@ -30,12 +28,18 @@ security:
                     - cookies
                     - executionContexts
                     - storage
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
             switch_user: false
         # Main Firewall
         main:
             lazy: true
             provider: app_user_provider
             custom_authenticator: App\Security\LoginAuthenticator
+            login_form:
+                enable_csrf: true
             logout:
                 path: app_logout
                 target: app_home
