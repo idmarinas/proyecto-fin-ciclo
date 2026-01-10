@@ -117,16 +117,13 @@
     "post-update-cmd": [
       "@auto-scripts"
     ],
-    "test:fixtures:load": [
-      "php bin/console doctrine:schema:drop --env=test --force --ansi",
-      "php bin/console doctrine:schema:update --env=test --force --ansi",
-      "php bin/console doctrine:fixtures:load --env=test -n --ansi"
+    "fixtures:load": [
+      "php bin/console doctrine:schema:drop --force --ansi",
+      "php bin/console doctrine:schema:update --force --ansi",
+      "php bin/console doctrine:fixtures:load -n --ansi"
     ],
-    "dev:fixtures:load": [
-      "php bin/console doctrine:schema:drop --env=dev --force --ansi",
-      "php bin/console doctrine:schema:update --env=dev --force --ansi",
-      "php bin/console doctrine:fixtures:load --env=dev -n --ansi"
-    ],
+    "test:fixtures:load": "@composer fixtures:load --env=test",
+    "dev:fixtures:load": "@composer fixtures:load --env=dev",
     "dev:dump:env": [
       "php bin/console secrets:decrypt-to-local --force --env=dev",
       "@composer dump-env dev",
@@ -136,7 +133,12 @@
       "php bin/console secrets:decrypt-to-local --force --env=prod",
       "@composer dump-env prod",
       "php -f .docker/scripts/create_env_file.php"
-    ]
+    ],
+    "tailwind:build": [
+      "php bin/console tailwind:build",
+      "@composer tailwind:error"
+    ],
+    "tailwind:error": "php bin/console tailwind:build assets/styles/exception_error.css"
   },
   "config": {
     "allow-plugins": {
