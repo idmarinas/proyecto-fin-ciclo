@@ -1,25 +1,35 @@
 {
+    "id": "idmarinas/daw/pfc",
     "name": "Foro de Ayuda y Soporte",
     "short_name": "Soporte",
+    "description": "Foro de ayuda y soporte para clientes y no de nuestros servicios gratuitos y de pago.",
+    "lang": "es-ES",
+    "start_url": "/",
+    "display_override": [
+        "window-controls-overlay"
+    ],
     "display": "standalone",
+    "background_color": "#DDDDDD",
+    "theme_color": "#1E3A8A",
+    "orientation": "portrait",
     "icons": [
         {
-            "src": "/favicon-64x64.png",
+            "src": "/favicons/favicon-64x64.png",
             "type": "image/png",
             "sizes": "64x64"
         },
         {
-            "src": "/favicon-180x180.png",
+            "src": "/favicons/favicon-180x180.png",
             "type": "image/png",
             "sizes": "180x180"
         },
         {
-            "src": "/favicon-192x192.png",
+            "src": "/favicons/favicon-192x192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/favicon-512x512.png",
+            "src": "/favicons/favicon-512x512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
