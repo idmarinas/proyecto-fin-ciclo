@@ -2,6 +2,7 @@
 **/*.dist
 /build/
 /.env.docker
+/package*.json
 ###< idmarinas/proyecto-fin-ciclo ###
 
 ###> symfony/framework-bundle ###
