@@ -57,5 +57,5 @@ services:
         arguments:
             - ''
             - '0'
-            - '%kernel.project_dir%/storage/scheduler'
+            - '%kernel.project_dir%/var/storage/scheduler'
             - '@cache.default_marshaller'
