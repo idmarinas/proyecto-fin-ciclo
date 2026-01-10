@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2025 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 19/10/2025, 19:37
- *
- * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/proyecto-fin-ciclo
- *
- * @file    restore_volumes.php
- * @date    17/10/2025
- * @time    18:36
- *
- * @author  Iván Diaz Marinas (IDMarinas)
- * @license proprietary
- *
- * @since   1.0.0
- */
 
 namespace Deployer;
 
