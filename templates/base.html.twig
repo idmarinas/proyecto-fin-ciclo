@@ -37,7 +37,7 @@
   {% block body %}
     {% block container %}
       <twig:Turbo:Frame id="container-flash-messages">
-        <twig:IdmUi:Container:FlashMessages :messages="app.flashes" />
+        <twig:FlashMessages :messages="app.flashes" />
       </twig:Turbo:Frame>
 
       {% block content %}{% endblock %}
@@ -45,7 +45,7 @@
   {% endblock body %}
 
   <twig:Turbo:Frame id="container-notification-messages">
-    <twig:IdmUi:Container:NotificationMessages :messages="app.notifications" />
+    <twig:NotificationMessages :messages="app.notifications" />
   </twig:Turbo:Frame>
 </body>
 </html>
