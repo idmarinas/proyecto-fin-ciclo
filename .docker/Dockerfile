@@ -38,6 +38,7 @@ RUN install-php-extensions \
     intl \
     pdo_mysql \
     sysvsem \
+    xsl \
     zip \
     zstd
 
