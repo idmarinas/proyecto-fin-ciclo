@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}">
+<html lang="{{ app.request.locale }}" class="h-dvh">
 <head>
   <meta charset="UTF-8">
   <meta name="distribution" content="global" />
@@ -33,11 +33,19 @@
 
   {% block javascripts %}{% endblock %}
 </head>
-<body class="min-h-dvh min-w-dvw">
+<body class="h-dvh w-dvw">
   {% block body %}
     {% block container %}
+      <twig:Turbo:Frame id="container-flash-messages">
+        <twig:IdmUi:Container:FlashMessages :messages="app.flashes" />
+      </twig:Turbo:Frame>
+
       {% block content %}{% endblock %}
     {% endblock container %}
   {% endblock body %}
+
+  <twig:Turbo:Frame id="container-notification-messages">
+    <twig:IdmUi:Container:NotificationMessages :messages="app.notifications" />
+  </twig:Turbo:Frame>
 </body>
 </html>
