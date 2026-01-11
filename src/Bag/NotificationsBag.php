@@ -1,0 +1,117 @@
+<?php
+/**
+ * Copyright 2026 (C) IDMarinas - All Rights Reserved
+ *
+ * Last modified by "IDMarinas" on 11/01/2026, 16:47
+ *
+ * @project Foro de Ayuda y Soporte
+ * @see     https://github.com/idmarinas/proyecto-fin-ciclo
+ *
+ * @file    NotificationsBag.php
+ * @date    11/01/2026
+ * @time    15:18
+ *
+ * @author  Iván Diaz Marinas (IDMarinas)
+ * @license proprietary
+ *
+ * @since   1.0.0
+ */
+
+namespace App\Bag;
+
+use Override;
+
+final class NotificationsBag implements NotificationsBagInterface
+{
+    private string $name          = 'notifications';
+    private array  $notifications = [];
+
+    public function __construct (private string $storageKey = '_fas_notifications') {}
+
+    public function getName (): string
+    {
+        return $this->name;
+    }
+
+    #[Override]
+    public function add (string $type, mixed $message): void
+    {
+        $this->notifications[$type][] = $message;
+    }
+
+    #[Override]
+    public function set (string $type, array|string $messages): void
+    {
+        $this->notifications[$type] = (array)$messages;
+    }
+
+    #[Override]
+    public function peek (string $type, array $default = []): array
+    {
+        return $this->has($type) ? $this->notifications[$type] : $default;
+    }
+
+    #[Override]
+    public function peekAll (): array
+    {
+        return $this->notifications;
+    }
+
+    #[Override]
+    public function get (string $type, array $default = []): array
+    {
+        if (!$this->has($type)) {
+            return $default;
+        }
+
+        $get = $this->notifications[$type];
+        unset($this->notifications[$type]);
+
+        return $get;
+    }
+
+    #[Override]
+    public function all (): array
+    {
+        $all = $this->peekAll();
+        $this->notifications = [];
+
+        return $all;
+    }
+
+    #[Override]
+    public function setAll (array $messages): void
+    {
+        $this->notifications = $messages;
+    }
+
+    #[Override]
+    public function has (string $type): bool
+    {
+        return array_key_exists($type, $this->notifications) && $this->notifications[$type];
+    }
+
+    #[Override]
+    public function keys (): array
+    {
+        return array_keys($this->notifications);
+    }
+
+    #[Override]
+    public function initialize (array &$array): void
+    {
+        $this->notifications = &$array;
+    }
+
+    #[Override]
+    public function getStorageKey (): string
+    {
+        return $this->storageKey;
+    }
+
+    #[Override]
+    public function clear (): mixed
+    {
+        return $this->all();
+    }
+}
