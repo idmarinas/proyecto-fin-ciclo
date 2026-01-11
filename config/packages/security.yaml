@@ -17,10 +17,15 @@ security:
         # Admin Firewall
         admin:
             lazy: true
-            pattern: '^/%app.route_prefix.admin%/'
+            pattern: ^/%app.route_prefix.admin%(|/.*)$
             provider: app_user_provider
+            form_login:
+                enable_csrf: true
+                login_path: admin_login
+                check_path: admin_login
+                default_target_path: admin_dashboard
             logout:
-                path: '/%app.route_prefix.admin%/logout'
+                path: admin_logout
                 target: admin_login
                 enable_csrf: true
                 clear_site_data:
@@ -37,11 +42,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\LoginAuthenticator
-            login_form:
+            form_login:
+                login_path: app_user_login
+                check_path: app_user_login
                 enable_csrf: true
             logout:
-                path: app_logout
+                path: app_user_logout
                 target: app_home
                 enable_csrf: true
                 clear_site_data:
