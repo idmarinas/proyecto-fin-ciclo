@@ -1,0 +1,11 @@
+@import "tailwindcss" source(none);
+
+@import "./themes/app.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/***********
+ * Sources *
+ ***********/
+@source '../../templates/**/*.html.twig';
+@source not '../../templates/bundles/TwigBundle/**/*.html.twig';

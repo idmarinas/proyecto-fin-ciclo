@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/01/2026, 11:07
+ * Last modified by "IDMarinas" on 11/01/2026, 19:35
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,4 +23,4 @@ import './stimulus_bootstrap.js';
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
-import './styles/app/app.css';
+import './styles/app.css';
