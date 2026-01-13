@@ -35,17 +35,29 @@
 </head>
 <body class="h-dvh w-dvw">
   {% block body %}
-    {% block container %}
-      <twig:Turbo:Frame id="container-flash-messages">
-        <twig:FlashMessages :messages="app.flashes" />
-      </twig:Turbo:Frame>
+    {% block header %}
+      <twig:Layout:Header />
+    {% endblock %}
 
-      {% block content %}{% endblock %}
-    {% endblock container %}
+    {% block main %}
+      <main class="container">
+        {% block flash %}
+          <twig:Layout:FlashMessages />
+        {% endblock flash %}
+
+        {% block article %}{% endblock %}
+
+        {% block aside %}{% endblock %}
+      </main>
+    {% endblock main %}
+
+    {% block footer %}
+      <twig:Layout:Footer />
+    {% endblock footer %}
   {% endblock body %}
 
-  <twig:Turbo:Frame id="container-notification-messages">
-    <twig:NotificationMessages :messages="app.notifications" />
-  </twig:Turbo:Frame>
+  {% block notifications %}
+    <twig:Layout:NotificationMessages />
+  {% endblock notifications %}
 </body>
 </html>
