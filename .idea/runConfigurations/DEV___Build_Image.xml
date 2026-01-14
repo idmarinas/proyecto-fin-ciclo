@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="DEV - Build Image" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="M:\project\.docker\scripts\dev\BuildDockerImage.ps1" workingDirectory="M:\project" executablePath="C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+  <configuration default="false" name="DEV - Build Image" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="$PROJECT_DIR$\.docker\scripts\dev\BuildDockerImage.ps1" workingDirectory="$PROJECT_DIR$" executablePath="C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
     <envs />
     <method v="2" />
   </configuration>
