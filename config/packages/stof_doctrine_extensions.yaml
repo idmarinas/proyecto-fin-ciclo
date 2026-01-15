@@ -12,8 +12,8 @@ stof_doctrine_extensions:
             softdeleteable: true
             ip_traceable: true
             translatable: false
-            sluggable: false
-            tree: false
+            sluggable: true
+            tree: true
             sortable: false
             uploadable: false
             reference_integrity: false
