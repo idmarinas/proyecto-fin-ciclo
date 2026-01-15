@@ -3,11 +3,11 @@
     {{ attributes }}
 >
   {% if not app.user %}
-    <twig:Separator class="h-0.5 my-4" />
+    <twig:Ui:Separator class="h-0.5 my-4" />
     <twig:Layout:CtaRegister />
   {% endif %}
 
-  <twig:Separator class="h-0.5 my-4" />
+  <twig:Ui:Separator class="h-0.5 my-4" />
 
   <div class="flex flex-col md:flex-row-reverse items-center justify-center gap-4">
     <div class="w-full md:w-96 flex flex-col text-center">
@@ -41,33 +41,33 @@
     </div>
   </div>
 
-  <twig:Separator class="h-0.5 my-4" />
+  <twig:Ui:Separator class="h-0.5 my-4" />
 
   <div class="flex flex-col md:flex-row md:items-center justify-center gap-4">
     <div class="flex-1 md:flex-none">
-      <twig:Item>
-        <twig:Item:Content>
-          <twig:Item:Title>Suscríbase a nuestro boletín informativo</twig:Item:Title>
-          <twig:Item:Description>
+      <twig:Ui:Item>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Title>Suscríbase a nuestro boletín informativo</twig:Ui:Item:Title>
+          <twig:Ui:Item:Description>
             Las últimas noticias, artículos y recursos, enviados semanalmente a tu bandeja de entrada.
-          </twig:Item:Description>
-        </twig:Item:Content>
-      </twig:Item>
+          </twig:Ui:Item:Description>
+        </twig:Ui:Item:Content>
+      </twig:Ui:Item>
     </div>
     <div class="hidden md:block flex-1"></div>
     <div class="flex-1 md:flex-none flex flex-col md:flex-row gap-4">
-      <twig:InputGroup class="w-full md:w-auto">
-        <twig:InputGroup:Input id="email" name="email" type="email" placeholder="Escribe tu email" />
-        <twig:InputGroup:Icon position="end">
+      <twig:Ui:InputGroup class="w-full md:w-auto">
+        <twig:Ui:InputGroup:Input id="email" name="email" type="email" placeholder="Escribe tu email" />
+        <twig:Ui:InputGroup:Icon position="end">
           <twig:ux:icon name="tabler:mail" />
-        </twig:InputGroup:Icon>
-      </twig:InputGroup>
+        </twig:Ui:InputGroup:Icon>
+      </twig:Ui:InputGroup>
 
-      <twig:Button variant="outline" size="lg" class="w-full md:w-auto">Subscribirse</twig:Button>
+      <twig:Ui:Button variant="outline" size="lg" class="w-full md:w-auto">Subscribirse</twig:Ui:Button>
     </div>
   </div>
 
-  <twig:Separator class="h-0.5 my-4" />
+  <twig:Ui:Separator class="h-0.5 my-4" />
 
   <div class="flex flex-col-reverse md:flex-row items-center justify-center gap-1">
     <div class="flex-none text-center">
