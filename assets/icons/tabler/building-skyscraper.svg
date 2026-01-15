@@ -1,0 +1,22 @@
+<!---
+  - Copyright 2026 (C) IDMarinas - All Rights Reserved
+  -
+  - Last modified by "IDMarinas" on 15/01/2026, 21:00
+  -
+  - @project Foro de Ayuda y Soporte
+  - @see https://github.com/idmarinas/proyecto-fin-ciclo
+  -
+  - @file building-skyscraper.svg
+  - @date 15/01/2026
+  - @time 21:03
+  -
+  - @author Iván Diaz Marinas (IDMarinas)
+  - @license proprietary
+  -
+  - @since 1.0.0
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 21h18M5 21V7l8-4v18m6 0V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01" />
+</svg>

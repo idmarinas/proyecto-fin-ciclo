@@ -1,0 +1,22 @@
+<!---
+  - Copyright 2026 (C) IDMarinas - All Rights Reserved
+  -
+  - Last modified by "IDMarinas" on 15/01/2026, 21:00
+  -
+  - @project Foro de Ayuda y Soporte
+  - @see https://github.com/idmarinas/proyecto-fin-ciclo
+  -
+  - @file prism-light.svg
+  - @date 15/01/2026
+  - @time 21:03
+  -
+  - @author Iván Diaz Marinas (IDMarinas)
+  - @license proprietary
+  -
+  - @since 1.0.0
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4.731 19H16.27a1 1 0 0 0 .866-1.5l-5.769-10a1 1 0 0 0-1.732 0l-5.769 10a1 1 0 0 0 .865 1.5M2 13h4.45M18 5l-4.5 6M22 9l-7.75 3.25M22 15l-7-1.5" />
+</svg>

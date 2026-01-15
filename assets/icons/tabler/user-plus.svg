@@ -1,0 +1,22 @@
+<!---
+  - Copyright 2026 (C) IDMarinas - All Rights Reserved
+  -
+  - Last modified by "IDMarinas" on 15/01/2026, 21:00
+  -
+  - @project Foro de Ayuda y Soporte
+  - @see https://github.com/idmarinas/proyecto-fin-ciclo
+  -
+  - @file user-plus.svg
+  - @date 15/01/2026
+  - @time 21:03
+  -
+  - @author Iván Diaz Marinas (IDMarinas)
+  - @license proprietary
+  -
+  - @since 1.0.0
+  -->
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0m8 12h6m-3-3v6M6 21v-2a4 4 0 0 1 4-4h4" />
+</svg>
