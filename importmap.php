@@ -20,14 +20,14 @@ return [
         'path' => './assets/exception_error.js',
         'entrypoint' => true,
     ],
-    '@hotwired/stimulus' => [
-        'version' => '3.2.2',
-    ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
+    '@hotwired/stimulus' => [
+        'version' => '3.2.2',
+    ],
     '@hotwired/turbo' => [
-        'version' => '7.3.0',
+        'version' => '8.0.21',
     ],
     '@stimulus-components/notification' => [
         'version' => '3.0.0',
@@ -39,9 +39,6 @@ return [
         'version' => '1.0.1',
     ],
     'hotkeys-js' => [
-        'version' => '3.13.15',
-    ],
-    '@idmarinas/ui-bundle' => [
-        'path' => './vendor/idmarinas/ui-bundle/assets/dist/loader.js',
+        'version' => '4.0.0',
     ],
 ];
