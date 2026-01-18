@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/01/2026, 13:38
+ * Last modified by "IDMarinas" on 17/01/2026, 20:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,7 +29,7 @@ final class PasswordRequirements extends Compound
     protected function getConstraints (array $options): array
     {
         return [
-            new Assert\NotBlank(['message' => 'app.password.not_blank']),
+            new Assert\NotBlank(message: 'app.password.not_blank'),
             new Assert\Type('string'),
             // max length allowed by Symfony for security reasons
             new Assert\Length(min: 8, max: 4096, minMessage: 'app.password.min_message'),
