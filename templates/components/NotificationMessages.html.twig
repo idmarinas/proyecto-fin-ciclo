@@ -1,6 +1,9 @@
 {% props messages = [] %}
 
-<div class="fixed inset-x-0 top-0 flex flex-col items-end justify-right px-4 py-6 sm:p-6 justify-end z-30 pointer-events-none">
+<div
+    class="fixed inset-x-0 top-18 flex flex-col items-end justify-right px-4 py-6 sm:p-6 justify-end z-60
+    pointer-events-none"
+>
   {# Read and Display all Notifications messages #}
   {% for label, msgs in messages %}
     {% set show_divider = true %}
@@ -15,16 +18,22 @@
       {% endif %}
 
       {% set duration = duration + (loop.parent.loop.index0 * 5000) %}
-      {% set closable = duration / 5000 >= 5 %}
 
-      <twig:IdmUi:Element:Notification
+      <twig:Ui:Notification
           :id="label ~ '-' ~ loop.parent.loop.index0"
-          :type="label"
-          :title="title|default('')"
-          :message="message"
+          :variant="label"
+          :description="message"
           :duration="duration"
-          :closable="closable"
-      />
+      >
+        <twig:ux:icon :name="icon_name" class="size-5" />
+        {% if title is not empty %}
+          <twig:Ui:Notification:Title>{{ outerScope.title }}</twig:Ui:Notification:Title>
+        {% endif %}
+        <twig:Ui:Notification:Description>{{ outerScope.description }}</twig:Ui:Notification:Description>
+        {% if closable is same as(true) %}
+          <twig:Ui:Notification:Closable />
+        {% endif %}
+      </twig:Ui:Notification>
     {% endfor %}
   {% endfor %}
 </div>
