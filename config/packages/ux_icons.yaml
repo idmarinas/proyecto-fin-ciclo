@@ -13,6 +13,25 @@ ux_icons:
 
     # Throw an exception if an icon is not
     ignore_not_found: false
+    aliases:
+        'alert:error': 'tabler:square-x'
+        'alert:danger': 'tabler:circle-x'
+        'alert:destructive': 'tabler:circle-x-filled'
+        'alert:success': 'tabler:check'
+        'alert:warning': 'tabler:exclamation-mark'
+        'alert:info': 'tabler:info-circle'
+        'alert:notice': 'tabler:message'
+        'alert:default': 'tabler:message-circle'
+        'toast:error': 'tabler:square-x'
+        'toast:danger': 'tabler:circle-x'
+        'toast:destructive': 'tabler:circle-x-filled'
+        'toast:success': 'tabler:check'
+        'toast:warning': 'tabler:exclamation-mark'
+        'toast:info': 'tabler:info-circle'
+        'toast:notice': 'tabler:message'
+        'toast:default': 'tabler:message-circle'
+        'close': 'tabler:x'
+
 
 when@prod:
     ux_icons:
