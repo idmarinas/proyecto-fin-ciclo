@@ -3,23 +3,25 @@
 {% set show_divider = messages is not empty %}
 
 {# Read and Display all Flash Messages #}
-{% for label, msgs in messages %}
-  {% for message in msgs %}
-    {% if message is iterable %}
-      {% set title = message.title %}
-      {% set message = message.message %}
-    {% endif %}
-
-    <twig:Ui:Alert :variant="label" :title="title|default('')" :description="message">
-      <twig:ux:icon :name="icon_name" class="size-4" />
-      {% if title is not empty %}
-        <twig:Ui:Alert:Title>{{ outerScope.title }}</twig:Ui:Alert:Title>
+<div class="space-y-2">
+  {% for label, msgs in messages %}
+    {% for message in msgs %}
+      {% if message is iterable %}
+        {% set title = message.title %}
+        {% set message = message.message %}
       {% endif %}
-      <twig:Ui:Alert:Description>{{ outerScope.description }}</twig:Ui:Alert:Description>
-    </twig:Ui:Alert>
+
+      <twig:Ui:Alert :variant="label" :title="title|default('')" :description="message">
+        <twig:ux:icon :name="icon_name" class="size-4" />
+        {% if title is not empty %}
+          <twig:Ui:Alert:Title>{{ outerScope.title }}</twig:Ui:Alert:Title>
+        {% endif %}
+        <twig:Ui:Alert:Description>{{ outerScope.description }}</twig:Ui:Alert:Description>
+      </twig:Ui:Alert>
+    {% endfor %}
   {% endfor %}
-{% endfor %}
+</div>
 
 {% if show_divider %}
-  <twig:Ui:Separator class="hidden sm:block" />
+  <twig:Ui:Separator class="hidden my-5 sm:block" />
 {% endif %}
