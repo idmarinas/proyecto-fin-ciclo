@@ -10,10 +10,16 @@
       {% set message = message.message %}
     {% endif %}
 
-    <twig:Alert :type="label" :message="message" :title="title|default('')" />
+    <twig:Ui:Alert :variant="label" :title="title|default('')" :description="message">
+      <twig:ux:icon :name="icon_name" class="size-4" />
+      {% if title is not empty %}
+        <twig:Ui:Alert:Title>{{ outerScope.title }}</twig:Ui:Alert:Title>
+      {% endif %}
+      <twig:Ui:Alert:Description>{{ outerScope.description }}</twig:Ui:Alert:Description>
+    </twig:Ui:Alert>
   {% endfor %}
 {% endfor %}
 
 {% if show_divider %}
-  <twig:Separator class="hidden sm:block" />
+  <twig:Ui:Separator class="hidden sm:block" />
 {% endif %}
