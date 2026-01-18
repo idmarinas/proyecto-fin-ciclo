@@ -1,0 +1,23 @@
+{# @var attributes \Symfony\UX\TwigComponent\ComponentAttributes #}
+
+  {#   <button #}
+  {#       type="button" #}
+  {#       aria-label="{{ 'notification.close'|trans(domain = 'IdmUiBundle') }}" #}
+  {#       data-action="click->notification#hide" #}
+  {#       class="inline-flex text-white focus:outline-none focus:text-gray-300 transition ease-in-out duration-150" #}
+  {#   > #}
+
+  {#   </button> #}
+
+<span class="absolute top-2 right-3">
+  <twig:Ui:Button
+      type="button"
+      variant="outline"
+      aria-label="{{ 'notification.close'|trans(domain = 'IdmUiBundle') }}"
+      data-action="click->notification#hide"
+      size="icon-xs"
+      class="{{ ('transition ease-in-out duration-150 ' ~ attributes.render('class'))|tailwind_merge }}"
+  >
+  <twig:ux:icon name="close" class="size-4" />
+</twig:Ui:Button>
+</span>
