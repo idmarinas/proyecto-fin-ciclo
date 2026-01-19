@@ -1,0 +1,46 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block title %}{{ 'title.verify_email'|trans({}, 'emails') }}{% endblock %}
+
+{% block style %}
+  <style type="text/css">
+    body,
+    html {
+      background: #f3f3f3 !important;
+    }
+
+    .body-border {
+      border-top: 8px solid #663399;
+    }
+  </style>
+  <!-- move the above styles into your custom stylesheet -->
+{% endblock %}
+
+{% block body %}
+  <spacer size="16"></spacer>
+
+  <container class="body-border">
+    <row>
+      <columns>
+        <spacer size="32"></spacer>
+
+        <h1 class="text-center">{{ 'verify_email.title'|trans({}, 'emails') }}</h1>
+
+        <spacer size="16"></spacer>
+
+        <p class="text-center">{{ 'verify_email.click'|trans({}, 'emails') }}</p>
+
+        <button class="large expand" href="{{ signedUrl|raw }}">
+          {{ 'verify_email.button'|trans({}, 'emails') }}
+        </button>
+
+        <p class="text-center">
+          {{ 'verify_email.note'|trans({ expiration: expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle')}, 'emails') }}
+        </p>
+      </columns>
+    </row>
+
+    <spacer size="16"></spacer>
+  </container>
+
+{% endblock %}
