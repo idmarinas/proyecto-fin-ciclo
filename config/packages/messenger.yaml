@@ -27,3 +27,15 @@ framework:
 
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
+
+when@dev: &dev
+    framework:
+        messenger:
+            transports:
+                sync: 'sync://'
+            routing:
+                Symfony\Component\Mailer\Messenger\SendEmailMessage: sync
+                Symfony\Component\Notifier\Message\ChatMessage: sync
+                Symfony\Component\Notifier\Message\SmsMessage: sync
+
+when@test: *dev
