@@ -1,0 +1,13 @@
+{{ 'verify_email.title'|trans({}, 'emails') }}
+
+{{ 'verify_email.click'|trans({}, 'emails') }}
+
+{{ 'verify_email.button'|trans({}, 'emails') }}: {{ signedUrl|raw }}
+
+{{ 'verify_email.note'|trans({expiration: expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle')}, 'emails') }}
+
+---
+
+Copyright 2025 - {{ 'now'|date('Y') }} {{ app_title }}
+
+{{ 'footer.note'|trans({ app_title }, 'emails') }}
