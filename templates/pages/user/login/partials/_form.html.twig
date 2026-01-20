@@ -1,0 +1,51 @@
+<twig:Turbo:Frame id="form_login">
+  <form action="{{ path('app_user_login') }}" class="space-y-6" method="POST">
+    <twig:Ui:Field:Group>
+      <twig:Ui:Field>
+        <twig:Ui:Field:Label for="_username">Correo electrónico</twig:Ui:Field:Label>
+        <twig:Ui:Field:Description>El e-mail que usaste al crear la cuenta.</twig:Ui:Field:Description>
+        <twig:Ui:Input
+            id="_username"
+            name="_username"
+            type="email"
+            autocomplete="email"
+            required
+            autofocus
+            value="{{ last_username }}"
+        />
+      </twig:Ui:Field>
+      <twig:Ui:Field>
+        <twig:Ui:Field:Label for="password">Contraseña</twig:Ui:Field:Label>
+        <twig:Ui:Field:Description> La contraseña que usaste al crear la cuenta.</twig:Ui:Field:Description>
+        <twig:Ui:Input
+            id="password"
+            name="_password"
+            type="password"
+            autocomplete="current-password"
+            required
+        />
+      </twig:Ui:Field>
+      <twig:Ui:Field orientation="horizontal">
+        <twig:Ui:Field:Content>
+          <twig:Ui:Field:Label for="_remember_me">Recuérdame</twig:Ui:Field:Label>
+          <twig:Ui:Field:Description>
+            Mantener sesión activa
+          </twig:Ui:Field:Description>
+        </twig:Ui:Field:Content>
+        <twig:Ui:Switch id="_remember_me" name="_remember_me" />
+      </twig:Ui:Field>
+      <twig:Ui:Field>
+        <twig:Ui:Field:Content>
+          <twig:Ui:Button type="submit" color="primary">Conectar</twig:Ui:Button>
+        </twig:Ui:Field:Content>
+      </twig:Ui:Field>
+    </twig:Ui:Field:Group>
+
+    <input
+        type="hidden"
+        name="_csrf_token"
+        data-controller="csrf-protection"
+        value="{{ csrf_token('authenticate') }}"
+    >
+  </form>
+</twig:Turbo:Frame>
