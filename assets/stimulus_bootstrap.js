@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 11/01/2026, 19:30
+ * Last modified by "IDMarinas" on 18/01/2026, 19:02
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -17,7 +17,8 @@
  */
 
 import { startStimulusApp } from '@symfony/stimulus-bundle'
+import Notification from '@stimulus-components/notification'
 
 const app = startStimulusApp()
 // register any custom, 3rd party controllers here
-// app.register('some_controller_name', SomeImportedController);
+app.register('notification', Notification)
