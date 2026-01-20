@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+  <div class="flex min-h-full flex-col justify-center px-6 lg:px-8">
+    <twig:Layout:FlashMessages />
+
+    <twig:Ui:Card class="sm:mx-auto sm:w-full sm:max-w-sm lg:max-w-lg">
+      <twig:Ui:Card:Header>
+        <img src="{{ asset('images/public_thread.webp') }}" alt="{{ app_title }}" class="mx-auto h-15 w-auto" />
+        <twig:Ui:Card:Title>Crea una cuenta</twig:Ui:Card:Title>
+      </twig:Ui:Card:Header>
+
+      <twig:Ui:Card:Content>
+        <twig:Turbo:Frame :id="'frame_' ~ form.vars.id">
+          {{ form(form) }}
+        </twig:Turbo:Frame>
+      </twig:Ui:Card:Content>
+    </twig:Ui:Card>
+  </div>
+{% endblock %}
