@@ -4,9 +4,9 @@
     <option name="directoryToApp" value="src" />
     <option name="pluginEnabled" value="true" />
     <option name="twigBundleNamespaceSupport" value="true" />
-    <option name="profilerLocalEnabled" value="true" />
     <option name="profilerLocalUrl" value="https://pfc.localhost" />
     <option name="profilerCsvPath" value="var/cache/dev/profiler/index.csv" />
+    <option name="profilerHttpUrl" value="https://pfc.localhost" />
     <option name="twigNamespaces">
       <list>
         <twig_namespace custom="true" namespace="email" namespaceType="ADD_PATH" path="assets/styles/emails" />
