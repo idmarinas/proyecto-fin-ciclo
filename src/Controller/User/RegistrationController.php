@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/01/2026, 22:10
+ * Last modified by "IDMarinas" on 21/01/2026, 22:35
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -63,6 +63,10 @@ final class RegistrationController extends AbstractController
         #[Autowire(service: 'security.authenticator.form_login.main')]
         FormLoginAuthenticator      $formLoginAuthenticator
     ): Response {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_user_profile');
+        }
+
         $this->seoPage
             ->setTitle('Formulario de registro')
             ->setDescription('Formulario de registro para usuarios nuevos.')

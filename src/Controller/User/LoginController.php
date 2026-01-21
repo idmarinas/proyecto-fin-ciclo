@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/01/2026, 20:07
+ * Last modified by "IDMarinas" on 21/01/2026, 22:35
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,6 +20,8 @@
 namespace App\Controller\User;
 
 use App\Traits\Controller\NotificationsTrait;
+use Idm\Bundle\Seo\Attributes\Seo;
+use Idm\Bundle\Seo\Attributes\Sitemap;
 use Idm\Bundle\Seo\Service\SeoPageInterface;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +36,7 @@ final class LoginController extends AbstractController
 {
     use NotificationsTrait;
 
+    #[Seo, Sitemap]
     #[Route(path: '/login', name: 'login', methods: ['GET', 'POST'])]
     public function login (
         AuthenticationUtils $authenticationUtils,
@@ -41,7 +44,7 @@ final class LoginController extends AbstractController
         Request             $request
     ): Response {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_user_profile');
         }
 
         $seoPage
