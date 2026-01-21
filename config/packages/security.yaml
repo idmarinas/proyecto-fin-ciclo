@@ -21,6 +21,7 @@ security:
             pattern: ^/%app.route_prefix.admin%(|/.*)$
             provider: app_user_provider
             switch_user: false
+            user_checker: App\Security\AdminChecker
             form_login:
                 enable_csrf: true
                 login_path: admin_login
@@ -48,6 +49,7 @@ security:
             stateless: false
             provider: app_user_provider
             switch_user: true
+            user_checker: App\Security\UserChecker
             form_login:
                 login_path: app_user_login
                 check_path: app_user_login
