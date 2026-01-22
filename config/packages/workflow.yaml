@@ -1,0 +1,40 @@
+framework:
+    workflows:
+        thread_support:
+            type: 'state_machine'
+            marking_store:
+                type: 'method'
+                property: 'status'
+            supports:
+                - App\Entity\Forum\Thread
+
+            places: !php/enum App\Enums\ThreadStatusEnum
+
+            transitions:
+                review:
+                    from: !php/enum App\Enums\ThreadStatusEnum::OPEN
+                    to: !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
+
+                ask_customer:
+                    from: !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
+                    to: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+
+                customer_reply:
+                    from: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+                    to: !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+
+                support_reply:
+                    from: !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+                    to: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+
+                resolve:
+                    from: !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+                    to: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
+
+                close:
+                    from: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
+                    to: !php/enum App\Enums\ThreadStatusEnum::CLOSED
+
+                reopen:
+                    from: !php/enum App\Enums\ThreadStatusEnum::CLOSED
+                    to: !php/enum App\Enums\ThreadStatusEnum::OPEN
