@@ -1,19 +1,19 @@
 @import "tailwindcss" source(none);
 
+@import "./themes/app.css";
+
+@custom-variant dark (&:is(.dark *));
+
 /***********
  * Sources *
  ***********/
 @source '../../templates/layouts/exception_error.html.twig';
+@source '../../templates/components/Ui/Card/*.html.twig';
+@source '../../templates/components/Ui/Card.html.twig';
+@source '../../templates/components/Ui/Alert/*.html.twig';
+@source '../../templates/components/Ui/Alert.html.twig';
+@source '../../templates/components/Ui/Button.html.twig';
 @source '../../templates/bundles/TwigBundle/Exception/*.html.twig';
-
-.dialog-content h1 {
-    @apply relative text-8xl font-sans text-red-600 font-bold;
-}
-
-.dialog-content a {
-    @apply py-3 px-6 duration-500 ease-in-out bg-transparent text-white font-bold uppercase tracking-wide;
-    @apply border-2 border-gray-200 ring-white rounded-lg hover:ring-4 inline-block;
-}
 
 .tracking-tighter-less {
     letter-spacing: -0.75rem;
