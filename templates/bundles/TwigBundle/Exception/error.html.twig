@@ -1,0 +1,40 @@
+{% extends 'layouts/exception_error.html.twig' %}
+
+{% set error_code = status_code in [401, 404, 500] ? status_code : 'error' %}
+{% set show_extra_info = status_code not in [401, 404, 500] %}
+
+{% block title %}{{ ('exception.' ~ error_code ~ '.title')|trans({}, 'exceptions') }}{% endblock %}
+
+{% block body %}
+  <div class="flex min-h-full items-center justify-center px-6 lg:px-8">
+    <twig:Ui:Card>
+      <twig:Ui:Card:Header>
+        <twig:Ui:Card:Title>{{ ('exception.' ~ error_code ~ '.title')|trans({}, 'exceptions') }}</twig:Ui:Card:Title>
+        <twig:Ui:Card:Description class="text-center">
+          {{ ('exception.' ~ error_code ~ '.text')|trans(exception_params|default({}),
+            'exceptions')|nl2br }}
+        </twig:Ui:Card:Description>
+      </twig:Ui:Card:Header>
+      <twig:Ui:Card:Content>
+        <div class="text-center font-semibold">{{ 'exception.oops'|trans({}, 'exceptions') }}</div>
+        <h1 class="relative text-9xl tracking-tighter-less text-shadow text-red-600 font-bold text-center">
+          <span>{{ status_code|split('')|join('</span><span>')|raw }}</span>
+        </h1>
+        {% if show_extra_info is same as(true) %}
+          <twig:Ui:Alert variant="error" class="my-6">
+            <twig:ux:icon name="tabler:bug" class="size-6" />
+            <twig:Ui:Alert:Title>{{ 'exception.information.title'|trans({}, 'exceptions') }}</twig:Ui:Alert:Title>
+            <twig:Ui:Alert:Description>
+              {{ 'exception.information.text'|trans({ status_code, status_text}, 'exceptions') }}
+            </twig:Ui:Alert:Description>
+          </twig:Ui:Alert>
+        {% endif %}
+      </twig:Ui:Card:Content>
+      <twig:Ui:Card:Footer class="justify-center">
+        <twig:Ui:Button as="a" href="{{ path('app_home') }}" variant="outline">
+          {{ 'exception.button'|trans({}, 'exceptions') }}
+        </twig:Ui:Button>
+      </twig:Ui:Card:Footer>
+    </twig:Ui:Card>
+  </div>
+{% endblock %}
