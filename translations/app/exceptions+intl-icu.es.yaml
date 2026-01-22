@@ -1,0 +1,33 @@
+exception:
+    oops: '¡Ups!'
+    button: Página principal
+    information:
+        title: Información adicional
+        text: 'El servidor devolvió un "{status_code} {status_text}"'
+    error:
+        title: Se ha producido un error
+        text: |
+            En Lúmina las luces parpadearon todas a la vez y el sistema no supo muy bien qué hacer con tu petición.
+            Algo inesperado ha ocurrido en nuestros servidores (sí, incluso en Lúmina pasan estas cosas).
+            Pero tranquilo, el incidente ha quedado registrado… probablemente.
+
+            También puedes contarnos qué estabas haciendo cuando ocurrió este pequeño apagón.
+            Lo resolveremos lo antes posible y desde Lúmina te pedimos disculpas por las molestias.
+    401:
+        title: Sin autorización
+        text: |
+            El portal de Lúmina se ilumina en rojo y una voz suave pero firme te dice:
+            “Acceso restringido. Necesitas identificarte para continuar.”
+            Parece que sin tus credenciales no podrás entrar en esta zona del sistema.
+    404:
+        title: Página no encontrada
+        text: |
+            La luz de Lúmina no alcanza la página que buscas.
+            Puede que haya sido movida, renombrada o simplemente nunca existió.
+            O tal vez… ¿te has equivocado al escribir la dirección?
+    500:
+        title: Error interno de Lúmina
+        text: |
+            Algo ha hecho que los circuitos de Lúmina chisporroteen más de la cuenta.
+            Ha ocurrido un error interno que nadie esperaba.
+            Sí, incluso en Lúmina a veces se funde una bombilla.
