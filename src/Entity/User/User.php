@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/01/2026, 23:31
+ * Last modified by "IDMarinas" on 23/01/2026, 22:23
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -44,8 +44,14 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     use SoftDeleteableEntity;
     use TimestampableEntity;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
+
+    #[ORM\Column(length: 50, unique: true)]
+    private ?string $username = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $avatar = null;
 
     /**
      * @var list<string> The user roles
@@ -70,7 +76,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 
     public function __toString (): string
     {
-        return $this->email;
+        return (string)$this->username ?: (string)$this->email;
     }
 
     public function getEmail (): ?string
@@ -81,6 +87,30 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     public function setEmail (string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getUsername (): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername (string $username): static
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getAvatar (): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar (?string $avatar): static
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
