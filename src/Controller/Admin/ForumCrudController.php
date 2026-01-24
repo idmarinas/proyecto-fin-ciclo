@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:38
+ * Last modified by "IDMarinas" on 24/01/2026, 17:54
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -79,6 +79,11 @@ final class ForumCrudController extends AbstractCrudController
 
         yield AssociationField::new('parent')
             ->setLabel('Parent Forum')
+            ->hideOnIndex()
+        ;
+
+        yield AssociationField::new('tags')
+            ->setLabel('Tags')
             ->hideOnIndex()
         ;
 
