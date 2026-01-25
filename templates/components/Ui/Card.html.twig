@@ -1,6 +1,7 @@
 {# @block content The default block #}
 <div
-    class="{{ 'rounded-lg border bg-card text-card-foreground shadow-sm sm:w-full sm:max-w-sm lg:max-w-lg' ~ attributes.render('class')|tailwind_merge }}"
+    class="{{ 'rounded-lg border bg-card text-card-foreground shadow-sm sm:w-full sm:max-w-sm lg:max-w-lg xl:max-w-xl
+     2xl:max-w-2xl ' ~ attributes.render('class')|tailwind_merge }}"
     {{ attributes }}
 >
   {%- block content %}{% endblock -%}
