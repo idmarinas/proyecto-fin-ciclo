@@ -1,0 +1,113 @@
+{% use 'form_div_layout.html.twig' %}
+
+{%- block textarea_widget -%}
+  {% component 'Ui:Textarea' %}
+    {% block content %}{{ value }}{% endblock %}
+  {% endcomponent %}
+{%- endblock textarea_widget -%}
+
+{%- block form_widget_simple -%}
+  {%- set type = type|default('text') -%}
+
+  {{ component('Ui:Input', { type, ...form_widget_attributes(_context)}) }}
+{%- endblock form_widget_simple -%}
+
+ {%- block hidden_widget -%}
+   {%- set type = type|default('hidden') -%}
+
+   <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
+ {%- endblock hidden_widget -%}
+
+{%- block checkbox_widget -%}
+  {% set type = 'checkbox' %}
+  {{ component('Ui:Checkbox', form_widget_attributes(_context)) }}
+{%- endblock checkbox_widget -%}
+
+{%- block button_widget -%}
+  {% component 'Ui:Button' with { type: type|default('button'), ...form_button_attributes(_context)} %}
+    {% block content %}{{- block(outerBlocks.form_label_content) -}}{% endblock %}
+  {% endcomponent %}
+{%- endblock button_widget -%}
+
+{%- block form_label -%}
+  {% if label is not same as(false) -%}
+    {% component 'Ui:Field:Label' with form_label_attributes(_context) %}
+      {% block content %}{{- block(outerBlocks.form_label_content) -}} {% endblock %}
+    {% endcomponent %}
+  {%- endif -%}
+{%- endblock form_label -%}
+
+{%- block form_widget_compound -%}
+  {% component 'Ui:Field:Group' with form_widget_container_attributes(_context) %}
+    {% block content %}
+      {%- if form is rootform -%}
+        {{ form_errors(form) }}
+      {%- endif -%}
+      {{- block(outerBlocks.form_rows) -}}
+      {{- form_rest(form) -}}
+    {% endblock %}
+  {% endcomponent %}
+{%- endblock form_widget_compound -%}
+
+{%- block form_row_render -%}
+  {% component 'Ui:Field' with {
+    'data-invalid': (errors is empty ? 'false' : 'true'),
+    ...form_attributes(_context|merge({attr: row_attr}))
+  } %}
+    {% block content %}
+      {{- form_label(form) -}}
+      {{- form_help(form) -}}
+      {{- form_widget(form, widget_attr) -}}
+      {{- form_errors(form) -}}
+    {% endblock %}
+  {% endcomponent %}
+{%- endblock form_row_render -%}
+
+{%- block checkbox_row -%}
+  {%- set widget_attr = {} -%}
+  {%- if help -%}
+    {%- set widget_attr = {attr: {'aria-describedby': id ~ '_help'}} -%}
+  {%- endif -%}
+
+  {% component 'Ui:Field:Group' %}
+    {% block content %}
+      {% component 'Ui:Field' with {
+        orientation: 'horizontal',
+        'data-invalid': (errors is empty ? 'false' : 'true'),
+        ...form_attributes(_context|merge({attr: row_attr}))
+      } %}
+        {% block content %}
+          {{- form_widget(form, widget_attr) -}}
+          {{- form_label(form) -}}
+        {% endblock %}
+      {% endcomponent %}
+
+      {{- form_help(form) -}}
+      {{- form_errors(form) -}}
+    {% endblock %}
+  {% endcomponent %}
+{%- endblock checkbox_row -%}
+
+{%- block button_row -%}
+  {% component 'Ui:Field' with { orientation: 'horizontal', ...form_attributes(_context|merge({attr: row_attr})) } %}
+    {% block content %}
+      {{- form_widget(form) -}}
+    {% endblock %}
+  {% endcomponent %}
+{%- endblock button_row -%}
+
+{% block form_help -%}
+  {%- if help -%}
+    {%- set help_attr = help_attr|merge({class: (help_attr.class|default('') ~ ' help-text')|trim}) -%}
+
+    {% component 'Ui:Field:Description' with {id: (id ~ '_help'), ...form_attributes(_context|merge({attr: help_attr}))} %}
+      {% block content %}{{- block(outerBlocks.form_help_content) -}}{% endblock %}
+    {% endcomponent %}
+  {%- endif -%}
+{%- endblock form_help %}
+
+{%- block form_errors -%}
+  {%- if errors|length > 0 -%}
+    {{ component('Ui:Field:Error', {errors}) }}
+  {%- endif -%}
+{%- endblock form_errors -%}
