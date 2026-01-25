@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:19
+ * Last modified by "IDMarinas" on 25/01/2026, 13:25
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,6 +23,7 @@ use App\Entity\User\User;
 use App\Repository\Forum\MessageRepository;
 use App\Traits\Entity\TreeTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -51,17 +52,35 @@ class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInt
     use TimestampableEntity;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
-    private ?Thread $thread  = null;
+    private ?Thread $thread = null;
+
     #[ORM\Column(type: Types::TEXT)]
-    private string  $content = '';
+    private string $content = '';
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
+    /**
+     * @var Collection<int, MessageAttachment>
+     */
+    #[ORM\OneToMany(targetEntity: MessageAttachment::class, mappedBy: 'message', cascade: ['persist', 'remove'])]
+    private Collection $attachments;
+
+    /**
+     * @var Collection<int, MessageReaction>
+     */
+    #[ORM\OneToMany(targetEntity: MessageReaction::class, mappedBy: 'message', cascade: ['persist', 'remove'])]
+    private Collection $reactions;
+
+    #[ORM\Column]
+    private bool $solution = false;
+
     public function __construct ()
     {
         $this->children = new ArrayCollection();
+        $this->attachments = new ArrayCollection();
+        $this->reactions = new ArrayCollection();
     }
 
     public function __toString (): string
@@ -101,6 +120,78 @@ class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInt
     public function setAuthor (?User $author): static
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MessageAttachment>
+     */
+    public function getAttachments (): Collection
+    {
+        return $this->attachments;
+    }
+
+    public function addAttachment (MessageAttachment $attachment): static
+    {
+        if (!$this->attachments->contains($attachment)) {
+            $this->attachments->add($attachment);
+            $attachment->setMessage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAttachment (MessageAttachment $attachment): static
+    {
+        if ($this->attachments->removeElement($attachment)) {
+            // set the owning side to null (unless already changed)
+            if ($attachment->getMessage() === $this) {
+                $attachment->setMessage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MessageReaction>
+     */
+    public function getReactions (): Collection
+    {
+        return $this->reactions;
+    }
+
+    public function addReaction (MessageReaction $reaction): static
+    {
+        if (!$this->reactions->contains($reaction)) {
+            $this->reactions->add($reaction);
+            $reaction->setMessage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReaction (MessageReaction $reaction): static
+    {
+        if ($this->reactions->removeElement($reaction)) {
+            // set the owning side to null (unless already changed)
+            if ($reaction->getMessage() === $this) {
+                $reaction->setMessage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isSolution (): bool
+    {
+        return $this->solution;
+    }
+
+    public function setSolution (bool $solution): static
+    {
+        $this->solution = $solution;
 
         return $this;
     }
