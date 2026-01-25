@@ -1,8 +1,9 @@
-# Copilot Instructions for "Foro de Ayuda y Soporte"
+# Project Reference for "Foro de Ayuda y Soporte"
 
 ## Project Overview
 
 This is a Symfony 8.0 forum support application (`proyecto-fin-ciclo`) using:
+
 - **Framework**: Symfony 8.0 with MicroKernelTrait pattern
 - **Backend**: PHP 8.4+ with Doctrine 3.6 ORM
 - **Database**: MySQL/MariaDB with soft-delete logical deletion via Gedmo
@@ -14,6 +15,7 @@ This is a Symfony 8.0 forum support application (`proyecto-fin-ciclo`) using:
 ## Architecture Patterns
 
 ### Directory Structure
+
 - `src/Controller/` - Main app controllers (except Admin and User subfolders)
 - `src/Controller/Admin/` - EasyAdmin controllers (prefix: `/admin`)
 - `src/Controller/User/` - User-specific controllers (prefix: `/user`)
@@ -34,6 +36,7 @@ This is a Symfony 8.0 forum support application (`proyecto-fin-ciclo`) using:
 ### Entity Design
 
 **Key Traits Used:**
+
 - `UuidTrait` (from IDMarinas Common Bundle) - Primary key generation
 - `TimestampableEntity` (Gedmo) - Auto `createdAt`/`updatedAt` tracking
 - `SoftDeleteableEntity` (Gedmo) - Logical deletion with `deletedAt` field
@@ -41,6 +44,7 @@ This is a Symfony 8.0 forum support application (`proyecto-fin-ciclo`) using:
 - `TreeTrait` (custom `src/Traits/Entity/TreeTrait.php`) - Hierarchical entity support
 
 **Example Entity Convention** (`User`):
+
 ```php
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[Gedmo\SoftDeleteable]
@@ -56,23 +60,27 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 ### Frontend Architecture: Stimulus + Turbo + Twig Components
 
 **Interactive Components** - Use Twig UX Components (`symfony/stimulus-bundle`, `symfony/ux-turbo`):
+
 - Located in `templates/components/` and `templates/admin/components/`
 - Stimulus controllers in `assets/controllers/` for interactivity (e.g., `csrf_protection_controller.js`)
 - Turbo Frame/Stream for AJAX-like responses without full page reload
 - Example: `<twig:Turbo:Frame id="form-container">` wraps partial content
 
 **CSS Framework** - TailwindCSS via `symfonycasts/tailwind-bundle`:
+
 - Asset Mapper handles CSS build (no webpack)
 - Utility classes directly in Twig: `class="flex items-center justify-between"`
 - Custom plugin: `tales-from-a-dev/twig-tailwind-extra` provides Twig `tailwind_merge` filter
 
 **Icon System** - Symfony UX Icons with Tabler icon set:
+
 - Usage: `<twig:ux:icon name="tabler:users" class="size-5" />`
 - Icons located in `assets/icons/tabler/`
 
 ### Security Architecture
 
 **Two Firewall Pattern** (`config/packages/security.yaml`):
+
 1. **Admin Firewall** (`^/admin`) - Form login with `AdminChecker`
     - Pattern: `^/%app.route_prefix.admin%(|/.*)$`
     - Default target: `admin_dashboard`
@@ -80,6 +88,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     - Default target: `app_user_profile`
 
 Both use:
+
 - Email-based provider (`App\Entity\User\User`)
 - CSRF protection on forms (enabled by default in `config/packages/csrf.yaml`)
 - Remember-me tokens signed with password + timestamps
@@ -96,11 +105,13 @@ Both use:
 ### Data Access Layer
 
 **Repository Pattern:**
+
 - All repositories in `src/Repository/` matching entity structure
 - Use Doctrine QueryBuilder for custom queries
 - Return typed collections or single entities
 
 **Soft Delete Handling:**
+
 - Gedmo `SoftDeleteable` filter auto-enabled in Doctrine config
 - Queries automatically exclude deleted entities unless explicitly included
 - Access deleted entities via: `$repository->findWithDeleted()` or query without filter
@@ -108,11 +119,13 @@ Both use:
 ## Testing & Development
 
 ### Test Framework Stack
+
 - **PHPUnit** with Zenstruck Foundry and DAMA Doctrine extensions
 - `failOnDeprecation: true` - Strict deprecation handling
 - Test environment: `APP_ENV=test` (see `phpunit.dist.xml`)
 
 ### Key Test Commands
+
 ```bash
 # Run all tests
 php bin/phpunit
@@ -125,11 +138,13 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 ```
 
 ### Factories & Fixtures
+
 - Create test data using `tests/Factory/*.php` (Foundry model factories)
 - Load fixtures with `tests/DataFixtures/*.php` for seeding
 - Factories support attributes for flexible object creation
 
 ### Docker Development Workflow
+
 ```bash
 # Initialize environment (first time)
 # Via VS Code task: "Init Env Docker" or:
@@ -158,10 +173,12 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 ## Third-Party Bundles & Custom Integrations
 
 **Key IDMarinas Bundles** (in dev):
+
 - `idmarinas/seo-bundle` - SEO optimization + sitemap (config: [config/packages/idm_seo.php](config/packages/idm_seo.php))
 - `idmarinas/common-bundle` - Provides `UuidTrait` and utilities
 
 **Integrated Bundles:**
+
 - **EasyAdmin** - Admin CRUD interface at `/admin` (auto-registered in routes)
 - **Doctrine Extensions** (Gedmo) - Timestamps, soft-delete, custom behaviors
 - **Twig Components** + **Stimulus** - Interactive frontend components
@@ -172,6 +189,7 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 ## Common Coding Patterns
 
 ### Creating an Entity
+
 1. Place in `src/Entity/{Domain}/`
 2. Use ORM attributes: `#[ORM\Entity(repositoryClass: FooRepository::class)]`
 3. Include required traits: `UuidTrait`, `TimestampableEntity`, `SoftDeleteableEntity`
@@ -179,12 +197,14 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 5. Add unique constraint attributes if needed
 
 ### Creating a Form
+
 1. Place in `src/Form/`
 2. Extend `AbstractType`
 3. Use entity-bound forms when mapping to entities
 4. CSRF protection enabled by default in security config
 
 ### Creating a Controller
+
 1. Admin: `src/Controller/Admin/Foo.php` with route prefix `/admin`
 2. User: `src/Controller/User/Foo.php` with route prefix `/user`
 3. Public: `src/Controller/Foo.php` with no special prefix
@@ -192,6 +212,7 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 5. Type-hint injected services (autowiring enabled)
 
 ### Database Migrations
+
 - Use Doctrine Migrations: `bin/console make:migration`
 - Place in `migrations/`
 - Run: `bin/console doctrine:migrations:migrate`
@@ -208,23 +229,27 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 ## Naming Conventions & Code Style
 
 **PHP Classes & Methods**
+
 - Classes: PascalCase (`UserController`, `ThreadService`)
 - Methods/Functions: camelCase (`getUserProfile()`, `processPayment()`)
 - Boolean methods: Prefix with `is`, `has`, `can` (`isValid()`, `hasPermission()`)
 - Properties: camelCase (`$userName`, `$isActive`)
 
 **Database & Entity Properties**
+
 - Tables: snake_case, plural (`users`, `forum_threads`)
 - Columns: snake_case (`first_name`, `created_at`)
 - Foreign keys: `{entity_singular}_id` (`user_id`, `thread_id`)
 
 **Frontend**
+
 - Twig variables: snake_case (`user_name`, `product_list`)
 - Twig files: snake_case (`user_profile.html.twig`)
 - CSS: Tailwind utilities directly in templates
 - Routes: kebab-case (`/users/profile`, `/forum/threads`)
 
 **Commit Messages**
+
 - Follow Conventional Commits: `feat:`, `fix:`, `docs:`, `test:`, etc.
 - Be atomic and clear
 - Use `[skip ci]` to skip workflows if needed
@@ -239,21 +264,27 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 ## Key Architectural Patterns & Design Decisions
 
 ### Soft Deletes with Gedmo
+
 All user-facing entities use Gedmo's `SoftDeleteableEntity` trait. The soft-delete filter is **enabled by default** in Doctrine config. Queries automatically exclude deleted entities unless explicitly included via repository methods.
 
 ### UUID Primary Keys
+
 All entities use `UuidTrait` from IDMarinas Common Bundle for generating universally unique identifiers, avoiding integer ID collisions in distributed systems.
 
 ### Turbo-Driven UI
+
 Forms and page sections are wrapped in `<twig:Turbo:Frame>` components. Form submissions return `*.stream.html.twig` templates with `<twig:Turbo:Stream>` directives for targeted DOM updates without full page reloads.
 
 ### Asset Mapper (No Webpack)
+
 CSS and JS are built via `symfonycasts/tailwind-bundle`. No webpack configuration needed. Check `importmap.php` for JavaScript entry points.
 
 ### Two-Firewall Security Model
+
 Separate security contexts for admin (`/admin`) and main app (`/user`, `/`) with distinct checkers and login flows. Admin firewall has stricter configuration than the main firewall.
 
 ### Deployer-Based Deployment
+
 Production deployments use Deployer (`deploy.php`) with custom task orchestration in `.deployer/`. Never use manual Docker commands for production—use Deployer tasks instead.
 
 ---
