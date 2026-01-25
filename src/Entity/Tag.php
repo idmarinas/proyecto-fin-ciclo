@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/01/2026, 21:20
+ * Last modified by "IDMarinas" on 25/01/2026, 13:28
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,10 +19,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Forum\Thread;
 use App\Repository\TagRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Timestampable;
@@ -49,24 +46,6 @@ class Tag implements Stringable, Timestampable
 
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $color = null;
-
-    /**
-     * @var Collection<int, Thread>
-     */
-    #[ORM\ManyToMany(targetEntity: Thread::class, mappedBy: 'tags')]
-    private Collection $threads;
-
-    /**
-     * @var Collection<int, Forum>
-     */
-    #[ORM\ManyToMany(targetEntity: Forum::class, inversedBy: 'tags')]
-    private Collection $forums;
-
-    public function __construct ()
-    {
-        $this->threads = new ArrayCollection();
-        $this->forums = new ArrayCollection();
-    }
 
     public function __toString (): string
     {
@@ -105,60 +84,6 @@ class Tag implements Stringable, Timestampable
     public function setColor (?string $color): static
     {
         $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Thread>
-     */
-    public function getThreads (): Collection
-    {
-        return $this->threads;
-    }
-
-    public function addThread (Thread $thread): static
-    {
-        if (!$this->threads->contains($thread)) {
-            $this->threads->add($thread);
-            $thread->addTag($this);
-        }
-
-        return $this;
-    }
-
-    public function removeThread (Thread $thread): static
-    {
-        if ($this->threads->removeElement($thread)) {
-            $thread->removeTag($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Forum>
-     */
-    public function getForums (): Collection
-    {
-        return $this->forums;
-    }
-
-    public function addForum (Forum $forum): static
-    {
-        if (!$this->forums->contains($forum)) {
-            $this->forums->add($forum);
-            $forum->addTag($this);
-        }
-
-        return $this;
-    }
-
-    public function removeForum (Forum $forum): static
-    {
-        if ($this->forums->removeElement($forum)) {
-            $forum->removeTag($this);
-        }
 
         return $this;
     }
