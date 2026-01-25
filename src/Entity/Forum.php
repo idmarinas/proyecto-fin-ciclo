@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/01/2026, 21:21
+ * Last modified by "IDMarinas" on 25/01/2026, 13:47
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,6 +21,7 @@ namespace App\Entity;
 
 use App\Entity\Forum\Thread;
 use App\Repository\ForumRepository;
+use App\Traits\Entity\ForumTreeTrait;
 use App\Traits\Entity\TreeTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -41,6 +42,8 @@ use Stringable;
  */
 #[ORM\Table(name: 'pfc_forum')]
 #[ORM\Entity(repositoryClass: ForumRepository::class)]
+#[Orm\Index(name: 'IDX_FORUM_LTF', columns: ['ltf'])]
+#[Orm\Index(name: 'IDX_FORUM_RGT', columns: ['rgt'])]
 #[Gedmo\SoftDeleteable]
 #[Gedmo\Tree(type: 'nested')]
 class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface
@@ -50,6 +53,7 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     use SoftDeleteableEntity;
     use TimestampableEntity;
     use TreeTrait;
+    use ForumTreeTrait;
 
     #[ORM\Column(length: 255)]
     private string $title = '';
@@ -66,14 +70,12 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
-
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
-
+    private ?string $image       = null;
     /**
      * @var Collection<int, Tag>
      */
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'forums')]
+    #[ORM\ManyToMany(targetEntity: Tag::class)]
     private Collection $tags;
 
     public function __construct ()
@@ -81,6 +83,26 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
         $this->children = new ArrayCollection();
         $this->threads = new ArrayCollection();
         $this->tags = new ArrayCollection();
+    }
+
+    public function getDescription (): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription (?string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function getImage (): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage (?string $image): void
+    {
+        $this->image = $image;
     }
 
     public function __toString (): string
