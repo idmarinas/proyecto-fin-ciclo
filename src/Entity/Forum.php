@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:16
+ * Last modified by "IDMarinas" on 24/01/2026, 21:21
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -70,10 +70,17 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    /**
+     * @var Collection<int, Tag>
+     */
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'forums')]
+    private Collection $tags;
+
     public function __construct ()
     {
         $this->children = new ArrayCollection();
         $this->threads = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function __toString (): string
@@ -131,6 +138,30 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     public function setSlug (string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTags (): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag (Tag $tag): static
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+        }
+
+        return $this;
+    }
+
+    public function removeTag (Tag $tag): static
+    {
+        $this->tags->removeElement($tag);
 
         return $this;
     }
