@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 13:24
+ * Last modified by "IDMarinas" on 25/01/2026, 20:22
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,12 +19,9 @@
 
 namespace App\Entity\User;
 
-use App\Entity\Subscription;
 use App\Repository\User\UserRepository;
 use App\Traits\Entity\BanTrait;
 use DateTimeInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\SoftDeleteable;
@@ -49,7 +46,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     use TimestampableEntity;
 
     #[ORM\Column(length: 180, unique: true)]
-    private ?string $email = null;
+    private string $email = '';
 
     #[ORM\Column(length: 50, unique: true)]
     private ?string $username = null;
@@ -86,11 +83,6 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 
     #[ORM\Column]
     private int $reputation = 0;
-
-    public function __construct ()
-    {
-        $this->subscriptions = new ArrayCollection();
-    }
 
     public function __toString (): string
     {
@@ -140,7 +132,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
      */
     public function getUserIdentifier (): string
     {
-        return (string)$this->email;
+        return $this->username ?: $this->email;
     }
 
     /**
@@ -248,36 +240,6 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     public function setReputation (int $reputation): static
     {
         $this->reputation = $reputation;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Subscription>
-     */
-    public function getSubscriptions (): Collection
-    {
-        return $this->subscriptions;
-    }
-
-    public function addSubscription (Subscription $subscription): static
-    {
-        if (!$this->subscriptions->contains($subscription)) {
-            $this->subscriptions->add($subscription);
-            $subscription->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSubscription (Subscription $subscription): static
-    {
-        if ($this->subscriptions->removeElement($subscription)) {
-            // set the owning side to null (unless already changed)
-            if ($subscription->getUser() === $this) {
-                $subscription->setUser(null);
-            }
-        }
 
         return $this;
     }
