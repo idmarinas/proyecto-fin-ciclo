@@ -4,11 +4,10 @@ Esta guía define los principios lógicos y arquitectónicos para el proyecto `p
 
 ## 1. Fuente de Verdad para el Formato
 
-Todas las reglas de formato visual (estilo IntelliJ/PHPStorm) se encuentran en:
+- [`.editorconfig`](file:///.editorconfig) (Raíz del proyecto - **Prevalece en caso de conflicto**)
+- [`.agent/docs/.editorconfig`](file:///.agent/docs/.editorconfig) (Configuración detallada de IDE)
 
-- [`.agent/docs/.editorconfig`](file:///.agent/docs/.editorconfig)
-
-Las IAs y editores deben respetar estrictamente este archivo para mantener la consistencia con el entorno de desarrollo principal (PHPStorm).
+Las IAs y editores deben respetar estrictamente estos archivos para mantener la consistencia con el entorno de desarrollo principal (PHPStorm).
 
 ## 2. Convenciones de Nombrado
 
