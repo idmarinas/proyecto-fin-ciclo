@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:19
+ * Last modified by "IDMarinas" on 25/01/2026, 12:52
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,6 +20,8 @@
 namespace App\Entity\Forum;
 
 use App\Entity\Forum;
+use App\Entity\Subscription;
+use App\Entity\Tag;
 use App\Entity\User\User;
 use App\Enums\ThreadStatusEnum;
 use App\Repository\Forum\ThreadRepository;
@@ -66,6 +68,12 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[ORM\Column(enumType: ThreadStatusEnum::class)]
     private ThreadStatusEnum $status = ThreadStatusEnum::OPEN;
 
+    #[ORM\Column]
+    private bool $sticky = false;
+
+    #[ORM\ManyToOne(targetEntity: Message::class)]
+    private ?Message $solvedMessage = null;
+
     #[ORM\ManyToOne(inversedBy: 'threads')]
     private ?Forum $forum = null;
 
@@ -73,7 +81,7 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
 
-    #[ORM\ManyToOne(inversedBy: 'threads')]
+    #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
@@ -86,10 +94,17 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'threads')]
     private Collection $tags;
 
+    /**
+     * @var Collection<int, Subscription>
+     */
+    #[ORM\OneToMany(targetEntity: Subscription::class, mappedBy: 'thread', cascade: ['persist', 'remove'])]
+    private Collection $subscriptions;
+
     public function __construct ()
     {
         $this->messages = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
     }
 
     public function __toString (): string
@@ -255,6 +270,60 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     public function removeTag (Tag $tag): static
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Subscription>
+     */
+    public function getSubscriptions (): Collection
+    {
+        return $this->subscriptions;
+    }
+
+    public function addSubscription (Subscription $subscription): static
+    {
+        if (!$this->subscriptions->contains($subscription)) {
+            $this->subscriptions->add($subscription);
+            $subscription->setThread($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubscription (Subscription $subscription): static
+    {
+        if ($this->subscriptions->removeElement($subscription)) {
+            // set the owning side to null (unless already changed)
+            if ($subscription->getThread() === $this) {
+                $subscription->setThread(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isSticky (): bool
+    {
+        return $this->sticky;
+    }
+
+    public function setSticky (bool $sticky): static
+    {
+        $this->sticky = $sticky;
+
+        return $this;
+    }
+
+    public function getSolvedMessage (): ?Message
+    {
+        return $this->solvedMessage;
+    }
+
+    public function setSolvedMessage (?Message $solvedMessage): static
+    {
+        $this->solvedMessage = $solvedMessage;
 
         return $this;
     }
