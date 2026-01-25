@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 11/01/2026, 17:21
+ * Last modified by "IDMarinas" on 24/01/2026, 17:54
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -64,6 +64,11 @@ final readonly class AppVariable
         return $result;
     }
 
+    public function getSession (): ?SessionInterface
+    {
+        return $this->inner->getSession();
+    }
+
     public function getToken (): ?TokenInterface
     {
         return $this->inner->getToken();
@@ -77,11 +82,6 @@ final readonly class AppVariable
     public function getRequest (): ?Request
     {
         return $this->inner->getRequest();
-    }
-
-    public function getSession (): ?SessionInterface
-    {
-        return $this->inner->getSession();
     }
 
     public function getEnvironment (): string
