@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 12:52
+ * Last modified by "IDMarinas" on 25/01/2026, 13:29
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -91,7 +91,7 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     /**
      * @var Collection<int, Tag>
      */
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'threads')]
+    #[ORM\ManyToMany(targetEntity: Tag::class)]
     private Collection $tags;
 
     /**
