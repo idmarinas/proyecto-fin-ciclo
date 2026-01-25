@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:19
+ * Last modified by "IDMarinas" on 24/01/2026, 21:20
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -17,9 +17,10 @@
  * @since   1.0.0
  */
 
-namespace App\Entity\Forum;
+namespace App\Entity;
 
-use App\Repository\Forum\TagRepository;
+use App\Entity\Forum\Thread;
+use App\Repository\TagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -55,9 +56,16 @@ class Tag implements Stringable, Timestampable
     #[ORM\ManyToMany(targetEntity: Thread::class, mappedBy: 'tags')]
     private Collection $threads;
 
+    /**
+     * @var Collection<int, Forum>
+     */
+    #[ORM\ManyToMany(targetEntity: Forum::class, inversedBy: 'tags')]
+    private Collection $forums;
+
     public function __construct ()
     {
         $this->threads = new ArrayCollection();
+        $this->forums = new ArrayCollection();
     }
 
     public function __toString (): string
@@ -123,6 +131,33 @@ class Tag implements Stringable, Timestampable
     {
         if ($this->threads->removeElement($thread)) {
             $thread->removeTag($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Forum>
+     */
+    public function getForums (): Collection
+    {
+        return $this->forums;
+    }
+
+    public function addForum (Forum $forum): static
+    {
+        if (!$this->forums->contains($forum)) {
+            $this->forums->add($forum);
+            $forum->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeForum (Forum $forum): static
+    {
+        if ($this->forums->removeElement($forum)) {
+            $forum->removeTag($this);
         }
 
         return $this;
