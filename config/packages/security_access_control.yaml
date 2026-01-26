@@ -13,6 +13,9 @@ security:
         - { path: ^/user/reset-password(|/check-email)$, roles: PUBLIC_ACCESS }
         - { path: ^/user/.*$, roles: ROLE_USER }
 
+        # Rutas del foro
+        - { path: ^/forum(|/.*)$, roles: PUBLIC_ACCESS }
+
         # De forma predeterminada, todas las rutas que no cumplen con los requisitos anteriores
         # se marcan como públicas.
         - { path: ^/, roles: PUBLIC_ACCESS }
