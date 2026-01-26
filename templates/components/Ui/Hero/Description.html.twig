@@ -1,0 +1,7 @@
+{# @block content The default block #}
+<p
+    class="{{ ('text-pretty text-lg font-medium text-muted-foreground sm:text-xl/8' ~ attributes.render('class'))|tailwind_merge }}"
+    {{ attributes }}
+>
+  {%- block content %}{% endblock -%}
+</p>

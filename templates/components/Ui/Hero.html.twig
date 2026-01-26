@@ -1,0 +1,27 @@
+{# @prop variant 'center'|'left' The alignment variant, default to `center` #}
+{# @prop orientation 'vertical'|'horizontal' The layout orientation, default to `vertical` #}
+{# @block content Main content including optional Hero:Content and Hero:Media subcomponents #}
+{%- props variant = 'center', orientation = 'vertical' -%}
+{%- set section_style = html_cva(
+  base: 'relative overflow-hidden bg-background py-24 sm:py-32',
+) -%}
+{%- set container_style = html_cva(
+  base: 'container relative z-10 mx-auto px-6 lg:px-8',
+  variants: {
+    orientation: {
+      vertical: 'flex flex-col gap-12',
+      horizontal: 'lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 flex flex-col gap-12',
+    },
+    variant: {
+      center: 'items-center text-center',
+      left: 'items-start text-left',
+    }
+  },
+) -%}
+
+<section class="{{ section_style.apply({}, attributes.render('class'))|tailwind_merge }}" {{ attributes }}>
+  <div class="{{ container_style.apply({orientation, variant}) }}">
+    {%- block content %}
+    {% endblock -%}
+  </div>
+</section>

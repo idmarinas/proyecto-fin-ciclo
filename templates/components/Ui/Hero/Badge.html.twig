@@ -1,0 +1,9 @@
+{# @block content The default block #}
+<div
+    class="{{ ('flex justify-center ' ~ attributes.render('class'))|tailwind_merge }}"
+    {{ attributes }}
+>
+  <div class="relative rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-border hover:ring-border/80">
+    {%- block content %}{% endblock -%}
+  </div>
+</div>
