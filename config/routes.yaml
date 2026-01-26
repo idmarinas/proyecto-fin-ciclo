@@ -14,6 +14,7 @@ controllers:
     exclude:
         - ../src/Controller/Admin/
         - ../src/Controller/User/
+        - ../src/Controller/Forum/
 
 easyadmin:
     resource: .
@@ -30,3 +31,9 @@ user:
     type: attribute
     prefix: /user
     name_prefix: app_user_
+
+forum:
+    resource: ../src/Controller/Forum/
+    type: attribute
+    prefix: /forum
+    name_prefix: app_forum_
