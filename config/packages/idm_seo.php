@@ -34,7 +34,7 @@ return App::config([
             ],
             'description' => 'Soporte y ayuda de Lúmina Servicios Tecnológicos: soluciones rápidas, guías y asistencia para todos nuestros servicios digitales.',
             'open_graph'  => [
-                'site_name' => 'Ayuda y Soporte Lúmina',
+                'site_name' => 'Lúmina Servicios Tecnológicos',
             ],
         ],
     ],
