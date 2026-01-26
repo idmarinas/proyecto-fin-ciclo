@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 15/01/2026, 19:16
+ * Last modified by "IDMarinas" on 26/01/2026, 20:13
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -32,7 +32,7 @@ return App::config([
                 'separator' => '🤔',
                 'suffix'    => 'Lúmina Servicios tecnológicos',
             ],
-            'description' => 'Soporte y ayuda de Lúmina Servicios Tecnológicos: soluciones rápidas, guías y asistencia para todos nuestros servicios digitales.',
+            'description' => 'Lúmina Servicios Tecnológicos: soluciones digitales, consultoría y soporte técnico con un foro activo para resolver dudas y mejorar tu experiencia tecnológica.',
             'open_graph'  => [
                 'site_name' => 'Lúmina Servicios Tecnológicos',
             ],
