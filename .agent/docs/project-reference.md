@@ -59,12 +59,13 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 
 ### Frontend Architecture: Stimulus + Turbo + Twig Components
 
-**Interactive Components** - Use Twig UX Components (`symfony/stimulus-bundle`, `symfony/ux-turbo`):
+**Interactive Components** - Use Twig UX Components (`symfony/ux-twig-component`, `symfony/stimulus-bundle`, `symfony/ux-turbo`):
 
-- Located in `templates/components/` and `templates/admin/components/`
-- Stimulus controllers in `assets/controllers/` for interactivity (e.g., `csrf_protection_controller.js`)
-- Turbo Frame/Stream for AJAX-like responses without full page reload
-- Example: `<twig:Turbo:Frame id="form-container">` wraps partial content
+- Located in `templates/components/` and `templates/admin/components/`.
+- Generic UI components should be placed in `templates/components/Ui/`.
+- Stimulus controllers in `assets/controllers/` for interactivity (e.g., `csrf_protection_controller.js`).
+- Turbo Frame/Stream for AJAX-like responses without full page reload.
+- Example: `<twig:Turbo:Frame id="form-container">` wraps partial content.
 
 **CSS Framework** - TailwindCSS via `symfonycasts/tailwind-bundle`:
 
@@ -74,8 +75,15 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 
 **Icon System** - Symfony UX Icons with Tabler icon set:
 
-- Usage: `<twig:ux:icon name="tabler:users" class="size-5" />`
-- Icons located in `assets/icons/tabler/`
+- Usage: `<twig:ux:icon name="tabler:users" class="size-5" />`.
+- **Set Preference**: Use the **tabler** set (`tabler:*`) whenever possible for consistency.
+- Icons are automatically fetched and cached; check `config/packages/ux_icons.yaml` for aliases.
+- Local custom icons can be placed in `assets/icons/`.
+
+**UI Building Blocks** - Symfony UX Toolkit (Dev only):
+
+- Used during development to generate base components in `templates/components/Ui/`.
+- Not required in production as components are copied to the template directory.
 
 ### Security Architecture
 
