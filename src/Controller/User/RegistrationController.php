@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/01/2026, 22:35
+ * Last modified by "IDMarinas" on 26/01/2026, 19:59
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -54,7 +54,7 @@ final class RegistrationController extends AbstractController
     ) {}
 
     #[Seo, Sitemap]
-    #[Route('/register', name: 'register')]
+    #[Route('/register', name: 'register', methods: ['GET', 'POST'])]
     public function register (
         Request                     $request,
         UserPasswordHasherInterface $userPasswordHasher,
@@ -113,7 +113,7 @@ final class RegistrationController extends AbstractController
         return $this->render('pages/user/registration/index.html.twig', ['form' => $form,]);
     }
 
-    #[Route('/verify/email', name: 'verify_email')]
+    #[Route('/verify/email', name: 'verify_email', methods: ['GET'])]
     public function verifyUserEmail (Request $request, TranslatorInterface $translator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
