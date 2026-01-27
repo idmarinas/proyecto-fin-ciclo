@@ -1,12 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block article %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+  <twig:Layout:Article>
+
+    <!-- HERO -->
+    <twig:Layout:Section class="not-prose">
+      <twig:Ui:Hero orientation="horizontal" class="not-prose">
+        <twig:Ui:Hero:Content>
+          <twig:Ui:Hero:Badge>{{ app_title }}</twig:Ui:Hero:Badge>
+          <twig:Ui:Hero:Heading>Tecnología clara, soporte confiable.</twig:Ui:Hero:Heading>
+          <twig:Ui:Hero:Description>
+            En Lúmina Servicios Tecnológicos te ayudamos a iluminar tu camino digital con soluciones modernas, soporte
+            experto y una comunidad activa.
+          </twig:Ui:Hero:Description>
+          <twig:Ui:Hero:Actions>
+            <twig:Ui:Button size="lg" as="a" href="{{ path('app_user_register') }}">Crear cuenta</twig:Ui:Button>
+            <twig:Ui:Button size="lg" as="a" href="{{ path('app_forum_index') }}" variant="outline">
+              Acceder al foro
+            </twig:Ui:Button>
+          </twig:Ui:Hero:Actions>
+        </twig:Ui:Hero:Content>
+        <twig:Ui:Hero:Media>
+          <div class="size-100 bg-primary rounded-xl flex items-center justify-center">
+            <twig:ux:icon name="tabler:bulb" class="size-50 text-primary-foreground" />
+          </div>
+        </twig:Ui:Hero:Media>
+      </twig:Ui:Hero>
+    </twig:Layout:Section>
+
+    <twig:Ui:Separator class="my-5" />
+
+    <!-- SERVICES -->
+    <twig:Layout:Section>
+      <h3 class="text-center">Nuestros Servicios</h3>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-10 not-prose">
+        <twig:Ui:Card>
+          <twig:Ui:Card:Header class="text-center">
+            <twig:Ui:Card:Title>
+              <twig:ux:icon name="tabler:device-desktop-code" class="size-12 inline-block" />
+              Desarrollo Digital
+            </twig:Ui:Card:Title>
+          </twig:Ui:Card:Header>
+          <twig:Ui:Card:Content>
+            Creamos soluciones digitales adaptadas a tus necesidades: plataformas, herramientas y sistemas modernos.
+          </twig:Ui:Card:Content>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card>
+          <twig:Ui:Card:Header class="text-center">
+            <twig:Ui:Card:Title>
+              <twig:ux:icon name="tabler:tools" class="size-12 inline-block" />
+              Soporte Técnico
+            </twig:Ui:Card:Title>
+          </twig:Ui:Card:Header>
+          <twig:Ui:Card:Content>
+            Asistencia experta, resolución de incidencias y acompañamiento técnico en cada paso.
+          </twig:Ui:Card:Content>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card>
+          <twig:Ui:Card:Header class="text-center">
+            <twig:Ui:Card:Title>
+              <twig:ux:icon name="tabler:chart-bar" class="size-12 inline-block" />
+              Consultoría Tecnológica
+            </twig:Ui:Card:Title>
+          </twig:Ui:Card:Header>
+          <twig:Ui:Card:Content>
+            Auditorías, planificación estratégica y optimización de procesos para mejorar tu entorno digital.
+          </twig:Ui:Card:Content>
+        </twig:Ui:Card>
+      </div>
+    </twig:Layout:Section>
+
+    <twig:Ui:Separator class="my-5" />
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
