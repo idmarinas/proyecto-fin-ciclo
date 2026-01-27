@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:17
+ * Last modified by "IDMarinas" on 24/01/2026, 21:20
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -17,9 +17,9 @@
  * @since   1.0.0
  */
 
-namespace App\Repository\Forum;
+namespace App\Repository;
 
-use App\Entity\Forum\Tag;
+use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
