@@ -10,3 +10,5 @@ Ignora las carpetas: ".idea" y también sigue las reglas en .gitignore
 Antes de dar una respuesta lee el archivo ".agent/rules/docs/project-reference.md" y ".agent/docs/code-style.md".
 
 Mantén siempre el formato de código descrito en ".agent/docs/.editorconfig" (que contiene las reglas de PHPStorm ij_*).
+
+En la carpeta ".agent/lumna/" se encuentra toda la información sobre el proyecto, y el contexto para un IA Chat
