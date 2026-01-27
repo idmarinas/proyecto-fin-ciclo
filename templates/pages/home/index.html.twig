@@ -3,8 +3,6 @@
 {% block article %}
 
   <twig:Layout:Article>
-
-    <!-- HERO -->
     <twig:Layout:Section class="not-prose">
       <twig:Ui:Hero orientation="horizontal" class="not-prose">
         <twig:Ui:Hero:Content>
@@ -31,7 +29,6 @@
 
     <twig:Ui:Separator class="my-5" />
 
-    <!-- SERVICES -->
     <twig:Layout:Section>
       <h3 class="text-center">Nuestros Servicios</h3>
 
@@ -76,13 +73,42 @@
 
     <twig:Ui:Separator class="my-5" />
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- FORO -->
+    <twig:Layout:Section>
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3>Foro de Soporte y Ayuda</h3>
+          <p class="mt-4">
+            Únete a la comunidad de Lúmina: comparte dudas, encuentra soluciones y recibe ayuda del equipo técnico y
+            otros usuarios.
+          </p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/app/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/app/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+          <ul class="mt-6 space-y-3 not-prose">
+            <li class="flex items-start gap-2">
+              <twig:ux:icon name="tabler:circle-check" class="size-6 text-green-600" />
+              Respuestas rápidas y claras
+            </li>
+            <li class="flex items-start gap-2">
+              <twig:ux:icon name="tabler:circle-check" class="size-6 text-green-600" />
+              Comunidad activa y colaborativa
+            </li>
+            <li class="flex items-start gap-2">
+              <twig:ux:icon name="tabler:circle-check" class="size-6 text-green-600" />
+              Soporte técnico especializado
+            </li>
+          </ul>
+
+          <twig:Ui:Button size="lg" as="a" href="{{ path('app_forum_index') }}" class="mt-8 not-prose">
+            Entrar al foro
+          </twig:Ui:Button>
+        </div>
+
+        <div class="flex justify-center not-prose">
+          <div class="size-80 bg-primary rounded-xl flex items-center justify-center">
+            <twig:ux:icon name="tabler:messages" class="size-40 text-primary-foreground" />
+          </div>
+        </div>
+      </div>
+    </twig:Layout:Section>
+  </twig:Layout:Article>
 {% endblock %}
