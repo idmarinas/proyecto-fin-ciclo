@@ -15,6 +15,12 @@
           {{ form(form) }}
         </twig:Turbo:Frame>
       </twig:Ui:Card:Content>
+      <twig:Ui:Card:Footer class="justify-center">
+        <div class="text-sm text-gray-600 dark:text-gray-300">
+          ¿Ya tienes cuenta?
+          <twig:Ui:Button as="a" variant="link" href="{{ path('app_user_login') }}">Iniciar sesión</twig:Ui:Button>
+        </div>
+      </twig:Ui:Card:Footer>
     </twig:Ui:Card>
   </div>
 {% endblock %}
