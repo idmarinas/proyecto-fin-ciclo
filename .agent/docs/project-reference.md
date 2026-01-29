@@ -93,7 +93,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     - Pattern: `^/%app.route_prefix.admin%(|/.*)$`
     - Default target: `admin_dashboard`
 2. **Main Firewall** (`^/`) - Form login with `UserChecker` + `switch_user: true` (impersonation)
-    - Default target: `app_user_profile`
+    - Default target: `app_user_profile_index`
 
 Both use:
 
@@ -105,7 +105,7 @@ Both use:
 ### Routing Convention
 
 - **Admin routes**: `prefix: /admin`, `name_prefix: admin_` → route names like `admin_dashboard`
-- **User routes**: `prefix: /user`, `name_prefix: app_user_` → route names like `app_user_profile`
+- **User routes**: `prefix: /user`, `name_prefix: app_user_` → route names like `app_user_profile_index`
 - **Public routes**: `prefix: /` (or empty), `name_prefix: app_` → route names like `app_home`
 - Use attribute-based routing with `#[Route]` decorators
 - Exclude Admin/User controllers from public routing config to avoid conflicts
@@ -169,14 +169,14 @@ php bin/phpunit --coverage-html build/reports/html-coverage
 
 ## Critical Configuration Files
 
-| File | Purpose | Key Settings |
-|------|---------|--------------|
-| [.env](.env), [.env.local](.env.local) | Environment variables | `APP_ENV`, `DATABASE_*`, `APP_SERVER_NAME` |
-| [config/bundles.php](config/bundles.php) | Bundle registration | Order matters for overrides (Tailwind, Icons, UI) |
-| [config/packages/doctrine.yaml](config/packages/doctrine.yaml) | Doctrine/Database | Mapping to `src/Entity`, soft-delete filter config |
-| [config/packages/security.yaml](config/packages/security.yaml) | Security firewalls | Two firewalls + checkers, remember-me tokens |
-| [config/services.yaml](config/services.yaml) | Service container | Autowiring: `App\:` from `src/` |
-| [compose.yaml](compose.yaml) + [compose.override.yaml](compose.override.yaml) | Docker services | MySQL, PHP (FrankenPHP), Caddy, Traefik labels |
+| File                                                                          | Purpose               | Key Settings                                       |
+|-------------------------------------------------------------------------------|-----------------------|----------------------------------------------------|
+| [.env](.env), [.env.local](.env.local)                                        | Environment variables | `APP_ENV`, `DATABASE_*`, `APP_SERVER_NAME`         |
+| [config/bundles.php](config/bundles.php)                                      | Bundle registration   | Order matters for overrides (Tailwind, Icons, UI)  |
+| [config/packages/doctrine.yaml](config/packages/doctrine.yaml)                | Doctrine/Database     | Mapping to `src/Entity`, soft-delete filter config |
+| [config/packages/security.yaml](config/packages/security.yaml)                | Security firewalls    | Two firewalls + checkers, remember-me tokens       |
+| [config/services.yaml](config/services.yaml)                                  | Service container     | Autowiring: `App\:` from `src/`                    |
+| [compose.yaml](compose.yaml) + [compose.override.yaml](compose.override.yaml) | Docker services       | MySQL, PHP (FrankenPHP), Caddy, Traefik labels     |
 
 ## Third-Party Bundles & Custom Integrations
 
