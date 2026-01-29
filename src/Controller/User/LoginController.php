@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/01/2026, 22:35
+ * Last modified by "IDMarinas" on 28/01/2026, 22:10
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -44,7 +44,7 @@ final class LoginController extends AbstractController
         Request             $request
     ): Response {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_user_profile');
+            return $this->redirectToRoute('app_user_profile_index');
         }
 
         $seoPage
