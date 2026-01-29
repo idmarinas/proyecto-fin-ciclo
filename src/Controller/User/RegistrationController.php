@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/01/2026, 19:59
+ * Last modified by "IDMarinas" on 28/01/2026, 22:10
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -64,7 +64,7 @@ final class RegistrationController extends AbstractController
         FormLoginAuthenticator      $formLoginAuthenticator
     ): Response {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_user_profile');
+            return $this->redirectToRoute('app_user_profile_index');
         }
 
         $this->seoPage
@@ -132,6 +132,6 @@ final class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_user_profile');
+        return $this->redirectToRoute('app_user_profile_index');
     }
 }
