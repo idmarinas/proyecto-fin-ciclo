@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article class="prose">
+    <twig:Ui:Card class="mx-auto">
+      <twig:Ui:Card:Header>
+        <twig:Ui:Card:Title><h1 class="text-center">Confirmar borrado de cuenta</h1></twig:Ui:Card:Title>
+
+        <twig:Ui:Card:Description class="text-base">
+          Estás a punto de marcar tu cuenta como borrada. Este proceso no elimina tu información de forma inmediata.
+          A continuación te explicamos qué ocurrirá.
+        </twig:Ui:Card:Description>
+      </twig:Ui:Card:Header>
+      <twig:Ui:Card:Content class="space-y-4">
+        <div>
+          <h2>
+            <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+            Periodo de recuperación (30 días)
+          </h2>
+          <p>
+            Tu cuenta quedará marcada como “<strong>borrada</strong>” durante 30 días.
+            Durante este periodo <strong>no podrás iniciar sesión</strong>.
+            Si deseas recuperar tu cuenta, podrás restaurarla mediante un enlace especial que te mostraremos cuando
+            intentes acceder, o desde el correo de confirmación de borrado.
+          </p>
+        </div>
+
+        <div>
+          <h2>
+            <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+            Visibilidad de la cuenta
+          </h2>
+          <p> Mientras esté borrada: </p>
+          <ul class="list-disc ml-6">
+            <li>No podrás iniciar sesión.</li>
+            <li>Tu perfil no será visible para otros usuarios.</li>
+            <li>Tu cuenta solo será visible para administración y superiores.</li>
+            <li>
+              Tus hilos y mensajes seguirán las reglas de contenido borrado, pero no se eliminarán hasta que pasen los
+              30 días.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>
+            <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+            Hilos y mensajes privados
+          </h2>
+          <p> No se eliminarán inmediatamente. Durante los 30 días: </p>
+          <ul class="list-disc ml-6">
+            <li>Quedarán ocultos para todos los usuarios.</li>
+            <li>Solo administración podrá verlos.</li>
+            <li>Se eliminarán permanentemente si no restauras la cuenta.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>
+            <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+            Hilos públicos
+          </h2>
+          <p> No se eliminan durante los 30 días. En su lugar: </p>
+          <ul class="list-disc ml-6">
+            <li>Los hilos públicos creados por ti se marcarán como <strong>“hilo borrado”</strong>.</li>
+            <li>Seguirán visibles para todos, pero con estilo diferenciado.</li>
+            <li>Si restauras la cuenta, se restauran automáticamente.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>
+            <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+            Mensajes públicos
+          </h2>
+          <p>
+            Tus mensajes públicos tampoco se eliminan inmediatamente:
+          </p>
+          <ul class="list-disc ml-6">
+            <li>Se marcarán como <strong>“mensaje borrado”</strong>.</li>
+            <li>El contenido no será visible, pero el mensaje permanecerá.</li>
+            <li>Si restauras la cuenta, se restauran automáticamente.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>
+            <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+            Mensajes marcados como solución
+          </h2>
+          <p> Si alguno de tus mensajes es la <strong>respuesta solución</strong> de un hilo: </p>
+          <ul class="list-disc ml-6">
+            <li>Se mantendrá visible incluso si la cuenta se elimina definitivamente.</li>
+            <li>Se mostrará un aviso indicando que la cuenta fue eliminada.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>
+            <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+            Eliminación definitiva
+          </h2>
+          <p> Si no restauras tu cuenta en 30 días: </p>
+          <ul class="list-disc ml-6">
+            <li>Tu cuenta será eliminada permanentemente.</li>
+            <li>Los hilos privados y mensajes privados se eliminarán por completo.</li>
+            <li>Los hilos públicos se eliminarán por completo.</li>
+            <li>Los mensajes públicos se eliminarán por completo, excepto los marcados como solución.</li>
+          </ul>
+        </div>
+
+      </twig:Ui:Card:Content>
+
+      <twig:Ui:Card:Footer class="not-prose justify-between">
+        <twig:Ui:Button as="a" variant="destructive" href="{{ path('app_user_profile_delete_in_progress') }}">
+          Sí, marcar mi cuenta como borrada
+        </twig:Ui:Button>
+        <twig:Ui:Button as="a" href="{{ path('app_user_profile_index') }}" variant="secondary">Cancelar</twig:Ui:Button>
+      </twig:Ui:Card:Footer>
+
+    </twig:Ui:Card>
+  </twig:Layout:Article>
+{% endblock %}
