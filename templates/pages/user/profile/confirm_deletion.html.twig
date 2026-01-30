@@ -112,9 +112,9 @@
       </twig:Ui:Card:Content>
 
       <twig:Ui:Card:Footer class="not-prose justify-between">
-        <twig:Ui:Button as="a" variant="destructive" href="{{ path('app_user_profile_delete_in_progress') }}">
-          Sí, marcar mi cuenta como borrada
-        </twig:Ui:Button>
+        <form action="{{ path('app_user_profile_delete_in_progress') }}" method="post" data-turbo="false">
+          <twig:Ui:Button type="submit" variant="destructive">Sí, marcar mi cuenta como borrada</twig:Ui:Button>
+        </form>
         <twig:Ui:Button as="a" href="{{ path('app_user_profile_index') }}" variant="secondary">Cancelar</twig:Ui:Button>
       </twig:Ui:Card:Footer>
 
