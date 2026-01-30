@@ -1,0 +1,11 @@
+{% component 'Ui:Avatar' with attributes %}
+  {% block content %}
+    {% if app.user.avatar is not empty %}
+      {{ component('Ui:Avatar:Image', {src: '/uploads/avatars/' ~ app.user.avatar }) }}
+    {% else %}
+      {% component 'Ui:Avatar:Text' with {class: 'bg-primary text-primary-foreground'} %}
+        {% block content app.user.userIdentifier[:2]|upper %}
+      {% endcomponent %}
+    {% endif %}
+  {% endblock %}
+{% endcomponent %}
