@@ -169,6 +169,8 @@
     --color-warning-border: var(--warning-border);
     --color-info-border: var(--info-border);
     --color-notice-border: var(--notice-border);
+
+    --breakpoint-3xl: 120rem;
 }
 
 @layer base {
