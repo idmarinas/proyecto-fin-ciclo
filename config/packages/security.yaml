@@ -53,7 +53,7 @@ security:
             form_login:
                 login_path: app_user_login
                 check_path: app_user_login
-                default_target_path: app_user_profile
+                default_target_path: app_user_profile_index
                 enable_csrf: true
             logout:
                 path: app_user_logout
