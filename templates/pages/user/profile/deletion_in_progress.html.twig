@@ -1,0 +1,81 @@
+{# @var delete_remaining_time \DateInterval #}
+
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article class="prose">
+    <twig:Ui:Card class="mx-auto">
+      <twig:Ui:Card:Header>
+        <twig:Ui:Card:Title class="text-center">
+          <h1>Tu cuenta está marcada como borrada</h1>
+        </twig:Ui:Card:Title>
+        <twig:Ui:Card:Description class="text-base">
+          Has solicitado borrar tu cuenta. Actualmente se encuentra en estado <strong>“borrada”</strong>
+          (<em>pendiente de eliminación</em>).
+        </twig:Ui:Card:Description>
+      </twig:Ui:Card:Header>
+      <twig:Ui:Card:Content>
+        <div class="space-y-5">
+          <twig:Ui:Card variant="full" class="bg-yellow-50 border border-yellow-200 text-yellow-900">
+            <twig:Ui:Card:Header>
+              <twig:Ui:Card:Title>
+                <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+                Información del borrado
+              </twig:Ui:Card:Title>
+            </twig:Ui:Card:Header>
+            <twig:Ui:Card:Content>
+              <div class="flex justify-between">
+                <span>IP desde la que se solicitó el borrado:</span>
+                <span class="font-medium">12.56.262.25</span>
+              </div>
+
+              <div class="flex justify-between">
+                <span>Tiempo restante:</span>
+                <span class="font-medium">
+                  {{ 'delete_remaining_time'|trans({ d: delete_remaining_time.days, i: delete_remaining_time.i }) }}
+                </span>
+              </div>
+            </twig:Ui:Card:Content>
+          </twig:Ui:Card>
+
+          <twig:Ui:Card variant="full" class="bg-blue-50 border border-blue-200 text-blue-900">
+            <twig:Ui:Card:Header>
+              <twig:Ui:Card:Title>
+                <twig:ux:icon name="tabler:pin" class="text-red-700 inline-block size-5" />
+                Información de la cuenta
+              </twig:Ui:Card:Title>
+            </twig:Ui:Card:Header>
+            <twig:Ui:Card:Content>
+              <div class="flex justify-between">
+                <span>Correo electrónico:</span>
+                <span class="font-medium">{{ app.user.email }}</span>
+              </div>
+
+              <div class="flex justify-between">
+                <span>Nombre:</span>
+                <span class="font-medium">{{ app.user.userIdentifier }}</span>
+              </div>
+
+              <div class="flex justify-between">
+                <span>Último acceso:</span>
+                <span class="font-medium">{{ app.user.lastActiveAt|date('d/m/Y H:i') }}</span>
+              </div>
+            </twig:Ui:Card:Content>
+          </twig:Ui:Card>
+
+          <twig:Ui:Alert variant="warning">
+            <twig:ux:icon name="tabler:alert-triangle" class="size-5" />
+            <twig:Ui:Alert:Title>
+              Si no restauras tu cuenta antes de que finalice el periodo de 30 días,
+              tu cuenta será <strong>eliminada permanentemente</strong> junto con tus datos personales.
+            </twig:Ui:Alert:Title>
+          </twig:Ui:Alert>
+        </div>
+      </twig:Ui:Card:Content>
+      <twig:Ui:Card:Footer class="not-prose justify-between">
+        <twig:Ui:Button as="a" href="#">Cancelar borrado y restaurar mi cuenta</twig:Ui:Button>
+        <twig:Button:Logout as="a" variant="secondary" />
+      </twig:Ui:Card:Footer>
+    </twig:Ui:Card>
+  </twig:Layout:Article>
+{% endblock %}
