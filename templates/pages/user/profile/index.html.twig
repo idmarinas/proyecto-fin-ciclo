@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Perfil de "{{ app.user.userIdentifier }}"{% endblock %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Ui:Card class="mx-auto prose-h3:text-2xl prose-h3:mb-4 prose-h2:text-3xl prose-h2:mb-4">
+      <twig:Ui:Card:Header class="flex-row items-center gap-4">
+        <twig:Ui:Avatar class="size-20 shadow-sm">
+          {% if app.user.avatar is not empty %}
+            <twig:Ui:Avatar:Image src="/uploads/avatars/{{ app.user.avatar }}" alt="Avatar" />
+          {% else %}
+            <twig:Ui:Avatar:Text class="bg-primary text-primary-foreground">{{ app.user.userIdentifier[:2]|upper }}</twig:Ui:Avatar:Text>
+          {% endif %}
+        </twig:Ui:Avatar>
+        <div class="space-y-1.5">
+          <twig:Ui:Card:Title>{{ app.user.username|default('Sin nombre') }}</twig:Ui:Card:Title>
+          <twig:Ui:Card:Description class="flex flex-row items-center gap-2">
+            Miembro desde
+            <twig:ux:icon name="tabler:calendar" class="inline-block size-4" />
+            {{ app.user.createdAt|date('d/m/Y') }}
+          </twig:Ui:Card:Description>
+        </div>
+      </twig:Ui:Card:Header>
+      <twig:Ui:Card:Content>
+        <h2>Información de la cuenta</h2>
+
+        <div class="space-y-3">
+          <div class="flex justify-between">
+            <span>Nombre de usuario</span>
+            <span class="font-medium">{{ user.username|default('Sin nombre') }}</span>
+          </div>
+
+          <div class="flex justify-between">
+            <span>Correo electrónico</span>
+            <span class="font-medium">{{ app.user.email }}</span>
+          </div>
+
+          <div class="flex justify-between">
+            <span>Último acceso</span>
+            <span class="font-medium">{{ app.user.lastActiveAt|date('d/m/Y H:i') }}</span>
+          </div>
+        </div>
+
+        <twig:Ui:Separator class="my-8" />
+
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">Actividad en el foro</h2>
+        <div class="space-y-3">
+          <div class="flex justify-between"><span class="text-gray-600">Hilos creados</span>
+            <span class="font-medium text-gray-800">0000000000000</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">Respuestas publicadas</span>
+            <span class="font-medium text-gray-800">0000000000000</span></div>
+          <div class="flex justify-between"><span class="text-gray-600">Hilos resueltos</span>
+            <span class="font-medium text-gray-800">0000000000000</span></div>
+        </div>
+      </twig:Ui:Card:Content>
+      <twig:Ui:Card:Footer class="flex-col gap-4 ">
+        <h3>Ajustes de la cuenta</h3>
+        <twig:Ui:Button as="a" href="{{ path('app_user_profile_index') }}" class="w-full">
+          <twig:ux:icon name="tabler:user-edit" />
+          Editar perfil
+        </twig:Ui:Button>
+        <twig:Ui:Button as="a" href="{{ path('app_user_profile_index') }}" class="w-full">
+          <twig:ux:icon name="tabler:password-user" />
+          Cambiar contraseña
+        </twig:Ui:Button>
+
+        <twig:Ui:Separator class="my-4" />
+
+        <twig:Button:Logout as="a" variant="secondary" class="w-full" />
+
+        <twig:Ui:Separator class="my-4" />
+
+        <h3>Zona peligrosa</h3>
+        <twig:Ui:Button
+            as="a"
+            variant="destructive"
+            href="{{ path('app_user_profile_delete') }}"
+            class="w-full"
+            data-turbo="false"
+        >
+          <twig:ux:icon name="tabler:trash" />
+          Borrar cuenta
+        </twig:Ui:Button>
+      </twig:Ui:Card:Footer>
+    </twig:Ui:Card>
+  </twig:Layout:Article>
+{% endblock %}
