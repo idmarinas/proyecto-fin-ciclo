@@ -1,0 +1,10 @@
+{% component 'Ui:Button' with {
+  ...attributes,
+  href: logout_path(),
+  'data-turbo': 'false'
+} %}
+  {% block content %}
+    <twig:ux:icon name="tabler:logout" />
+    Cerrar sesión
+  {% endblock %}
+{% endcomponent %}
