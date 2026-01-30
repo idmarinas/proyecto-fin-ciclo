@@ -6,13 +6,7 @@
   <twig:Layout:Article>
     <twig:Ui:Card class="mx-auto prose-h3:text-2xl prose-h3:mb-4 prose-h2:text-3xl prose-h2:mb-4">
       <twig:Ui:Card:Header class="flex-row items-center gap-4">
-        <twig:Ui:Avatar class="size-20 shadow-sm">
-          {% if app.user.avatar is not empty %}
-            <twig:Ui:Avatar:Image src="/uploads/avatars/{{ app.user.avatar }}" alt="Avatar" />
-          {% else %}
-            <twig:Ui:Avatar:Text class="bg-primary text-primary-foreground">{{ app.user.userIdentifier[:2]|upper }}</twig:Ui:Avatar:Text>
-          {% endif %}
-        </twig:Ui:Avatar>
+        <twig:App:User:Avatar class="size-20 shadow-sm" />
         <div class="space-y-1.5">
           <twig:Ui:Card:Title>{{ app.user.username|default('Sin nombre') }}</twig:Ui:Card:Title>
           <twig:Ui:Card:Description class="flex flex-row items-center gap-2">
@@ -67,7 +61,7 @@
 
         <twig:Ui:Separator class="my-4" />
 
-        <twig:Button:Logout as="a" variant="secondary" class="w-full" />
+        <twig:App:Button:Logout as="a" variant="secondary" class="w-full" />
 
         <twig:Ui:Separator class="my-4" />
 
