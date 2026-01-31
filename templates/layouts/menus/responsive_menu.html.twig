@@ -1,0 +1,27 @@
+<div data-controller="dropdown" class="relative">
+  {# Botón hamburguesa visible solo en móvil #}
+  <twig:Ui:Button
+      type="button"
+      data-action="dropdown#toggle click@window->dropdown#hide"
+      size="icon"
+      class="md:hidden"
+  >
+    <twig:ux:icon name="tabler:menu-2" class="size-6" />
+  </twig:Ui:Button>
+  {# Contenedor del menú responsive #}
+  <div
+      data-dropdown-target="menu"
+      class="transition transform origin-top-left absolute right-0 mt-2 w-56 rounded-md shadow-lg ring-1 ring-primary ring-opacity-5 focus:outline-none bg-background hidden p-2 z-40"
+      data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100"
+      data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-to="opacity-0 scale-95"
+  >
+    {{ knp_menu_render('layout.menu.header', { orientation: 'vertical' }) }}
+  </div>
+</div>
+
+{# Menú horizontal normal (escritorio) #}
+<div class="hidden md:block">
+  {{ knp_menu_render('layout.menu.header') }}
+</div>
