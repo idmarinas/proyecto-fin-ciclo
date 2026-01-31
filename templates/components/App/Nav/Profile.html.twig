@@ -1,0 +1,55 @@
+<div data-controller="dropdown" class="relative">
+  <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+    <twig:App:User:Avatar />
+  </button>
+
+  <div
+      data-dropdown-target="menu"
+      class="transition transform origin-top-left absolute right-0 mt-2 w-56 rounded-md shadow-lg ring-1
+      ring-primary ring-opacity-5 focus:outline-none bg-background hidden p-2 z-40"
+      data-transition-enter-from="opacity-0 scale-95"
+      data-transition-enter-to="opacity-100 scale-100"
+      data-transition-leave-from="opacity-100 scale-100"
+      data-transition-leave-to="opacity-0 scale-95"
+  >
+    <twig:Ui:Item:Group class="gap-3" data-turbo="false">
+      <twig:Ui:Item as="a" href="{{ path('app_user_profile_index') }}" data-action="dropdown#toggle" size="xs">
+        <twig:Ui:Item:Media>
+          <twig:ux:icon name="tabler:user-cog" />
+        </twig:Ui:Item:Media>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Title>Perfil de la cuenta</twig:Ui:Item:Title>
+        </twig:Ui:Item:Content>
+      </twig:Ui:Item>
+
+      <twig:Ui:Item as="a" href="{{ path('app_user_profile_change_password') }}" size="xs">
+        <twig:Ui:Item:Media>
+          <twig:ux:icon name="tabler:password-user" />
+        </twig:Ui:Item:Media>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Title>Cambiar contraseña</twig:Ui:Item:Title>
+        </twig:Ui:Item:Content>
+      </twig:Ui:Item>
+
+      <twig:Ui:Item as="a" href="{{ path('app_user_profile_edit') }}" data-action="dropdown#toggle" size="xs">
+        <twig:Ui:Item:Media>
+          <twig:ux:icon name="tabler:user-edit" />
+        </twig:Ui:Item:Media>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Title>Editar perfil</twig:Ui:Item:Title>
+        </twig:Ui:Item:Content>
+      </twig:Ui:Item>
+
+      <twig:Ui:Item:Separator />
+
+      <twig:Ui:Item as="a" href="{{ logout_path() }}" data-action="dropdown#toggle" size="xs" class="text-red-500">
+        <twig:Ui:Item:Media>
+          <twig:ux:icon name="tabler:logout" />
+        </twig:Ui:Item:Media>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Title>Cerrar sesión</twig:Ui:Item:Title>
+        </twig:Ui:Item:Content>
+      </twig:Ui:Item>
+    </twig:Ui:Item:Group>
+  </div>
+</div>
