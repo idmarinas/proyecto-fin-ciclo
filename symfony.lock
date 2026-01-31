@@ -77,6 +77,9 @@
     "idmarinas/seo-bundle": {
         "version": "1.x-dev"
     },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.7.0"
+    },
     "nelmio/security-bundle": {
         "version": "3.7",
         "recipe": {
