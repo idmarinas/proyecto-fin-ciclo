@@ -2,7 +2,7 @@
 /**
  * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:40
+ * Last modified by "IDMarinas" on 25/01/2026, 13:58
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,8 +21,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Forum;
 use App\Entity\Forum\Message;
-use App\Entity\Forum\Tag;
+use App\Entity\Forum\MessageAttachment;
+use App\Entity\Forum\MessageReaction;
 use App\Entity\Forum\Thread;
+use App\Entity\Report;
+use App\Entity\Subscription;
+use App\Entity\Tag;
 use App\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -54,14 +58,14 @@ final class DashboardController extends AbstractDashboardController
     public function configureDashboard (): Dashboard
     {
         $title = sprintf(
-            '<img class="mx-auto d-block" src="%s" alt="" /><small>%s</small>',
-            $this->packages->getUrl('images/logos/icon96.webp'),
+            '<img class="mx-auto d-block text-center" src="%s" alt="" /><small>%s</small>',
+            $this->packages->getUrl('images/favicons/favicon-64x64.png'),
             $this->getParameter('app.title')
         );
 
         return parent::configureDashboard()
             ->setTitle($title)
-            ->setFaviconPath('images/favicons/favicon.ico')
+            ->setFaviconPath('images/favicons/favicon.png')
             ->setLocales($this->getParameter('kernel.enabled_locales'))
             ->setTranslationDomain('easyadmin')
         ;
@@ -81,12 +85,23 @@ final class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Messages', 'fa fa-comment', Message::class);
 
+        yield MenuItem::linkToCrud('Attachments', 'fa fa-paperclip', MessageAttachment::class);
+
+        yield MenuItem::linkToCrud('Reactions', 'fa fa-smile', MessageReaction::class);
+
         yield MenuItem::linkToCrud('Tags', 'fa fa-tags', Tag::class);
 
         // User Management Section
         yield MenuItem::section('User Management');
 
         yield MenuItem::linkToCrud('Users', 'fa fa-users', User::class);
+
+        yield MenuItem::linkToCrud('Subscriptions', 'fa fa-bookmark', Subscription::class);
+
+        // Moderation Section
+        yield MenuItem::section('Moderation');
+
+        yield MenuItem::linkToCrud('Reports', 'fa fa-flag', Report::class);
     }
 
 }
