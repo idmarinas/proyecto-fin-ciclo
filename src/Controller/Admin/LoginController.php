@@ -2,7 +2,7 @@
 /**
  * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 15/01/2026, 19:17
+ * Last modified by "IDMarinas" on 31/01/2026, 22:54
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -42,7 +42,7 @@ final class LoginController extends AbstractController
         return $this->render('@EasyAdmin/page/login.html.twig', [
             'error'                => $error,
             'last_username'        => $lastUsername,
-            'favicon_path'         => 'images/favicons/favicon.ico',
+            'favicon_path'         => '/favicons/favicon.png',
             'csrf_token_intention' => 'authenticate',
             'target_path'          => $this->generateUrl('admin'),
             'remember_me_enabled'  => true,
