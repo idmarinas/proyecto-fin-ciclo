@@ -27,7 +27,7 @@ return [
         'version' => '3.2.2',
     ],
     '@hotwired/turbo' => [
-        'version' => '8.0.21',
+        'version' => '8.0.23',
     ],
     '@stimulus-components/notification' => [
         'version' => '3.0.0',
@@ -40,5 +40,8 @@ return [
     ],
     'hotkeys-js' => [
         'version' => '4.0.0',
+    ],
+    '@stimulus-components/dropdown' => [
+        'version' => '3.0.0',
     ],
 ];
