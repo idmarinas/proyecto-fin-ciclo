@@ -2,7 +2,7 @@
 {# @prop decorative bool Whether the separator is decorative, default to `true` #}
 {# @block content The default block #}
 {%- props orientation = 'horizontal', decorative = true -%}
-<twig:Separator
+<twig:Ui:Separator
     orientation="{{ orientation }}"
     decorative="{{ decorative }}"
     class="{{ ('my-0 ' ~ attributes.render('class'))|tailwind_merge }}"
