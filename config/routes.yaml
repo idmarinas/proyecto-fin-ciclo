@@ -35,5 +35,5 @@ user:
 forum:
     resource: ../src/Controller/Forum/
     type: attribute
-    prefix: /forum
-    name_prefix: app_forum_
+    prefix: /forums
+    name_prefix: app_forums_
