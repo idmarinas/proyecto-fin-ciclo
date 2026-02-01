@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 31/01/2026, 23:44
+ * Last modified by "IDMarinas" on 01/02/2026, 15:36
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -27,20 +27,20 @@ trait TreeTrait
 {
     #[ORM\Column(type: Types::INTEGER)]
     #[Gedmo\TreeLeft]
-    public ?int $ltf {
+    public int $ltf = 0 {
         get => $this->ltf;
         set => $this->ltf = $value;
     }
 
     #[Gedmo\TreeRight]
     #[ORM\Column(type: Types::INTEGER)]
-    public ?int $rgt {
+    public int $rgt = 0 {
         get => $this->rgt;
         set => $this->rgt = $value;
     }
     #[Gedmo\TreeLevel]
     #[ORM\Column(type: Types::INTEGER)]
-    public ?int $lvl {
+    public int $lvl = 0 {
         get => $this->lvl;
         set => $this->lvl = $value;
     }
