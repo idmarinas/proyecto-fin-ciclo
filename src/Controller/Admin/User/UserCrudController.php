@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:39
+ * Last modified by "IDMarinas" on 24/01/2026, 21:26
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,11 +23,13 @@ use App\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Override;
 
@@ -88,6 +90,23 @@ final class UserCrudController extends AbstractCrudController
         yield BooleanField::new('privacyAccepted')
             ->setLabel('Privacy Accepted')
             ->hideOnIndex()
+        ;
+
+        yield TextField::new('signature')
+            ->hideOnIndex()
+        ;
+
+        yield IntegerField::new('reputation')
+            ->hideOnForm()
+        ;
+
+        yield DateTimeField::new('lastActiveAt')
+            ->hideOnForm()
+        ;
+
+        yield AssociationField::new('subscriptions')
+            ->onlyOnDetail()
+            ->setTemplatePath('admin/fields/collection.html.twig')
         ;
 
         yield BooleanField::new('isBanned')
