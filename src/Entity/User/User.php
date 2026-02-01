@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 20:22
+ * Last modified by "IDMarinas" on 01/02/2026, 14:14
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -48,7 +48,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     #[ORM\Column(length: 180, unique: true)]
     private string $email = '';
 
-    #[ORM\Column(length: 50, unique: true)]
+    #[ORM\Column(length: 50, unique: true, nullable: true)]
     private ?string $username = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -86,7 +86,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 
     public function __toString (): string
     {
-        return (string)$this->username ?: (string)$this->email;
+        return (string)$this->username ?: $this->email;
     }
 
     public function getEmail (): ?string
@@ -106,7 +106,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
         return $this->username;
     }
 
-    public function setUsername (string $username): static
+    public function setUsername (?string $username): static
     {
         $this->username = $username;
 
