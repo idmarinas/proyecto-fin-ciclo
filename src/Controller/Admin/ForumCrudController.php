@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/01/2026, 17:54
+ * Last modified by "IDMarinas" on 01/02/2026, 16:55
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -43,8 +43,8 @@ final class ForumCrudController extends AbstractCrudController
     public function configureCrud (Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Forum')
-            ->setEntityLabelInPlural('Forums')
+            ->setEntityLabelInSingular('Foro')
+            ->setEntityLabelInPlural('Foros')
             ->setSearchFields(['title', 'description', 'slug'])
             ->setDefaultSort(['createdAt' => 'DESC'])
         ;
@@ -71,10 +71,9 @@ final class ForumCrudController extends AbstractCrudController
         ;
 
         yield ImageField::new('image')
-            ->setBasePath('uploads/forums')
-            ->setUploadDir('public/uploads/forums')
-            ->setUploadedFileNamePattern('[randomhash].[extension]')
-            ->hideOnIndex()
+            ->setBasePath('uploads')
+            ->setUploadDir('public/uploads/forums/' . date('Y/m'))
+            ->setUploadedFileNamePattern('forums/[year]/[month]/[slug]-[contenthash].[extension]')
         ;
 
         yield AssociationField::new('parent')
@@ -89,7 +88,6 @@ final class ForumCrudController extends AbstractCrudController
 
         yield AssociationField::new('threads')
             ->onlyOnDetail()
-            ->setTemplatePath('admin/fields/collection.html.twig')
         ;
 
         yield DateTimeField::new('createdAt')
