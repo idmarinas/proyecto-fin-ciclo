@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/01/2026, 19:02
+ * Last modified by "IDMarinas" on 30/01/2026, 23:52
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -18,7 +18,9 @@
 
 import { startStimulusApp } from '@symfony/stimulus-bundle'
 import Notification from '@stimulus-components/notification'
+import Dropdown from '@stimulus-components/dropdown'
 
 const app = startStimulusApp()
 // register any custom, 3rd party controllers here
 app.register('notification', Notification)
+app.register('dropdown', Dropdown)
