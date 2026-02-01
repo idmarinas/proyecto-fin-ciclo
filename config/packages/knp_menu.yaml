@@ -1,3 +1,5 @@
 knp_menu:
+    twig:
+        template: layouts/menus/lumina_menu.html.twig
     providers:
         builder_alias: false    # disable the builder-alias-based provider
