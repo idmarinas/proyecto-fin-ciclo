@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/01/2026, 23:19
+ * Last modified by "IDMarinas" on 01/02/2026, 16:19
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,15 +21,9 @@ namespace App\Repository;
 
 use App\Entity\Forum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
  * @extends ServiceEntityRepository<Forum>
  */
-final class ForumRepository extends ServiceEntityRepository
-{
-    public function __construct (ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Forum::class);
-    }
-}
+final class ForumRepository extends NestedTreeRepository {}
