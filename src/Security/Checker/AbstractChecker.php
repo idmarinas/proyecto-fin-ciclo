@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 30/01/2026, 20:26
+ * Last modified by "IDMarinas" on 01/02/2026, 15:19
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -31,7 +31,7 @@ use function Symfony\Component\Translation\t;
 
 abstract class AbstractChecker implements UserCheckerInterface
 {
-    private FlashBagInterface $flash;
+    private ?FlashBagInterface $flash = null;
 
     public function __construct (
         protected AccessDecisionManagerInterface $accessDecisionManager,
