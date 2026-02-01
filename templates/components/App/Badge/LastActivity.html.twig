@@ -1,0 +1,11 @@
+{% props days %}
+
+{% set text = days < 2 ? 'Activo' : days < 7 ? 'Moderado' : 'Tranquilo' %}
+
+<twig:Ui:Badge
+    class="{{ html_classes({
+      'bg-green-100 text-green-700': 'Activo' === text,
+      'bg-yellow-100 text-yellow-700': 'Moderado' === text,
+      'bg-gray-200 text-gray-600': 'Tranquilo' === text
+    }) }}"
+>{{ text }}</twig:Ui:Badge>
