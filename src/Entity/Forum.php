@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 13:47
+ * Last modified by "IDMarinas" on 01/02/2026, 11:53
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -32,7 +32,7 @@ use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Idm\Bundle\Common\Traits\Entity\UuidTrait;
+use Idm\Bundle\Common\Traits\Entity\IdTrait;
 use Idm\Bundle\Seo\Entity\SeoEntityInterface;
 use Idm\Bundle\Seo\Traits\Entity\SeoColumnTrait;
 use Stringable;
@@ -48,7 +48,7 @@ use Stringable;
 #[Gedmo\Tree(type: 'nested')]
 class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface
 {
-    use UuidTrait;
+    use IdTrait;
     use SeoColumnTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
