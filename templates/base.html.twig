@@ -44,7 +44,7 @@
     {% endblock %}
 
     {% block main %}
-      <main class="container mx-auto p-4">
+      <twig:Layout:Main>
         {% block flash %}
           <twig:Layout:FlashMessages />
         {% endblock flash %}
@@ -52,7 +52,7 @@
         {% block article %}{% endblock %}
 
         {% block aside %}{% endblock %}
-      </main>
+      </twig:Layout:Main>
     {% endblock main %}
 
     {% block footer %}
