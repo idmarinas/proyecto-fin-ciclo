@@ -2,24 +2,25 @@
 {# @block content The default block #}
 {%- props variant = 'default' -%}
 {%- set style = html_cva(
-  base: 'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
+  base: "grid gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4 w-full relative group/alert",
   variants: {
     variant: {
-      default: 'bg-background text-foreground',
-      destructive: 'border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive',
-      error: 'bg-error text-error-foreground border-error-border [&>svg]:text-error-foreground',
-      danger: 'bg-danger text-danger-foreground border-danger-border [&>svg]:text-danger-foreground',
-      success: 'bg-success text-success-foreground border-success-border [&>svg]:text-success-foreground',
-      warning: 'bg-warning text-warning-foreground border-warning-border [&>svg]:text-warning-foreground',
-      info: 'bg-info text-info-foreground border-info-border [&>svg]:text-info-foreground',
-      notice: 'bg-notice text-notice-foreground border-notice-border [&>svg]:text-notice-foreground',
+      default: 'bg-card text-card-foreground',
+      destructive: 'text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current',
+      error: 'bg-error text-error-foreground bg-card *:data-[slot=alert-description]:text-error-foreground/90 *:[svg]:text-current',
+      danger: 'bg-danger text-danger-foreground bg-card *:data-[slot=alert-description]:text-danger-foreground/90 *:[svg]:text-current',
+      success: 'bg-success text-success-foreground bg-card *:data-[slot=alert-description]:text-success-foreground/90 *:[svg]:text-current',
+      warning: 'bg-warning text-warning-foreground bg-card *:data-[slot=alert-description]:text-warning-foreground/90 *:[svg]:text-current',
+      info: 'bg-info text-info-foreground bg-card *:data-[slot=alert-description]:text-info-foreground/90 *:[svg]:text-current',
+      notice: 'bg-notice text-notice-foreground bg-card *:data-[slot=alert-description]:text-notice-foreground/90 *:[svg]:text-current',
     },
   },
 ) -%}
 
 <div
-    class="{{ style.apply({variant}, attributes.render('class'))|tailwind_merge }}"
+    data-slot="alert"
     role="alert"
+    class="{{ style.apply({variant: variant}, attributes.render('class'))|tailwind_merge }}"
     {{ attributes }}
 >
   {%- block content %}{% endblock -%}
