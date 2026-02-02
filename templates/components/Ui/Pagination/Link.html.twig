@@ -1,7 +1,7 @@
 {# @prop active boolean Whether the link is active or not, default to `false` #}
 {# @block content The default block #}
 {%- props active = false -%}
-<twig:Button
+<twig:Ui:Button
     as="a"
     variant="{{ active ? 'outline' : 'ghost' }}"
     size="icon"
@@ -10,4 +10,4 @@
     {{ ...attributes.without('class') }}
 >
   {{- block(outerBlocks.content) -}}
-</twig:Button>
+</twig:Ui:Button>
