@@ -1,6 +1,7 @@
 {# @var attributes \Symfony\UX\TwigComponent\ComponentAttributes #}
 
 <article
+    data-slot="article"
     class="{{ ('max-w-none ' ~ attributes.render('class'))|tailwind_merge }}"
     {{ attributes }}
 >
