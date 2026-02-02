@@ -11,3 +11,8 @@
  ***********/
 @source '../../templates/**/*.html.twig';
 @source not '../../templates/bundles/TwigBundle/**/*.html.twig';
+
+turbo-frame {
+    grid-column: 1 / -1; /* Ocupa todas las columnas */
+    display: block;
+}
