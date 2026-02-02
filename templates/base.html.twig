@@ -44,7 +44,7 @@
     {% endblock %}
 
     {% block main %}
-      <twig:Layout:Main>
+      <main class="group/main container mx-auto p-4 has-data-[slot=aside]:grid has-data-[slot=aside]:grid-cols-1 has-data-[slot=aside]:lg:grid-cols-4 has-data-[slot=aside]:gap-10">
         {% block flash %}
           <twig:Layout:FlashMessages />
         {% endblock flash %}
@@ -52,7 +52,7 @@
         {% block article %}{% endblock %}
 
         {% block aside %}{% endblock %}
-      </twig:Layout:Main>
+      </main>
     {% endblock main %}
 
     {% block footer %}
