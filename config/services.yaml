@@ -33,10 +33,10 @@ when@dev: &dev
             autowire: true
             autoconfigure: true
 
-        Factory\:
+        App\Tests\Factory\:
             resource: '../tests/Factory/'
 
-        DataFixtures\:
+        App\Tests\DataFixtures\:
             resource: '../tests/DataFixtures/'
 
 when@test: *dev
