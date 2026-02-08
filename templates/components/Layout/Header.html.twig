@@ -15,7 +15,7 @@
     <div class="flex">
       {% include 'layouts/menus/responsive_menu.html.twig' %}
     </div>
-    <div class="hidden md:flex md:flex-1 md:justify-end">
+    <div class="hidden md:flex md:flex-1 md:justify-end gap-2">
       {% if app.user is empty %}
         <twig:App:Nav:Anonymous />
       {% else %}
