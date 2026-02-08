@@ -68,3 +68,11 @@ when@prod:
                     enabled: true
                 report-uri: '%router.request_context.base_url%/nelmio/csp/report'
                 default-src: [ 'self' ]
+
+when@dev:
+    nelmio_security:
+        csp:
+            enforce:
+                img-src:
+                    - https://images.unsplash.com
+                    - https://via.placeholder.com
