@@ -3,17 +3,17 @@
     <option name="additionalOptions" />
     <option name="pathsToProcess">
       <list>
-        <option value="$PROJECT_DIR$\rector.php" />
+        <option value="" />
       </list>
     </option>
-    <option name="rectorConfigPath" />
+    <option name="rectorConfigPath" value="$PROJECT_DIR$/rector.php" />
     <option name="additionalOptions" />
     <option name="pathsToProcess">
       <list>
-        <option value="$PROJECT_DIR$\rector.php" />
+        <option value="" />
       </list>
     </option>
-    <option name="rectorConfigPath" />
+    <option name="rectorConfigPath" value="$PROJECT_DIR$/rector.php" />
     <method v="2" />
   </configuration>
 </component>
