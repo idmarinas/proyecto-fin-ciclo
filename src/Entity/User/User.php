@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/02/2026, 14:14
+ * Last modified by "IDMarinas" on 08/02/2026, 19:45
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,8 +21,11 @@ namespace App\Entity\User;
 
 use App\Repository\User\UserRepository;
 use App\Traits\Entity\BanTrait;
+use App\Traits\Entity\EquatableTrait;
 use DateTimeInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\IpTraceable\Traits\IpTraceableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -42,17 +45,28 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 {
     use UuidTrait;
     use BanTrait;
+    use EquatableTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
+    use IpTraceableEntity;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    public ?string $avatar = null {
+        get => $this->avatar;
+        set => $this->avatar = $value;
+    }
+
+    #[ORM\Column]
+    public int $reputation = 0 {
+        get => $this->reputation;
+        set => $this->reputation = $value;
+    }
 
     #[ORM\Column(length: 180, unique: true)]
     private string $email = '';
 
     #[ORM\Column(length: 50, unique: true, nullable: true)]
     private ?string $username = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $avatar = null;
 
     /**
      * @var list<string> The user roles
@@ -78,11 +92,8 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $signature = null;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $lastActiveAt = null;
-
-    #[ORM\Column]
-    private int $reputation = 0;
 
     public function __toString (): string
     {
@@ -109,18 +120,6 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     public function setUsername (?string $username): static
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    public function getAvatar (): ?string
-    {
-        return $this->avatar;
-    }
-
-    public function setAvatar (?string $avatar): static
-    {
-        $this->avatar = $avatar;
 
         return $this;
     }
@@ -232,25 +231,13 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
         return $this;
     }
 
-    public function getReputation (): int
-    {
-        return $this->reputation;
-    }
-
-    public function setReputation (int $reputation): static
-    {
-        $this->reputation = $reputation;
-
-        return $this;
-    }
-
     /**
      * Ensure the session doesn't contain actual password hashes by CRC32C-hashing them, as supported since Symfony 7.3.
      */
     public function __serialize (): array
     {
         $data = (array)$this;
-        $data["\0" . self::class . "\0password"] = hash('crc32c', $this->password);
+        $data["\0" . self::class . "\0password"] = hash('crc32c', (string)$this->password);
 
         return $data;
     }
