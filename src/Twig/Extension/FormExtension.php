@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/01/2026, 23:28
+ * Last modified by "IDMarinas" on 08/02/2026, 19:31
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,11 +20,13 @@
 namespace App\Twig\Extension;
 
 use App\Twig\Runtime\FormExtensionRuntime;
+use Override;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 final class FormExtension extends AbstractExtension
 {
+    #[Override]
     public function getFunctions (): array
     {
         return [
