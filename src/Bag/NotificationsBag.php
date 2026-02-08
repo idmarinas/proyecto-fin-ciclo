@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 11/01/2026, 16:47
+ * Last modified by "IDMarinas" on 08/02/2026, 18:23
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -26,7 +26,7 @@ final class NotificationsBag implements NotificationsBagInterface
     private string $name          = 'notifications';
     private array  $notifications = [];
 
-    public function __construct (private string $storageKey = '_fas_notifications') {}
+    public function __construct (private readonly string $storageKey = '_fas_notifications') {}
 
     public function getName (): string
     {
