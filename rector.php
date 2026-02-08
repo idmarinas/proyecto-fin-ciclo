@@ -26,6 +26,9 @@ return RectorConfig::configure()
     ->withComposerBased(twig: true, doctrine: true, symfony: true)
     ->withSymfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml')
     ->withSkip([
+        __DIR__ . '/assets/vendor/installed.php',
         __DIR__ . '/config/bundles.php',
+        __DIR__ . '/config/preload.php',
+        __DIR__ . '/config/reference.php',
     ])
 ;
