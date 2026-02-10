@@ -7,9 +7,6 @@
   'bg-gray-200 text-gray-700': 'Usuario' === text
 }) ~ ' ' ~ attributes.render('class') %}
 
-{% dump(text) %}
-{% dump(class) %}
-
 {% component 'Ui:Badge' with {...attributes, class} %}
   {% block content text %}
 {% endcomponent %}
