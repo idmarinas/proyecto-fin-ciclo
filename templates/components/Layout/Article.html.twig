@@ -2,8 +2,7 @@
 
 <article
     data-slot="article"
-    class="{{ ('max-w-none group-has-data-[slot=aside]/main:lg:col-span-3 ' ~ attributes.render('class'))
-    |tailwind_merge }}"
+    class="{{ ('max-w-none group-has-data-[slot=aside]/main:md:col-span-3 has-data-[slot=aside]:md:col-span-12' ~ attributes.render('class'))|tailwind_merge }}"
     {{ attributes }}
 >
   {% block content %}{% endblock %}
