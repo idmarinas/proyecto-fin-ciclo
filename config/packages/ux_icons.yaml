@@ -31,6 +31,9 @@ ux_icons:
         'toast:notice': 'tabler:message'
         'toast:default': 'tabler:message-circle'
         'close': 'tabler:x'
+        'thread:progress': 'tabler:progress'
+        'thread:resolved': 'tabler:circle-check'
+        'thread:open': 'tabler:alert-circle'
 
 
 when@prod:
