@@ -2,7 +2,7 @@
 
 <section
     data-slot="section"
-    class="{{ ('py-6 ' ~ attributes.render('class'))|tailwind_merge }}"
+    class="{{ ('py-6 first:pt-0 ' ~ attributes.render('class'))|tailwind_merge }}"
     {{ attributes }}
 >
   {% block content %}{% endblock %}
