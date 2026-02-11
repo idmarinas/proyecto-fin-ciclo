@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/01/2026, 22:56
+ * Last modified by "IDMarinas" on 10/02/2026, 23:01
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,8 +19,14 @@
 
 namespace App\Enums;
 
+use App\Traits\Enums\NormalizeValueTrait;
+use App\Traits\Enums\ValidateValueTrait;
+
 enum ThreadStatusEnum: string
 {
+    use ValidateValueTrait;
+    use NormalizeValueTrait;
+
     case OPEN             = 'open';
     case IN_REVIEW        = 'in_review';
     case WAITING_CUSTOMER = 'waiting_customer';
