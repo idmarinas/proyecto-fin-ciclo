@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/01/2026, 17:05
+ * Last modified by "IDMarinas" on 10/02/2026, 23:01
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,8 +19,14 @@
 
 namespace App\Twig\Components\Ui\Alert;
 
+use App\Traits\Enums\NormalizeValueTrait;
+use App\Traits\Enums\ValidateValueTrait;
+
 enum AlertVariantEnum: string
 {
+    use ValidateValueTrait;
+    use NormalizeValueTrait;
+
     case Success     = 'success';
     case Danger      = 'danger';
     case Error       = 'error';
@@ -29,27 +35,4 @@ enum AlertVariantEnum: string
     case Notice      = 'notice';
     case Destructive = 'destructive';
     case Default     = 'default';
-
-    public static function normalizeValue (string|self $value): self
-    {
-        if ($value instanceof self) {
-            return $value;
-        }
-
-        $value = self::tryFrom($value);
-
-        return empty($value) ? self::Default : $value;
-    }
-
-    /**
-     *  Validates whether the value provided is an instance of the enum class or can be converted from a string.
-     */
-    public static function isValidValue (string|self $value): bool
-    {
-        if ($value instanceof self) {
-            return true;
-        }
-
-        return !(self::tryFrom($value) === null);
-    }
 }
