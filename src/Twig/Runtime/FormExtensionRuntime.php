@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/01/2026, 17:54
+ * Last modified by "IDMarinas" on 12/02/2026, 21:35
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -34,6 +34,8 @@ final readonly class FormExtensionRuntime implements RuntimeExtensionInterface
             'disabled' => $context['disabled'] ? 'disabled' : null,
             'required' => $context['required'] ? 'required' : null,
         ];
+
+        $context['type'] = $context['type'] ?? null;
 
         if (in_array($context['type'], ['input', 'hidden']) && !empty($context['value'])) {
             $attributes['value'] = $context['value'];
