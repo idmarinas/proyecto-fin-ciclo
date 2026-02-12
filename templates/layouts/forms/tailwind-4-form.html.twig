@@ -1,7 +1,7 @@
 {% use 'form_div_layout.html.twig' %}
 
 {%- block textarea_widget -%}
-  {% component 'Ui:Textarea' %}
+  {% component 'Ui:Textarea' with form_widget_attributes(_context) %}
     {% block content %}{{ value }}{% endblock %}
   {% endcomponent %}
 {%- endblock textarea_widget -%}
