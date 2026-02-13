@@ -1,16 +1,54 @@
 {% use 'form_div_layout.html.twig' %}
 
-{%- block textarea_widget -%}
-  {% component 'Ui:Textarea' with form_widget_attributes(_context) %}
-    {% block content %}{{ value }}{% endblock %}
+{%- block form_widget -%}
+  {% if compound and fieldset %}
+    {{- block('form_widget_fieldset') -}}
+  {% elseif compound %}
+    {{- block('form_widget_compound') -}}
+  {% else %}
+    {{- block('form_widget_simple') -}}
+  {% endif %}
+{%- endblock form_widget -%}
+
+{%- block form_widget_fieldset -%}
+  {% component 'Ui:Field:Set' with form_widget_container_attributes(_context) %}
+    {% block content %}
+      {{ form_label(form) }}
+      {{ form_help(form) }}
+
+      {%- if form is rootform -%}
+        {{ form_errors(form) }}
+      {%- endif -%}
+
+      {{- block(outerBlocks.form_rows) -}}
+      {{- form_rest(form) -}}
+    {% endblock %}
   {% endcomponent %}
-{%- endblock textarea_widget -%}
+{%- endblock form_widget_fieldset -%}
+
+{%- block form_widget_compound -%}
+  {% component 'Ui:Field:Group' with form_widget_container_attributes(_context) %}
+    {% block content %}
+      {%- if form is rootform -%}
+        {{ form_errors(form) }}
+      {%- endif -%}
+      {{- block(outerBlocks.form_rows) -}}
+      {{- form_rest(form) -}}
+    {% endblock %}
+  {% endcomponent %}
+{%- endblock form_widget_compound -%}
 
 {%- block form_widget_simple -%}
   {%- set type = type|default('text') -%}
 
   {{ component('Ui:Input', { type, ...form_widget_attributes(_context)}) }}
 {%- endblock form_widget_simple -%}
+
+{%- block textarea_widget -%}
+  {% component 'Ui:Textarea' with form_widget_attributes(_context) %}
+    {% block content %}{{ value }}{% endblock %}
+  {% endcomponent %}
+{%- endblock textarea_widget -%}
 
  {%- block hidden_widget -%}
    {%- set type = type|default('hidden') -%}
@@ -31,23 +69,17 @@
 
 {%- block form_label -%}
   {% if label is not same as(false) -%}
-    {% component 'Ui:Field:Label' with form_label_attributes(_context) %}
-      {% block content %}{{- block(outerBlocks.form_label_content) -}} {% endblock %}
-    {% endcomponent %}
+    {% if label_as_legend is not defined or label_as_legend is same as(false) %}
+      {% component 'Ui:Field:Label' with form_label_attributes(_context) %}
+        {% block content %}{{- block(outerBlocks.form_label_content) -}} {% endblock %}
+      {% endcomponent %}
+    {% else %}
+      {% component 'Ui:Field:Legend' with form_label_attributes(_context) %}
+        {% block content %}{{- block(outerBlocks.form_label_content) -}} {% endblock %}
+      {% endcomponent %}
+    {% endif %}
   {%- endif -%}
 {%- endblock form_label -%}
-
-{%- block form_widget_compound -%}
-  {% component 'Ui:Field:Group' with form_widget_container_attributes(_context) %}
-    {% block content %}
-      {%- if form is rootform -%}
-        {{ form_errors(form) }}
-      {%- endif -%}
-      {{- block(outerBlocks.form_rows) -}}
-      {{- form_rest(form) -}}
-    {% endblock %}
-  {% endcomponent %}
-{%- endblock form_widget_compound -%}
 
 {%- block form_row_render -%}
   {% component 'Ui:Field' with {
@@ -111,3 +143,52 @@
     {{ component('Ui:Field:Error', {errors}) }}
   {%- endif -%}
 {%- endblock form_errors -%}
+
+{%- block choice_widget_collapsed -%}
+  {%- if required and placeholder is none and not placeholder_in_choices and not multiple and (attr.size is not defined or attr.size <= 1) -%}
+    {% set required = false %}
+  {%- endif -%}
+  {% component 'Ui:Select' with form_widget_attributes(_context) %}
+    {% block content %}
+      {%- if placeholder is not none -%}
+        <option value=""{% if placeholder_attr|default({}) %}{% with {attr: placeholder_attr} %}{{ block('attributes') }}{% endwith %}{% endif %}{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+      {%- endif -%}
+      {%- if preferred_choices|length > 0 -%}
+        {% set options = preferred_choices %}
+        {% set render_preferred_choices = true %}
+        {{- block(outerBlocks.choice_widget_options) -}}
+        {%- if choices|length > 0 and separator is not none -%}
+          {%- if separator_html is not defined or separator_html is same as(false) -%}
+            <option disabled="disabled">{{ separator }}</option>
+          {% else %}
+            {{ separator|raw }}
+          {% endif %}
+        {%- endif -%}
+      {%- endif -%}
+      {%- set options = choices -%}
+      {%- set render_preferred_choices = false -%}
+      {{- block(outerBlocks.choice_widget_options) -}}
+    {% endblock %}
+  {% endcomponent %}
+
+  <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+    {%- if placeholder is not none -%}
+      <option value=""{% if placeholder_attr|default({}) %}{% with {attr: placeholder_attr} %}{{ block('attributes') }}{% endwith %}{% endif %}{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+    {%- endif -%}
+    {%- if preferred_choices|length > 0 -%}
+      {% set options = preferred_choices %}
+      {% set render_preferred_choices = true %}
+      {{- block('choice_widget_options') -}}
+      {%- if choices|length > 0 and separator is not none -%}
+        {%- if separator_html is not defined or separator_html is same as(false) -%}
+          <option disabled="disabled">{{ separator }}</option>
+        {% else %}
+          {{ separator|raw }}
+        {% endif %}
+      {%- endif -%}
+    {%- endif -%}
+    {%- set options = choices -%}
+    {%- set render_preferred_choices = false -%}
+    {{- block('choice_widget_options') -}}
+  </select>
+{%- endblock choice_widget_collapsed -%}
