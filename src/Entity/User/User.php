@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 08/02/2026, 19:45
+ * Last modified by "IDMarinas" on 10/02/2026, 18:54
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -60,6 +60,12 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     public int $reputation = 0 {
         get => $this->reputation;
         set => $this->reputation = $value;
+    }
+
+    #[ORM\Column(type: Types::BOOLEAN)]
+    public bool $client = false {
+        get => $this->client;
+        set => $this->client = $value;
     }
 
     #[ORM\Column(length: 180, unique: true)]
