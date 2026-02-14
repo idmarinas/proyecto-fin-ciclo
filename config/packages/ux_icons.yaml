@@ -34,6 +34,10 @@ ux_icons:
         'thread:progress': 'tabler:progress'
         'thread:resolved': 'tabler:circle-check'
         'thread:open': 'tabler:alert-circle'
+        'thread:closed': 'tabler:circle-x'
+        'thread:waiting_support': 'tabler:user-shield'
+        'thread:waiting_customer': 'tabler:user-star'
+        'thread:in_review': 'tabler:progress-help'
 
 
 when@prod:
