@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 13/02/2026, 20:34
+ * Last modified by "IDMarinas" on 14/02/2026, 12:59
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -31,7 +31,7 @@ export default class extends Controller {
         const opts = {
             element: null,
             extensions: [
-                StarterKit.configure({codeBlock: false, code: false, link: false}),
+                StarterKit.configure({codeBlock: false, code: false, link: false, heading: false}),
             ],
             autofocus: false,
             content: this.inputTarget.value,
