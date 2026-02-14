@@ -1,7 +1,7 @@
 {% use 'form_div_layout.html.twig' %}
 
 {%- block form_widget -%}
-  {% if compound and fieldset %}
+  {% if compound and fieldset is defined and fieldset %}
     {{- block('form_widget_fieldset') -}}
   {% elseif compound %}
     {{- block('form_widget_compound') -}}
