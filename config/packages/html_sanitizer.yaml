@@ -1,0 +1,17 @@
+# config/packages/html_sanitizer.yaml
+framework:
+    html_sanitizer:
+        sanitizers:
+            tiptap:
+                allow_safe_elements: true
+                allow_static_elements: false
+                max_input_length: 30000
+
+                # No permitimos nada extra que TipTap no genere
+                allow_elements:
+                    span: [ 'class', 'style' ]   # Solo si usas marks que añaden estilos
+
+                # Atributos globales permitidos (opcionales)
+                allow_attributes:
+                    class: [ '*' ]
+                    style: [ '*' ]
