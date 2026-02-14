@@ -1,0 +1,498 @@
+forums:
+    -   id: 1
+        slug: facturacion-y-documentos
+        title: Facturación y documentos
+        description: Foro dedicado a resolver dudas, compartir buenas prácticas y analizar
+            problemas relacionados con la creación, personalización y envío de facturas, presupuestos
+            y documentos generados desde la plataforma.
+        image: https://images.pexels.com/photos/6863250/pexels-photo-6863250.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 1
+        is_active: true
+        subforums:
+            -   id: 11
+                slug: configuracion-de-facturas
+                title: Configuración de facturas
+                description: Subforo centrado en la configuración de series, impuestos, plantillas,
+                    numeración y personalización avanzada de facturas.
+                image: https://images.pexels.com/photos/6801682/pexels-photo-6801682.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 10
+                    messages_count: 39
+                    last_thread_id: 10
+            -   id: 12
+                slug: pdf-y-envio-por-email
+                title: PDF y envío por email
+                description: Espacio dedicado a la generación de PDFs, diseño de plantillas, problemas
+                    de visualización, envío automático de documentos por correo.
+                image: https://images.pexels.com/photos/8382613/pexels-photo-8382613.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 7
+                    messages_count: 35
+                    last_thread_id: 17
+            -   id: 13
+                slug: presupuestos-y-proformas
+                title: Presupuestos y proformas
+                description: Subforo para gestión de presupuestos, proformas, ofertas y documentos
+                    previos a la facturación.
+                image: https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 5
+                    messages_count: 19
+                    last_thread_id: 22
+            -   id: 14
+                slug: notas-credito-y-rectificacion
+                title: Notas crédito y rectificación
+                description: Espacio para consultas sobre notas de crédito, facturas rectificativas
+                    y procedimientos de anulación.
+                image: https://images.pexels.com/photos/6863252/pexels-photo-6863252.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 4
+                is_active: true
+                stats:
+                    threads_count: 7
+                    messages_count: 29
+                    last_thread_id: 29
+    -   id: 2
+        slug: integraciones-y-automatizacion
+        title: Integraciones y automatización
+        description: Foro dedicado a integraciones con Shopify, WooCommerce, APIs externas,
+            webhooks y flujos de automatización.
+        image: https://images.pexels.com/photos/3861957/pexels-photo-3861957.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 2
+        is_active: true
+        subforums:
+            -   id: 21
+                slug: integracion-con-shopify
+                title: Integración con Shopify
+                description: Subforo especializado en la integración con Shopify, sincronización
+                    de pedidos, clientes y productos.
+                image: https://images.pexels.com/photos/6214472/pexels-photo-6214472.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 9
+                    messages_count: 55
+                    last_thread_id: 38
+            -   id: 22
+                slug: api-y-webhooks
+                title: API y webhooks
+                description: Espacio para desarrolladores que trabajan con la API y los webhooks
+                    de la plataforma.
+                image: https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 5
+                    messages_count: 28
+                    last_thread_id: 43
+            -   id: 23
+                slug: woocommerce-y-otros-cms
+                title: WooCommerce y otros CMS
+                description: Subforo para integraciones con WooCommerce, Magento y otros sistemas
+                    de comercio electrónico.
+                image: https://images.pexels.com/photos/6214473/pexels-photo-6214473.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 6
+                    messages_count: 24
+                    last_thread_id: 49
+            -   id: 24
+                slug: automatizacion-y-flujos
+                title: Automatización y flujos
+                description: Espacio para crear y compartir flujos de automatización, tareas programadas
+                    y procesos automáticos.
+                image: https://images.pexels.com/photos/6214474/pexels-photo-6214474.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 4
+                is_active: true
+                stats:
+                    threads_count: 7
+                    messages_count: 42
+                    last_thread_id: 56
+    -   id: 3
+        slug: soporte-tecnico-y-plataforma
+        title: Soporte técnico y plataforma
+        description: Foro general para incidencias técnicas, rendimiento, acceso a cuentas,
+            seguridad y funcionamiento de la plataforma.
+        image: https://images.pexels.com/photos/8867267/pexels-photo-8867267.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 3
+        is_active: true
+        subforums:
+            -   id: 31
+                slug: acceso-y-cuentas
+                title: Acceso y cuentas
+                description: Subforo para resolver problemas de inicio de sesión, recuperación
+                    de contraseña, gestión de usuarios.
+                image: https://images.pexels.com/photos/15373485/pexels-photo-15373485.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 10
+                    messages_count: 24
+                    last_thread_id: 66
+            -   id: 32
+                slug: rendimiento-y-errores
+                title: Rendimiento y errores
+                description: Espacio para reportar errores, caídas, lentitud y problemas de rendimiento
+                    de la plataforma.
+                image: https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 9
+                    messages_count: 51
+                    last_thread_id: 75
+            -   id: 33
+                slug: permisos-y-roles
+                title: Permisos y roles
+                description: Subforo para dudas sobre gestión de permisos, roles de usuario y
+                    control de acceso.
+                image: https://images.pexels.com/photos/15373486/pexels-photo-15373486.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 5
+                    messages_count: 14
+                    last_thread_id: 80
+    -   id: 4
+        slug: servicios-y-gestion
+        title: Servicios y gestión
+        description: Foro dedicado a la gestión de servicios contratados, monitorización,
+            renovaciones y optimización.
+        image: https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 4
+        is_active: true
+        subforums:
+            -   id: 41
+                slug: monitoreo-y-alertas
+                title: Monitoreo y alertas
+                description: Subforo para configuración de monitorización, alertas de servicios
+                    y métricas en tiempo real.
+                image: https://images.pexels.com/photos/5632400/pexels-photo-5632400.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 8
+                    messages_count: 40
+                    last_thread_id: 88
+            -   id: 42
+                slug: cambios-y-upgrades
+                title: Cambios y upgrades
+                description: Espacio para solicitar cambios de plan, ampliaciones de servicios
+                    y downgrades.
+                image: https://images.pexels.com/photos/5632401/pexels-photo-5632401.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 10
+                    messages_count: 54
+                    last_thread_id: 98
+            -   id: 43
+                slug: facturacion-de-servicios
+                title: Facturación de servicios
+                description: Subforo para consultas sobre facturación de servicios, renovaciones
+                    automáticas y pagos.
+                image: https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 6
+                    messages_count: 22
+                    last_thread_id: 104
+    -   id: 5
+        slug: panel-de-control-y-personalizacion
+        title: Panel de control y personalización
+        description: Foro para dudas sobre el panel de control, personalización de widgets,
+            dashboard y configuración.
+        image: https://images.pexels.com/photos/5473566/pexels-photo-5473566.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 5
+        is_active: true
+        subforums:
+            -   id: 51
+                slug: widgets-y-dashboards
+                title: Widgets y dashboards
+                description: Subforo para consultas sobre widgets, gráficos, métricas y customización
+                    de dashboards.
+                image: https://images.pexels.com/photos/5473567/pexels-photo-5473567.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 5
+                    messages_count: 14
+                    last_thread_id: 109
+            -   id: 52
+                slug: accesos-rapidos-y-navegacion
+                title: Accesos rápidos y navegación
+                description: Espacio para mejorar navegación, crear atajos personalizados y optimizar
+                    flujo de trabajo.
+                image: https://images.pexels.com/photos/5473568/pexels-photo-5473568.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 7
+                    messages_count: 27
+                    last_thread_id: 116
+            -   id: 53
+                slug: personalizacion-avanzada
+                title: Personalización avanzada
+                description: Subforo para usuarios que quieren customizar profundamente su experiencia
+                    en la plataforma.
+                image: https://images.pexels.com/photos/5473569/pexels-photo-5473569.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 8
+                    messages_count: 35
+                    last_thread_id: 124
+    -   id: 6
+        slug: seguridad-y-privacidad
+        title: Seguridad y privacidad
+        description: Foro dedicado a temas de seguridad, autenticación, cifrado, RGPD y
+            protección de datos.
+        image: https://images.pexels.com/photos/3808517/pexels-photo-3808517.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 6
+        is_active: true
+        subforums:
+            -   id: 61
+                slug: autenticacion-y-2fa
+                title: Autenticación y 2FA
+                description: Subforo para configurar autenticación de dos factores, tokens y recuperación
+                    de acceso.
+                image: https://images.pexels.com/photos/3808518/pexels-photo-3808518.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 6
+                    messages_count: 29
+                    last_thread_id: 130
+            -   id: 62
+                slug: rgpd-y-proteccion-datos
+                title: RGPD y protección de datos
+                description: Espacio para consultas sobre regulaciones de privacidad, exportación
+                    de datos y cumplimiento normativo.
+                image: https://images.pexels.com/photos/3808519/pexels-photo-3808519.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 8
+                    messages_count: 31
+                    last_thread_id: 138
+            -   id: 63
+                slug: cumplimiento-normativo
+                title: Cumplimiento normativo
+                description: Subforo para asuntos relacionados con leyes, regulaciones y certificaciones
+                    de seguridad.
+                image: https://images.pexels.com/photos/3808520/pexels-photo-3808520.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 9
+                    messages_count: 39
+                    last_thread_id: 147
+    -   id: 7
+        slug: pagos-y-pasarelas
+        title: Pagos y pasarelas
+        description: Foro especializado en integraciones de pasarelas de pago, métodos de
+            pago y procesamiento de transacciones.
+        image: https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 7
+        is_active: true
+        subforums:
+            -   id: 71
+                slug: integracion-pasarelas
+                title: Integración de pasarelas
+                description: Subforo para configurar integraciones con Stripe, Redsys, PayPal
+                    y otras pasarelas.
+                image: https://images.pexels.com/photos/6863252/pexels-photo-6863252.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 8
+                    messages_count: 43
+                    last_thread_id: 155
+            -   id: 72
+                slug: problemas-transaccionales
+                title: Problemas transaccionales
+                description: Espacio para reportar errores en pagos, fallos de transacción y discrepancias
+                    en registros.
+                image: https://images.pexels.com/photos/6863253/pexels-photo-6863253.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 0
+                    messages_count: 0
+                    last_thread_id: null
+            -   id: 73
+                slug: metodos-pago-especiales
+                title: Métodos de pago especiales
+                description: Subforo para consultas sobre métodos de pago alternativos, criptomonedas
+                    y soluciones customizadas.
+                image: https://images.pexels.com/photos/6863254/pexels-photo-6863254.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 7
+                    messages_count: 38
+                    last_thread_id: 162
+    -   id: 8
+        slug: reportes-y-analisis
+        title: Reportes y análisis
+        description: Foro dedicado a generación de reportes, análisis de datos, exportaciones
+            y auditoría financiera.
+        image: https://images.pexels.com/photos/5632401/pexels-photo-5632401.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 8
+        is_active: true
+        subforums:
+            -   id: 81
+                slug: generacion-de-reportes
+                title: Generación de reportes
+                description: Subforo para crear reportes personalizados, exportar datos a diferentes
+                    formatos y programar reportes.
+                image: https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 7
+                    messages_count: 26
+                    last_thread_id: 169
+            -   id: 82
+                slug: analisis-financiero
+                title: Análisis financiero
+                description: Espacio para análisis de ingresos, márgenes, rentabilidad y métricas
+                    clave del negocio.
+                image: https://images.pexels.com/photos/5632403/pexels-photo-5632403.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 6
+                    messages_count: 30
+                    last_thread_id: 175
+            -   id: 83
+                slug: inteligencia-empresarial
+                title: Inteligencia empresarial
+                description: Subforo para herramientas BI, dashboards de inteligencia empresarial
+                    y analytics avanzado.
+                image: https://images.pexels.com/photos/5632404/pexels-photo-5632404.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 6
+                    messages_count: 29
+                    last_thread_id: 181
+    -   id: 9
+        slug: formaciones-y-recursos
+        title: Formaciones y recursos
+        description: Foro con tutoriales, guías, webinars, documentación y recursos para
+            aprovechar Lumina al máximo.
+        image: https://images.pexels.com/photos/3808517/pexels-photo-3808517.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 9
+        is_active: true
+        subforums:
+            -   id: 91
+                slug: tutoriales-y-guias
+                title: Tutoriales y guías
+                description: Subforo con tutoriales paso a paso, guías de inicio rápido y mejores
+                    prácticas.
+                image: https://images.pexels.com/photos/3808518/pexels-photo-3808518.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 8
+                    messages_count: 36
+                    last_thread_id: 189
+            -   id: 92
+                slug: casos-de-uso
+                title: Casos de uso
+                description: Espacio para compartir casos de uso reales, implementaciones exitosas
+                    e historias de éxito.
+                image: https://images.pexels.com/photos/3808519/pexels-photo-3808519.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 7
+                    messages_count: 32
+                    last_thread_id: 196
+            -   id: 93
+                slug: webinars-y-eventos
+                title: Webinars y eventos
+                description: Subforo para anunciar y discutir webinars, eventos, charlas y conferencias
+                    de Lumina.
+                image: https://images.pexels.com/photos/3808520/pexels-photo-3808520.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 6
+                    messages_count: 29
+                    last_thread_id: 202
+    -   id: 10
+        slug: sugerencias-y-comunidad
+        title: Sugerencias y comunidad
+        description: Foro para sugerencias de mejora, feedback, anuncios de novedades y
+            comunicación con la comunidad.
+        image: https://images.pexels.com/photos/5632404/pexels-photo-5632404.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+        position: 10
+        is_active: true
+        subforums:
+            -   id: 101
+                slug: sugerencias-de-mejora
+                title: Sugerencias de mejora
+                description: Subforo para proponer nuevas funcionalidades, mejoras en interfaz
+                    y optimizaciones.
+                image: https://images.pexels.com/photos/5632405/pexels-photo-5632405.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 1
+                is_active: true
+                stats:
+                    threads_count: 9
+                    messages_count: 36
+                    last_thread_id: 211
+            -   id: 102
+                slug: anuncios-y-novedades
+                title: Anuncios y novedades
+                description: Espacio oficial para comunicar actualizaciones, cambios importantes
+                    y nuevas características.
+                image: https://images.pexels.com/photos/5632406/pexels-photo-5632406.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 2
+                is_active: true
+                stats:
+                    threads_count: 6
+                    messages_count: 25
+                    last_thread_id: 217
+            -   id: 103
+                slug: comunidad-y-networking
+                title: Comunidad y networking
+                description: Subforo para conectar con otros usuarios, compartir experiencias
+                    y hacer networking.
+                image: https://images.pexels.com/photos/5632407/pexels-photo-5632407.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+                position: 3
+                is_active: true
+                stats:
+                    threads_count: 9
+                    messages_count: 38
+                    last_thread_id: 226
+            -   id: 104
+                slug: subforo-vacio
+                title: Subforo vacío
+                description: Subforo sin contenido para pruebas y desarrollo.
+                image: https://images.pexels.com/photos/5632408/pexels-photo-5632408.jpeg?auto=compress&cs=tinysrgb&w=600&q=80
+                position: 4
+                is_active: true
+                stats:
+                    threads_count: 5
+                    messages_count: 15
+                    last_thread_id: 231
+            -   id: 105
+                slug: subforo-vacio-pruebas
+                title: Subforo vacío
+                description: Subforo sin contenido para pruebas y desarrollo de nuevas funcionalidades.
+                image: https://images.pexels.com/photos/5632408/pexels-photo-5632408.jpeg?auto=compress&cs=tinysrgb&w=600&q=80
+                position: 4
+                is_active: true
+                stats:
+                    threads_count: 9
+                    messages_count: 57
+                    last_thread_id: 240
