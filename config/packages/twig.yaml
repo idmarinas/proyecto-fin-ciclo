@@ -3,7 +3,9 @@ twig:
     globals:
         app_version: '%env(APP_VERSION)%'
         app_title: '%env(APP_TITLE)%'
-    form_themes: [ 'layouts/forms/tailwind-4-form.html.twig' ]
+    form_themes:
+        - 'layouts/forms/tailwind-4-form.html.twig'
+        - 'layouts/forms/widgets/tiptap_widget.html.twig'
     paths:
         '%kernel.project_dir%/assets/styles/emails': email
         '%kernel.project_dir%/assets/images': images
