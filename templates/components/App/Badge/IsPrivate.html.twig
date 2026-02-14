@@ -1,0 +1,12 @@
+{%- props is_private -%}
+
+{% set text = true === is_private ? 'Privado' : 'Público' %}
+
+{% set class = 'px-3 py-1 text-xs rounded ' ~ html_classes({
+  'bg-gray-800 text-gray-100': 'Privado' === text,
+  'bg-blue-100 text-blue-700': 'Público' === text
+}) ~ ' ' ~ attributes.render('class') %}
+
+{% component 'Ui:Badge' with {...attributes, class} %}
+  {% block content text %}
+{% endcomponent %}
