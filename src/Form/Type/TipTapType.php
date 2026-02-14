@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 13/02/2026, 17:17
+ * Last modified by "IDMarinas" on 14/02/2026, 12:41
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -30,7 +30,9 @@ class TipTapType extends AbstractType
     public function configureOptions (OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'attr' => [
+            'sanitize_html' => true,
+            'sanitizer'     => 'app.tiptap_sanitizer',
+            'attr'          => [
                 'class' => 'tiptap-editor',
                 'rows'  => 10,
             ],
