@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 09/02/2026, 22:02
+ * Last modified by "IDMarinas" on 14/02/2026, 20:39
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,7 +19,6 @@
 
 namespace App\Tests\DataFixtures\Forum;
 
-use App\Entity\Forum\Message;
 use App\Entity\Forum\Thread;
 use App\Entity\User\User;
 use App\Tests\Factory\Forum\MessageFactory;
@@ -49,21 +48,26 @@ final class MessageFixtures extends Fixture implements DependentFixtureInterface
         );
 
         /**
-         * id: 23102
-         * thread_id: 231
-         * author_id: 70
-         * content: 'Lamentablemente, no hay una solución simple para eso.'
+         * id: 838
+         * thread_id: 183
+         * author_id: 3
+         * content: Mensaje 1 del thread 183
          * reply_to: null
-         * created_at: '2025-01-04 02:35:00'
+         * solution: false
+         * deletedAt: null
+         * created_at: '2025-01-04 00:00:00'
          */
         foreach ($messages as $message) {
             $entityM = MessageFactory::new()
                 ->createOne([
-                    'parent'  => empty($message['reply_to']) ? null :
-                        self::getReference('message_' . $message['reply_to'], Message::class),
-                    'content' => $message['content'],
-                    'thread'  => self::getReference('thread_' . $message['thread_id'], Thread::class),
-                    'author'  => self::getReference('user_' . $message['author_id'], User::class),
+                    // 'parent'    => empty($message['reply_to']) ? null :
+                    //     self::getReference('message_' . $message['reply_to'], Message::class),
+                    'content'   => $message['content'],
+                    'solution'  => $message['solution'],
+                    'thread'    => self::getReference('thread_' . $message['thread_id'], Thread::class),
+                    'author'    => self::getReference('user_' . $message['author_id'], User::class),
+                    'createdBy' => self::getReference('user_' . $message['author_id'], User::class),
+                    'updatedBy' => self::getReference('user_' . $message['author_id'], User::class),
                 ])
             ;
 

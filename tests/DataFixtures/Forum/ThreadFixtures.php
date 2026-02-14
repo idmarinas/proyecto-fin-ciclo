@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 09/02/2026, 23:44
+ * Last modified by "IDMarinas" on 14/02/2026, 21:11
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,6 +21,7 @@ namespace App\Tests\DataFixtures\Forum;
 
 use App\Entity\Forum;
 use App\Entity\User\User;
+use App\Enums\ThreadStatusEnum;
 use App\Tests\DataFixtures\ForumFixtures;
 use App\Tests\DataFixtures\User\UserFixtures;
 use App\Tests\Factory\Forum\ThreadFactory;
@@ -44,24 +45,38 @@ final class ThreadFixtures extends Fixture implements DependentFixtureInterface
         $threads = array_merge($thread1['threads'], $thread2['threads'], $thread3['threads'], $thread4['threads']);
 
         /**
-         * id: 87
-         * subforum_id: 23
-         * author_id: 41
-         * title: 'Integración Magento'
-         * content: 'Consulta sobre: Integración Magento. Necesito ayuda con esta cuestión.'
-         * status: 'sin_respuestas'
-         * help_type: 'problemas_facturacion'
-         * is_private: false
-         * created_at: '2024-11-24 11:50:00'
-         * updated_at: '2025-01-02 13:06:00'
+         * id: 5
+         * subforum_id: 11
+         * author_id: 122
+         * title: Thread 5 en subforo 11
+         * description: Descripción del thread 5
+         * content: Contenido detallado del thread 5
+         * status: resolved
+         * help_type: problemas_facturacion
+         * is_private: true
+         * sticky: false
+         * viewCount: 85
+         * created_at: '2024-05-02 00:00:00'
+         * updated_at: '2025-01-11 00:00:00'
+         * deletedAt: null
+         * has_messages: true
+         * slug: thread-5
+         * solved_message_id: 12
          */
         foreach ($threads as $thread) {
             $entity = ThreadFactory::new()
                 ->createOne([
-                    'title'       => $thread['title'],
-                    'description' => $thread['content'],
-                    'forum'       => self::getReference('subforum_' . $thread['subforum_id'], Forum::class),
-                    'author'      => self::getReference('user_' . $thread['author_id'], User::class),
+                    'title'         => $thread['title'],
+                    'description'   => $thread['content'],
+                    'private'       => $thread['is_private'],
+                    'viewCount'     => $thread['viewCount'],
+                    'sticky'        => $thread['sticky'],
+                    'solvedMessage' => null,
+                    'status'        => ThreadStatusEnum::from($thread['status']),
+                    'forum'         => self::getReference('subforum_' . $thread['subforum_id'], Forum::class),
+                    'author'        => self::getReference('user_' . $thread['author_id'], User::class),
+                    'createdBy'     => self::getReference('user_' . $thread['author_id'], User::class),
+                    'updatedBy'     => self::getReference('user_' . $thread['author_id'], User::class),
                 ])
             ;
 
