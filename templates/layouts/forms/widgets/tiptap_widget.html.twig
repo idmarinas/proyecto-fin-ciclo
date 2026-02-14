@@ -1,0 +1,116 @@
+{% block tiptap_widget %}
+  {% set attr = attr|merge({class: (attr.class|default('') ~ ' tiptap-container border rounded-md shadow-sm bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700')|trim}) %}
+  <div
+  {% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}" {% endfor %} data-controller="tiptap" data-tiptap-target="root">
+  {# Barra de herramientas #}
+  <div
+      class="tiptap-toolbar flex flex-wrap items-center gap-1 p-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-t-md text-gray-600 dark:text-gray-400"
+      data-tiptap-target="toolbar"
+  >
+    {# Formatting #}
+    <div class="flex items-center gap-1">
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="bold"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Negrita"
+      >
+        <twig:ux:icon name="tabler:bold" />
+      </button>
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="italic"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Cursiva"
+      >
+        <twig:ux:icon name="tabler:italic" />
+      </button>
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="strike"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Tachado"
+      >
+        <twig:ux:icon name="tabler:strikethrough" />
+      </button>
+    </div>
+
+    <div class="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
+
+    {# Lists #}
+    <div class="flex items-center gap-1">
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="bulletList"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Lista desordenada"
+      >
+        <twig:ux:icon name="tabler:list" />
+      </button>
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="orderedList"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Lista ordenada"
+      >
+        <twig:ux:icon name="tabler:list-numbers" />
+      </button>
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="blockquote"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Cita"
+      >
+        <twig:ux:icon name="tabler:quote" />
+      </button>
+    </div>
+
+    <div class="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
+
+    {# History #}
+    <div class="flex items-center gap-1">
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="undo"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Deshacer"
+      >
+        <twig:ux:icon name="tabler:arrow-back-up" />
+      </button>
+      <button
+          type="button"
+          data-tiptap-target="button"
+          data-tiptap-name-param="redo"
+          data-action="tiptap#toggle"
+          class="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          title="Rehacer"
+      >
+        <twig:ux:icon name="tabler:arrow-forward-up" />
+      </button>
+    </div>
+  </div>
+
+  {# Área del editor #}
+  <div
+      data-tiptap-target="editor"
+      class="tiptap-editor min-h-[150px] p-4 outline-none prose max-w-none dark:prose-invert"
+  ></div>
+
+  {# Input oculto para Symfony #}
+  <textarea {{ block('widget_attributes') }} style="display: none;" data-tiptap-target="input">{{ value }}</textarea>
+  </div>
+{% endblock %}
