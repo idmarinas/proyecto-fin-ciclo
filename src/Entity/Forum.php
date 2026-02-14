@@ -70,8 +70,10 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
+
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image       = null;
+    private ?string $image = null;
+
     /**
      * @var Collection<int, Tag>
      */
