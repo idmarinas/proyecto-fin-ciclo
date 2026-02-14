@@ -1,0 +1,11 @@
+app:
+    not_tags: No se permiten etiquetas HTML
+    agree_privacy: Debe aceptar nuestra política de privacidad.
+    agree_terms: Debe aceptar nuestros términos.
+    password:
+        min_message: Su contraseña debe tener al menos {{ limit }} caracteres
+        not_match: Los campos de la contraseña deben coincidir.
+        not_blank: Introduzca una contraseña
+    only_letters_numbers: Sólo se permiten letras y números
+    email.not_unique: Ya existe una cuenta con este correo electrónico
+    username.not_unique: Ya existe una cuenta con ese nombre
