@@ -31,13 +31,13 @@ ux_icons:
         'toast:notice': 'tabler:message'
         'toast:default': 'tabler:message-circle'
         'close': 'tabler:x'
-        'thread:progress': 'tabler:progress'
+        'thread:open': 'tabler:message-circle'
+        'thread:progress': 'tabler:message'
+        'thread:in_review': 'tabler:database-search'
+        'thread:waiting_customer': 'tabler:user-question'
+        'thread:waiting_support': 'tabler:user-check'
         'thread:resolved': 'tabler:circle-check'
-        'thread:open': 'tabler:alert-circle'
-        'thread:closed': 'tabler:circle-x'
-        'thread:waiting_support': 'tabler:user-shield'
-        'thread:waiting_customer': 'tabler:user-star'
-        'thread:in_review': 'tabler:progress-help'
+        'thread:closed': 'tabler:lock'
 
 
 when@prod:
