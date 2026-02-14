@@ -35,9 +35,6 @@ return [
     'stimulus-use' => [
         'version' => '0.52.3',
     ],
-    '@stimulus-components/dialog' => [
-        'version' => '1.0.1',
-    ],
     'hotkeys-js' => [
         'version' => '4.0.0',
     ],
@@ -84,7 +81,7 @@ return [
         'version' => '1.5.1',
     ],
     'prosemirror-view' => [
-        'version' => '1.41.5',
+        'version' => '1.41.6',
     ],
     'prosemirror-keymap' => [
         'version' => '1.2.3',
@@ -96,7 +93,7 @@ return [
         'version' => '2.2.8',
     ],
     'prosemirror-view/style/prosemirror.min.css' => [
-        'version' => '1.41.5',
+        'version' => '1.41.6',
         'type' => 'css',
     ],
     '@tiptap/starter-kit' => [
