@@ -75,4 +75,5 @@ when@dev:
             enforce:
                 img-src:
                     - https://images.unsplash.com
-                    - https://via.placeholder.com
+                    - https://placehold.net
+                    - https://images.pexels.com
