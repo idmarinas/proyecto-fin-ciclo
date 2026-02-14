@@ -1,0 +1,49 @@
+{# #[ExposeInTemplate('icon_name')] #}
+{# public function getIconName (): string #}
+{# { #}
+{# return 'thread:' . match (true) { #}
+{# ThreadStatusEnum::OPEN == $this->status && $this->replies > 0 #}
+{# => 'progress', #}
+{# default => $this->status->value, #}
+{# }; #}
+{# } #}
+
+{% props status, replies, colorize = false, text = false %}
+
+{% set statusEnum = enum('App\\Enums\\ThreadStatusEnum') %}
+
+{% set icon_name = status.value %}
+
+{% if statusEnum.OPEN == status and replies > 0 %}
+  {% set icon_name = 'progress' %}
+{% endif %}
+
+{% set color = '' %}
+
+{% if colorize %}
+  {% set color = html_classes({
+    'text-yellow-600 ': icon_name == 'progress' or icon_name == 'waiting_customer',
+    'text-green-600 ': icon_name == 'resolved',
+    'text-red-600 ': icon_name == 'open',
+    'text-blue-600 ': icon_name == 'waiting_support'
+  }) %}
+{% endif %}
+
+{{ ux_icon('thread:' ~ icon_name, {...attributes, class: ('size-7 ' ~ color ~ attributes.render('class'))|tailwind_merge}) }}
+{% if text %}
+  <span class="{{ color }}">
+    {% if icon_name == 'progress' %}
+      En progreso
+    {% elseif icon_name == 'resolved' %}
+      Resuelto
+    {% elseif icon_name == 'open' %}
+      Esperando ayuda
+    {% elseif icon_name == 'closed' %}
+      Cerrado
+    {% elseif icon_name == 'waiting_support' %}
+      Esperando Soporte
+    {% elseif icon_name == 'waiting_customer' %}
+      Esperando Usuario
+    {% endif %}
+  </span>
+{% endif %}

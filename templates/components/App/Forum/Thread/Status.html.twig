@@ -1,0 +1,27 @@
+{% set statusEnum = enum('App\\Enums\\ThreadStatusEnum') %}
+
+<twig:Ui:Card variant="full" class="p-5 border-l-4 rounded-xl space-y-2 {{ card_classes }}">
+  <div class="flex items-center gap-3">
+    <twig:App:Forum:Thread:Status:Icon :status="status" :replies="replies" />
+    <h3 class="text-lg font-semibold">{{ card_title }}</h3>
+  </div>
+  <p class="text-sm">{{ card_description }}</p>
+  {% if statusEnum.RESOLVED == status %}
+    <twig:Ui:Button as="a" variant="link" href="#{{ id }}">
+      Ver mensaje
+    </twig:Ui:Button>
+  {% endif %}
+</twig:Ui:Card>
+
+{% if statusEnum.CLOSED == status %}
+  CLOSED
+
+{% elseif statusEnum.IN_REVIEW == status %}
+  IN_REVIEW
+
+{% elseif statusEnum.WAITING_CUSTOMER == status %}
+  WAITING_CUSTOMER
+
+{% elseif statusEnum.WAITING_SUPPORT == status %}
+  WAITING_SUPPORT
+{% endif %}
