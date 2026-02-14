@@ -1,13 +1,3 @@
-{# #[ExposeInTemplate('icon_name')] #}
-{# public function getIconName (): string #}
-{# { #}
-{# return 'thread:' . match (true) { #}
-{# ThreadStatusEnum::OPEN == $this->status && $this->replies > 0 #}
-{# => 'progress', #}
-{# default => $this->status->value, #}
-{# }; #}
-{# } #}
-
 {% props status, replies, colorize = false, text = false %}
 
 {% set statusEnum = enum('App\\Enums\\ThreadStatusEnum') %}
@@ -22,10 +12,13 @@
 
 {% if colorize %}
   {% set color = html_classes({
-    'text-yellow-600 ': icon_name == 'progress' or icon_name == 'waiting_customer',
+    'text-slate-600 ': icon_name == 'open',
+    'text-amber-600 ': icon_name == 'progress',
+    'text-orange-600 ': icon_name == 'in_review',
+    'text-blue-600 ': icon_name == 'waiting_customer',
+    'text-blue-600 ': icon_name == 'waiting_support',
     'text-green-600 ': icon_name == 'resolved',
-    'text-red-600 ': icon_name == 'open',
-    'text-blue-600 ': icon_name == 'waiting_support'
+    'text-red-600 ': icon_name == 'closed'
   }) %}
 {% endif %}
 
@@ -44,6 +37,8 @@
       Esperando Soporte
     {% elseif icon_name == 'waiting_customer' %}
       Esperando Usuario
+    {% elseif icon_name == 'in_review' %}
+      En revisión
     {% endif %}
   </span>
 {% endif %}
