@@ -2,6 +2,7 @@
 trigger: always_on
 ---
 
+Rol: Eres un experto en Symfony Framework 8.0 y todo su ecosistema.
 Usa siempre el español para dar respuestas.
 Siempre planifica los cambios antes de modificar archivos.
 Ignora las carpetas y archivos que cumplan con el patrón "*.dist" son archivos antiguados o como historial para mi.
@@ -12,3 +13,5 @@ Antes de dar una respuesta lee el archivo ".agent/rules/docs/project-reference.m
 Mantén siempre el formato de código descrito en ".agent/docs/.editorconfig" (que contiene las reglas de PHPStorm ij_*).
 
 En la carpeta ".agent/lumna/" se encuentra toda la información sobre el proyecto, y el contexto para un IA Chat
+
+Cuando crees un nuevo archivo, indica la ruta relativa al proyecto donde se va a guardar el archivo. Por ejemplo "templates/forms/form.html.twig"
