@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/02/2026, 15:33
+ * Last modified by "IDMarinas" on 13/02/2026, 21:19
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -27,6 +27,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -54,6 +55,7 @@ class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInt
     use SeoColumnTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
+    use BlameableEntity;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
     private ?Thread $thread = null;
@@ -62,7 +64,8 @@ class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInt
     private string $content = '';
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn]
+    #[Gedmo\Blameable(on: 'create')]
     private ?User $author = null;
 
     /**
@@ -85,6 +88,8 @@ class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInt
         $this->children = new ArrayCollection();
         $this->attachments = new ArrayCollection();
         $this->reactions = new ArrayCollection();
+        $this->updatedBy = '';
+        $this->createdBy = '';
     }
 
     public function __toString (): string

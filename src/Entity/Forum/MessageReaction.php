@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 13:25
+ * Last modified by "IDMarinas" on 12/02/2026, 19:39
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,6 +22,7 @@ namespace App\Entity\Forum;
 use App\Entity\User\User;
 use App\Repository\Forum\MessageReactionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Idm\Bundle\Common\Traits\Entity\UuidTrait;
 
 #[ORM\Table(name: 'pfc_message_reaction')]
@@ -37,6 +38,7 @@ class MessageReaction
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Gedmo\Blameable(on: 'create')]
     private ?User $user = null;
 
     #[ORM\Column(length: 20)]
