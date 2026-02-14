@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 13:29
+ * Last modified by "IDMarinas" on 12/02/2026, 19:58
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -28,6 +28,7 @@ use App\Repository\Forum\ThreadRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -49,6 +50,7 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     use SeoColumnTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
+    use BlameableEntity;
 
     /**
      * @var Collection<int, Message>
@@ -83,6 +85,7 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Gedmo\Blameable(on: 'create')]
     private ?User $author = null;
 
     #[ORM\Column]
