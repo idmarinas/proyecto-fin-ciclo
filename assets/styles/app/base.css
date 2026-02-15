@@ -1,0 +1,9 @@
+@layer base {
+    * {
+        @apply motion-safe:transition-all motion-safe:duration-250 motion-safe:ease-in-out border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}

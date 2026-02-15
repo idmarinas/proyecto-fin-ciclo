@@ -2,7 +2,7 @@
 
 @import "./themes/app.css";
 
-@custom-variant dark (&:is(.dark *));
+@import "./app/base.css";
 
 @plugin "@tailwindcss/typography";
 
