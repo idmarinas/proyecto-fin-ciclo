@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 13/02/2026, 21:19
+ * Last modified by "IDMarinas" on 15/02/2026, 13:31
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,8 +21,6 @@ namespace App\Entity\Forum;
 
 use App\Entity\User\User;
 use App\Repository\Forum\MessageRepository;
-use App\Traits\Entity\MessageTreeTrait;
-use App\Traits\Entity\TreeTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -43,15 +41,10 @@ use Stringable;
  */
 #[ORM\Table(name: 'pfc_message')]
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
-#[Orm\Index(name: 'IDX_MESSAGE_LTF', columns: ['ltf'])]
-#[Orm\Index(name: 'IDX_MESSAGE_RGT', columns: ['rgt'])]
-#[Gedmo\Tree(type: 'nested')]
 #[Gedmo\SoftDeleteable]
 class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface
 {
     use IdTrait;
-    use TreeTrait;
-    use MessageTreeTrait;
     use SeoColumnTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
@@ -85,7 +78,6 @@ class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInt
 
     public function __construct ()
     {
-        $this->children = new ArrayCollection();
         $this->attachments = new ArrayCollection();
         $this->reactions = new ArrayCollection();
         $this->updatedBy = '';
