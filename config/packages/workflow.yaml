@@ -5,36 +5,43 @@ framework:
             marking_store:
                 type: 'method'
                 property: 'status'
+
             supports:
                 - App\Entity\Forum\Thread
 
             places: !php/enum App\Enums\ThreadStatusEnum
 
             transitions:
+
+                # El hilo pasa de abierto a revisión
                 review:
                     from: !php/enum App\Enums\ThreadStatusEnum::OPEN
                     to: !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
 
-                ask_customer:
-                    from: !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
+                # El staff responde → espera al cliente
+                staff_reply:
+                    from:
+                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+                        - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
                     to: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
 
+                # El cliente responde → espera al staff
                 customer_reply:
-                    from: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+                    from:
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+                        - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
                     to: !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
 
-                support_reply:
-                    from: !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
-                    to: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
-
+                # El hilo se marca como resuelto (staff o usuario)
                 resolve:
-                    from: !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+                    from:
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
                     to: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
 
+                # Cierre definitivo (no hay vuelta atrás)
                 close:
                     from: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
                     to: !php/enum App\Enums\ThreadStatusEnum::CLOSED
-
-                reopen:
-                    from: !php/enum App\Enums\ThreadStatusEnum::CLOSED
-                    to: !php/enum App\Enums\ThreadStatusEnum::OPEN
