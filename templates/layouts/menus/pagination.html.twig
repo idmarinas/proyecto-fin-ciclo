@@ -1,0 +1,57 @@
+{% if pageCount > 1 %}
+  <twig:Ui:Item variant="outline">
+    <twig:Ui:Item:Header class="justify-center">
+      Página {{ current }} de {{ pageCount }} -
+      Mostrando {{ firstItemNumber }} a {{ lastItemNumber }} de {{ totalCount }} resultados
+    </twig:Ui:Item:Header>
+    <twig:Ui:Item:Content>
+      <twig:Ui:Pagination>
+        <twig:Ui:Pagination:Content>
+          {#          {% if first is defined and current != first %} #}
+          {#            <span class="first"> #}
+          {#                <a href="{{ path(route, knp_pagination_query(query, first, options)) }}">&lt;&lt;</a> #}
+          {#            </span> #}
+          {#          {% endif %} #}
+
+          {% if previous is defined %}
+            <twig:Ui:Pagination:Item>
+              <twig:Ui:Pagination:Previous
+                  rel="prev"
+                  href="{{ path(route, knp_pagination_query(query, previous, options)) }}"
+              />
+            </twig:Ui:Pagination:Item>
+          {% endif %}
+
+          {% for page in pagesInRange %}
+            {% if page != current %}
+              <twig:Ui:Pagination:Item>
+                <twig:Ui:Pagination:Link href="{{ path(route, knp_pagination_query(query, page, options)) }}">{{ page }}</twig:Ui:Pagination:Link>
+              </twig:Ui:Pagination:Item>
+            {% else %}
+              <twig:Ui:Pagination:Item>
+                <twig:Ui:Pagination:Link :active="true">{{ page }}</twig:Ui:Pagination:Link>
+              </twig:Ui:Pagination:Item>
+            {% endif %}
+          {% endfor %}
+
+          {% if next is defined %}
+            <twig:Ui:Pagination:Item>
+              <twig:Ui:Pagination:Next
+                  rel="next"
+                  href="{{ path(route, knp_pagination_query(query, next, options)) }}"
+              />
+            </twig:Ui:Pagination:Item>
+          {% endif %}
+
+          {#          {% if last is defined and current != last %} #}
+          {#            <span class="last"> #}
+          {#                <a href="{{ path(route, knp_pagination_query(query, last, options)) }}">&gt;&gt;</a> #}
+          {#            </span> #}
+          {#          {% endif %} #}
+        </twig:Ui:Pagination:Content>
+      </twig:Ui:Pagination>
+    </twig:Ui:Item:Content>
+  </twig:Ui:Item>
+
+
+{% endif %}
