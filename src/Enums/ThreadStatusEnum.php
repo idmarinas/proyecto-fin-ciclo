@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/02/2026, 23:01
+ * Last modified by "IDMarinas" on 15/02/2026, 17:25
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -27,10 +27,23 @@ enum ThreadStatusEnum: string
     use ValidateValueTrait;
     use NormalizeValueTrait;
 
-    case OPEN             = 'open';
-    case IN_REVIEW        = 'in_review';
+    // Hilo está abierto y no tiene respuestas
+    case OPEN = 'open';
+
+    // Alguien del staff está revisando el hilo
+    case IN_REVIEW = 'in_review';
+
+    // El staff ha respondido y espera respuesta del usuario/cliente
     case WAITING_CUSTOMER = 'waiting_customer';
-    case WAITING_SUPPORT  = 'waiting_support';
-    case RESOLVED         = 'resolved';
-    case CLOSED           = 'closed';
+
+    // El usuario/cliente ha respondido y espera respuesta del staff
+    case WAITING_SUPPORT = 'waiting_support';
+
+    // El hilo ha sido marcado como resuelto, puede volver al estado de WAITING_* (volver a abrirlo)
+    // Puede ser marcado y reabierto por el usuario/cliente o el staff.
+    case RESOLVED = 'resolved';
+
+    // El hilo se ha cerrado definitivamente, no permite volver a ningún otro estado. Ya no se puede cambiar ni
+    // añadir nada.
+    case CLOSED = 'closed';
 }
