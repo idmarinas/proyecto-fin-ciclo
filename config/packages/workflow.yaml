@@ -36,12 +36,18 @@ framework:
                 # El hilo se marca como resuelto (staff o usuario)
                 resolve:
                     from:
+                        - !php/enum App\Enums\ThreadStatusEnum::OPEN
+                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
-                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
                     to: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
 
                 # Cierre definitivo (no hay vuelta atrás)
                 close:
-                    from: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
+                    from:
+                        - !php/enum App\Enums\ThreadStatusEnum::OPEN
+                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+                        - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
                     to: !php/enum App\Enums\ThreadStatusEnum::CLOSED
