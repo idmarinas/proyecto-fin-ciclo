@@ -7,6 +7,7 @@
     size="icon"
     aria-current="{{ active ? 'page' : false }}"
     href="#"
+    data-turbo="false"
     {{ ...attributes.without('class') }}
 >
   {{- block(outerBlocks.content) -}}

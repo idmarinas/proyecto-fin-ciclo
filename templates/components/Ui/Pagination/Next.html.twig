@@ -1,9 +1,9 @@
-<twig:Pagination:Link
-    aria-label="Go to next page"
+<twig:Ui:Pagination:Link
+    aria-label="Ir a la página siguiente"
     size="default"
-    class="{{ 'gap-1 pr-2.5 ' ~ attributes.render('class')|tailwind_merge }}"
+    class="{{ ('gap-1 pr-2.5 ' ~ attributes.render('class'))|tailwind_merge }}"
     {{ ...attributes.without('class') }}
 >
-  <span>Next</span>
+  <span>Siguiente</span>
   <twig:ux:icon name="tabler:chevron-right" class="size-4" />
-</twig:Pagination:Link>
+</twig:Ui:Pagination:Link>
