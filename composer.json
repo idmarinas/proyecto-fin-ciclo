@@ -26,6 +26,7 @@
     "easycorp/easyadmin-bundle": "^4.27",
     "idmarinas/seo-bundle": "1.x-dev",
     "knplabs/knp-menu-bundle": "^3.7",
+    "knplabs/knp-paginator-bundle": "^6.10",
     "nelmio/security-bundle": "^3.7",
     "phpdocumentor/reflection-docblock": "^5.6",
     "phpstan/phpdoc-parser": "^2.3",
