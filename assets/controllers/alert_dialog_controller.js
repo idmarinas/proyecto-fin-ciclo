@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/02/2026, 17:23
+ * Last modified by "IDMarinas" on 16/02/2026, 16:07
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -18,9 +18,26 @@
 
 import { Controller } from '@hotwired/stimulus';
 
+/**
+ * @property {HTMLDialogElement} dialogTarget
+ * @property {HTMLButtonElement} triggerTarget
+ * @property {boolean} hasTriggerTarget
+ */
 export default class extends Controller {
-
     static targets = ['trigger', 'dialog'];
+
+    initialize() {
+        window.addEventListener('dialog:open', (event) => {
+            if (this.dialogTarget.getAttribute('id').endsWith(event.detail.dialogId)) {
+                return this.dialogTarget.showModal()
+            }
+        })
+        window.addEventListener('dialog:close', (event) => {
+            if (this.dialogTarget.getAttribute('id').endsWith(event.detail.dialogId)) {
+                return this.dialogTarget.close()
+            }
+        })
+    }
 
     async open() {
         this.dialogTarget.showModal();
