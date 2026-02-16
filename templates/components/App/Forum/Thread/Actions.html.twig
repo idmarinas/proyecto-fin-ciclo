@@ -1,0 +1,9 @@
+{% props thread, where %}
+
+{% if is_granted('ROLE_SUPPORT') %}
+  <twig:App:Forum:Thread:SupportActions :thread="thread" :where="where" />
+{% elseif is_granted('ROLE_USER') %}
+  <twig:App:Forum:Thread:UserActions :thread="thread" :where="where" />
+{% else %}
+  <twig:App:Forum:Thread:Anonymous :where="where" />
+{% endif %}
