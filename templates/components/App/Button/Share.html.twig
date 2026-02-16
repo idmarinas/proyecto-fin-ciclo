@@ -1,0 +1,136 @@
+{#
+Props:
+- url (string, requerido): URL a compartir
+- where (string, opcional): Lugar/contexto del contenido. Por defecto: 'default'
+  Opciones: 'thread' (hilo del foro), 'forum' (categoría del foro), 'page' (página web), 'default' (genérico)
+- id (string, opcional): ID único para el diálogo (por defecto: auto-generado)
+- variant (string, opcional): Variante del botón (primary, secondary, outline, destructive). Por defecto: 'outline'
+#}
+
+{% props
+  url,
+  where = 'default',
+  id = null,
+  variant = 'outline',
+  position = 'middle' %}
+
+{% set positionClasses = {
+  first: 'rounded-r-none border-r-0',
+  middle: 'rounded-l-none border-l-0 rounded-r-none',
+  last: 'rounded-l-none border-l-0',
+  unique: ''
+} %}
+
+{% set dialogId = id ?? "share-dialog-" ~ random(1000) %}
+
+{# Textos personalizados según el lugar/contexto #}
+{% set whereTexts = {
+  thread: {
+    whatsapp: 'Mira este hilo del foro',
+    twitter: 'Encontré un hilo interesante',
+    facebook: 'Hilo interesante del foro',
+    linkedin: 'Hilo interesante del foro',
+    email: 'Te comparto este hilo del foro'
+  },
+  forum: {
+    whatsapp: 'Echa un vistazo a este foro',
+    twitter: 'Descubre este foro',
+    facebook: 'Foro interesante',
+    linkedin: 'Foro interesante',
+    email: 'Te recomiendo este foro'
+  },
+  page: {
+    whatsapp: 'Mira este contenido',
+    twitter: 'Encontré algo interesante',
+    facebook: 'Contenido interesante',
+    linkedin: 'Contenido interesante',
+    email: 'Te paso este enlace'
+  },
+  default: {
+    whatsapp: 'Comparte esto',
+    twitter: 'Mira esto',
+    facebook: 'Contenido interesante',
+    linkedin: 'Contenido interesante',
+    email: 'Te comparto este enlace'
+  }
+} %}
+
+{% set selectedTexts = whereTexts[where] ?? whereTexts.default %}
+
+{% set platforms = {
+  whatsapp: {
+    name: 'WhatsApp',
+    icon: 'tabler:brand-whatsapp',
+    url: 'https://wa.me/?text=' ~ selectedTexts.whatsapp ~ ' - ' ~ url
+  },
+  twitter: {
+    name: 'X (Twitter)',
+    icon: 'tabler:brand-twitter',
+    url: 'https://twitter.com/intent/tweet?text=' ~ selectedTexts.twitter ~ '&url=' ~ url
+  },
+  facebook: {
+    name: 'Facebook',
+    icon: 'tabler:brand-facebook',
+    url: 'https://www.facebook.com/sharer/sharer.php?u=' ~ url ~ '&quote=' ~ selectedTexts.facebook
+  },
+  linkedin: {
+    name: 'LinkedIn',
+    icon: 'tabler:brand-linkedin',
+    url: 'https://www.linkedin.com/sharing/share-offsite/?url=' ~ url ~ '&summary=' ~ selectedTexts.linkedin
+  },
+  email: {
+    name: 'Email',
+    icon: 'tabler:mail',
+    url: 'mailto:?subject=' ~ selectedTexts.email ~ '&body=' ~ url
+  }
+} %}
+
+{# Dialog de compartición #}
+<twig:Ui:AlertDialog id="{{ dialogId }}">
+  {# Botón disparador #}
+  <twig:Ui:AlertDialog:Trigger>
+    <twig:Ui:Button
+        size="sm"
+        {{ ...trigger_attrs }}
+        :variant="variant"
+        :class="positionClasses[position]"
+    >
+      <twig:ux:icon name="tabler:share" />
+      Compartir
+    </twig:Ui:Button>
+  </twig:Ui:AlertDialog:Trigger>
+
+  {# Contenido del diálogo #}
+  <twig:Ui:AlertDialog:Content>
+    <twig:Ui:AlertDialog:Header>
+      <twig:Ui:AlertDialog:Title>Compartir en...</twig:Ui:AlertDialog:Title>
+    </twig:Ui:AlertDialog:Header>
+    <twig:Ui:AlertDialog:Description>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {% for platform in platforms %}
+          <a
+              href="{{ platform.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-gray-200 hover:border-gray-400 hover:bg-gray-50 group"
+              title="Compartir en {{ platform.name }}"
+              data-turbo="false"
+          >
+            <twig:ux:icon
+                name="{{ platform.icon }}"
+                class="size-6 text-gray-700 group-hover:text-gray-900 transition-colors"
+            />
+            <span class="text-xs text-gray-600 font-medium text-center group-hover:text-gray-900">
+              {{ platform.name }}
+            </span>
+          </a>
+        {% endfor %}
+      </div>
+    </twig:Ui:AlertDialog:Description>
+
+    {# Footer con botón cerrar #}
+    <twig:Ui:AlertDialog:Footer>
+      <twig:Ui:AlertDialog:Cancel>Cerrar</twig:Ui:AlertDialog:Cancel>
+    </twig:Ui:AlertDialog:Footer>
+  </twig:Ui:AlertDialog:Content>
+</twig:Ui:AlertDialog>
