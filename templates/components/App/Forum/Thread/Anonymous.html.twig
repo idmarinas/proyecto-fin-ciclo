@@ -1,0 +1,7 @@
+{# @var thread \App\Entity\Forum\Thread #}
+
+{% props where %}
+
+<twig:Ui:ButtonGroup>
+  <twig:App:Button:Share url="{{ app.request.uri }}" :where="where" position="unique" />
+</twig:Ui:ButtonGroup>
