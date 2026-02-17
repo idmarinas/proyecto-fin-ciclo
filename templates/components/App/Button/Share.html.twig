@@ -8,7 +8,6 @@ Props:
 #}
 
 {% props
-  url,
   where = 'default',
   id = null,
   variant = 'outline' %}
@@ -48,6 +47,8 @@ Props:
 } %}
 
 {% set selectedTexts = whereTexts[where] ?? whereTexts.default %}
+
+{% set url = app.request.uri %}
 
 {% set platforms = {
   whatsapp: {
