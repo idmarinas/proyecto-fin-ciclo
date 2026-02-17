@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/02/2026, 18:54
+ * Last modified by "IDMarinas" on 17/02/2026, 12:57
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -31,7 +31,7 @@ use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Idm\Bundle\Common\Traits\Entity\UuidTrait;
+use Idm\Bundle\Common\Traits\Entity\IdTrait;
 use Stringable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -43,7 +43,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[Gedmo\SoftDeleteable]
 class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterface, SoftDeleteable, Timestampable
 {
-    use UuidTrait;
+    use IdTrait;
     use BanTrait;
     use EquatableTrait;
     use SoftDeleteableEntity;
@@ -100,6 +100,12 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $lastActiveAt = null;
+
+    public function __construct ()
+    {
+        $this->createdFromIp = '';
+        $this->updatedFromIp = '';
+    }
 
     public function __toString (): string
     {

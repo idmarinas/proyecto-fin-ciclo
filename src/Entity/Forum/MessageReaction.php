@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/02/2026, 19:39
+ * Last modified by "IDMarinas" on 17/02/2026, 12:58
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,14 +23,14 @@ use App\Entity\User\User;
 use App\Repository\Forum\MessageReactionRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Idm\Bundle\Common\Traits\Entity\UuidTrait;
+use Idm\Bundle\Common\Traits\Entity\IdTrait;
 
 #[ORM\Table(name: 'pfc_message_reaction')]
 #[ORM\Entity(repositoryClass: MessageReactionRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_REACTION_USER_MESSAGE', fields: ['user', 'message', 'type'])]
 class MessageReaction
 {
-    use UuidTrait;
+    use IdTrait;
 
     #[ORM\ManyToOne(inversedBy: 'reactions')]
     #[ORM\JoinColumn(nullable: false)]

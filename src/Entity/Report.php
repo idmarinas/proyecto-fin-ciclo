@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 13:50
+ * Last modified by "IDMarinas" on 17/02/2026, 12:57
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -27,13 +27,13 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Idm\Bundle\Common\Traits\Entity\UuidTrait;
+use Idm\Bundle\Common\Traits\Entity\IdTrait;
 
 #[ORM\Table(name: 'pfc_report')]
 #[ORM\Entity(repositoryClass: ReportRepository::class)]
 class Report implements Timestampable
 {
-    use UuidTrait;
+    use IdTrait;
     use TimestampableEntity;
 
     #[ORM\ManyToOne]

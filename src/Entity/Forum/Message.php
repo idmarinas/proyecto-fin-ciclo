@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 15/02/2026, 13:31
+ * Last modified by "IDMarinas" on 17/02/2026, 12:58
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -32,8 +32,6 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Idm\Bundle\Common\Traits\Entity\IdTrait;
-use Idm\Bundle\Seo\Entity\SeoEntityInterface;
-use Idm\Bundle\Seo\Traits\Entity\SeoColumnTrait;
 use Stringable;
 
 /**
@@ -42,15 +40,14 @@ use Stringable;
 #[ORM\Table(name: 'pfc_message')]
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
 #[Gedmo\SoftDeleteable]
-class Message implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface
+class Message implements Stringable, SoftDeleteable, Timestampable
 {
     use IdTrait;
-    use SeoColumnTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
     use BlameableEntity;
 
-    #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[ORM\ManyToOne]
     private ?Thread $thread = null;
 
     #[ORM\Column(type: Types::TEXT)]

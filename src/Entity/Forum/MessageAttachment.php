@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/01/2026, 13:25
+ * Last modified by "IDMarinas" on 17/02/2026, 12:58
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,13 +23,13 @@ use App\Repository\Forum\MessageAttachmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Idm\Bundle\Common\Traits\Entity\UuidTrait;
+use Idm\Bundle\Common\Traits\Entity\IdTrait;
 
 #[ORM\Table(name: 'pfc_message_attachment')]
 #[ORM\Entity(repositoryClass: MessageAttachmentRepository::class)]
 class MessageAttachment implements Timestampable
 {
-    use UuidTrait;
+    use IdTrait;
     use TimestampableEntity;
 
     #[ORM\ManyToOne(inversedBy: 'attachments')]

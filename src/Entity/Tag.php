@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 31/01/2026, 19:50
+ * Last modified by "IDMarinas" on 17/02/2026, 12:57
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -24,7 +24,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Idm\Bundle\Common\Traits\Entity\UuidTrait;
+use Idm\Bundle\Common\Traits\Entity\IdTrait;
 use Stringable;
 
 /**
@@ -34,7 +34,7 @@ use Stringable;
 #[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag implements Stringable, Timestampable
 {
-    use UuidTrait;
+    use IdTrait;
     use TimestampableEntity;
 
     #[ORM\Column(length: 50, unique: true)]
