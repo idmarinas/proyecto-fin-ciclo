@@ -11,15 +11,7 @@ Props:
   url,
   where = 'default',
   id = null,
-  variant = 'outline',
-  position = 'middle' %}
-
-{% set positionClasses = {
-  first: 'rounded-r-none border-r-0',
-  middle: 'rounded-l-none border-l-0 rounded-r-none',
-  last: 'rounded-l-none border-l-0',
-  unique: ''
-} %}
+  variant = 'outline' %}
 
 {% set dialogId = id ?? "share-dialog-" ~ random(1000) %}
 
@@ -93,7 +85,6 @@ Props:
         size="sm"
         {{ ...trigger_attrs }}
         :variant="variant"
-        :class="positionClasses[position]"
     >
       <twig:ux:icon name="tabler:share" />
       Compartir
