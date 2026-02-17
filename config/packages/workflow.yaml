@@ -13,15 +13,10 @@ framework:
 
             transitions:
 
-                # El hilo pasa de abierto a revisión
-                review:
-                    from: !php/enum App\Enums\ThreadStatusEnum::OPEN
-                    to: !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
-
                 # El staff responde → espera al cliente
                 staff_reply:
                     from:
-                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
+                        - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
                         - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
                     to: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
@@ -37,7 +32,6 @@ framework:
                 resolve:
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
-                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
                     to: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
@@ -46,7 +40,6 @@ framework:
                 close:
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
-                        - !php/enum App\Enums\ThreadStatusEnum::IN_REVIEW
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
                         - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
