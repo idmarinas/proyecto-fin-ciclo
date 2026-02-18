@@ -14,7 +14,6 @@
   {% set color = html_classes({
     'text-slate-600 ': icon_name == 'open',
     'text-amber-600 ': icon_name == 'progress',
-    'text-orange-600 ': icon_name == 'in_review',
     'text-blue-600 ': icon_name == 'waiting_customer',
     'text-blue-600 ': icon_name == 'waiting_support',
     'text-green-600 ': icon_name == 'resolved',
@@ -37,8 +36,6 @@
       Esperando Soporte
     {% elseif icon_name == 'waiting_customer' %}
       Esperando Usuario
-    {% elseif icon_name == 'in_review' %}
-      En revisión
     {% endif %}
   </span>
 {% endif %}
