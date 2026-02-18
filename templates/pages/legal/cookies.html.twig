@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Layout:Section class="prose prose-slate dark:prose-invert mx-auto">
+
+      <div class="flex items-center gap-3 mb-2">
+        <h1>
+          <twig:ux:icon name="tabler:cookie" class="size-8 text-primary inline" />
+          Política de Cookies
+        </h1>
+      </div>
+      <p class="text-sm text-muted-foreground">Última actualización: 1 de enero de 2025</p>
+
+      <twig:Ui:Separator class="my-6" />
+
+      <h2>1. ¿Qué son las cookies?</h2>
+      <p>
+        Las cookies son pequeños ficheros de texto que un sitio web envía al navegador del usuario y que se
+        almacenan en su dispositivo. Permiten que la plataforma recuerde información sobre tu visita —como la
+        sesión iniciada o tus preferencias— facilitando la navegación y mejorando tu experiencia.
+      </p>
+
+      <h2>2. ¿Qué cookies utiliza Lúmina?</h2>
+      <p>A continuación se detallan las cookies utilizadas en esta plataforma, agrupadas por categoría:</p>
+
+      <h3>2.1 Cookies estrictamente necesarias</h3>
+      <p>
+        Son imprescindibles para el correcto funcionamiento de la plataforma. Sin ellas, servicios como la
+        autenticación o la protección de formularios no funcionarían. No requieren consentimiento previo.
+      </p>
+      <ul>
+        <li><strong>PHPSESSID</strong> — Gestión de la sesión del usuario. Duración: sesión.</li>
+        <li><strong>REMEMBERME</strong> — Mantiene la sesión iniciada entre visitas si el usuario lo solicita. Duración:
+                                        30 días.
+        </li>
+        <li><strong>_csrf_token</strong> — Protección de formularios contra envíos maliciosos. Duración: sesión.</li>
+      </ul>
+
+      <h3>2.2 Cookies de preferencias</h3>
+      <p>
+        Permiten recordar las elecciones del usuario para ofrecerle una experiencia personalizada.
+      </p>
+      <ul>
+        <li><strong>lumina_prefs</strong> — Almacena preferencias de interfaz del usuario. Duración: 1 año.</li>
+      </ul>
+
+      <h3>2.3 Cookies analíticas</h3>
+      <p>
+        Se utilizan para comprender cómo los usuarios interactúan con la plataforma y mejorar su funcionamiento.
+        Los datos recogidos son anónimos y no se vinculan a usuarios identificados.
+      </p>
+      <ul>
+        <li><strong>_lumina_analytics</strong> — Registro anónimo de páginas visitadas y tiempo de navegación. Duración:
+                                               13 meses.
+        </li>
+      </ul>
+
+      <h2>3. ¿Cómo puedo gestionar o desactivar las cookies?</h2>
+      <p>
+        Puedes configurar tu navegador para bloquear o eliminar las cookies en cualquier momento. Ten en cuenta
+        que deshabilitar determinadas cookies puede afectar al correcto funcionamiento de la plataforma.
+        Consulta la sección de ayuda de tu navegador para saber cómo gestionar las cookies.
+      </p>
+
+      <h2>4. Consentimiento</h2>
+      <p>
+        Las cookies estrictamente necesarias se instalan sin requerir consentimiento previo, ya que son
+        indispensables para la prestación del servicio. El resto de cookies requieren tu aceptación expresa,
+        que puedes retirar en cualquier momento.
+      </p>
+      <p>
+        Para cualquier consulta relacionada con las cookies o el tratamiento de tus datos, puedes contactar
+        con nosotros en <strong>privacidad@lumina.example</strong> o consultar nuestra
+        <a href="{{ path('app_legal_privacidad') }}">Política de Privacidad</a>.
+      </p>
+
+      <h2>5. Actualizaciones de esta política</h2>
+      <p>
+        Lúmina Servicios Tecnológicos, S.L. puede actualizar esta Política de Cookies cuando sea necesario.
+        Te recomendamos revisarla periódicamente para estar informado de cualquier cambio.
+      </p>
+
+    </twig:Layout:Section>
+  </twig:Layout:Article>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Layout:Section class="prose prose-slate dark:prose-invert mx-auto">
+
+      <div class="flex items-center gap-3 mb-2">
+        <h1>
+          <twig:ux:icon name="tabler:gavel" class="size-8 text-primary inline" />
+          Aviso Legal
+        </h1>
+      </div>
+      <p class="text-sm text-muted-foreground">Última actualización: 1 de enero de 2025</p>
+
+      <twig:Ui:Separator class="my-6" />
+
+      <h2>1. Datos identificativos del titular</h2>
+      <p>
+        El presente sitio web es titularidad de <strong>Lúmina Servicios Tecnológicos, S.L.</strong>, empresa
+        ficticia creada con fines educativos, con los siguientes datos de identificación:
+      </p>
+      <ul>
+        <li><strong>Denominación social:</strong> Lúmina Servicios Tecnológicos, S.L.</li>
+        <li><strong>Número de identificación:</strong> B-12345678</li>
+        <li><strong>Domicilio social:</strong> Calle de la Innovación, 42, 28001 Madrid</li>
+        <li><strong>Teléfono:</strong> +34 910 123 456</li>
+        <li><strong>Correo electrónico:</strong> legal@lumina.example</li>
+      </ul>
+
+      <h2>2. Objeto y ámbito de aplicación</h2>
+      <p>
+        El presente Aviso Legal regula el acceso y uso de la plataforma <strong>Lúmina</strong>, así como de todos
+        los servicios ofrecidos a través de ella. El acceso a la plataforma implica la aceptación de las presentes
+        condiciones. Si no estás de acuerdo con alguno de los términos aquí expuestos, debes abstenerte de
+        utilizar la plataforma.
+      </p>
+
+      <h2>3. Propiedad intelectual</h2>
+      <p>
+        Todos los contenidos de la plataforma —incluyendo textos, imágenes, logotipos, iconos, diseño y código
+        fuente— son propiedad de Lúmina Servicios Tecnológicos, S.L. o de terceros que han autorizado su uso.
+        Queda prohibida su reproducción, distribución o explotación sin autorización previa y por escrito.
+      </p>
+
+      <h2>4. Condiciones de acceso y uso</h2>
+      <p>
+        El usuario se compromete a hacer un uso adecuado y lícito de la plataforma. Queda expresamente prohibido:
+      </p>
+      <ul>
+        <li>Utilizar la plataforma con fines ilícitos o contrarios a las presentes condiciones.</li>
+        <li>Publicar contenidos difamatorios, amenazantes o que vulneren derechos de terceros.</li>
+        <li>Intentar acceder de forma no autorizada a sistemas o cuentas ajenas.</li>
+        <li>Reproducir o distribuir contenidos sin autorización expresa.</li>
+      </ul>
+
+      <h2>5. Exclusión de responsabilidad</h2>
+      <p>
+        Lúmina Servicios Tecnológicos, S.L. no se hace responsable de los daños que pudieran derivarse del acceso
+        o uso de la plataforma, de los errores en los contenidos, ni de la presencia de elementos dañinos en los
+        materiales transmitidos o almacenados. La plataforma puede contener enlaces a páginas de terceros sobre
+        cuyos contenidos Lúmina no asume responsabilidad alguna.
+      </p>
+
+      <h2>6. Modificaciones</h2>
+      <p>
+        Lúmina Servicios Tecnológicos, S.L. se reserva el derecho de modificar el presente Aviso Legal en cualquier
+        momento. Las modificaciones serán efectivas desde su publicación en la plataforma. Se recomienda revisar
+        periódicamente este documento.
+      </p>
+
+    </twig:Layout:Section>
+  </twig:Layout:Article>
+{% endblock %}

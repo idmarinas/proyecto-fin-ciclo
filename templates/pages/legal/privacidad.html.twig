@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Layout:Section class="prose prose-slate dark:prose-invert mx-auto">
+
+      <div class="flex items-center gap-3 mb-2">
+        <h1>
+          <twig:ux:icon name="tabler:shield-lock" class="size-8 text-primary inline" />
+          Política de Privacidad
+        </h1>
+      </div>
+      <p class="text-sm text-muted-foreground">Última actualización: 1 de enero de 2025</p>
+
+      <twig:Ui:Separator class="my-6" />
+
+      <h2>1. Responsable del tratamiento</h2>
+      <p>
+        El responsable del tratamiento de los datos personales recabados a través de esta plataforma es
+        <strong>Lúmina Servicios Tecnológicos, S.L.</strong>, empresa ficticia creada con fines educativos.
+      </p>
+      <ul>
+        <li><strong>Denominación social:</strong> Lúmina Servicios Tecnológicos, S.L.</li>
+        <li><strong>Domicilio:</strong> Calle de la Innovación, 42, 28001 Madrid</li>
+        <li><strong>Correo electrónico de contacto:</strong> privacidad@lumina.example</li>
+        <li><strong>Delegado de Protección de Datos:</strong> dpd@lumina.example</li>
+      </ul>
+
+      <h2>2. Datos personales que recabamos</h2>
+      <p>
+        En función del uso que hagas de la plataforma, podemos recoger las siguientes categorías de datos:
+      </p>
+      <ul>
+        <li><strong>Datos de registro:</strong> nombre, apellidos, correo electrónico y contraseña cifrada.</li>
+        <li><strong>Datos de perfil:</strong> nombre de usuario, fotografía de perfil (opcional) y preferencias de
+                                              cuenta.
+        </li>
+        <li><strong>Datos de uso:</strong> hilos del foro creados, mensajes publicados e interacciones en la plataforma.
+        </li>
+        <li><strong>Datos técnicos:</strong> dirección IP, tipo de navegador, sistema operativo y datos de sesión.</li>
+        <li><strong>Comunicaciones:</strong> contenido de los mensajes enviados a través del sistema de soporte.</li>
+      </ul>
+
+      <h2>3. Finalidades del tratamiento</h2>
+      <p>Tratamos tus datos personales para las siguientes finalidades:</p>
+      <ul>
+        <li>Gestión y mantenimiento de tu cuenta de usuario.</li>
+        <li>Prestación de los servicios de la plataforma, incluido el foro de soporte.</li>
+        <li>Envío de comunicaciones de servicio (confirmación de registro, restablecimiento de contraseña,
+            notificaciones del foro).
+        </li>
+        <li>Garantizar la seguridad de la plataforma y prevenir usos indebidos.</li>
+        <li>Envío de comunicaciones comerciales, únicamente si has dado tu consentimiento expresamente.</li>
+      </ul>
+
+      <h2>4. Conservación de los datos</h2>
+      <p>
+        Conservamos tus datos personales durante el tiempo necesario para cumplir las finalidades descritas:
+      </p>
+      <ul>
+        <li>Los datos de cuenta se conservan mientras la cuenta esté activa y, tras su eliminación, durante un plazo
+            razonable para atender posibles reclamaciones.
+        </li>
+        <li>Los contenidos publicados en el foro pueden conservarse de forma anonimizada para mantener la coherencia de
+            las conversaciones.
+        </li>
+        <li>Los datos técnicos de acceso se conservan durante un máximo de 12 meses.</li>
+      </ul>
+
+      <h2>5. Tus derechos</h2>
+      <p>
+        Tienes derecho a acceder, rectificar, suprimir, limitar el tratamiento y oponerte al uso de tus datos
+        personales, así como a solicitar su portabilidad. También puedes retirar tu consentimiento en cualquier
+        momento sin que ello afecte a los tratamientos realizados con anterioridad.
+      </p>
+      <p>
+        Puedes ejercer estos derechos enviando un correo electrónico a <strong>privacidad@lumina.example</strong>
+        indicando el derecho que deseas ejercer.
+      </p>
+
+      <h2>6. Seguridad de los datos</h2>
+      <p>
+        Lúmina aplica las medidas técnicas y organizativas necesarias para garantizar la seguridad de tus datos
+        personales y evitar su pérdida, alteración o acceso no autorizado.
+      </p>
+
+      <h2>7. Modificaciones</h2>
+      <p>
+        Lúmina Servicios Tecnológicos, S.L. se reserva el derecho a modificar esta Política de Privacidad para
+        adaptarla a cambios en la plataforma o en la normativa aplicable. En caso de cambios relevantes, se
+        notificará a los usuarios a través del correo electrónico o mediante aviso en la plataforma.
+      </p>
+
+    </twig:Layout:Section>
+  </twig:Layout:Article>
+{% endblock %}
