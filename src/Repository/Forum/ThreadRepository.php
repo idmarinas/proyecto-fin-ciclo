@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/01/2026, 23:19
+ * Last modified by "IDMarinas" on 15/02/2026, 16:11
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,8 +19,11 @@
 
 namespace App\Repository\Forum;
 
+use App\Entity\Forum;
 use App\Entity\Forum\Thread;
+use App\Entity\User\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -31,5 +34,25 @@ final class ThreadRepository extends ServiceEntityRepository
     public function __construct (ManagerRegistry $registry)
     {
         parent::__construct($registry, Thread::class);
+    }
+
+    public function findAllByForum (Forum $forum, bool $canSeePrivate, ?User $user = null): QueryBuilder
+    {
+        $query = $this
+            ->createQueryBuilder('t')
+            ->where('t.forum = :forum')
+            ->setParameter('forum', $forum)
+        ;
+
+        if (null === $user) {
+            $query->andWhere('t.private = false');
+        } elseif (!$canSeePrivate) {
+            $query
+                ->andWhere('t.private = false OR t.private = true AND t.author = :user')
+                ->setParameter('user', $user)
+            ;
+        }
+
+        return $query;
     }
 }
