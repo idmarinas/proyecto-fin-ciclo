@@ -1,6 +1,6 @@
 framework:
     workflows:
-        thread_support:
+        thread_status:
             type: 'state_machine'
             marking_store:
                 type: 'method'
@@ -12,32 +12,44 @@ framework:
             places: !php/enum App\Enums\ThreadStatusEnum
 
             transitions:
+                # Un hilo público puede responder cualquiera sin cambiar el estado
+                public_reply:
+                    guard: 'is_granted("ROLE_USER") and not is_granted("ROLE_SUPPORT") and subject.isPublic() and not is_granted("thread.owner", subject)'
+                    from:
+                        - !php/enum App\Enums\ThreadStatusEnum::OPEN
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
+                        - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
+                    to: !php/enum App\Enums\ThreadStatusEnum::OPEN
 
                 # El staff responde → espera al cliente
                 staff_reply:
+                    guard: 'is_granted("ROLE_SUPPORT")'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
                         - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
                     to: !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
 
-                # El cliente responde → espera al staff
+                # El cliente responde → espera al staff (solo el creador del hilo)
                 customer_reply:
+                    guard: 'is_granted("thread.owner", subject) and not is_granted("ROLE_SUPPORT")'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
                         - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
                     to: !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
 
-                # El hilo se marca como resuelto (staff o usuario)
+                # El hilo se marca como resuelto (staff o creador del hilo)
                 resolve:
+                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject)'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
                     to: !php/enum App\Enums\ThreadStatusEnum::RESOLVED
 
-                # Cierre definitivo (no hay vuelta atrás)
+                # Cierre definitivo (solo staff o creador)
                 close:
+                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject)'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
