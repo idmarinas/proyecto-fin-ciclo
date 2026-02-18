@@ -2,7 +2,7 @@
 framework:
     html_sanitizer:
         sanitizers:
-            tiptap:
+            tiptap_sanitizer:
                 allow_safe_elements: true
                 allow_static_elements: false
                 max_input_length: 30000
