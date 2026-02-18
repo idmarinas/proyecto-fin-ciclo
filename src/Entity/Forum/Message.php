@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/02/2026, 12:58
+ * Last modified by "IDMarinas" on 18/02/2026, 22:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -25,7 +25,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Blameable\Blameable;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -33,6 +33,7 @@ use Gedmo\Timestampable\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Idm\Bundle\Common\Traits\Entity\IdTrait;
 use Stringable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Mensajes de un hilo.
@@ -40,34 +41,52 @@ use Stringable;
 #[ORM\Table(name: 'pfc_message')]
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
 #[Gedmo\SoftDeleteable]
-class Message implements Stringable, SoftDeleteable, Timestampable
+class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
 {
     use IdTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
-    use BlameableEntity;
+
+    #[ORM\Column(nullable: true)]
+    #[Gedmo\Blameable(on: 'create')]
+    public ?string $createdBy {
+        get => $this->createdBy;
+        set => $this->createdBy = $value;
+    }
+
+    #[ORM\Column(nullable: true)]
+    #[Gedmo\Blameable(on: 'update')]
+    public ?string $updatedBy {
+        get => $this->updatedBy;
+        set => $this->updatedBy = $value;
+    }
 
     #[ORM\ManyToOne]
+    #[Assert\Valid]
     private ?Thread $thread = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(allowNull: false)]
     private string $content = '';
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn]
     #[Gedmo\Blameable(on: 'create')]
+    #[Assert\Valid]
     private ?User $author = null;
 
     /**
      * @var Collection<int, MessageAttachment>
      */
     #[ORM\OneToMany(targetEntity: MessageAttachment::class, mappedBy: 'message', cascade: ['persist', 'remove'])]
+    #[Assert\Valid]
     private Collection $attachments;
 
     /**
      * @var Collection<int, MessageReaction>
      */
     #[ORM\OneToMany(targetEntity: MessageReaction::class, mappedBy: 'message', cascade: ['persist', 'remove'])]
+    #[Assert\Valid]
     private Collection $reactions;
 
     #[ORM\Column]
@@ -77,8 +96,6 @@ class Message implements Stringable, SoftDeleteable, Timestampable
     {
         $this->attachments = new ArrayCollection();
         $this->reactions = new ArrayCollection();
-        $this->updatedBy = '';
-        $this->createdBy = '';
     }
 
     public function __toString (): string
