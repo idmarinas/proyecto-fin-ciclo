@@ -1,9 +1,37 @@
-{% props thread, where %}
+{% props thread %}
 
-{% if is_granted('ROLE_SUPPORT') %}
-  <twig:App:Forum:Thread:SupportActions :thread="thread" :where="where" />
-{% elseif is_granted('ROLE_USER') %}
-  <twig:App:Forum:Thread:UserActions :thread="thread" :where="where" />
-{% else %}
-  <twig:App:Forum:Thread:Anonymous :where="where" />
-{% endif %}
+<twig:Ui:ButtonGroup>
+  {# Botón Responder #}
+  {% if workflow_can(thread, 'public_reply') %}
+    <twig:Ui:Button as="a" href="#responder" size="sm" variant="secondary">
+      <twig:ux:icon name="tabler:message-reply" />
+      Responder
+    </twig:Ui:Button>
+  {% elseif workflow_can(thread, 'customer_reply') %}
+    <twig:Ui:Button as="a" href="#responder" size="sm" variant="outline">
+      <twig:ux:icon name="tabler:message-reply" />
+      Responder
+    </twig:Ui:Button>
+  {% elseif workflow_can(thread, 'staff_reply') %}
+    <twig:Ui:Button as="a" href="#responder" size="sm">
+      <twig:ux:icon name="tabler:message-reply" />
+      Responder
+    </twig:Ui:Button>
+  {% endif %}
+
+  {# Botón Marcar como resuelto (solo autor o moderador) #}
+  {% if workflow_can(thread, 'resolve') %}
+    <twig:Ui:Button size="sm" class="bg-success text-success-foreground hover:bg-success/70">
+      <twig:ux:icon name="tabler:message-check" />
+      Marcar como resuelto
+    </twig:Ui:Button>
+  {% endif %}
+
+  {# Botón: Cerrar hilo (Confirmación con advertencia) #}
+  {% if workflow_can(thread, 'close') %}
+    <twig:Ui:Button size="sm" variant="destructive">
+      <twig:ux:icon name="tabler:lock" />
+      Cerrar
+    </twig:Ui:Button>
+  {% endif %}
+</twig:Ui:ButtonGroup>
