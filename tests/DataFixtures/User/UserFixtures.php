@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 10/02/2026, 23:21
+ * Last modified by "IDMarinas" on 17/02/2026, 16:50
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,7 +19,6 @@
 
 namespace App\Tests\DataFixtures\User;
 
-use App\Tests\Enums\UserEnum;
 use App\Tests\Factory\User\UserFactory;
 use DateMalformedStringException;
 use DateTime;
@@ -45,7 +44,7 @@ final class UserFixtures extends Fixture
                     'username'     => $user['username'],
                     'email'        => $user['email'],
                     'roles'        => $user['roles'],
-                    'password'     => UserEnum::{str_replace('ROLE_', '', $user['roles'][0])}->getPassword(),
+                    'password'     => 'pass_1234',
                     'avatar'       => $user['avatar'],
                     'isVerified'   => $user['is_verified'],
                     'reputation'   => $user['reputation'],
