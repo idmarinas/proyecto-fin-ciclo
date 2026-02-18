@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/02/2026, 20:39
+ * Last modified by "IDMarinas" on 15/02/2026, 13:29
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -60,8 +60,6 @@ final class MessageFixtures extends Fixture implements DependentFixtureInterface
         foreach ($messages as $message) {
             $entityM = MessageFactory::new()
                 ->createOne([
-                    // 'parent'    => empty($message['reply_to']) ? null :
-                    //     self::getReference('message_' . $message['reply_to'], Message::class),
                     'content'   => $message['content'],
                     'solution'  => $message['solution'],
                     'thread'    => self::getReference('thread_' . $message['thread_id'], Thread::class),
