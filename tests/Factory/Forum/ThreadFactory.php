@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 09/02/2026, 23:43
+ * Last modified by "IDMarinas" on 18/02/2026, 22:43
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,7 +20,6 @@
 namespace App\Tests\Factory\Forum;
 
 use App\Entity\Forum\Thread;
-use App\Enums\ThreadStatusEnum;
 use Override;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
@@ -29,13 +28,6 @@ use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
  */
 final class ThreadFactory extends PersistentObjectFactory
 {
-    /**
-     * @see  https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
-     *
-     * @todo inject services if required
-     */
-    public function __construct () {}
-
     #[Override]
     public static function class (): string
     {
@@ -54,7 +46,7 @@ final class ThreadFactory extends PersistentObjectFactory
             // 'createdAt' => self::faker()->dateTime(),
             // 'private'   => self::faker()->boolean(),
             // 'slug'      => self::faker()->text(255),
-            'status' => self::faker()->randomElement(ThreadStatusEnum::cases()),
+            // 'status' => self::faker()->randomElement(ThreadStatusEnum::cases()),
             // - slug: Generado automáticamente desde title
             // - createdAt, updatedAt: Timestamps automáticos
             // - deletedAt: Soft delete
