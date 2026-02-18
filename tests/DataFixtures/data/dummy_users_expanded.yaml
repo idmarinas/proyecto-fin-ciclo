@@ -1,10 +1,10 @@
 users:
 - id: 1
-  username: Margarita Gómez (Admin)
-  email: user1@lumina.local
+  username: Super Admin
+  email: super@admin.sh
   roles:
   - ROLE_SUPER_ADMIN
-  avatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-02 01:00:00'
   last_login: '2025-02-10 12:00:00'
   is_verified: false
@@ -13,10 +13,10 @@ users:
   deletedAt: null
 - id: 2
   username: Gloria Rodríguez (Admin)
-  email: user2@lumina.local
+  email: super@admin.local
   roles:
   - ROLE_SUPER_ADMIN
-  avatar: https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-03 02:00:00'
   last_login: '2025-01-22 20:00:00'
   is_verified: false
@@ -25,10 +25,10 @@ users:
   deletedAt: null
 - id: 3
   username: Isabel López (Gestor)
-  email: user3@lumina.local
+  email: admin1@lumina.local
   roles:
   - ROLE_ADMIN
-  avatar: https://images.unsplash.com/photo-1507009307501-065eabfc3385?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1507009307501-065eabfc3385?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-04 03:00:00'
   last_login: '2025-01-06 06:00:00'
   is_verified: true
@@ -37,10 +37,10 @@ users:
   deletedAt: null
 - id: 4
   username: Ramón Martínez (Gestor)
-  email: user4@lumina.local
+  email: admin2@lumina.local
   roles:
   - ROLE_ADMIN
-  avatar: https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-05-05 04:00:00'
   last_login: '2025-02-05 15:00:00'
   is_verified: false
@@ -49,10 +49,10 @@ users:
   deletedAt: null
 - id: 5
   username: Sofía García (Gestor)
-  email: user5@lumina.local
+  email: admin3@lumina.local
   roles:
   - ROLE_ADMIN
-  avatar: https://images.unsplash.com/photo-1508214751196-bcfd092dcccb?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1508214751196-bcfd092dcccb?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-06 05:00:00'
   last_login: '2025-02-27 03:00:00'
   is_verified: true
@@ -61,10 +61,10 @@ users:
   deletedAt: null
 - id: 6
   username: Javier Hernández (Soporte)
-  email: user6@lumina.local
+  email: support1@lumina.local
   roles:
   - ROLE_SUPPORT
-  avatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-07 06:00:00'
   last_login: '2025-02-15 15:00:00'
   is_verified: false
@@ -73,10 +73,10 @@ users:
   deletedAt: null
 - id: 7
   username: Anita Sánchez (Soporte)
-  email: user7@lumina.local
+  email: support2@lumina.local
   roles:
   - ROLE_SUPPORT
-  avatar: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-08 07:00:00'
   last_login: '2025-01-20 09:00:00'
   is_verified: true
@@ -85,10 +85,10 @@ users:
   deletedAt: null
 - id: 8
   username: Miguel Díaz (Soporte)
-  email: user8@lumina.local
+  email: support3@lumina.local
   roles:
   - ROLE_SUPPORT
-  avatar: https://images.unsplash.com/photo-1506692957521-141d47d1e5d0?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1506692957521-141d47d1e5d0?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-09 08:00:00'
   last_login: '2025-02-17 13:00:00'
   is_verified: true
@@ -97,10 +97,10 @@ users:
   deletedAt: null
 - id: 9
   username: Teresa Moreno (Soporte)
-  email: user9@lumina.local
+  email: support4@lumina.local
   roles:
   - ROLE_SUPPORT
-  avatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-10 09:00:00'
   last_login: '2025-02-17 16:00:00'
   is_verified: false
@@ -109,10 +109,10 @@ users:
   deletedAt: null
 - id: 10
   username: Carlos Jiménez (Soporte)
-  email: user10@lumina.local
+  email: support5@lumina.local
   roles:
   - ROLE_SUPPORT
-  avatar: https://images.unsplash.com/photo-1510228250519-147d1b701bda?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1510228250519-147d1b701bda?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-11 10:00:00'
   last_login: '2025-01-08 18:00:00'
   is_verified: true
@@ -121,10 +121,10 @@ users:
   deletedAt: null
 - id: 11
   username: Alejandro Pérez García
-  email: user11@lumina.local
+  email: client1@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-14 11:00:00'
   last_login: '2025-02-06 16:00:00'
   is_verified: true
@@ -134,10 +134,10 @@ users:
   client: true
 - id: 12
   username: Marina Fernández López
-  email: user12@lumina.local
+  email: client2@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-28 05:00:00'
   last_login: '2025-01-03 11:00:00'
   is_verified: true
@@ -147,10 +147,10 @@ users:
   client: true
 - id: 13
   username: David González Martínez
-  email: user13@lumina.local
+  email: client3@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-15 17:00:00'
   last_login: '2025-01-10 06:00:00'
   is_verified: true
@@ -160,10 +160,10 @@ users:
   client: true
 - id: 14
   username: Elena Ruiz Sánchez
-  email: user14@lumina.local
+  email: client4@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-05-10 06:00:00'
   last_login: '2025-01-15 14:00:00'
   is_verified: true
@@ -173,10 +173,10 @@ users:
   client: true
 - id: 15
   username: Pablo Navarro Torres
-  email: user15@lumina.local
+  email: client5@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-17 03:00:00'
   last_login: '2025-02-05 06:00:00'
   is_verified: false
@@ -186,10 +186,10 @@ users:
   client: true
 - id: 16
   username: Laura Romero García
-  email: user16@lumina.local
+  email: client6@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-28 21:00:00'
   last_login: '2025-01-07 19:00:00'
   is_verified: false
@@ -199,10 +199,10 @@ users:
   client: true
 - id: 17
   username: Francisco Castro Rodríguez
-  email: user17@lumina.local
+  email: client7@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-04 01:00:00'
   last_login: '2025-02-19 11:00:00'
   is_verified: false
@@ -212,10 +212,10 @@ users:
   client: true
 - id: 18
   username: Beatriz Núñez López
-  email: user18@lumina.local
+  email: client8@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-15 04:00:00'
   last_login: '2025-01-14 09:00:00'
   is_verified: false
@@ -225,10 +225,10 @@ users:
   client: true
 - id: 19
   username: Jorge Vega Martínez
-  email: user19@lumina.local
+  email: client9@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-08 22:00:00'
   last_login: '2025-01-20 09:00:00'
   is_verified: false
@@ -238,10 +238,10 @@ users:
   client: true
 - id: 20
   username: Patricia Silva García
-  email: user20@lumina.local
+  email: client10@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-22 18:00:00'
   last_login: '2025-02-12 14:00:00'
   is_verified: true
@@ -251,10 +251,10 @@ users:
   client: true
 - id: 21
   username: Luis Vargas López
-  email: user21@lumina.local
+  email: client11@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-16 22:00:00'
   last_login: '2025-01-05 00:00:00'
   is_verified: true
@@ -264,10 +264,10 @@ users:
   client: true
 - id: 22
   username: Marta Campos Sánchez
-  email: user22@lumina.local
+  email: client12@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-26 10:00:00'
   last_login: '2025-01-11 05:00:00'
   is_verified: true
@@ -277,10 +277,10 @@ users:
   client: true
 - id: 23
   username: José Delgado Rodríguez
-  email: user23@lumina.local
+  email: client13@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-09 20:00:00'
   last_login: '2025-02-28 13:00:00'
   is_verified: true
@@ -290,10 +290,10 @@ users:
   client: true
 - id: 24
   username: Rosa Molina García
-  email: user24@lumina.local
+  email: client14@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-14 23:00:00'
   last_login: '2025-02-09 03:00:00'
   is_verified: true
@@ -303,10 +303,10 @@ users:
   client: true
 - id: 25
   username: Manuel Cabrera López
-  email: user25@lumina.local
+  email: client15@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-24 16:00:00'
   last_login: '2025-02-02 00:00:00'
   is_verified: true
@@ -316,10 +316,10 @@ users:
   client: true
 - id: 26
   username: Carmen Soto Martínez
-  email: user26@lumina.local
+  email: client16@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-01 02:00:00'
   last_login: '2025-01-06 20:00:00'
   is_verified: true
@@ -329,10 +329,10 @@ users:
   client: true
 - id: 27
   username: Antonio Medina García
-  email: user27@lumina.local
+  email: client17@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-27 07:00:00'
   last_login: '2025-01-14 01:00:00'
   is_verified: true
@@ -342,10 +342,10 @@ users:
   client: true
 - id: 28
   username: Lidia Iglesias López
-  email: user28@lumina.local
+  email: client18@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-18 23:00:00'
   last_login: '2025-01-27 23:00:00'
   is_verified: false
@@ -355,10 +355,10 @@ users:
   client: true
 - id: 29
   username: Enrique Flores Sánchez
-  email: user29@lumina.local
+  email: client19@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-05 16:00:00'
   last_login: '2025-02-02 18:00:00'
   is_verified: true
@@ -368,10 +368,10 @@ users:
   client: true
 - id: 30
   username: Isabel Morales Rodríguez
-  email: user30@lumina.local
+  email: client20@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-01 03:00:00'
   last_login: '2025-02-26 23:00:00'
   is_verified: true
@@ -381,10 +381,10 @@ users:
   client: true
 - id: 31
   username: Cristóbal Rivas García
-  email: user31@lumina.local
+  email: client21@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-14 12:00:00'
   last_login: '2025-02-24 19:00:00'
   is_verified: false
@@ -394,10 +394,10 @@ users:
   client: true
 - id: 32
   username: Dolores Aguirre López
-  email: user32@lumina.local
+  email: client22@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-24 08:00:00'
   last_login: '2025-01-19 01:00:00'
   is_verified: true
@@ -407,10 +407,10 @@ users:
   client: true
 - id: 33
   username: Emilio Barrera Martínez
-  email: user33@lumina.local
+  email: client23@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-18 04:00:00'
   last_login: '2025-01-17 03:00:00'
   is_verified: true
@@ -420,10 +420,10 @@ users:
   client: true
 - id: 34
   username: Fátima Cordero García
-  email: user34@lumina.local
+  email: client24@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-02 00:00:00'
   last_login: '2025-01-11 07:00:00'
   is_verified: false
@@ -433,10 +433,10 @@ users:
   client: true
 - id: 35
   username: Guillermo Dueñas López
-  email: user35@lumina.local
+  email: client25@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-05 15:00:00'
   last_login: '2025-02-06 14:00:00'
   is_verified: true
@@ -446,10 +446,10 @@ users:
   client: true
 - id: 36
   username: Helena Escalante Sánchez
-  email: user36@lumina.local
+  email: client26@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-20 18:00:00'
   last_login: '2025-01-18 01:00:00'
   is_verified: false
@@ -459,10 +459,10 @@ users:
   client: true
 - id: 37
   username: Ignacio Flores Rodríguez
-  email: user37@lumina.local
+  email: client27@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-18 03:00:00'
   last_login: '2025-02-24 19:00:00'
   is_verified: true
@@ -472,10 +472,10 @@ users:
   client: true
 - id: 38
   username: Josefina González García
-  email: user38@lumina.local
+  email: client28@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-18 20:00:00'
   last_login: '2025-02-01 05:00:00'
   is_verified: true
@@ -485,10 +485,10 @@ users:
   client: true
 - id: 39
   username: Leopoldo Herrera López
-  email: user39@lumina.local
+  email: client29@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-05-10 03:00:00'
   last_login: '2025-02-23 09:00:00'
   is_verified: true
@@ -498,10 +498,10 @@ users:
   client: true
 - id: 40
   username: Magdalena Ibáñez Martínez
-  email: user40@lumina.local
+  email: client30@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-01 19:00:00'
   last_login: '2025-02-09 18:00:00'
   is_verified: false
@@ -511,10 +511,10 @@ users:
   client: true
 - id: 41
   username: Nicolás Jaramillo García
-  email: user41@lumina.local
+  email: client31@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-16 20:00:00'
   last_login: '2025-01-26 07:00:00'
   is_verified: false
@@ -524,10 +524,10 @@ users:
   client: true
 - id: 42
   username: Olga Kauffmann López
-  email: user42@lumina.local
+  email: client32@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-27 20:00:00'
   last_login: '2025-02-25 17:00:00'
   is_verified: true
@@ -537,10 +537,10 @@ users:
   client: true
 - id: 43
   username: Pascual López Sánchez
-  email: user43@lumina.local
+  email: client33@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-06 05:00:00'
   last_login: '2025-02-25 11:00:00'
   is_verified: true
@@ -550,10 +550,10 @@ users:
   client: true
 - id: 44
   username: Querubina Márquez Rodríguez
-  email: user44@lumina.local
+  email: client34@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-22 19:00:00'
   last_login: '2025-01-28 12:00:00'
   is_verified: true
@@ -563,10 +563,10 @@ users:
   client: true
 - id: 45
   username: Roberto Nieto García
-  email: user45@lumina.local
+  email: client35@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-07 09:00:00'
   last_login: '2025-01-02 08:00:00'
   is_verified: true
@@ -576,10 +576,10 @@ users:
   client: true
 - id: 46
   username: Serafina Ochoa López
-  email: user46@lumina.local
+  email: client36@lumina.local
   roles:
   - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-16 04:00:00'
   last_login: '2025-01-25 13:00:00'
   is_verified: true
@@ -589,10 +589,10 @@ users:
   client: true
 - id: 47
   username: Teófilo Páez Martínez
-  email: user47@lumina.local
+  email: user1@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-23 12:00:00'
   last_login: '2025-01-04 08:00:00'
   is_verified: false
@@ -602,10 +602,10 @@ users:
   client: true
 - id: 48
   username: Úrsula Quiroga García
-  email: user48@lumina.local
+  email: user2@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-27 09:00:00'
   last_login: '2025-02-16 16:00:00'
   is_verified: true
@@ -615,10 +615,10 @@ users:
   client: true
 - id: 49
   username: Valentín Ramírez López
-  email: user49@lumina.local
+  email: user3@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-08 14:00:00'
   last_login: '2025-02-16 18:00:00'
   is_verified: true
@@ -628,10 +628,10 @@ users:
   client: true
 - id: 50
   username: Wenceslao Sáenz Sánchez
-  email: user50@lumina.local
+  email: user4@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-22 18:00:00'
   last_login: '2025-02-05 04:00:00'
   is_verified: false
@@ -641,10 +641,10 @@ users:
   client: true
 - id: 51
   username: Xenia Téllez Rodríguez
-  email: user51@lumina.local
+  email: user5@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-15 09:00:00'
   last_login: '2025-01-23 05:00:00'
   is_verified: true
@@ -654,10 +654,10 @@ users:
   client: true
 - id: 52
   username: Yolanda Ureña García
-  email: user52@lumina.local
+  email: user6@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-25 10:00:00'
   last_login: '2025-02-15 22:00:00'
   is_verified: true
@@ -667,10 +667,10 @@ users:
   client: true
 - id: 53
   username: Zacarías Valdebenito López
-  email: user53@lumina.local
+  email: user7@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-24 01:00:00'
   last_login: '2025-01-28 12:00:00'
   is_verified: true
@@ -680,10 +680,10 @@ users:
   client: true
 - id: 54
   username: Aarón Villalba Martínez
-  email: user54@lumina.local
+  email: user8@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-28 02:00:00'
   last_login: '2025-01-20 20:00:00'
   is_verified: false
@@ -693,10 +693,10 @@ users:
   client: true
 - id: 55
   username: Belinda Weissman García
-  email: user55@lumina.local
+  email: user9@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-08 22:00:00'
   last_login: '2025-02-12 15:00:00'
   is_verified: true
@@ -706,10 +706,10 @@ users:
   client: true
 - id: 56
   username: Celina Ximénez López
-  email: user56@lumina.local
+  email: user10@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-28 22:00:00'
   last_login: '2025-01-18 12:00:00'
   is_verified: true
@@ -719,10 +719,10 @@ users:
   client: true
 - id: 57
   username: Dalila Ybarra Sánchez
-  email: user57@lumina.local
+  email: user11@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-24 04:00:00'
   last_login: '2025-01-02 00:00:00'
   is_verified: true
@@ -732,10 +732,10 @@ users:
   client: true
 - id: 58
   username: Evangelina Zambrano Rodríguez
-  email: user58@lumina.local
+  email: user12@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-19 10:00:00'
   last_login: '2025-01-23 12:00:00'
   is_verified: true
@@ -745,10 +745,10 @@ users:
   client: true
 - id: 59
   username: Francisca Abad García
-  email: user59@lumina.local
+  email: user13@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-05-08 12:00:00'
   last_login: '2025-01-08 17:00:00'
   is_verified: true
@@ -758,10 +758,10 @@ users:
   client: true
 - id: 60
   username: Geovanna Acevedo López
-  email: user60@lumina.local
+  email: user14@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-15 10:00:00'
   last_login: '2025-02-21 03:00:00'
   is_verified: true
@@ -771,10 +771,10 @@ users:
   client: true
 - id: 61
   username: Herminia Alfaro Martínez
-  email: user61@lumina.local
+  email: user15@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-09 23:00:00'
   last_login: '2025-01-07 02:00:00'
   is_verified: true
@@ -784,10 +784,10 @@ users:
   client: true
 - id: 62
   username: Isidora Almonte García
-  email: user62@lumina.local
+  email: user16@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-13 10:00:00'
   last_login: '2025-02-03 15:00:00'
   is_verified: false
@@ -797,10 +797,10 @@ users:
   client: true
 - id: 63
   username: Jacintha Araya López
-  email: user63@lumina.local
+  email: user17@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-03 12:00:00'
   last_login: '2025-02-13 07:00:00'
   is_verified: true
@@ -810,10 +810,10 @@ users:
   client: true
 - id: 64
   username: Karenina Azofeifa Sánchez
-  email: user64@lumina.local
+  email: user18@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-03 23:00:00'
   last_login: '2025-01-07 15:00:00'
   is_verified: true
@@ -823,10 +823,10 @@ users:
   client: true
 - id: 65
   username: Lorena Benavente Rodríguez
-  email: user65@lumina.local
+  email: user19@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-08 18:00:00'
   last_login: '2025-01-23 11:00:00'
   is_verified: true
@@ -836,10 +836,10 @@ users:
   client: true
 - id: 66
   username: Marcelina Brenes García
-  email: user66@lumina.local
+  email: user20@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-12 12:00:00'
   last_login: '2025-02-18 04:00:00'
   is_verified: true
@@ -849,10 +849,10 @@ users:
   client: true
 - id: 67
   username: Natividad Carballo López
-  email: user67@lumina.local
+  email: user21@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-12 02:00:00'
   last_login: '2025-01-22 22:00:00'
   is_verified: false
@@ -862,10 +862,10 @@ users:
   client: true
 - id: 68
   username: Ofelia Cascante Martínez
-  email: user68@lumina.local
+  email: user22@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-06 09:00:00'
   last_login: '2025-02-04 05:00:00'
   is_verified: false
@@ -875,10 +875,10 @@ users:
   client: true
 - id: 69
   username: Patrocinia Castillo García
-  email: user69@lumina.local
+  email: user23@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-04 13:00:00'
   last_login: '2025-01-07 08:00:00'
   is_verified: true
@@ -888,10 +888,10 @@ users:
   client: true
 - id: 70
   username: Rebeca Castallanos López
-  email: user70@lumina.local
+  email: user24@lumina.local
   roles:
-  - ROLE_CLIENT
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  - ROLE_USER
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-09 12:00:00'
   last_login: '2025-02-17 05:00:00'
   is_verified: true
@@ -901,10 +901,10 @@ users:
   client: true
 - id: 71
   username: Óscar Blanco González
-  email: user71@lumina.local
+  email: user25@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-20 15:00:00'
   last_login: '2025-02-12 10:00:00'
   is_verified: false
@@ -914,10 +914,10 @@ users:
   client: false
 - id: 72
   username: Natalia Contreras López
-  email: user72@lumina.local
+  email: user26@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-23 01:00:00'
   last_login: '2025-02-19 19:00:00'
   is_verified: false
@@ -927,10 +927,10 @@ users:
   client: false
 - id: 73
   username: Víctor Salazar Martínez
-  email: user73@lumina.local
+  email: user27@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-11 15:00:00'
   last_login: '2025-01-26 14:00:00'
   is_verified: true
@@ -940,10 +940,10 @@ users:
   client: false
 - id: 74
   username: Andrea Ponte García
-  email: user74@lumina.local
+  email: user28@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-25 00:00:00'
   last_login: '2025-01-19 19:00:00'
   is_verified: false
@@ -953,10 +953,10 @@ users:
   client: false
 - id: 75
   username: Tomás Bravo López
-  email: user75@lumina.local
+  email: user29@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-07 17:00:00'
   last_login: '2025-02-18 02:00:00'
   is_verified: true
@@ -966,10 +966,10 @@ users:
   client: false
 - id: 76
   username: Verónica Acosta Sánchez
-  email: user76@lumina.local
+  email: user30@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-05 08:00:00'
   last_login: '2025-02-20 13:00:00'
   is_verified: true
@@ -979,10 +979,10 @@ users:
   client: false
 - id: 77
   username: Rafael Fuentes Rodríguez
-  email: user77@lumina.local
+  email: user31@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-07 11:00:00'
   last_login: '2025-01-14 12:00:00'
   is_verified: false
@@ -992,10 +992,10 @@ users:
   client: false
 - id: 78
   username: Silvia Rubio García
-  email: user78@lumina.local
+  email: user32@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-17 04:00:00'
   last_login: '2025-02-02 21:00:00'
   is_verified: true
@@ -1005,10 +1005,10 @@ users:
   client: false
 - id: 79
   username: Sergio Cano López
-  email: user79@lumina.local
+  email: user33@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-18 04:00:00'
   last_login: '2025-01-05 12:00:00'
   is_verified: true
@@ -1018,10 +1018,10 @@ users:
   client: false
 - id: 80
   username: Catalina Ramos Martínez
-  email: user80@lumina.local
+  email: user34@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-27 18:00:00'
   last_login: '2025-01-09 21:00:00'
   is_verified: false
@@ -1031,10 +1031,10 @@ users:
   client: false
 - id: 81
   username: Felipe Solís García
-  email: user81@lumina.local
+  email: user35@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-26 01:00:00'
   last_login: '2025-01-16 17:00:00'
   is_verified: false
@@ -1044,10 +1044,10 @@ users:
   client: false
 - id: 82
   username: Irene Torres López
-  email: user82@lumina.local
+  email: user36@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-11 04:00:00'
   last_login: '2025-02-13 06:00:00'
   is_verified: true
@@ -1057,10 +1057,10 @@ users:
   client: false
 - id: 83
   username: Gonzalo Bustamante Sánchez
-  email: user83@lumina.local
+  email: user37@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-10 16:00:00'
   last_login: '2025-01-23 04:00:00'
   is_verified: false
@@ -1070,10 +1070,10 @@ users:
   client: false
 - id: 84
   username: Vanessa Montoya Rodríguez
-  email: user84@lumina.local
+  email: user38@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-02 11:00:00'
   last_login: '2025-01-16 10:00:00'
   is_verified: true
@@ -1083,10 +1083,10 @@ users:
   client: false
 - id: 85
   username: Raúl Domínguez García
-  email: user85@lumina.local
+  email: user39@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-18 15:00:00'
   last_login: '2025-02-14 15:00:00'
   is_verified: false
@@ -1096,10 +1096,10 @@ users:
   client: false
 - id: 86
   username: Yolanda Sánchez López
-  email: user86@lumina.local
+  email: user40@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-13 19:00:00'
   last_login: '2025-02-08 21:00:00'
   is_verified: true
@@ -1109,10 +1109,10 @@ users:
   client: false
 - id: 87
   username: Arturo Ochoa Martínez
-  email: user87@lumina.local
+  email: user41@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-15 15:00:00'
   last_login: '2025-01-10 14:00:00'
   is_verified: false
@@ -1122,10 +1122,10 @@ users:
   client: false
 - id: 88
   username: Fabiana Guzmán García
-  email: user88@lumina.local
+  email: user42@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-15 14:00:00'
   last_login: '2025-01-08 04:00:00'
   is_verified: false
@@ -1135,10 +1135,10 @@ users:
   client: false
 - id: 89
   username: Edmundo Méndez López
-  email: user89@lumina.local
+  email: user43@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-05 20:00:00'
   last_login: '2025-02-21 06:00:00'
   is_verified: true
@@ -1148,10 +1148,10 @@ users:
   client: false
 - id: 90
   username: Gloria Leiva Sánchez
-  email: user90@lumina.local
+  email: user44@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-19 12:00:00'
   last_login: '2025-02-02 01:00:00'
   is_verified: true
@@ -1161,10 +1161,10 @@ users:
   client: false
 - id: 91
   username: Bruno Herrera Rodríguez
-  email: user91@lumina.local
+  email: user45@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-22 05:00:00'
   last_login: '2025-01-09 10:00:00'
   is_verified: true
@@ -1174,10 +1174,10 @@ users:
   client: false
 - id: 92
   username: Alma Castro García
-  email: user92@lumina.local
+  email: user46@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-10 04:00:00'
   last_login: '2025-02-13 23:00:00'
   is_verified: true
@@ -1187,10 +1187,10 @@ users:
   client: false
 - id: 93
   username: Claudio Molina López
-  email: user93@lumina.local
+  email: user47@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-04 23:00:00'
   last_login: '2025-01-28 01:00:00'
   is_verified: true
@@ -1200,10 +1200,10 @@ users:
   client: false
 - id: 94
   username: Dionisia Esparza Martínez
-  email: user94@lumina.local
+  email: user48@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-03 02:00:00'
   last_login: '2025-01-05 14:00:00'
   is_verified: false
@@ -1213,10 +1213,10 @@ users:
   client: false
 - id: 95
   username: Eugenio Flores García
-  email: user95@lumina.local
+  email: user49@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-06 03:00:00'
   last_login: '2025-01-15 21:00:00'
   is_verified: false
@@ -1226,10 +1226,10 @@ users:
   client: false
 - id: 96
   username: Florencia Gálvez López
-  email: user96@lumina.local
+  email: user50@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-20 19:00:00'
   last_login: '2025-02-20 19:00:00'
   is_verified: true
@@ -1239,10 +1239,10 @@ users:
   client: false
 - id: 97
   username: Gumersindo Hernández Sánchez
-  email: user97@lumina.local
+  email: user51@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-14 05:00:00'
   last_login: '2025-02-23 06:00:00'
   is_verified: true
@@ -1252,10 +1252,10 @@ users:
   client: false
 - id: 98
   username: Hortensia Ibáñez Rodríguez
-  email: user98@lumina.local
+  email: user52@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-11-08 14:00:00'
   last_login: '2025-02-01 20:00:00'
   is_verified: true
@@ -1265,10 +1265,10 @@ users:
   client: false
 - id: 99
   username: Inocencia Jiménez García
-  email: user99@lumina.local
+  email: user53@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-10 01:00:00'
   last_login: '2025-02-07 20:00:00'
   is_verified: true
@@ -1278,10 +1278,10 @@ users:
   client: false
 - id: 100
   username: Jacobo Kindelán López
-  email: user100@lumina.local
+  email: user54@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-26 20:00:00'
   last_login: '2025-01-08 08:00:00'
   is_verified: true
@@ -1291,10 +1291,10 @@ users:
   client: false
 - id: 101
   username: Kosme Lara Martínez
-  email: user101@lumina.local
+  email: user55@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-02 14:00:00'
   last_login: '2025-01-07 15:00:00'
   is_verified: false
@@ -1304,10 +1304,10 @@ users:
   client: false
 - id: 102
   username: Leticia Leyva García
-  email: user102@lumina.local
+  email: user56@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-07 17:00:00'
   last_login: '2025-01-23 01:00:00'
   is_verified: true
@@ -1317,10 +1317,10 @@ users:
   client: false
 - id: 103
   username: Matías Lozano López
-  email: user103@lumina.local
+  email: user57@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-21 16:00:00'
   last_login: '2025-01-15 12:00:00'
   is_verified: false
@@ -1330,10 +1330,10 @@ users:
   client: false
 - id: 104
   username: Nemesio Madera Sánchez
-  email: user104@lumina.local
+  email: user58@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-06 21:00:00'
   last_login: '2025-01-16 15:00:00'
   is_verified: true
@@ -1343,10 +1343,10 @@ users:
   client: false
 - id: 105
   username: Orfilia Noriega Rodríguez
-  email: user105@lumina.local
+  email: user59@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-26 18:00:00'
   last_login: '2025-02-25 15:00:00'
   is_verified: true
@@ -1356,10 +1356,10 @@ users:
   client: false
 - id: 106
   username: Plutarco Orozco García
-  email: user106@lumina.local
+  email: user60@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-11 14:00:00'
   last_login: '2025-02-19 13:00:00'
   is_verified: true
@@ -1369,10 +1369,10 @@ users:
   client: false
 - id: 107
   username: Queta Pacheco López
-  email: user107@lumina.local
+  email: user61@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-20 18:00:00'
   last_login: '2025-01-11 07:00:00'
   is_verified: false
@@ -1382,10 +1382,10 @@ users:
   client: false
 - id: 108
   username: Romualdo Quiroz Martínez
-  email: user108@lumina.local
+  email: user62@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-16 04:00:00'
   last_login: '2025-02-13 23:00:00'
   is_verified: false
@@ -1395,10 +1395,10 @@ users:
   client: false
 - id: 109
   username: Samuela Rodríguez García
-  email: user109@lumina.local
+  email: user63@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-19 01:00:00'
   last_login: '2025-02-04 07:00:00'
   is_verified: false
@@ -1408,10 +1408,10 @@ users:
   client: false
 - id: 110
   username: Tiburcio Roque López
-  email: user110@lumina.local
+  email: user64@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-15 11:00:00'
   last_login: '2025-01-24 18:00:00'
   is_verified: true
@@ -1421,10 +1421,10 @@ users:
   client: false
 - id: 111
   username: Unai Rueda Sánchez
-  email: user111@lumina.local
+  email: user65@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-08-08 00:00:00'
   last_login: '2025-01-03 22:00:00'
   is_verified: true
@@ -1434,10 +1434,10 @@ users:
   client: false
 - id: 112
   username: Valeska Salazar Rodríguez
-  email: user112@lumina.local
+  email: user66@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-21 02:00:00'
   last_login: '2025-02-14 00:00:00'
   is_verified: false
@@ -1447,10 +1447,10 @@ users:
   client: false
 - id: 113
   username: Waldo Santamaría García
-  email: user113@lumina.local
+  email: user67@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-07 00:00:00'
   last_login: '2025-02-08 23:00:00'
   is_verified: false
@@ -1460,10 +1460,10 @@ users:
   client: false
 - id: 114
   username: Xochiquetzal Serrano López
-  email: user114@lumina.local
+  email: user68@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-12-05 01:00:00'
   last_login: '2025-01-04 08:00:00'
   is_verified: true
@@ -1473,10 +1473,10 @@ users:
   client: false
 - id: 115
   username: Yamila Sierra Martínez
-  email: user115@lumina.local
+  email: user69@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-21 11:00:00'
   last_login: '2025-02-02 22:00:00'
   is_verified: false
@@ -1486,10 +1486,10 @@ users:
   client: false
 - id: 116
   username: Zaira Solano García
-  email: user116@lumina.local
+  email: user70@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-05 17:00:00'
   last_login: '2025-01-11 09:00:00'
   is_verified: true
@@ -1499,10 +1499,10 @@ users:
   client: false
 - id: 117
   username: Abundio Suárez López
-  email: user117@lumina.local
+  email: user71@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-01-18 17:00:00'
   last_login: '2025-02-16 16:00:00'
   is_verified: true
@@ -1512,10 +1512,10 @@ users:
   client: false
 - id: 118
   username: Brigida Tejada Sánchez
-  email: user118@lumina.local
+  email: user72@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-15 22:00:00'
   last_login: '2025-01-23 21:00:00'
   is_verified: true
@@ -1525,10 +1525,10 @@ users:
   client: false
 - id: 119
   username: Cesáreo Téllez Rodríguez
-  email: user119@lumina.local
+  email: user73@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-19 07:00:00'
   last_login: '2025-02-17 08:00:00'
   is_verified: false
@@ -1538,10 +1538,10 @@ users:
   client: false
 - id: 120
   username: Demócrates Tenorio García
-  email: user120@lumina.local
+  email: user74@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-07-21 11:00:00'
   last_login: '2025-02-04 15:00:00'
   is_verified: true
@@ -1551,10 +1551,10 @@ users:
   client: false
 - id: 121
   username: Everardo Toledo López
-  email: user121@lumina.local
+  email: user75@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-20 10:00:00'
   last_login: '2025-02-01 20:00:00'
   is_verified: true
@@ -1564,10 +1564,10 @@ users:
   client: false
 - id: 122
   username: Filadelfo Tordoya Martínez
-  email: user122@lumina.local
+  email: user76@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-05-07 01:00:00'
   last_login: '2025-01-10 13:00:00'
   is_verified: true
@@ -1577,10 +1577,10 @@ users:
   client: false
 - id: 123
   username: Genoveva Toro García
-  email: user123@lumina.local
+  email: user77@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-20 14:00:00'
   last_login: '2025-01-21 04:00:00'
   is_verified: true
@@ -1590,10 +1590,10 @@ users:
   client: false
 - id: 124
   username: Hermenegildo Tortolero López
-  email: user124@lumina.local
+  email: user78@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-06 11:00:00'
   last_login: '2025-01-21 10:00:00'
   is_verified: false
@@ -1603,10 +1603,10 @@ users:
   client: false
 - id: 125
   username: Imelda Tovilla Sánchez
-  email: user125@lumina.local
+  email: user79@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-03-26 03:00:00'
   last_login: '2025-02-26 02:00:00'
   is_verified: true
@@ -1616,10 +1616,10 @@ users:
   client: false
 - id: 126
   username: Juvenal Toya Rodríguez
-  email: user126@lumina.local
+  email: user80@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-04-28 02:00:00'
   last_login: '2025-02-23 05:00:00'
   is_verified: true
@@ -1629,10 +1629,10 @@ users:
   client: false
 - id: 127
   username: Kutxa Trejo García
-  email: user127@lumina.local
+  email: user81@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-02-13 17:00:00'
   last_login: '2025-02-24 19:00:00'
   is_verified: false
@@ -1642,10 +1642,10 @@ users:
   client: false
 - id: 128
   username: Lamberto Treviño López
-  email: user128@lumina.local
+  email: user82@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-09-03 16:00:00'
   last_login: '2025-01-26 11:00:00'
   is_verified: false
@@ -1655,10 +1655,10 @@ users:
   client: false
 - id: 129
   username: Mariano Triviño Martínez
-  email: user129@lumina.local
+  email: user83@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-10-17 07:00:00'
   last_login: '2025-01-07 21:00:00'
   is_verified: false
@@ -1668,10 +1668,10 @@ users:
   client: false
 - id: 130
   username: Néstor Urtado García
-  email: user130@lumina.local
+  email: user84@lumina.local
   roles:
   - ROLE_USER
-  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=600&q=80
+  avatar: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=compress&cs=tinysrgb&w=400&h=400&q=80&crop=entropy&fit=crop
   created_at: '2024-06-19 01:00:00'
   last_login: '2025-01-07 10:00:00'
   is_verified: false

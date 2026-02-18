@@ -1,4 +1,769 @@
 threads:
+- id: 4
+  subforum_id: 11
+  author_id: 114
+  title: Thread 4 en subforo 11
+  description: Descripción del thread 4
+  content: Contenido detallado del thread 4
+  status: waiting_support
+  help_type: problemas_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 97
+  created_at: '2024-04-19 00:00:00'
+  updated_at: '2025-01-11 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-4
+  solved_message_id: null
+- id: 8
+  subforum_id: 11
+  author_id: 51
+  title: Thread 8 en subforo 11
+  description: Descripción del thread 8
+  content: Contenido detallado del thread 8
+  status: closed
+  help_type: otro_motivo
+  is_private: false
+  sticky: true
+  viewCount: 60
+  created_at: '2024-01-15 00:00:00'
+  updated_at: '2025-02-12 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-8
+  solved_message_id: null
+- id: 12
+  subforum_id: 12
+  author_id: 81
+  title: Thread 12 en subforo 12
+  description: Descripción del thread 12
+  content: Contenido detallado del thread 12
+  status: waiting_customer
+  help_type: incidencia_critica
+  is_private: false
+  sticky: false
+  viewCount: 52
+  created_at: '2024-02-01 00:00:00'
+  updated_at: '2025-01-27 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-12
+  solved_message_id: null
+- id: 16
+  subforum_id: 12
+  author_id: 111
+  title: Thread 16 en subforo 12
+  description: Descripción del thread 16
+  content: Contenido detallado del thread 16
+  status: closed
+  help_type: incidencia_critica
+  is_private: true
+  sticky: false
+  viewCount: 90
+  created_at: '2024-10-19 00:00:00'
+  updated_at: '2025-01-14 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-16
+  solved_message_id: null
+- id: 20
+  subforum_id: 13
+  author_id: 69
+  title: Thread 20 en subforo 13
+  description: Descripción del thread 20
+  content: Contenido detallado del thread 20
+  status: waiting_customer
+  help_type: otro_motivo
+  is_private: false
+  sticky: true
+  viewCount: 77
+  created_at: '2024-04-29 00:00:00'
+  updated_at: '2025-01-17 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-20
+  solved_message_id: null
+- id: 24
+  subforum_id: 14
+  author_id: 46
+  title: Thread 24 en subforo 14
+  description: Descripción del thread 24
+  content: Contenido detallado del thread 24
+  status: waiting_support
+  help_type: otro_motivo
+  is_private: true
+  sticky: false
+  viewCount: 84
+  created_at: '2024-06-16 00:00:00'
+  updated_at: '2025-01-13 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-24
+  solved_message_id: null
+- id: 28
+  subforum_id: 14
+  author_id: 111
+  title: Thread 28 en subforo 14
+  description: Descripción del thread 28
+  content: Contenido detallado del thread 28
+  status: closed
+  help_type: consulta_facturacion
+  is_private: false
+  sticky: true
+  viewCount: 24
+  created_at: '2024-09-28 00:00:00'
+  updated_at: '2025-02-02 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-28
+  solved_message_id: null
+- id: 32
+  subforum_id: 21
+  author_id: 72
+  title: Thread 32 en subforo 21
+  description: Descripción del thread 32
+  content: Contenido detallado del thread 32
+  status: waiting_customer
+  help_type: incidencia_servicio
+  is_private: false
+  sticky: false
+  viewCount: 43
+  created_at: '2024-11-06 00:00:00'
+  updated_at: '2025-01-29 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-32
+  solved_message_id: null
+- id: 36
+  subforum_id: 21
+  author_id: 55
+  title: Thread 36 en subforo 21
+  description: Descripción del thread 36
+  content: Contenido detallado del thread 36
+  status: waiting_support
+  help_type: problemas_facturacion
+  is_private: true
+  sticky: true
+  viewCount: 86
+  created_at: '2024-05-24 00:00:00'
+  updated_at: '2025-01-01 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-36
+  solved_message_id: null
+- id: 40
+  subforum_id: 22
+  author_id: 16
+  title: Thread 40 en subforo 22
+  description: Descripción del thread 40
+  content: Contenido detallado del thread 40
+  status: resolved
+  help_type: incidencia_critica
+  is_private: false
+  sticky: false
+  viewCount: 61
+  created_at: '2024-04-11 00:00:00'
+  updated_at: '2025-02-15 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-40
+  solved_message_id: 1094
+- id: 44
+  subforum_id: 23
+  author_id: 116
+  title: Thread 44 en subforo 23
+  description: Descripción del thread 44
+  content: Contenido detallado del thread 44
+  status: open
+  help_type: otro_motivo
+  is_private: false
+  sticky: true
+  viewCount: 44
+  created_at: '2024-02-07 00:00:00'
+  updated_at: '2025-01-26 00:00:00'
+  deletedAt: null
+  has_messages: false
+  slug: thread-44
+  solved_message_id: null
+- id: 48
+  subforum_id: 23
+  author_id: 130
+  title: Thread 48 en subforo 23
+  description: Descripción del thread 48
+  content: Contenido detallado del thread 48
+  status: resolved
+  help_type: consulta_facturacion
+  is_private: true
+  sticky: false
+  viewCount: 25
+  created_at: '2024-02-20 00:00:00'
+  updated_at: '2025-01-31 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-48
+  solved_message_id: 227
+- id: 52
+  subforum_id: 24
+  author_id: 111
+  title: Thread 52 en subforo 24
+  description: Descripción del thread 52
+  content: Contenido detallado del thread 52
+  status: waiting_customer
+  help_type: consulta_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 38
+  created_at: '2024-10-15 00:00:00'
+  updated_at: '2025-01-18 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-52
+  solved_message_id: null
+- id: 56
+  subforum_id: 24
+  author_id: 107
+  title: Thread 56 en subforo 24
+  description: Descripción del thread 56
+  content: Contenido detallado del thread 56
+  status: closed
+  help_type: otro_motivo
+  is_private: true
+  sticky: false
+  viewCount: 93
+  created_at: '2024-05-30 00:00:00'
+  updated_at: '2025-02-08 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-56
+  solved_message_id: null
+- id: 60
+  subforum_id: 31
+  author_id: 130
+  title: Thread 60 en subforo 31
+  description: Descripción del thread 60
+  content: Contenido detallado del thread 60
+  status: waiting_support
+  help_type: consulta_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 98
+  created_at: '2024-12-25 00:00:00'
+  updated_at: '2025-02-11 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-60
+  solved_message_id: null
+- id: 64
+  subforum_id: 31
+  author_id: 72
+  title: Thread 64 en subforo 31
+  description: Descripción del thread 64
+  content: Contenido detallado del thread 64
+  status: waiting_support
+  help_type: incidencia_critica
+  is_private: true
+  sticky: false
+  viewCount: 80
+  created_at: '2024-04-28 00:00:00'
+  updated_at: '2025-01-15 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-64
+  solved_message_id: null
+- id: 68
+  subforum_id: 32
+  author_id: 116
+  title: Thread 68 en subforo 32
+  description: Descripción del thread 68
+  content: Contenido detallado del thread 68
+  status: closed
+  help_type: otro_motivo
+  is_private: true
+  sticky: true
+  viewCount: 77
+  created_at: '2024-08-14 00:00:00'
+  updated_at: '2025-01-31 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-68
+  solved_message_id: null
+- id: 72
+  subforum_id: 32
+  author_id: 122
+  title: Thread 72 en subforo 32
+  description: Descripción del thread 72
+  content: Contenido detallado del thread 72
+  status: closed
+  help_type: problemas_facturacion
+  is_private: false
+  sticky: true
+  viewCount: 94
+  created_at: '2024-02-07 00:00:00'
+  updated_at: '2025-01-26 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-72
+  solved_message_id: null
+- id: 76
+  subforum_id: 33
+  author_id: 40
+  title: Thread 76 en subforo 33
+  description: Descripción del thread 76
+  content: Contenido detallado del thread 76
+  status: open
+  help_type: incidencia_critica
+  is_private: true
+  sticky: false
+  viewCount: 17
+  created_at: '2024-07-11 00:00:00'
+  updated_at: '2025-01-29 00:00:00'
+  deletedAt: null
+  has_messages: false
+  slug: thread-76
+  solved_message_id: null
+- id: 80
+  subforum_id: 33
+  author_id: 10
+  title: Thread 80 en subforo 33
+  description: Descripción del thread 80
+  content: Contenido detallado del thread 80
+  status: resolved
+  help_type: incidencia_servicio
+  is_private: false
+  sticky: false
+  viewCount: 82
+  created_at: '2024-04-20 00:00:00'
+  updated_at: '2025-02-01 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-80
+  solved_message_id: 370
+- id: 84
+  subforum_id: 41
+  author_id: 76
+  title: Thread 84 en subforo 41
+  description: Descripción del thread 84
+  content: Contenido detallado del thread 84
+  status: waiting_support
+  help_type: incidencia_critica
+  is_private: true
+  sticky: true
+  viewCount: 70
+  created_at: '2024-09-23 00:00:00'
+  updated_at: '2025-02-01 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-84
+  solved_message_id: null
+- id: 88
+  subforum_id: 41
+  author_id: 72
+  title: Thread 88 en subforo 41
+  description: Descripción del thread 88
+  content: Contenido detallado del thread 88
+  status: closed
+  help_type: otro_motivo
+  is_private: true
+  sticky: false
+  viewCount: 69
+  created_at: '2024-02-15 00:00:00'
+  updated_at: '2025-01-17 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-88
+  solved_message_id: null
+- id: 92
+  subforum_id: 42
+  author_id: 9
+  title: Thread 92 en subforo 42
+  description: Descripción del thread 92
+  content: Contenido detallado del thread 92
+  status: waiting_support
+  help_type: problemas_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 86
+  created_at: '2024-07-12 00:00:00'
+  updated_at: '2025-02-06 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-92
+  solved_message_id: null
+- id: 96
+  subforum_id: 42
+  author_id: 44
+  title: Thread 96 en subforo 42
+  description: Descripción del thread 96
+  content: Contenido detallado del thread 96
+  status: waiting_customer
+  help_type: incidencia_servicio
+  is_private: false
+  sticky: false
+  viewCount: 59
+  created_at: '2024-08-30 00:00:00'
+  updated_at: '2025-02-13 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-96
+  solved_message_id: null
+- id: 100
+  subforum_id: 43
+  author_id: 88
+  title: Thread 100 en subforo 43
+  description: Descripción del thread 100
+  content: Contenido detallado del thread 100
+  status: closed
+  help_type: otro_motivo
+  is_private: false
+  sticky: true
+  viewCount: 53
+  created_at: '2024-10-09 00:00:00'
+  updated_at: '2025-01-19 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-100
+  solved_message_id: null
+- id: 104
+  subforum_id: 43
+  author_id: 45
+  title: Thread 104 en subforo 43
+  description: Descripción del thread 104
+  content: Contenido detallado del thread 104
+  status: closed
+  help_type: otro_motivo
+  is_private: true
+  sticky: true
+  viewCount: 48
+  created_at: '2024-05-17 00:00:00'
+  updated_at: '2025-01-20 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-104
+  solved_message_id: null
+- id: 108
+  subforum_id: 51
+  author_id: 16
+  title: Thread 108 en subforo 51
+  description: Descripción del thread 108
+  content: Contenido detallado del thread 108
+  status: waiting_support
+  help_type: incidencia_servicio
+  is_private: true
+  sticky: true
+  viewCount: 38
+  created_at: '2024-07-22 00:00:00'
+  updated_at: '2025-01-05 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-108
+  solved_message_id: null
+- id: 112
+  subforum_id: 52
+  author_id: 62
+  title: Thread 112 en subforo 52
+  description: Descripción del thread 112
+  content: Contenido detallado del thread 112
+  status: waiting_customer
+  help_type: otro_motivo
+  is_private: true
+  sticky: true
+  viewCount: 53
+  created_at: '2024-02-14 00:00:00'
+  updated_at: '2025-02-13 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-112
+  solved_message_id: null
+- id: 116
+  subforum_id: 52
+  author_id: 80
+  title: Thread 116 en subforo 52
+  description: Descripción del thread 116
+  content: Contenido detallado del thread 116
+  status: waiting_customer
+  help_type: incidencia_servicio
+  is_private: false
+  sticky: false
+  viewCount: 64
+  created_at: '2024-02-22 00:00:00'
+  updated_at: '2025-01-28 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-116
+  solved_message_id: null
+- id: 120
+  subforum_id: 53
+  author_id: 127
+  title: Thread 120 en subforo 53
+  description: Descripción del thread 120
+  content: Contenido detallado del thread 120
+  status: waiting_support
+  help_type: consulta_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 88
+  created_at: '2024-07-05 00:00:00'
+  updated_at: '2025-02-15 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-120
+  solved_message_id: null
+- id: 124
+  subforum_id: 53
+  author_id: 77
+  title: Thread 124 en subforo 53
+  description: Descripción del thread 124
+  content: Contenido detallado del thread 124
+  status: waiting_support
+  help_type: incidencia_critica
+  is_private: true
+  sticky: true
+  viewCount: 35
+  created_at: '2024-12-02 00:00:00'
+  updated_at: '2025-02-03 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-124
+  solved_message_id: null
+- id: 128
+  subforum_id: 61
+  author_id: 33
+  title: Thread 128 en subforo 61
+  description: Descripción del thread 128
+  content: Contenido detallado del thread 128
+  status: waiting_support
+  help_type: problemas_facturacion
+  is_private: false
+  sticky: true
+  viewCount: 17
+  created_at: '2024-10-30 00:00:00'
+  updated_at: '2025-01-03 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-128
+  solved_message_id: null
+- id: 132
+  subforum_id: 62
+  author_id: 19
+  title: Thread 132 en subforo 62
+  description: Descripción del thread 132
+  content: Contenido detallado del thread 132
+  status: waiting_support
+  help_type: incidencia_servicio
+  is_private: false
+  sticky: false
+  viewCount: 11
+  created_at: '2024-12-27 00:00:00'
+  updated_at: '2025-01-03 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-132
+  solved_message_id: null
+- id: 136
+  subforum_id: 62
+  author_id: 88
+  title: Thread 136 en subforo 62
+  description: Descripción del thread 136
+  content: Contenido detallado del thread 136
+  status: closed
+  help_type: problemas_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 83
+  created_at: '2024-11-20 00:00:00'
+  updated_at: '2025-01-21 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-136
+  solved_message_id: null
+- id: 140
+  subforum_id: 63
+  author_id: 17
+  title: Thread 140 en subforo 63
+  description: Descripción del thread 140
+  content: Contenido detallado del thread 140
+  status: waiting_support
+  help_type: consulta_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 13
+  created_at: '2024-10-22 00:00:00'
+  updated_at: '2025-01-24 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-140
+  solved_message_id: null
+- id: 144
+  subforum_id: 63
+  author_id: 89
+  title: Thread 144 en subforo 63
+  description: Descripción del thread 144
+  content: Contenido detallado del thread 144
+  status: closed
+  help_type: otro_motivo
+  is_private: false
+  sticky: false
+  viewCount: 95
+  created_at: '2024-01-18 00:00:00'
+  updated_at: '2025-01-29 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-144
+  solved_message_id: null
+- id: 148
+  subforum_id: 71
+  author_id: 22
+  title: Thread 148 en subforo 71
+  description: Descripción del thread 148
+  content: Contenido detallado del thread 148
+  status: open
+  help_type: consulta_facturacion
+  is_private: true
+  sticky: false
+  viewCount: 67
+  created_at: '2024-02-24 00:00:00'
+  updated_at: '2025-01-21 00:00:00'
+  deletedAt: null
+  has_messages: false
+  slug: thread-148
+  solved_message_id: null
+- id: 152
+  subforum_id: 71
+  author_id: 51
+  title: Thread 152 en subforo 71
+  description: Descripción del thread 152
+  content: Contenido detallado del thread 152
+  status: resolved
+  help_type: incidencia_servicio
+  is_private: true
+  sticky: false
+  viewCount: 52
+  created_at: '2024-03-08 00:00:00'
+  updated_at: '2025-02-13 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-152
+  solved_message_id: 695
+- id: 156
+  subforum_id: 73
+  author_id: 17
+  title: Thread 156 en subforo 73
+  description: Descripción del thread 156
+  content: Contenido detallado del thread 156
+  status: open
+  help_type: incidencia_critica
+  is_private: false
+  sticky: false
+  viewCount: 28
+  created_at: '2024-04-24 00:00:00'
+  updated_at: '2025-02-02 00:00:00'
+  deletedAt: null
+  has_messages: false
+  slug: thread-156
+  solved_message_id: null
+- id: 160
+  subforum_id: 73
+  author_id: 35
+  title: Thread 160 en subforo 73
+  description: Descripción del thread 160
+  content: Contenido detallado del thread 160
+  status: resolved
+  help_type: consulta_facturacion
+  is_private: true
+  sticky: false
+  viewCount: 19
+  created_at: '2024-07-09 00:00:00'
+  updated_at: '2025-01-08 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-160
+  solved_message_id: 745
+- id: 164
+  subforum_id: 81
+  author_id: 47
+  title: Thread 164 en subforo 81
+  description: Descripción del thread 164
+  content: Contenido detallado del thread 164
+  status: waiting_support
+  help_type: otro_motivo
+  is_private: true
+  sticky: true
+  viewCount: 38
+  created_at: '2024-08-10 00:00:00'
+  updated_at: '2025-01-22 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-164
+  solved_message_id: null
+- id: 168
+  subforum_id: 81
+  author_id: 86
+  title: Thread 168 en subforo 81
+  description: Descripción del thread 168
+  content: Contenido detallado del thread 168
+  status: closed
+  help_type: otro_motivo
+  is_private: false
+  sticky: false
+  viewCount: 68
+  created_at: '2024-05-09 00:00:00'
+  updated_at: '2025-01-12 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-168
+  solved_message_id: null
+- id: 172
+  subforum_id: 82
+  author_id: 116
+  title: Thread 172 en subforo 82
+  description: Descripción del thread 172
+  content: Contenido detallado del thread 172
+  status: waiting_customer
+  help_type: incidencia_critica
+  is_private: true
+  sticky: false
+  viewCount: 48
+  created_at: '2024-08-15 00:00:00'
+  updated_at: '2025-01-20 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-172
+  solved_message_id: null
+- id: 176
+  subforum_id: 83
+  author_id: 83
+  title: Thread 176 en subforo 83
+  description: Descripción del thread 176
+  content: Contenido detallado del thread 176
+  status: open
+  help_type: consulta_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 19
+  created_at: '2024-11-17 00:00:00'
+  updated_at: '2025-02-02 00:00:00'
+  deletedAt: null
+  has_messages: false
+  slug: thread-176
+  solved_message_id: null
+- id: 180
+  subforum_id: 83
+  author_id: 68
+  title: Thread 180 en subforo 83
+  description: Descripción del thread 180
+  content: Contenido detallado del thread 180
+  status: resolved
+  help_type: consulta_facturacion
+  is_private: false
+  sticky: false
+  viewCount: 10
+  created_at: '2024-09-10 00:00:00'
+  updated_at: '2025-01-22 00:00:00'
+  deletedAt: null
+  has_messages: true
+  slug: thread-180
+  solved_message_id: 835
 - id: 184
   subforum_id: 91
   author_id: 26
@@ -16,64 +781,13 @@ threads:
   has_messages: true
   slug: thread-184
   solved_message_id: null
-- id: 185
-  subforum_id: 91
-  author_id: 116
-  title: Thread 185 en subforo 91
-  description: Descripción del thread 185
-  content: Contenido detallado del thread 185
-  status: waiting_support
-  help_type: problemas_facturacion
-  is_private: false
-  sticky: true
-  viewCount: 8
-  created_at: '2024-07-20 00:00:00'
-  updated_at: '2025-01-27 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-185
-  solved_message_id: null
-- id: 186
-  subforum_id: 91
-  author_id: 16
-  title: Thread 186 en subforo 91
-  description: Descripción del thread 186
-  content: Contenido detallado del thread 186
-  status: resolved
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 18
-  created_at: '2024-02-25 00:00:00'
-  updated_at: '2025-02-10 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-186
-  solved_message_id: 864
-- id: 187
-  subforum_id: 91
-  author_id: 4
-  title: Thread 187 en subforo 91
-  description: Descripción del thread 187
-  content: Contenido detallado del thread 187
-  status: closed
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 100
-  created_at: '2024-06-05 00:00:00'
-  updated_at: '2025-02-09 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-187
-  solved_message_id: null
 - id: 188
   subforum_id: 91
   author_id: 110
   title: Thread 188 en subforo 91
   description: Descripción del thread 188
   content: Contenido detallado del thread 188
-  status: open
+  status: waiting_support
   help_type: incidencia_servicio
   is_private: true
   sticky: true
@@ -83,57 +797,6 @@ threads:
   deletedAt: null
   has_messages: true
   slug: thread-188
-  solved_message_id: null
-- id: 189
-  subforum_id: 91
-  author_id: 97
-  title: Thread 189 en subforo 91
-  description: Descripción del thread 189
-  content: Contenido detallado del thread 189
-  status: closed
-  help_type: incidencia_critica
-  is_private: false
-  sticky: false
-  viewCount: 14
-  created_at: '2024-08-02 00:00:00'
-  updated_at: '2025-01-27 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-189
-  solved_message_id: null
-- id: 190
-  subforum_id: 92
-  author_id: 27
-  title: Thread 190 en subforo 92
-  description: Descripción del thread 190
-  content: Contenido detallado del thread 190
-  status: open
-  help_type: otro_motivo
-  is_private: false
-  sticky: true
-  viewCount: 54
-  created_at: '2024-06-29 00:00:00'
-  updated_at: '2025-01-23 00:00:00'
-  deletedAt: null
-  has_messages: false
-  slug: thread-190
-  solved_message_id: null
-- id: 191
-  subforum_id: 92
-  author_id: 45
-  title: Thread 191 en subforo 92
-  description: Descripción del thread 191
-  content: Contenido detallado del thread 191
-  status: in_review
-  help_type: incidencia_critica
-  is_private: true
-  sticky: false
-  viewCount: 95
-  created_at: '2024-08-17 00:00:00'
-  updated_at: '2025-02-11 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-191
   solved_message_id: null
 - id: 192
   subforum_id: 92
@@ -152,64 +815,13 @@ threads:
   has_messages: true
   slug: thread-192
   solved_message_id: null
-- id: 193
-  subforum_id: 92
-  author_id: 122
-  title: Thread 193 en subforo 92
-  description: Descripción del thread 193
-  content: Contenido detallado del thread 193
-  status: waiting_support
-  help_type: consulta_facturacion
-  is_private: true
-  sticky: false
-  viewCount: 65
-  created_at: '2024-04-22 00:00:00'
-  updated_at: '2025-01-17 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-193
-  solved_message_id: null
-- id: 194
-  subforum_id: 92
-  author_id: 7
-  title: Thread 194 en subforo 92
-  description: Descripción del thread 194
-  content: Contenido detallado del thread 194
-  status: resolved
-  help_type: otro_motivo
-  is_private: false
-  sticky: false
-  viewCount: 57
-  created_at: '2024-07-06 00:00:00'
-  updated_at: '2025-01-24 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-194
-  solved_message_id: 905
-- id: 195
-  subforum_id: 92
-  author_id: 27
-  title: Thread 195 en subforo 92
-  description: Descripción del thread 195
-  content: Contenido detallado del thread 195
-  status: closed
-  help_type: incidencia_servicio
-  is_private: false
-  sticky: false
-  viewCount: 62
-  created_at: '2024-04-22 00:00:00'
-  updated_at: '2025-01-29 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-195
-  solved_message_id: null
 - id: 196
   subforum_id: 92
   author_id: 46
   title: Thread 196 en subforo 92
   description: Descripción del thread 196
   content: Contenido detallado del thread 196
-  status: in_review
+  status: waiting_support
   help_type: problemas_facturacion
   is_private: true
   sticky: false
@@ -219,57 +831,6 @@ threads:
   deletedAt: null
   has_messages: true
   slug: thread-196
-  solved_message_id: null
-- id: 197
-  subforum_id: 93
-  author_id: 6
-  title: Thread 197 en subforo 93
-  description: Descripción del thread 197
-  content: Contenido detallado del thread 197
-  status: open
-  help_type: incidencia_critica
-  is_private: false
-  sticky: false
-  viewCount: 25
-  created_at: '2024-11-26 00:00:00'
-  updated_at: '2025-02-11 00:00:00'
-  deletedAt: null
-  has_messages: false
-  slug: thread-197
-  solved_message_id: null
-- id: 198
-  subforum_id: 93
-  author_id: 120
-  title: Thread 198 en subforo 93
-  description: Descripción del thread 198
-  content: Contenido detallado del thread 198
-  status: in_review
-  help_type: problemas_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 64
-  created_at: '2024-05-02 00:00:00'
-  updated_at: '2025-01-27 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-198
-  solved_message_id: null
-- id: 199
-  subforum_id: 93
-  author_id: 106
-  title: Thread 199 en subforo 93
-  description: Descripción del thread 199
-  content: Contenido detallado del thread 199
-  status: waiting_customer
-  help_type: otro_motivo
-  is_private: false
-  sticky: false
-  viewCount: 49
-  created_at: '2024-02-25 00:00:00'
-  updated_at: '2025-01-12 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-199
   solved_message_id: null
 - id: 200
   subforum_id: 93
@@ -288,64 +849,13 @@ threads:
   has_messages: true
   slug: thread-200
   solved_message_id: null
-- id: 201
-  subforum_id: 93
-  author_id: 30
-  title: Thread 201 en subforo 93
-  description: Descripción del thread 201
-  content: Contenido detallado del thread 201
-  status: resolved
-  help_type: incidencia_servicio
-  is_private: false
-  sticky: false
-  viewCount: 27
-  created_at: '2024-02-22 00:00:00'
-  updated_at: '2025-01-31 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-201
-  solved_message_id: 940
-- id: 202
-  subforum_id: 93
-  author_id: 62
-  title: Thread 202 en subforo 93
-  description: Descripción del thread 202
-  content: Contenido detallado del thread 202
-  status: closed
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: true
-  viewCount: 58
-  created_at: '2024-03-21 00:00:00'
-  updated_at: '2025-02-05 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-202
-  solved_message_id: null
-- id: 203
-  subforum_id: 101
-  author_id: 22
-  title: Thread 203 en subforo 101
-  description: Descripción del thread 203
-  content: Contenido detallado del thread 203
-  status: open
-  help_type: otro_motivo
-  is_private: true
-  sticky: false
-  viewCount: 100
-  created_at: '2024-01-05 00:00:00'
-  updated_at: '2025-01-01 00:00:00'
-  deletedAt: null
-  has_messages: false
-  slug: thread-203
-  solved_message_id: null
 - id: 204
   subforum_id: 101
   author_id: 32
   title: Thread 204 en subforo 101
   description: Descripción del thread 204
   content: Contenido detallado del thread 204
-  status: in_review
+  status: waiting_customer
   help_type: consulta_facturacion
   is_private: false
   sticky: false
@@ -356,57 +866,6 @@ threads:
   has_messages: true
   slug: thread-204
   solved_message_id: null
-- id: 205
-  subforum_id: 101
-  author_id: 89
-  title: Thread 205 en subforo 101
-  description: Descripción del thread 205
-  content: Contenido detallado del thread 205
-  status: waiting_customer
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 12
-  created_at: '2024-03-01 00:00:00'
-  updated_at: '2025-02-13 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-205
-  solved_message_id: null
-- id: 206
-  subforum_id: 101
-  author_id: 42
-  title: Thread 206 en subforo 101
-  description: Descripción del thread 206
-  content: Contenido detallado del thread 206
-  status: waiting_support
-  help_type: incidencia_critica
-  is_private: true
-  sticky: false
-  viewCount: 36
-  created_at: '2024-07-10 00:00:00'
-  updated_at: '2025-01-23 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-206
-  solved_message_id: null
-- id: 207
-  subforum_id: 101
-  author_id: 51
-  title: Thread 207 en subforo 101
-  description: Descripción del thread 207
-  content: Contenido detallado del thread 207
-  status: resolved
-  help_type: otro_motivo
-  is_private: false
-  sticky: true
-  viewCount: 58
-  created_at: '2024-03-09 00:00:00'
-  updated_at: '2025-02-13 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-207
-  solved_message_id: 964
 - id: 208
   subforum_id: 101
   author_id: 69
@@ -424,57 +883,6 @@ threads:
   has_messages: true
   slug: thread-208
   solved_message_id: null
-- id: 209
-  subforum_id: 101
-  author_id: 116
-  title: Thread 209 en subforo 101
-  description: Descripción del thread 209
-  content: Contenido detallado del thread 209
-  status: waiting_customer
-  help_type: otro_motivo
-  is_private: false
-  sticky: false
-  viewCount: 81
-  created_at: '2024-05-25 00:00:00'
-  updated_at: '2025-01-10 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-209
-  solved_message_id: null
-- id: 210
-  subforum_id: 101
-  author_id: 26
-  title: Thread 210 en subforo 101
-  description: Descripción del thread 210
-  content: Contenido detallado del thread 210
-  status: waiting_customer
-  help_type: incidencia_critica
-  is_private: true
-  sticky: false
-  viewCount: 16
-  created_at: '2024-12-26 00:00:00'
-  updated_at: '2025-01-18 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-210
-  solved_message_id: null
-- id: 211
-  subforum_id: 101
-  author_id: 22
-  title: Thread 211 en subforo 101
-  description: Descripción del thread 211
-  content: Contenido detallado del thread 211
-  status: resolved
-  help_type: problemas_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 60
-  created_at: '2024-04-17 00:00:00'
-  updated_at: '2025-01-26 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-211
-  solved_message_id: 978
 - id: 212
   subforum_id: 102
   author_id: 87
@@ -491,57 +899,6 @@ threads:
   deletedAt: null
   has_messages: false
   slug: thread-212
-  solved_message_id: null
-- id: 213
-  subforum_id: 102
-  author_id: 74
-  title: Thread 213 en subforo 102
-  description: Descripción del thread 213
-  content: Contenido detallado del thread 213
-  status: in_review
-  help_type: consulta_facturacion
-  is_private: true
-  sticky: false
-  viewCount: 68
-  created_at: '2024-01-21 00:00:00'
-  updated_at: '2025-01-28 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-213
-  solved_message_id: null
-- id: 214
-  subforum_id: 102
-  author_id: 7
-  title: Thread 214 en subforo 102
-  description: Descripción del thread 214
-  content: Contenido detallado del thread 214
-  status: waiting_customer
-  help_type: incidencia_critica
-  is_private: true
-  sticky: true
-  viewCount: 45
-  created_at: '2024-10-24 00:00:00'
-  updated_at: '2025-01-19 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-214
-  solved_message_id: null
-- id: 215
-  subforum_id: 102
-  author_id: 53
-  title: Thread 215 en subforo 102
-  description: Descripción del thread 215
-  content: Contenido detallado del thread 215
-  status: waiting_support
-  help_type: incidencia_servicio
-  is_private: true
-  sticky: true
-  viewCount: 15
-  created_at: '2024-10-14 00:00:00'
-  updated_at: '2025-01-11 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-215
   solved_message_id: null
 - id: 216
   subforum_id: 102
@@ -560,57 +917,6 @@ threads:
   has_messages: true
   slug: thread-216
   solved_message_id: 1000
-- id: 217
-  subforum_id: 102
-  author_id: 12
-  title: Thread 217 en subforo 102
-  description: Descripción del thread 217
-  content: Contenido detallado del thread 217
-  status: closed
-  help_type: otro_motivo
-  is_private: false
-  sticky: false
-  viewCount: 75
-  created_at: '2024-02-29 00:00:00'
-  updated_at: '2025-01-08 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-217
-  solved_message_id: null
-- id: 218
-  subforum_id: 103
-  author_id: 90
-  title: Thread 218 en subforo 103
-  description: Descripción del thread 218
-  content: Contenido detallado del thread 218
-  status: open
-  help_type: incidencia_critica
-  is_private: false
-  sticky: false
-  viewCount: 55
-  created_at: '2024-01-11 00:00:00'
-  updated_at: '2025-02-03 00:00:00'
-  deletedAt: null
-  has_messages: false
-  slug: thread-218
-  solved_message_id: null
-- id: 219
-  subforum_id: 103
-  author_id: 42
-  title: Thread 219 en subforo 103
-  description: Descripción del thread 219
-  content: Contenido detallado del thread 219
-  status: in_review
-  help_type: consulta_facturacion
-  is_private: true
-  sticky: true
-  viewCount: 14
-  created_at: '2024-10-24 00:00:00'
-  updated_at: '2025-01-01 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-219
-  solved_message_id: null
 - id: 220
   subforum_id: 103
   author_id: 11
@@ -627,57 +933,6 @@ threads:
   deletedAt: null
   has_messages: true
   slug: thread-220
-  solved_message_id: null
-- id: 221
-  subforum_id: 103
-  author_id: 58
-  title: Thread 221 en subforo 103
-  description: Descripción del thread 221
-  content: Contenido detallado del thread 221
-  status: waiting_support
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 50
-  created_at: '2024-09-20 00:00:00'
-  updated_at: '2025-02-15 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-221
-  solved_message_id: null
-- id: 222
-  subforum_id: 103
-  author_id: 88
-  title: Thread 222 en subforo 103
-  description: Descripción del thread 222
-  content: Contenido detallado del thread 222
-  status: resolved
-  help_type: problemas_facturacion
-  is_private: true
-  sticky: false
-  viewCount: 59
-  created_at: '2024-09-05 00:00:00'
-  updated_at: '2025-01-01 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-222
-  solved_message_id: 1022
-- id: 223
-  subforum_id: 103
-  author_id: 51
-  title: Thread 223 en subforo 103
-  description: Descripción del thread 223
-  content: Contenido detallado del thread 223
-  status: closed
-  help_type: incidencia_servicio
-  is_private: true
-  sticky: false
-  viewCount: 75
-  created_at: '2024-06-29 00:00:00'
-  updated_at: '2025-01-29 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-223
   solved_message_id: null
 - id: 224
   subforum_id: 103
@@ -696,64 +951,13 @@ threads:
   has_messages: true
   slug: thread-224
   solved_message_id: null
-- id: 225
-  subforum_id: 103
-  author_id: 50
-  title: Thread 225 en subforo 103
-  description: Descripción del thread 225
-  content: Contenido detallado del thread 225
-  status: open
-  help_type: incidencia_servicio
-  is_private: false
-  sticky: false
-  viewCount: 85
-  created_at: '2024-12-08 00:00:00'
-  updated_at: '2025-02-15 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-225
-  solved_message_id: null
-- id: 226
-  subforum_id: 103
-  author_id: 125
-  title: Thread 226 en subforo 103
-  description: Descripción del thread 226
-  content: Contenido detallado del thread 226
-  status: in_review
-  help_type: incidencia_servicio
-  is_private: false
-  sticky: false
-  viewCount: 53
-  created_at: '2024-04-01 00:00:00'
-  updated_at: '2025-01-04 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-226
-  solved_message_id: null
-- id: 227
-  subforum_id: 104
-  author_id: 99
-  title: Thread 227 en subforo 104
-  description: Descripción del thread 227
-  content: Contenido detallado del thread 227
-  status: open
-  help_type: incidencia_critica
-  is_private: false
-  sticky: true
-  viewCount: 39
-  created_at: '2024-02-14 00:00:00'
-  updated_at: '2025-02-09 00:00:00'
-  deletedAt: null
-  has_messages: false
-  slug: thread-227
-  solved_message_id: null
 - id: 228
   subforum_id: 104
   author_id: 54
   title: Thread 228 en subforo 104
   description: Descripción del thread 228
   content: Contenido detallado del thread 228
-  status: in_review
+  status: closed
   help_type: incidencia_critica
   is_private: true
   sticky: false
@@ -764,57 +968,6 @@ threads:
   has_messages: true
   slug: thread-228
   solved_message_id: null
-- id: 229
-  subforum_id: 104
-  author_id: 85
-  title: Thread 229 en subforo 104
-  description: Descripción del thread 229
-  content: Contenido detallado del thread 229
-  status: waiting_customer
-  help_type: incidencia_servicio
-  is_private: false
-  sticky: true
-  viewCount: 46
-  created_at: '2024-01-26 00:00:00'
-  updated_at: '2025-02-04 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-229
-  solved_message_id: null
-- id: 230
-  subforum_id: 104
-  author_id: 109
-  title: Thread 230 en subforo 104
-  description: Descripción del thread 230
-  content: Contenido detallado del thread 230
-  status: waiting_support
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 22
-  created_at: '2024-12-30 00:00:00'
-  updated_at: '2025-01-21 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-230
-  solved_message_id: null
-- id: 231
-  subforum_id: 104
-  author_id: 109
-  title: Thread 231 en subforo 104
-  description: Descripción del thread 231
-  content: Contenido detallado del thread 231
-  status: resolved
-  help_type: problemas_facturacion
-  is_private: true
-  sticky: false
-  viewCount: 78
-  created_at: '2024-04-21 00:00:00'
-  updated_at: '2025-02-10 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-231
-  solved_message_id: 1056
 - id: 232
   subforum_id: 105
   author_id: 7
@@ -831,57 +984,6 @@ threads:
   deletedAt: null
   has_messages: false
   slug: thread-232
-  solved_message_id: null
-- id: 233
-  subforum_id: 105
-  author_id: 49
-  title: Thread 233 en subforo 105
-  description: Descripción del thread 233
-  content: Contenido detallado del thread 233
-  status: in_review
-  help_type: incidencia_critica
-  is_private: true
-  sticky: false
-  viewCount: 89
-  created_at: '2024-02-23 00:00:00'
-  updated_at: '2025-01-05 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-233
-  solved_message_id: null
-- id: 234
-  subforum_id: 105
-  author_id: 11
-  title: Thread 234 en subforo 105
-  description: Descripción del thread 234
-  content: Contenido detallado del thread 234
-  status: waiting_customer
-  help_type: otro_motivo
-  is_private: false
-  sticky: false
-  viewCount: 88
-  created_at: '2024-01-28 00:00:00'
-  updated_at: '2025-01-14 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-234
-  solved_message_id: null
-- id: 235
-  subforum_id: 105
-  author_id: 55
-  title: Thread 235 en subforo 105
-  description: Descripción del thread 235
-  content: Contenido detallado del thread 235
-  status: waiting_support
-  help_type: incidencia_servicio
-  is_private: true
-  sticky: false
-  viewCount: 31
-  created_at: '2024-06-18 00:00:00'
-  updated_at: '2025-01-02 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-235
   solved_message_id: null
 - id: 236
   subforum_id: 105
@@ -900,64 +1002,13 @@ threads:
   has_messages: true
   slug: thread-236
   solved_message_id: 1084
-- id: 237
-  subforum_id: 105
-  author_id: 96
-  title: Thread 237 en subforo 105
-  description: Descripción del thread 237
-  content: Contenido detallado del thread 237
-  status: closed
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: false
-  viewCount: 71
-  created_at: '2024-12-16 00:00:00'
-  updated_at: '2025-02-05 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-237
-  solved_message_id: null
-- id: 238
-  subforum_id: 105
-  author_id: 61
-  title: Thread 238 en subforo 105
-  description: Descripción del thread 238
-  content: Contenido detallado del thread 238
-  status: resolved
-  help_type: incidencia_critica
-  is_private: false
-  sticky: true
-  viewCount: 7
-  created_at: '2024-11-04 00:00:00'
-  updated_at: '2025-01-22 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-238
-  solved_message_id: 1100
-- id: 239
-  subforum_id: 105
-  author_id: 28
-  title: Thread 239 en subforo 105
-  description: Descripción del thread 239
-  content: Contenido detallado del thread 239
-  status: open
-  help_type: consulta_facturacion
-  is_private: false
-  sticky: true
-  viewCount: 31
-  created_at: '2024-09-20 00:00:00'
-  updated_at: '2025-01-02 00:00:00'
-  deletedAt: null
-  has_messages: true
-  slug: thread-239
-  solved_message_id: null
 - id: 240
   subforum_id: 105
   author_id: 129
   title: Thread 240 en subforo 105
   description: Descripción del thread 240
   content: Contenido detallado del thread 240
-  status: open
+  status: waiting_support
   help_type: consulta_facturacion
   is_private: false
   sticky: false
@@ -967,4 +1018,21 @@ threads:
   deletedAt: null
   has_messages: true
   slug: thread-240
+  solved_message_id: null
+- id: 244
+  subforum_id: 51
+  author_id: 104
+  title: Thread cerrado en subforo 51
+  description: Descripción del thread cerrado 244
+  content: Contenido del thread cerrado 244
+  status: closed
+  help_type: otro_motivo
+  is_private: false
+  sticky: false
+  viewCount: 99
+  created_at: '2025-01-01 00:00:00'
+  updated_at: '2025-02-15 00:00:00'
+  deletedAt: null
+  has_messages: false
+  slug: thread-closed-244
   solved_message_id: null
