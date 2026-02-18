@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/02/2026, 12:41
+ * Last modified by "IDMarinas" on 17/02/2026, 18:04
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -31,7 +31,7 @@ class TipTapType extends AbstractType
     {
         $resolver->setDefaults([
             'sanitize_html' => true,
-            'sanitizer'     => 'app.tiptap_sanitizer',
+            'sanitizer'     => 'tiptap_sanitizer',
             'attr'          => [
                 'class' => 'tiptap-editor',
                 'rows'  => 10,
