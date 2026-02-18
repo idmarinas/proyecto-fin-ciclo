@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/02/2026, 19:58
+ * Last modified by "IDMarinas" on 18/02/2026, 20:44
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -28,7 +28,7 @@ use App\Repository\Forum\ThreadRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Blameable\Blameable;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\SoftDeleteable;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -44,19 +44,26 @@ use Stringable;
  */
 #[ORM\Table(name: 'pfc_thread')]
 #[ORM\Entity(repositoryClass: ThreadRepository::class)]
-class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface
+class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface, Blameable
 {
     use IdTrait;
     use SeoColumnTrait;
     use SoftDeleteableEntity;
     use TimestampableEntity;
-    use BlameableEntity;
 
-    /**
-     * @var Collection<int, Message>
-     */
-    #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'thread')]
-    private Collection $messages;
+    #[ORM\Column(nullable: true)]
+    #[Gedmo\Blameable(on: 'create')]
+    public ?string $createdBy {
+        get => $this->createdBy;
+        set => $this->createdBy = $value;
+    }
+
+    #[ORM\Column(nullable: true)]
+    #[Gedmo\Blameable(on: 'update')]
+    public ?string $updatedBy {
+        get => $this->updatedBy;
+        set => $this->updatedBy = $value;
+    }
 
     #[ORM\Column(length: 255)]
     private string $title = '';
@@ -76,7 +83,7 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[ORM\ManyToOne(targetEntity: Message::class)]
     private ?Message $solvedMessage = null;
 
-    #[ORM\ManyToOne(inversedBy: 'threads')]
+    #[ORM\ManyToOne]
     private ?Forum $forum = null;
 
     #[ORM\Column(length: 255)]
@@ -105,7 +112,6 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
 
     public function __construct ()
     {
-        $this->messages = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->subscriptions = new ArrayCollection();
     }
@@ -123,36 +129,6 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     public function setTitle (string $title): static
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Message>
-     */
-    public function getMessages (): Collection
-    {
-        return $this->messages;
-    }
-
-    public function addMessage (Message $message): static
-    {
-        if (!$this->messages->contains($message)) {
-            $this->messages->add($message);
-            $message->setThread($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMessage (Message $message): static
-    {
-        if ($this->messages->removeElement($message)) {
-            // set the owning side to null (unless already changed)
-            if ($message->getThread() === $this) {
-                $message->setThread(null);
-            }
-        }
 
         return $this;
     }
