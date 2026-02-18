@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 15/02/2026, 17:25
+ * Last modified by "IDMarinas" on 17/02/2026, 15:33
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,9 +29,6 @@ enum ThreadStatusEnum: string
 
     // Hilo está abierto y no tiene respuestas
     case OPEN = 'open';
-
-    // Alguien del staff está revisando el hilo
-    case IN_REVIEW = 'in_review';
 
     // El staff ha respondido y espera respuesta del usuario/cliente
     case WAITING_CUSTOMER = 'waiting_customer';
