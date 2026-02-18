@@ -1,3 +1,5 @@
 knp_paginator:
+    default_options:
+        page_out_of_range: fix
     template:
         pagination: 'layouts/menus/pagination.html.twig'
