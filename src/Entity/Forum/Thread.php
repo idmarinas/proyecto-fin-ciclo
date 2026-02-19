@@ -2,19 +2,19 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/02/2026, 20:44
+ * Last modified by "IDMarinas" on 19/02/2026, 22:08
  *
  * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/proyecto-fin-ciclo
+ * @see https://github.com/idmarinas/proyecto-fin-ciclo
  *
- * @file    Thread.php
- * @date    22/01/2026
- * @time    21:58
+ * @file Thread.php
+ * @date 22/01/2026
+ * @time 21:58
  *
- * @author  Iván Diaz Marinas (IDMarinas)
+ * @author Iván Diaz Marinas (IDMarinas)
  * @license proprietary
  *
- * @since   1.0.0
+ * @since 1.0.0
  */
 
 namespace App\Entity\Forum;
@@ -25,6 +25,7 @@ use App\Entity\Tag;
 use App\Entity\User\User;
 use App\Enums\ThreadStatusEnum;
 use App\Repository\Forum\ThreadRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -38,6 +39,7 @@ use Idm\Bundle\Common\Traits\Entity\IdTrait;
 use Idm\Bundle\Seo\Entity\SeoEntityInterface;
 use Idm\Bundle\Seo\Traits\Entity\SeoColumnTrait;
 use Stringable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Hilos de un foro.
@@ -58,6 +60,45 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
         set => $this->createdBy = $value;
     }
 
+    #[ORM\Column(length: 1000)]
+    #[Assert\NotBlank(allowNull: false)]
+    public string $description = '' {
+        get => $this->description;
+        set => $this->description = $value;
+    }
+
+    /** Último mensaje publicado en el hilo. Se actualiza automáticamente al crear/eliminar mensajes. */
+    #[ORM\ManyToOne(targetEntity: Message::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    public ?Message $lastMessage = null {
+        get => $this->lastMessage;
+        set => $this->lastMessage = $value;
+    }
+
+    /** Fecha del último mensaje publicado. Derivada de lastMessage. */
+    public ?DateTimeInterface $lastMessageAt {
+        get => $this->lastMessage?->getCreatedAt();
+    }
+
+    /** Nombre del autor del último mensaje. Derivado de lastMessage. */
+    public ?string $lastMessageAuthorName {
+        get => $this->lastMessage?->getAuthor()?->getUsername();
+    }
+
+    /** Número de mensajes del hilo. Se actualiza automáticamente al crear/eliminar mensajes. */
+    #[ORM\Column]
+    public int $messageCount = 0 {
+        get => $this->messageCount;
+        set => $this->messageCount = max(0, $value);
+    }
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(allowNull: false)]
+    public string $title = '' {
+        get => $this->title;
+        set => $this->title = $value;
+    }
+
     #[ORM\Column(nullable: true)]
     #[Gedmo\Blameable(on: 'update')]
     public ?string $updatedBy {
@@ -65,14 +106,23 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
         set => $this->updatedBy = $value;
     }
 
-    #[ORM\Column(length: 255)]
-    private string $title = '';
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Gedmo\Blameable(on: 'create')]
+    private ?User $author = null;
 
-    #[ORM\Column(length: 1000)]
-    private string $description = '';
+    #[ORM\ManyToOne]
+    private ?Forum $forum = null;
 
     #[ORM\Column]
     private bool $private = false;
+
+    #[ORM\Column(length: 255)]
+    #[Gedmo\Slug(fields: ['title'])]
+    private ?string $slug = null;
+
+    #[ORM\ManyToOne(targetEntity: Message::class)]
+    private ?Message $solvedMessage = null;
 
     #[ORM\Column(enumType: ThreadStatusEnum::class)]
     private ThreadStatusEnum $status = ThreadStatusEnum::OPEN;
@@ -80,23 +130,11 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[ORM\Column]
     private bool $sticky = false;
 
-    #[ORM\ManyToOne(targetEntity: Message::class)]
-    private ?Message $solvedMessage = null;
-
-    #[ORM\ManyToOne]
-    private ?Forum $forum = null;
-
-    #[ORM\Column(length: 255)]
-    #[Gedmo\Slug(fields: ['title'])]
-    private ?string $slug = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Gedmo\Blameable(on: 'create')]
-    private ?User $author = null;
-
-    #[ORM\Column]
-    private int $viewCount = 0;
+    /**
+     * @var Collection<int, Subscription>
+     */
+    #[ORM\OneToMany(targetEntity: Subscription::class, mappedBy: 'thread', cascade: ['persist', 'remove'])]
+    private Collection $subscriptions;
 
     /**
      * @var Collection<int, Tag>
@@ -104,11 +142,8 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[ORM\ManyToMany(targetEntity: Tag::class)]
     private Collection $tags;
 
-    /**
-     * @var Collection<int, Subscription>
-     */
-    #[ORM\OneToMany(targetEntity: Subscription::class, mappedBy: 'thread', cascade: ['persist', 'remove'])]
-    private Collection $subscriptions;
+    #[ORM\Column]
+    private int $viewCount = 0;
 
     public function __construct ()
     {
@@ -119,30 +154,6 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     public function __toString (): string
     {
         return $this->title;
-    }
-
-    public function getTitle (): string
-    {
-        return $this->title;
-    }
-
-    public function setTitle (string $title): static
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getDescription (): string
-    {
-        return $this->description;
-    }
-
-    public function setDescription (string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
     }
 
     public function isPrivate (): bool
@@ -303,6 +314,20 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     public function setSolvedMessage (?Message $solvedMessage): static
     {
         $this->solvedMessage = $solvedMessage;
+
+        return $this;
+    }
+
+    public function incrementMessageCount (): static
+    {
+        $this->messageCount++;
+
+        return $this;
+    }
+
+    public function decrementMessageCount (): static
+    {
+        $this->messageCount--;
 
         return $this;
     }
