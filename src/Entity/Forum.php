@@ -58,12 +58,6 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     #[ORM\Column(length: 255)]
     private string $title = '';
 
-    /**
-     * @var Collection<int, Thread>
-     */
-    #[ORM\OneToMany(targetEntity: Thread::class, mappedBy: 'forum')]
-    private Collection $threads;
-
     #[ORM\Column(length: 255, unique: true)]
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
@@ -83,7 +77,6 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     public function __construct ()
     {
         $this->children = new ArrayCollection();
-        $this->threads = new ArrayCollection();
         $this->tags = new ArrayCollection();
     }
 
@@ -130,28 +123,6 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     public function getThreads (): Collection
     {
         return $this->threads;
-    }
-
-    public function addThread (Thread $thread): static
-    {
-        if (!$this->threads->contains($thread)) {
-            $this->threads->add($thread);
-            $thread->setForum($this);
-        }
-
-        return $this;
-    }
-
-    public function removeThread (Thread $thread): static
-    {
-        if ($this->threads->removeElement($thread)) {
-            // set the owning side to null (unless already changed)
-            if ($thread->getForum() === $this) {
-                $thread->setForum(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getSlug (): ?string
