@@ -1,6 +1,6 @@
 <div data-controller="dropdown" class="relative">
   <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
-    <twig:App:User:Avatar />
+    <twig:App:User:Avatar :user="app.user" size="lg" />
   </button>
 
   <div
