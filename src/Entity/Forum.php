@@ -2,19 +2,19 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/02/2026, 11:53
+ * Last modified by "IDMarinas" on 19/02/2026, 19:57
  *
  * @project Foro de Ayuda y Soporte
- * @see     https://github.com/idmarinas/proyecto-fin-ciclo
+ * @see https://github.com/idmarinas/proyecto-fin-ciclo
  *
- * @file    Forum.php
- * @date    21/01/2026
- * @time    23:15
+ * @file Forum.php
+ * @date 21/01/2026
+ * @time 23:15
  *
- * @author  Iván Diaz Marinas (IDMarinas)
+ * @author Iván Diaz Marinas (IDMarinas)
  * @license proprietary
  *
- * @since   1.0.0
+ * @since 1.0.0
  */
 
 namespace App\Entity;
@@ -54,6 +54,12 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     use TimestampableEntity;
     use TreeTrait;
     use ForumTreeTrait;
+
+    #[ORM\Column(type: Types::INTEGER)]
+    public int $totalThreads = 0 {
+        get => $this->totalThreads;
+        set => $this->totalThreads = $value;
+    }
 
     #[ORM\Column(length: 255)]
     private string $title = '';
