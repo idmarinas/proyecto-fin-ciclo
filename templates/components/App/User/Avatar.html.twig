@@ -1,11 +1,8 @@
-{% component 'Ui:Avatar' with attributes %}
-  {% block content %}
-    {% if app.user.avatar is not empty %}
-      {{ component('Ui:Avatar:Image', {src: app.user.avatar|avatar_url }) }}
-    {% else %}
-      {% component 'Ui:Avatar:Text' with {class: 'bg-primary text-primary-foreground'} %}
-        {% block content app.user.userIdentifier[:2]|upper %}
-      {% endcomponent %}
-    {% endif %}
-  {% endblock %}
-{% endcomponent %}
+{# @var user \App\Entity\User\User #}
+
+{% props user %}
+
+<twig:Ui:Avatar {{ ...attributes }}>
+  <twig:Ui:Avatar:Image src="{{ user.avatar|avatar_url }}" alt="{{ user.userIdentifier }}" />
+  <twig:Ui:Avatar:Fallback>{{ user.userIdentifier[:2]|upper }}</twig:Ui:Avatar:Fallback>
+</twig:Ui:Avatar>
