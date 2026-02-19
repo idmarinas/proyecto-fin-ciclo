@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/02/2026, 22:46
+ * Last modified by "IDMarinas" on 19/02/2026, 20:11
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -61,26 +61,15 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
         set => $this->updatedBy = $value;
     }
 
-    #[ORM\ManyToOne]
-    #[Assert\Valid]
-    private ?Thread $thread = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank(allowNull: false)]
-    private string $content = '';
-
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn]
     #[Gedmo\Blameable(on: 'create')]
     #[Assert\Valid]
     private ?User $author = null;
 
-    /**
-     * @var Collection<int, MessageAttachment>
-     */
-    #[ORM\OneToMany(targetEntity: MessageAttachment::class, mappedBy: 'message', cascade: ['persist', 'remove'])]
-    #[Assert\Valid]
-    private Collection $attachments;
+    #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(allowNull: false)]
+    private string $content = '';
 
     /**
      * @var Collection<int, MessageReaction>
@@ -92,9 +81,12 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
     #[ORM\Column]
     private bool $solution = false;
 
+    #[ORM\ManyToOne]
+    #[Assert\Valid]
+    private ?Thread $thread = null;
+
     public function __construct ()
     {
-        $this->attachments = new ArrayCollection();
         $this->reactions = new ArrayCollection();
     }
 
@@ -135,36 +127,6 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
     public function setAuthor (?User $author): static
     {
         $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, MessageAttachment>
-     */
-    public function getAttachments (): Collection
-    {
-        return $this->attachments;
-    }
-
-    public function addAttachment (MessageAttachment $attachment): static
-    {
-        if (!$this->attachments->contains($attachment)) {
-            $this->attachments->add($attachment);
-            $attachment->setMessage($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAttachment (MessageAttachment $attachment): static
-    {
-        if ($this->attachments->removeElement($attachment)) {
-            // set the owning side to null (unless already changed)
-            if ($attachment->getMessage() === $this) {
-                $attachment->setMessage(null);
-            }
-        }
 
         return $this;
     }
