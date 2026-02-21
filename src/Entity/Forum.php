@@ -2,19 +2,19 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/02/2026, 19:57
+ * Last modified by "IDMarinas" on 20/02/2026, 21:50
  *
  * @project Foro de Ayuda y Soporte
- * @see https://github.com/idmarinas/proyecto-fin-ciclo
+ * @see     https://github.com/idmarinas/proyecto-fin-ciclo
  *
- * @file Forum.php
- * @date 21/01/2026
- * @time 23:15
+ * @file    Forum.php
+ * @date    21/01/2026
+ * @time    23:15
  *
- * @author Iván Diaz Marinas (IDMarinas)
+ * @author  Iván Diaz Marinas (IDMarinas)
  * @license proprietary
  *
- * @since 1.0.0
+ * @since   1.0.0
  */
 
 namespace App\Entity;
@@ -23,6 +23,7 @@ use App\Entity\Forum\Thread;
 use App\Repository\ForumRepository;
 use App\Traits\Entity\ForumTreeTrait;
 use App\Traits\Entity\TreeTrait;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -55,10 +56,64 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     use TreeTrait;
     use ForumTreeTrait;
 
+    /** Número total de hilos en este foro (propios + subforos). */
     #[ORM\Column(type: Types::INTEGER)]
     public int $totalThreads = 0 {
         get => $this->totalThreads;
-        set => $this->totalThreads = $value;
+        set => $this->totalThreads = max(0, $value);
+    }
+
+    /** Número total de mensajes en este foro (propios + subforos). */
+    #[ORM\Column(type: Types::INTEGER)]
+    public int $totalMessages = 0 {
+        get => $this->totalMessages;
+        set => $this->totalMessages = max(0, $value);
+    }
+
+    /** Hilos sin respuesta (estado OPEN). */
+    #[ORM\Column(type: Types::INTEGER)]
+    public int $threadsOpen = 0 {
+        get => $this->threadsOpen;
+        set => $this->threadsOpen = max(0, $value);
+    }
+
+    /** Hilos en progreso (estados WAITING_CUSTOMER y WAITING_SUPPORT). */
+    #[ORM\Column(type: Types::INTEGER)]
+    public int $threadsInProgress = 0 {
+        get => $this->threadsInProgress;
+        set => $this->threadsInProgress = max(0, $value);
+    }
+
+    /** Hilos resueltos (estado RESOLVED). */
+    #[ORM\Column(type: Types::INTEGER)]
+    public int $threadsResolved = 0 {
+        get => $this->threadsResolved;
+        set => $this->threadsResolved = max(0, $value);
+    }
+
+    /** Hilos cerrados definitivamente (estado CLOSED). */
+    #[ORM\Column(type: Types::INTEGER)]
+    public int $threadsClosed = 0 {
+        get => $this->threadsClosed;
+        set => $this->threadsClosed = max(0, $value);
+    }
+
+    /** Último mensaje publicado en cualquier hilo de este foro (o sus subforos). */
+    #[ORM\ManyToOne(targetEntity: Thread::class, fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    public ?Thread $lastThread = null {
+        get => $this->lastThread;
+        set => $this->lastThread = $value;
+    }
+
+    /** Fecha del último mensaje en el foro. Derivada de lastThread. */
+    public ?DateTimeInterface $lastMessageAt {
+        get => $this->lastThread?->lastMessageAt;
+    }
+
+    /** Autor del último mensaje en el foro. Derivado de lastThread. */
+    public ?string $lastMessageAuthorName {
+        get => $this->lastThread?->lastMessageAuthorName;
     }
 
     #[ORM\Column(length: 255)]
@@ -80,63 +135,55 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     #[ORM\ManyToMany(targetEntity: Tag::class)]
     private Collection $tags;
 
-    public function __construct ()
+    public function __construct()
     {
         $this->children = new ArrayCollection();
         $this->tags = new ArrayCollection();
     }
 
-    public function getDescription (): ?string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription (?string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
 
-    public function getImage (): ?string
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage (?string $image): void
+    public function setImage(?string $image): void
     {
         $this->image = $image;
     }
 
-    public function __toString (): string
+    public function __toString(): string
     {
         return $this->title;
     }
 
-    public function getTitle (): string
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function setTitle (string $title): static
+    public function setTitle(string $title): static
     {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Thread>
-     */
-    public function getThreads (): Collection
-    {
-        return $this->threads;
-    }
-
-    public function getSlug (): ?string
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
 
-    public function setSlug (string $slug): static
+    public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 
@@ -146,12 +193,12 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     /**
      * @return Collection<int, Tag>
      */
-    public function getTags (): Collection
+    public function getTags(): Collection
     {
         return $this->tags;
     }
 
-    public function addTag (Tag $tag): static
+    public function addTag(Tag $tag): static
     {
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
@@ -160,7 +207,7 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
         return $this;
     }
 
-    public function removeTag (Tag $tag): static
+    public function removeTag(Tag $tag): static
     {
         $this->tags->removeElement($tag);
 
