@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/02/2026, 18:04
+ * Last modified by "IDMarinas" on 21/02/2026, 13:17
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,11 +23,12 @@ use Override;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NoSuspiciousCharacters;
 
 class TipTapType extends AbstractType
 {
     #[Override]
-    public function configureOptions (OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'sanitize_html' => true,
@@ -36,17 +37,20 @@ class TipTapType extends AbstractType
                 'class' => 'tiptap-editor',
                 'rows'  => 10,
             ],
+            'constraints'   => [
+                new NoSuspiciousCharacters(),
+            ],
         ]);
     }
 
     #[Override]
-    public function getParent (): string
+    public function getParent(): string
     {
         return TextareaType::class;
     }
 
     #[Override]
-    public function getBlockPrefix (): string
+    public function getBlockPrefix(): string
     {
         return 'tiptap';
     }
