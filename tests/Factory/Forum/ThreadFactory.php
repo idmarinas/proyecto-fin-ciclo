@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 18/02/2026, 22:43
+ * Last modified by "IDMarinas" on 22/02/2026, 24:16
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,7 +19,9 @@
 
 namespace App\Tests\Factory\Forum;
 
+use App\Entity\Forum;
 use App\Entity\Forum\Thread;
+use App\Enums\ThreadStatusEnum;
 use Override;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 
@@ -29,37 +31,48 @@ use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 final class ThreadFactory extends PersistentObjectFactory
 {
     #[Override]
-    public static function class (): string
+    public static function class(): string
     {
         return Thread::class;
     }
 
     /**
      * @see  https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
-     *
-     * @todo add your default values here
      */
     #[Override]
-    protected function defaults (): array|callable
+    protected function defaults(): array|callable
     {
         return [
-            // 'createdAt' => self::faker()->dateTime(),
-            // 'private'   => self::faker()->boolean(),
-            // 'slug'      => self::faker()->text(255),
-            // 'status' => self::faker()->randomElement(ThreadStatusEnum::cases()),
             // - slug: Generado automáticamente desde title
             // - createdAt, updatedAt: Timestamps automáticos
             // - deletedAt: Soft delete
         ];
     }
 
-    /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-     */
     #[Override]
-    protected function initialize (): static
+    protected function initialize(): static
     {
-        return $this// ->afterInstantiate(function(Thread $thread): void {})
-            ;
+        return $this
+            ->afterInstantiate(function (Thread $thread): void {
+                $forum = $thread->getForum();
+
+                $forum->lastThread = $thread;
+                $forum->totalThreads++;
+                $this->applyStatusCount($forum, $thread->getStatus(), +1);
+            })
+        ;
+    }
+
+    /**
+     * Incrementa el contador de estado correspondiente en el foro dado.
+     */
+    private function applyStatusCount(Forum $forum, ThreadStatusEnum $status, int $delta): void
+    {
+        match ($status) {
+            ThreadStatusEnum::CLOSED   => $forum->threadsClosed += $delta,
+            ThreadStatusEnum::OPEN     => $forum->threadsOpen += $delta,
+            ThreadStatusEnum::RESOLVED => $forum->threadsResolved += $delta,
+            default                    => $forum->threadsInProgress += $delta,
+        };
     }
 }
