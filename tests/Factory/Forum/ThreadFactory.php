@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 24:16
+ * Last modified by "IDMarinas" on 22/02/2026, 13:09
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -59,6 +59,12 @@ final class ThreadFactory extends PersistentObjectFactory
                 $forum->lastThread = $thread;
                 $forum->totalThreads++;
                 $this->applyStatusCount($forum, $thread->getStatus(), +1);
+
+                if (null !== $forum->parent) {
+                    $forum->parent->lastThread = $thread;
+                    $forum->parent->totalThreads++;
+                    $this->applyStatusCount($forum->parent, $thread->getStatus(), +1);
+                }
             })
         ;
     }
