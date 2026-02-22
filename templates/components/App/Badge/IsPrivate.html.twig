@@ -7,15 +7,11 @@
   'bg-blue-100 text-blue-700': 'Público' === text
 }) ~ ' ' ~ attributes.render('class') %}
 
-<twig:Ui:Tooltip id="badge-tooltip-private-public">
-  <twig:Ui:Tooltip:Trigger>
-    <twig:Ui:Button {{ ...trigger_attrs }} variant="ghost" size="icon">
-      <img
-          src="{{ asset('Público' ? 'images/public_thread.webp' : 'images/private_thread.webp') }}"
-          alt="{{ text }}"
-          class="size-8"
-      />
-    </twig:Ui:Button>
-  </twig:Ui:Tooltip:Trigger>
-  <twig:Ui:Tooltip:Content>{{ text }}</twig:Ui:Tooltip:Content>
-</twig:Ui:Tooltip>
+<twig:Ui:Button variant="ghost" size="sm">
+  <img
+      src="{{ asset('Público' == text ? 'images/public_thread.webp' : 'images/private_thread.webp') }}"
+      alt="{{ text }}"
+      class="size-5"
+  />
+  {{ text }}
+</twig:Ui:Button>
