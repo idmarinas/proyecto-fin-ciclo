@@ -104,18 +104,19 @@
   {% component 'Ui:Field:Group' %}
     {% block content %}
       {% component 'Ui:Field' with {
-        orientation: 'horizontal',
         'data-invalid': (errors is empty ? 'false' : 'true'),
         ...form_attributes(_context|merge({attr: row_attr}))
       } %}
         {% block content %}
-          {{- form_widget(form, widget_attr) -}}
-          {{- form_label(form) -}}
+          <div class="flex items-center gap-2">
+            {{- form_widget(form, widget_attr) -}}
+            {{- form_label(form) -}}
+          </div>
+
+          {{- form_help(form) -}}
+          {{- form_errors(form) -}}
         {% endblock %}
       {% endcomponent %}
-
-      {{- form_help(form) -}}
-      {{- form_errors(form) -}}
     {% endblock %}
   {% endcomponent %}
 {%- endblock checkbox_row -%}
