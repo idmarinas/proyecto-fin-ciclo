@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2026, 10:35
+ * Last modified by "IDMarinas" on 22/02/2026, 13:12
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -25,21 +25,18 @@ use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Events;
 
-#[AsEntityListener(event: Events::postUpdate, entity: Message::class)]
 #[AsEntityListener(event: Events::postRemove, entity: Message::class)]
 final readonly class ThreadLastMessageListener
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
         private MessageRepository      $messageRepository,
-    ) {
-    }
+    ) {}
 
     /**
-     * Mensaje modificado (p.ej. SoftDelete activa deletedAt):
-     * recalcula ambos campos desde la BD.
+     * Mensaje eliminado físicamente: recalcula ambos campos desde la BD.
      */
-    public function postUpdate(Message $message): void
+    public function postRemove(Message $message): void
     {
         $this->recalculate($message);
     }
@@ -60,13 +57,5 @@ final readonly class ThreadLastMessageListener
 
         $this->entityManager->persist($thread);
         $this->entityManager->flush();
-    }
-
-    /**
-     * Mensaje eliminado físicamente: recalcula ambos campos desde la BD.
-     */
-    public function postRemove(Message $message): void
-    {
-        $this->recalculate($message);
     }
 }
