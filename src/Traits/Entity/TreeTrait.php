@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/02/2026, 15:36
+ * Last modified by "IDMarinas" on 21/02/2026, 19:00
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -38,6 +38,7 @@ trait TreeTrait
         get => $this->rgt;
         set => $this->rgt = $value;
     }
+
     #[Gedmo\TreeLevel]
     #[ORM\Column(type: Types::INTEGER)]
     public int $lvl = 0 {
