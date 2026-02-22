@@ -53,7 +53,7 @@
  {%- block hidden_widget -%}
    {%- set type = type|default('hidden') -%}
 
-   <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
+   <input type="hidden" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
  {%- endblock hidden_widget -%}
 
 {%- block checkbox_widget -%}
