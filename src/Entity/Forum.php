@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 20/02/2026, 21:50
+ * Last modified by "IDMarinas" on 22/02/2026, 12:47
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -116,15 +116,18 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
         get => $this->lastThread?->lastMessageAuthorName;
     }
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    public ?string $description = null {
+        get => $this->description;
+        set => $this->description = $value;
+    }
+
     #[ORM\Column(length: 255)]
     private string $title = '';
 
     #[ORM\Column(length: 255, unique: true)]
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
-
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -139,16 +142,6 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     {
         $this->children = new ArrayCollection();
         $this->tags = new ArrayCollection();
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): void
-    {
-        $this->description = $description;
     }
 
     public function getImage(): ?string
