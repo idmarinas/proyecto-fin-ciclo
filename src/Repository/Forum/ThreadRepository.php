@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 14:24
+ * Last modified by "IDMarinas" on 22/02/2026, 16:10
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,7 +22,10 @@ namespace App\Repository\Forum;
 use App\Entity\Forum;
 use App\Entity\Forum\Thread;
 use App\Entity\User\User;
+use App\Enums\ThreadStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Query\Parameter;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -77,5 +80,22 @@ final class ThreadRepository extends ServiceEntityRepository
         ;
     }
 
-    public function countThreadsForForum (Forum $forum): int
+    public function countPrivateThreadsForUser(User $user): int
+    {
+        return $this
+            ->createQueryBuilder('t')
+            ->select('COUNT(t)')
+            ->where('t.private = true AND t.author = :user')
+            ->andWhere('t.status !=  :closed OR t.status != :resolved')
+            ->setParameters(
+                new ArrayCollection([
+                    new Parameter('user', $user),
+                    new Parameter('closed', ThreadStatusEnum::CLOSED->value),
+                    new Parameter('resolved', ThreadStatusEnum::RESOLVED->value),
+                ])
+            )
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }
