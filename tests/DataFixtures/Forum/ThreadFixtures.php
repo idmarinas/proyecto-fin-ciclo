@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/02/2026, 21:11
+ * Last modified by "IDMarinas" on 22/02/2026, 10:58
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -34,13 +34,13 @@ use Symfony\Component\Yaml\Yaml;
 final class ThreadFixtures extends Fixture implements DependentFixtureInterface
 {
     #[Override]
-    public function load (ObjectManager $manager): void
+    public function load(ObjectManager $manager): void
     {
         // Cargar YAML
-        $thread1 = Yaml::parseFile(dirname(__DIR__) . '/data/dummy_threads_part1_expanded.yaml');
-        $thread2 = Yaml::parseFile(dirname(__DIR__) . '/data/dummy_threads_part2_expanded.yaml');
-        $thread3 = Yaml::parseFile(dirname(__DIR__) . '/data/dummy_threads_part3_expanded.yaml');
-        $thread4 = Yaml::parseFile(dirname(__DIR__) . '/data/dummy_threads_part4_expanded.yaml');
+        $thread1 = Yaml::parseFile(dirname(__DIR__).'/data/dummy_threads_part1_expanded.yaml');
+        $thread2 = Yaml::parseFile(dirname(__DIR__).'/data/dummy_threads_part2_expanded.yaml');
+        $thread3 = Yaml::parseFile(dirname(__DIR__).'/data/dummy_threads_part3_expanded.yaml');
+        $thread4 = Yaml::parseFile(dirname(__DIR__).'/data/dummy_threads_part4_expanded.yaml');
 
         $threads = array_merge($thread1['threads'], $thread2['threads'], $thread3['threads'], $thread4['threads']);
 
@@ -73,19 +73,19 @@ final class ThreadFixtures extends Fixture implements DependentFixtureInterface
                     'sticky'        => $thread['sticky'],
                     'solvedMessage' => null,
                     'status'        => ThreadStatusEnum::from($thread['status']),
-                    'forum'         => self::getReference('subforum_' . $thread['subforum_id'], Forum::class),
-                    'author'        => self::getReference('user_' . $thread['author_id'], User::class),
-                    'createdBy'     => self::getReference('user_' . $thread['author_id'], User::class),
-                    'updatedBy'     => self::getReference('user_' . $thread['author_id'], User::class),
+                    'forum'         => self::getReference('subforum_'.$thread['subforum_id'], Forum::class),
+                    'author'        => self::getReference('user_'.$thread['author_id'], User::class),
+                    'createdBy'     => self::getReference('user_'.$thread['author_id'], User::class),
+                    'updatedBy'     => self::getReference('user_'.$thread['author_id'], User::class),
                 ])
             ;
 
-            self::addReference('thread_' . $thread['id'], $entity);
+            self::addReference('thread_'.$thread['id'], $entity);
         }
     }
 
     #[Override]
-    public function getDependencies (): array
+    public function getDependencies(): array
     {
         return [
             ForumFixtures::class,
