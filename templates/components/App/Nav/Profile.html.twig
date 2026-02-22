@@ -13,6 +13,11 @@
       data-transition-leave-to="opacity-0 scale-95"
   >
     <twig:Ui:Item:Group class="gap-3" data-turbo="false">
+      <twig:Ui:Item>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Description>{{ app.user }}</twig:Ui:Item:Description>
+        </twig:Ui:Item:Content>
+      </twig:Ui:Item>
       <twig:Ui:Item as="a" href="{{ path('app_user_profile_index') }}" data-action="dropdown#toggle" size="xs">
         <twig:Ui:Item:Media>
           <twig:ux:icon name="tabler:user-cog" />
