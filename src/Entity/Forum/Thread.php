@@ -2,25 +2,24 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/02/2026, 22:08
+ * Last modified by "IDMarinas" on 21/02/2026, 23:17
  *
  * @project Foro de Ayuda y Soporte
- * @see https://github.com/idmarinas/proyecto-fin-ciclo
+ * @see     https://github.com/idmarinas/proyecto-fin-ciclo
  *
- * @file Thread.php
- * @date 22/01/2026
- * @time 21:58
+ * @file    Thread.php
+ * @date    22/01/2026
+ * @time    21:58
  *
- * @author Iván Diaz Marinas (IDMarinas)
+ * @author  Iván Diaz Marinas (IDMarinas)
  * @license proprietary
  *
- * @since 1.0.0
+ * @since   1.0.0
  */
 
 namespace App\Entity\Forum;
 
 use App\Entity\Forum;
-use App\Entity\Subscription;
 use App\Entity\Tag;
 use App\Entity\User\User;
 use App\Enums\ThreadStatusEnum;
@@ -111,7 +110,7 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[Gedmo\Blameable(on: 'create')]
     private ?User $author = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(cascade: ['persist'])]
     private ?Forum $forum = null;
 
     #[ORM\Column]
@@ -131,12 +130,6 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     private bool $sticky = false;
 
     /**
-     * @var Collection<int, Subscription>
-     */
-    #[ORM\OneToMany(targetEntity: Subscription::class, mappedBy: 'thread', cascade: ['persist', 'remove'])]
-    private Collection $subscriptions;
-
-    /**
      * @var Collection<int, Tag>
      */
     #[ORM\ManyToMany(targetEntity: Tag::class)]
@@ -145,95 +138,94 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[ORM\Column]
     private int $viewCount = 0;
 
-    public function __construct ()
+    public function __construct()
     {
         $this->tags = new ArrayCollection();
-        $this->subscriptions = new ArrayCollection();
     }
 
-    public function __toString (): string
+    public function __toString(): string
     {
         return $this->title;
     }
 
-    public function isPrivate (): bool
+    public function isPrivate(): bool
     {
         return $this->private;
     }
 
-    public function setPrivate (bool $private): static
+    public function setPrivate(bool $private): static
     {
         $this->private = $private;
 
         return $this;
     }
 
-    public function isPublic (): bool
+    public function isPublic(): bool
     {
         return !$this->private;
     }
 
-    public function getStatus (): ThreadStatusEnum
+    public function getStatus(): ThreadStatusEnum
     {
         return $this->status;
     }
 
-    public function setStatus (ThreadStatusEnum $status): static
+    public function setStatus(ThreadStatusEnum $status): static
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getForum (): ?Forum
+    public function getForum(): ?Forum
     {
         return $this->forum;
     }
 
-    public function setForum (?Forum $forum): static
+    public function setForum(?Forum $forum): static
     {
         $this->forum = $forum;
 
         return $this;
     }
 
-    public function getSlug (): ?string
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
 
-    public function setSlug (string $slug): static
+    public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    public function getAuthor (): ?User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    public function setAuthor (?User $author): static
+    public function setAuthor(?User $author): static
     {
         $this->author = $author;
 
         return $this;
     }
 
-    public function getViewCount (): int
+    public function getViewCount(): int
     {
         return $this->viewCount;
     }
 
-    public function setViewCount (int $viewCount): static
+    public function setViewCount(int $viewCount): static
     {
         $this->viewCount = $viewCount;
 
         return $this;
     }
 
-    public function increaseViewCount (): static
+    public function increaseViewCount(): static
     {
         $this->viewCount++;
 
@@ -243,12 +235,12 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     /**
      * @return Collection<int, Tag>
      */
-    public function getTags (): Collection
+    public function getTags(): Collection
     {
         return $this->tags;
     }
 
-    public function addTag (Tag $tag): static
+    public function addTag(Tag $tag): static
     {
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
@@ -257,75 +249,45 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
         return $this;
     }
 
-    public function removeTag (Tag $tag): static
+    public function removeTag(Tag $tag): static
     {
         $this->tags->removeElement($tag);
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Subscription>
-     */
-    public function getSubscriptions (): Collection
-    {
-        return $this->subscriptions;
-    }
-
-    public function addSubscription (Subscription $subscription): static
-    {
-        if (!$this->subscriptions->contains($subscription)) {
-            $this->subscriptions->add($subscription);
-            $subscription->setThread($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSubscription (Subscription $subscription): static
-    {
-        if ($this->subscriptions->removeElement($subscription)) {
-            // set the owning side to null (unless already changed)
-            if ($subscription->getThread() === $this) {
-                $subscription->setThread(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function isSticky (): bool
+    public function isSticky(): bool
     {
         return $this->sticky;
     }
 
-    public function setSticky (bool $sticky): static
+    public function setSticky(bool $sticky): static
     {
         $this->sticky = $sticky;
 
         return $this;
     }
 
-    public function getSolvedMessage (): ?Message
+    public function getSolvedMessage(): ?Message
     {
         return $this->solvedMessage;
     }
 
-    public function setSolvedMessage (?Message $solvedMessage): static
+    public function setSolvedMessage(?Message $solvedMessage): static
     {
         $this->solvedMessage = $solvedMessage;
 
         return $this;
     }
 
-    public function incrementMessageCount (): static
+    public function incrementMessageCount(): static
     {
         $this->messageCount++;
 
         return $this;
     }
 
-    public function decrementMessageCount (): static
+    public function decrementMessageCount(): static
     {
         $this->messageCount--;
 
