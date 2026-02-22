@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 13:16
+ * Last modified by "IDMarinas" on 22/02/2026, 14:24
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,6 +20,7 @@
 namespace App\Repository;
 
 use App\Entity\Forum;
+use App\Enums\ThreadStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Override;
@@ -61,5 +62,47 @@ final class ForumRepository extends NestedTreeRepository
 
             return $item;
         }, $results);
+    }
+
+    /**
+     * Devuelve un array asociativo con las estadísticas de un foro:
+     * - totalThreads
+     * - totalMessages
+     * - threadsOpen
+     * - threadsInProgress
+     * - threadsResolved
+     * - threadsClosed
+     */
+    public function getStatsForForum(Forum $forum): array
+    {
+        $rows = $this
+            ->createQueryBuilder('t')
+            ->select(
+                'COUNT(t.id)                                                                                       AS totalThreads',
+                'COALESCE(SUM(t.messageCount), 0)                                                                          AS totalMessages',
+                'SUM(CASE WHEN t.status = :open        THEN 1 ELSE 0 END)                                                  AS threadsOpen',
+                'SUM(CASE WHEN t.status = :waitCust OR t.status = :waitSupp THEN 1 ELSE 0 END)                             AS threadsInProgress',
+                'SUM(CASE WHEN t.status = :resolved    THEN 1 ELSE 0 END)                                                  AS threadsResolved',
+                'SUM(CASE WHEN t.status = :closed      THEN 1 ELSE 0 END)                                                  AS threadsClosed',
+            )
+            ->where('t.forum = :forum')
+            ->setParameter('forum', $forum)
+            ->setParameter('open', ThreadStatusEnum::OPEN)
+            ->setParameter('waitCust', ThreadStatusEnum::WAITING_CUSTOMER)
+            ->setParameter('waitSupp', ThreadStatusEnum::WAITING_SUPPORT)
+            ->setParameter('resolved', ThreadStatusEnum::RESOLVED)
+            ->setParameter('closed', ThreadStatusEnum::CLOSED)
+            ->getQuery()
+            ->getSingleResult()
+        ;
+
+        return [
+            'totalThreads'      => (int)$rows['totalThreads'],
+            'totalMessages'     => (int)$rows['totalMessages'],
+            'threadsOpen'       => (int)$rows['threadsOpen'],
+            'threadsInProgress' => (int)$rows['threadsInProgress'],
+            'threadsResolved'   => (int)$rows['threadsResolved'],
+            'threadsClosed'     => (int)$rows['threadsClosed'],
+        ];
     }
 }
