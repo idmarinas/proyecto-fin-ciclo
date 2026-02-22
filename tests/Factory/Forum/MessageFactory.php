@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 09/02/2026, 23:42
+ * Last modified by "IDMarinas" on 21/02/2026, 17:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,7 +29,7 @@ use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
 final class MessageFactory extends PersistentObjectFactory
 {
     #[Override]
-    public static function class (): string
+    public static function class(): string
     {
         return Message::class;
     }
@@ -40,19 +40,32 @@ final class MessageFactory extends PersistentObjectFactory
      * @todo add your default values here
      */
     #[Override]
-    protected function defaults (): array|callable
+    protected function defaults(): array|callable
     {
-        return [
-        ];
+        return [];
     }
 
     /**
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
      */
     #[Override]
-    protected function initialize (): static
+    protected function initialize(): static
     {
-        return $this// ->afterInstantiate(function(Message $message): void {})
-            ;
+        return $this
+            ->afterInstantiate(function (Message $message): void {
+                $thread = $message->getThread();
+                $thread->lastMessage = $message;
+                $thread->incrementMessageCount();
+
+                $forum = $thread->getForum();
+                $forum->lastThread = $thread;
+                $forum->totalMessages++;
+
+                if (null !== $forum->parent) {
+                    $forum->parent->lastThread = $thread;
+                    $forum->parent->totalMessages++;
+                }
+            })
+        ;
     }
 }
