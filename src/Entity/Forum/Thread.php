@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2026, 23:17
+ * Last modified by "IDMarinas" on 22/02/2026, 19:50
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -105,6 +105,30 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
         set => $this->updatedBy = $value;
     }
 
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    public bool $isIncident = false {
+        get => $this->isIncident;
+        set => $this->isIncident = $value;
+    }
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    public bool $isCritical = false {
+        get => $this->isCritical;
+        set => $this->isCritical = $value;
+    }
+
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    public bool $affectsBusiness = false {
+        get => $this->affectsBusiness;
+        set => $this->affectsBusiness = $value;
+    }
+
+    #[ORM\Column]
+    public bool $private = false {
+        get => $this->private;
+        set => $this->private = $value;
+    }
+
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     #[Gedmo\Blameable(on: 'create')]
@@ -112,9 +136,6 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
 
     #[ORM\ManyToOne(cascade: ['persist'])]
     private ?Forum $forum = null;
-
-    #[ORM\Column]
-    private bool $private = false;
 
     #[ORM\Column(length: 255)]
     #[Gedmo\Slug(fields: ['title'])]
@@ -146,18 +167,6 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     public function __toString(): string
     {
         return $this->title;
-    }
-
-    public function isPrivate(): bool
-    {
-        return $this->private;
-    }
-
-    public function setPrivate(bool $private): static
-    {
-        $this->private = $private;
-
-        return $this;
     }
 
     public function isPublic(): bool
