@@ -1,7 +1,6 @@
 {% block tiptap_widget %}
   {% set attr = attr|merge({class: (attr.class|default('') ~ ' tiptap-container border rounded-md shadow-sm bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700')|trim}) %}
-  <div
-  {% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}" {% endfor %} data-controller="tiptap" data-tiptap-target="root">
+  <div {% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}" {% endfor %} data-controller="tiptap" data-tiptap-target="root">
   {# Barra de herramientas #}
   <div
       class="tiptap-toolbar flex flex-wrap items-center gap-1 p-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-t-md text-gray-600 dark:text-gray-400"
@@ -107,8 +106,7 @@
   {# Área del editor #}
   <div
       data-tiptap-target="editor"
-      class="tiptap-editor min-h-[150px] p-4 outline-none prose max-w-none dark:prose-invert"
-  ></div>
+      class="tiptap-editor min-h-37.5 p-4 outline-none prose max-w-none dark:prose-invert"></div>
 
   {# Input oculto para Symfony #}
   <textarea {{ block('widget_attributes') }} style="display: none;" data-tiptap-target="input">{{ value }}</textarea>
