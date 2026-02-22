@@ -1,0 +1,37 @@
+{# @var thread \App\Entity\Forum\Thread #}
+
+{% props thread %}
+
+{% if thread.isIncident %}
+  <twig:Ui:Tooltip id="incident-tooltip">
+    <twig:Ui:Tooltip:Trigger>
+      <twig:Ui:Badge {{ ...trigger_attrs }} class="px-3 py-1 bg-yellow-200 text-yellow-800" aria-label="Incidente">
+        <twig:ux:icon name="tabler:alert-triangle" class="size-4!" />
+      </twig:Ui:Badge>
+    </twig:Ui:Tooltip:Trigger>
+    <twig:Ui:Tooltip:Content>Incidente</twig:Ui:Tooltip:Content>
+  </twig:Ui:Tooltip>
+{% endif %}
+
+{% if thread.isCritical %}
+  <twig:Ui:Tooltip id="critical-tooltip">
+    <twig:Ui:Tooltip:Trigger>
+      <twig:Ui:Badge {{ ...trigger_attrs }} class="px-3 py-1 bg-red-800 text-red-200" aria-label="Crítico">
+        <twig:ux:icon name="tabler:flame" class="size-4!" />
+      </twig:Ui:Badge>
+    </twig:Ui:Tooltip:Trigger>
+    <twig:Ui:Tooltip:Content>Crítico</twig:Ui:Tooltip:Content>
+  </twig:Ui:Tooltip>
+{% endif %}
+
+{% if thread.affectsBusiness %}
+  <twig:Ui:Tooltip id="business-tooltip">
+    <twig:Ui:Tooltip:Trigger>
+      <twig:Ui:Badge {{ ...trigger_attrs }} class="px-3 py-1 bg-blue-800 text-blue-200" aria-label="Afecta a mi
+      negocio">
+        <twig:ux:icon name="tabler:building" class="size-4!" />
+      </twig:Ui:Badge>
+    </twig:Ui:Tooltip:Trigger>
+    <twig:Ui:Tooltip:Content>Afecta a mi negocio</twig:Ui:Tooltip:Content>
+  </twig:Ui:Tooltip>
+{% endif %}
