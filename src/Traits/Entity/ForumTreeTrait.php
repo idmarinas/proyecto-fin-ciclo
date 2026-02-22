@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 31/01/2026, 23:44
+ * Last modified by "IDMarinas" on 21/02/2026, 23:17
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -35,7 +35,7 @@ trait ForumTreeTrait
     }
 
     #[Gedmo\TreeParent]
-    #[ORM\ManyToOne(targetEntity: Forum::class, inversedBy: 'children')]
+    #[ORM\ManyToOne(targetEntity: Forum::class, cascade: ['persist'], inversedBy: 'children')]
     #[ORM\JoinColumn(name: 'parent_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
     public ?Forum $parent {
         get => $this->parent;
