@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 11:18
+ * Last modified by "IDMarinas" on 22/02/2026, 13:06
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,9 +22,7 @@ namespace App\EventListener\Forum;
 use App\Entity\Forum;
 use App\Entity\Forum\Thread;
 use App\Repository\Forum\ThreadRepository;
-use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Events;
 
 /**
  * Recalcula las estadísticas de Forum cuando un Thread cambia de estado o es eliminado.
@@ -33,19 +31,14 @@ use Doctrine\ORM\Events;
  *   - postRemove: borrado físico del hilo.
  *   - En ambos casos propaga también al foro padre si existe.
  */
-#[AsEntityListener(event: Events::postUpdate, entity: Thread::class, priority: -10)]
-#[AsEntityListener(event: Events::postRemove, entity: Thread::class, priority: -10)]
+// #[AsEntityListener(event: Events::postUpdate, entity: Thread::class, priority: -10)]
+// #[AsEntityListener(event: Events::postRemove, entity: Thread::class, priority: -10)]
 final readonly class ForumStatsListener
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
         private ThreadRepository       $threadRepository,
     ) {}
-
-    public function postUpdate(Thread $thread): void
-    {
-        $this->recalculate($thread);
-    }
 
     public function postRemove(Thread $thread): void
     {
