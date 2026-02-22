@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/02/2026, 20:11
+ * Last modified by "IDMarinas" on 21/02/2026, 23:18
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -81,50 +81,50 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
     #[ORM\Column]
     private bool $solution = false;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(cascade: ['persist'])]
     #[Assert\Valid]
     private ?Thread $thread = null;
 
-    public function __construct ()
+    public function __construct()
     {
         $this->reactions = new ArrayCollection();
     }
 
-    public function __toString (): string
+    public function __toString(): string
     {
         return (string)$this->id;
     }
 
-    public function getThread (): ?Thread
+    public function getThread(): ?Thread
     {
         return $this->thread;
     }
 
-    public function setThread (?Thread $thread): static
+    public function setThread(?Thread $thread): static
     {
         $this->thread = $thread;
 
         return $this;
     }
 
-    public function getContent (): ?string
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent (string $content): static
+    public function setContent(string $content): static
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function getAuthor (): ?User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    public function setAuthor (?User $author): static
+    public function setAuthor(?User $author): static
     {
         $this->author = $author;
 
@@ -134,12 +134,12 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
     /**
      * @return Collection<int, MessageReaction>
      */
-    public function getReactions (): Collection
+    public function getReactions(): Collection
     {
         return $this->reactions;
     }
 
-    public function addReaction (MessageReaction $reaction): static
+    public function addReaction(MessageReaction $reaction): static
     {
         if (!$this->reactions->contains($reaction)) {
             $this->reactions->add($reaction);
@@ -149,7 +149,7 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
         return $this;
     }
 
-    public function removeReaction (MessageReaction $reaction): static
+    public function removeReaction(MessageReaction $reaction): static
     {
         if ($this->reactions->removeElement($reaction)) {
             // set the owning side to null (unless already changed)
@@ -161,12 +161,12 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
         return $this;
     }
 
-    public function isSolution (): bool
+    public function isSolution(): bool
     {
         return $this->solution;
     }
 
-    public function setSolution (bool $solution): static
+    public function setSolution(bool $solution): static
     {
         $this->solution = $solution;
 
