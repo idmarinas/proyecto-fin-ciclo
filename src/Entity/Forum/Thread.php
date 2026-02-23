@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 22:29
+ * Last modified by "IDMarinas" on 23/02/2026, 22:56
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -27,6 +27,7 @@ use App\Repository\Forum\ThreadRepository;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Blameable;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -45,6 +46,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Table(name: 'pfc_thread')]
 #[ORM\Entity(repositoryClass: ThreadRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface, Blameable
 {
     use IdTrait;
@@ -123,6 +125,12 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
         set => $this->affectsBusiness = $value;
     }
 
+    /** Prioridad calculada del hilo según el tipo de problema y sus combinaciones. */
+    #[ORM\Column(type: Types::SMALLINT, options: ['default' => 0], index: true)]
+    public int $priority = 0 {
+        get => $this->priority;
+    }
+
     #[ORM\Column]
     public bool $private = false {
         get => $this->private;
@@ -163,6 +171,40 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function computePriority(): void
+    {
+        $priority = 0;
+
+        // Pesos individuales
+        if ($this->isIncident) {
+            $priority += 1;
+        }
+        if ($this->isCritical) {
+            $priority += 2;
+        }
+        if ($this->affectsBusiness) {
+            $priority += 2;
+        }
+
+        // Bonus por combinación
+        if ($this->isIncident && $this->isCritical && !$this->affectsBusiness) {
+            $priority += 1;
+        }
+        if ($this->isIncident && !$this->isCritical && $this->affectsBusiness) {
+            $priority += 2;
+        }
+        if (!$this->isIncident && $this->isCritical && $this->affectsBusiness) {
+            $priority += 3;
+        }
+        if ($this->isIncident && $this->isCritical && $this->affectsBusiness) {
+            $priority += 4;
+        }
+
+        $this->priority = $priority;
     }
 
     public function __toString(): string
