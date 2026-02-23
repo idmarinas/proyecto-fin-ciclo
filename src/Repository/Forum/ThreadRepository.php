@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 16:10
+ * Last modified by "IDMarinas" on 23/02/2026, 23:15
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -45,6 +45,13 @@ final class ThreadRepository extends ServiceEntityRepository
             ->createQueryBuilder('t')
             ->where('t.forum = :forum')
             ->setParameter('forum', $forum)
+            // Los hilos resueltos/cerrados van al final, sin prioridad
+            ->addSelect('CASE WHEN t.status IN (:closedStatus) THEN 0 ELSE 1 END AS HIDDEN is_active')
+            ->addSelect('CASE WHEN t.status IN (:closedStatus) THEN 0 ELSE t.priority END AS HIDDEN effective_priority')
+            ->setParameter('closedStatus', [ThreadStatusEnum::RESOLVED, ThreadStatusEnum::CLOSED])
+            ->orderBy('is_active', 'DESC')             // Activos primero, resueltos/cerrados al final
+            ->addOrderBy('effective_priority', 'DESC') // Luego por prioridad (solo aplica a activos)
+            ->addOrderBy('t.createdAt', 'DESC')        // Finalmente por fecha de creación
         ;
 
         if (null === $user) {
