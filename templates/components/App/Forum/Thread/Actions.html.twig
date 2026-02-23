@@ -4,17 +4,17 @@
   {# Botón Responder #}
   {% if workflow_can(thread, 'public_reply') %}
     <twig:Ui:Button as="a" href="#responder" size="sm" variant="secondary">
-      <twig:ux:icon name="tabler:message-reply" />
+      {{ ux_icon('tabler:message-reply') }}
       Responder
     </twig:Ui:Button>
   {% elseif workflow_can(thread, 'customer_reply') %}
     <twig:Ui:Button as="a" href="#responder" size="sm" variant="outline">
-      <twig:ux:icon name="tabler:message-reply" />
+      {{ ux_icon('tabler:message-reply') }}
       Responder
     </twig:Ui:Button>
   {% elseif workflow_can(thread, 'staff_reply') %}
     <twig:Ui:Button as="a" href="#responder" size="sm">
-      <twig:ux:icon name="tabler:message-reply" />
+      {{ ux_icon('tabler:message-reply') }}
       Responder
     </twig:Ui:Button>
   {% endif %}
@@ -22,16 +22,32 @@
   {# Botón Marcar como resuelto (solo autor o moderador) #}
   {% if workflow_can(thread, 'resolve') %}
     <twig:Ui:Button size="sm" class="bg-success text-success-foreground hover:bg-success/70">
-      <twig:ux:icon name="tabler:message-check" />
+      {{ ux_icon('tabler:message-check') }}
       Marcar como resuelto
+    </twig:Ui:Button>
+  {% endif %}
+
+  {# Botón: Editar hilo #}
+  {% if is_granted('thread.edit', thread) %}
+    <twig:Ui:Button size="sm" class="bg-warning text-warning-foreground hover:bg-warning/70">
+      {{ ux_icon('tabler:pencil') }}
+      Editar hilo
     </twig:Ui:Button>
   {% endif %}
 
   {# Botón: Cerrar hilo (Confirmación con advertencia) #}
   {% if workflow_can(thread, 'close') %}
-    <twig:Ui:Button size="sm" variant="destructive">
-      <twig:ux:icon name="tabler:lock" />
+    <twig:Ui:Button size="sm" class="bg-danger text-danger-foreground hover:bg-danger/70">
+      {{ ux_icon('tabler:lock') }}
       Cerrar
+    </twig:Ui:Button>
+  {% endif %}
+
+  {# Botón: Borrar hilo #}
+  {% if is_granted('thread.delete', thread) %}
+    <twig:Ui:Button size="sm" variant="destructive">
+      {{ ux_icon('tabler:trash') }}
+      Borrar hilo
     </twig:Ui:Button>
   {% endif %}
 </twig:Ui:ButtonGroup>
