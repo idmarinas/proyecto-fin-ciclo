@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 12/02/2026, 21:35
+ * Last modified by "IDMarinas" on 23/02/2026, 23:43
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -24,9 +24,9 @@ use Twig\Extension\RuntimeExtensionInterface;
 
 final readonly class FormExtensionRuntime implements RuntimeExtensionInterface
 {
-    public function __construct (private TranslatorInterface $translator) {}
+    public function __construct(private TranslatorInterface $translator) {}
 
-    public function formWidgetAttributes (array $context): array
+    public function formWidgetAttributes(array $context): array
     {
         $attributes = [
             'id'       => $context['id'],
@@ -37,7 +37,7 @@ final readonly class FormExtensionRuntime implements RuntimeExtensionInterface
 
         $context['type'] = $context['type'] ?? null;
 
-        if (in_array($context['type'], ['input', 'hidden']) && !empty($context['value'])) {
+        if (in_array($context['type'], ['text', 'hidden']) && !empty($context['value'])) {
             $attributes['value'] = $context['value'];
         } elseif ('color' == $context['type'] || 'range' == $context['type']) {
             // Attribute 'required' is not supported
@@ -53,7 +53,7 @@ final readonly class FormExtensionRuntime implements RuntimeExtensionInterface
         return array_filter($attributes + $this->formAttributes($context));
     }
 
-    public function formAttributes (array $context): array
+    public function formAttributes(array $context): array
     {
         $attributes = [];
         foreach ($context['attr'] as $key => $value) {
@@ -73,7 +73,7 @@ final readonly class FormExtensionRuntime implements RuntimeExtensionInterface
         return array_filter($attributes);
     }
 
-    public function formButtonAttributes (array $context): array
+    public function formButtonAttributes(array $context): array
     {
         $attributes = [
             'id'       => $context['id'],
@@ -84,7 +84,7 @@ final readonly class FormExtensionRuntime implements RuntimeExtensionInterface
         return array_filter($attributes + $this->formAttributes($context));
     }
 
-    public function formLabelAttributes (array $context): array
+    public function formLabelAttributes(array $context): array
     {
         $attributes = $context['label_attr'];
 
@@ -93,13 +93,13 @@ final readonly class FormExtensionRuntime implements RuntimeExtensionInterface
         }
 
         if ($context['required']) {
-            $attributes['class'] = ($attributes['class'] ?? '') . ' required';
+            $attributes['class'] = ($attributes['class'] ?? '').' required';
         }
 
         return $attributes;
     }
 
-    public function formWidgetContainerAttributes (array $context): array
+    public function formWidgetContainerAttributes(array $context): array
     {
         $attributes = [
             'id' => $context['id'],
