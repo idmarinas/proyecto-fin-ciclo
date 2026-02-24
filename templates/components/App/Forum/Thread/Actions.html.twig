@@ -29,7 +29,16 @@
 
   {# Botón: Editar hilo #}
   {% if is_granted('thread.edit', thread) %}
-    <twig:Ui:Button size="sm" class="bg-warning text-warning-foreground hover:bg-warning/70">
+    <twig:Ui:Button
+        as="a"
+        size="sm"
+        class="bg-warning text-warning-foreground hover:bg-warning/70"
+        href="{{ path('app_forums_forum_thread_edit', {
+          slug_forum: thread.forum.slug,
+          slug_subforum: thread.forum.parent.slug,
+          slug_thread: thread.slug
+        }) }}"
+    >
       {{ ux_icon('tabler:pencil') }}
       Editar hilo
     </twig:Ui:Button>
