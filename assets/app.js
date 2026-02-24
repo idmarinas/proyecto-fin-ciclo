@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/02/2026, 23:21
+ * Last modified by "IDMarinas" on 24/02/2026, 22:37
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -16,15 +16,19 @@
  * @since 1.0.0
  */
 
-import './stimulus_bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
+
+import {registerVueControllerComponents} from '@symfony/ux-vue';
+import './stimulus_bootstrap.js';
 import './styles/app.css';
 
+
+registerVueControllerComponents();
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('[data-slot="avatar-image"]').forEach(img => {
@@ -59,14 +63,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
-
-/*
-
-<img
-    data-slot="avatar-image"
-    class="{{ 'hidden rounded-full aspect-square size-full object-cover ' ~ attributes.render('class')|tailwind_merge }}"
-    onload="this.classList.remove('hidden'); this.closest('[data-slot=avatar]')?.querySelector('[data-slot=avatar-fallback]')?.classList.add('hidden');"
-    {{ attributes.defaults({alt: ''}) }}
-/>
-
-*/

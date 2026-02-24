@@ -23,6 +23,12 @@ return [
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
+    '@symfony/ux-live-component' => [
+        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
+    ],
+    '@symfony/ux-vue' => [
+        'path' => './vendor/symfony/ux-vue/assets/dist/loader.js',
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
@@ -36,34 +42,34 @@ return [
         'version' => '0.52.3',
     ],
     'hotkeys-js' => [
-        'version' => '4.0.0',
+        'version' => '4.0.1',
     ],
     '@stimulus-components/dropdown' => [
         'version' => '3.0.0',
     ],
     '@tiptap/core' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/transform' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/commands' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/state' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/model' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/schema-list' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/view' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/keymap' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     'prosemirror-transform' => [
         'version' => '1.11.0',
@@ -97,70 +103,70 @@ return [
         'type' => 'css',
     ],
     '@tiptap/starter-kit' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-blockquote' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-bold' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-code' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-code-block' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-document' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-hard-break' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-heading' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-horizontal-rule' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-italic' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-link' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-list' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-paragraph' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-strike' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-text' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extension-underline' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/extensions' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/core/jsx-runtime' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     'linkifyjs' => [
         'version' => '4.3.2',
     ],
     '@tiptap/pm/dropcursor' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/gapcursor' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     '@tiptap/pm/history' => [
-        'version' => '3.19.0',
+        'version' => '3.20.0',
     ],
     'prosemirror-dropcursor' => [
         'version' => '1.8.2',
@@ -178,7 +184,28 @@ return [
         'version' => '1.4.0',
         'type' => 'css',
     ],
-    '@symfony/ux-live-component' => [
-        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
+    'vue' => [
+        'version' => '3.5.29',
+    ],
+    '@vue/runtime-dom' => [
+        'version' => '3.5.29',
+    ],
+    '@vue/compiler-dom' => [
+        'version' => '3.5.29',
+    ],
+    '@vue/shared' => [
+        'version' => '3.5.29',
+    ],
+    '@vue/runtime-core' => [
+        'version' => '3.5.29',
+    ],
+    '@vue/compiler-core' => [
+        'version' => '3.5.29',
+    ],
+    '@vue/reactivity' => [
+        'version' => '3.5.29',
+    ],
+    '@tiptap/vue-3' => [
+        'version' => '3.20.0',
     ],
 ];
