@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 30/01/2026, 23:52
+ * Last modified by "IDMarinas" on 25/02/2026, 20:39
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -16,7 +16,7 @@
  * @since 1.0.0
  */
 
-import { startStimulusApp } from '@symfony/stimulus-bundle'
+import {startStimulusApp} from '@symfony/stimulus-bundle'
 import Notification from '@stimulus-components/notification'
 import Dropdown from '@stimulus-components/dropdown'
 

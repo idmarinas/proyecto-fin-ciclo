@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/02/2026, 22:37
+ * Last modified by "IDMarinas" on 25/02/2026, 20:38
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,12 +23,9 @@
  * which should already be in your base.html.twig.
  */
 
-import {registerVueControllerComponents} from '@symfony/ux-vue';
 import './stimulus_bootstrap.js';
 import './styles/app.css';
 
-
-registerVueControllerComponents();
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('[data-slot="avatar-image"]').forEach(img => {
@@ -60,6 +57,4 @@ document.addEventListener("DOMContentLoaded", () => {
             onError();
         }
     });
-
-
 });
