@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 14:24
+ * Last modified by "IDMarinas" on 25/02/2026, 21:22
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,6 +22,7 @@ namespace App\Repository;
 use App\Entity\Forum;
 use App\Enums\ThreadStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Override;
 
@@ -37,7 +38,7 @@ final class ForumRepository extends NestedTreeRepository
         $direct = false,
         array $options = [],
         $includeNode = false
-    ) {
+    ): QueryBuilder {
         $qb = parent::getNodesHierarchyQueryBuilder($node, $direct, $options, $includeNode);
 
         $qb
@@ -50,7 +51,7 @@ final class ForumRepository extends NestedTreeRepository
     }
 
     #[Override]
-    public function getNodesHierarchy($node = null, $direct = false, array $options = [], $includeNode = false)
+    public function getNodesHierarchy($node = null, $direct = false, array $options = [], $includeNode = false): array
     {
         $results = parent::getNodesHierarchy($node, $direct, $options, $includeNode);
 
@@ -78,12 +79,12 @@ final class ForumRepository extends NestedTreeRepository
         $rows = $this
             ->createQueryBuilder('t')
             ->select(
-                'COUNT(t.id)                                                                                       AS totalThreads',
-                'COALESCE(SUM(t.messageCount), 0)                                                                          AS totalMessages',
-                'SUM(CASE WHEN t.status = :open        THEN 1 ELSE 0 END)                                                  AS threadsOpen',
-                'SUM(CASE WHEN t.status = :waitCust OR t.status = :waitSupp THEN 1 ELSE 0 END)                             AS threadsInProgress',
-                'SUM(CASE WHEN t.status = :resolved    THEN 1 ELSE 0 END)                                                  AS threadsResolved',
-                'SUM(CASE WHEN t.status = :closed      THEN 1 ELSE 0 END)                                                  AS threadsClosed',
+                'COUNT(t.id)                                                         AS totalThreads',
+                'COALESCE(SUM(t.messageCount), 0)                                            AS totalMessages',
+                'SUM(CASE WHEN t.status = :open        THEN 1 ELSE 0 END)                    AS threadsOpen',
+                'SUM(CASE WHEN t.status = :waitCust OR t.status = :waitSupp THEN 1 ELSE 0 EN AS threadsInProgress',
+                'SUM(CASE WHEN t.status = :resolved    THEN 1 ELSE 0 END)                    AS threadsResolved',
+                'SUM(CASE WHEN t.status = :closed      THEN 1 ELSE 0 END)                    AS threadsClosed',
             )
             ->where('t.forum = :forum')
             ->setParameter('forum', $forum)
