@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 14/02/2026, 12:59
+ * Last modified by "IDMarinas" on 25/02/2026, 20:53
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -16,8 +16,8 @@
  * @since 1.0.0
  */
 
-import { Controller } from '@hotwired/stimulus';
-import { Editor } from '@tiptap/core';
+import {Controller} from '@hotwired/stimulus';
+import {Editor} from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 
 export default class extends Controller {
@@ -58,11 +58,17 @@ export default class extends Controller {
 
     connect() {
         this.editor.mount(this.editorTarget)
-
         this.updateToolbar();
+
+        // Sincronizar con Live Component justo antes del submit,
+        this._onBeforeSubmit = () => {
+            this.inputTarget.dispatchEvent(new Event('change', {bubbles: true}));
+        };
+        this.editorTarget.closest('form')?.addEventListener('submit', this._onBeforeSubmit);
     }
 
     disconnect() {
+        this.editorTarget.closest('form')?.removeEventListener('submit', this._onBeforeSubmit);
         this.editor.destroy();
     }
 
