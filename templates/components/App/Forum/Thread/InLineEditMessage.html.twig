@@ -5,17 +5,33 @@
     {{ ...attributes }}
 >
   {% if is_editing %}
-    {{ form_start(form, {
-      attr: {
-        class: 'w-full',
-        'data-action': 'live#action:prevent',
-        'data-live-action-param': 'save'
-      }
-    }) }}
-    <twig:Ui:Field:Set>
-      {{ form_rest(form) }}
-    </twig:Ui:Field:Set>
-    {{ form_end(form) }}
+    <twig:Ui:Item:Header>
+      <div class="flex items-center gap-2">
+        <twig:App:User:Avatar :user="reply.author" />
+        {{ reply.createdBy }}
+      </div>
+      {# Tipo de usuario #}
+      <twig:App:Badge:Role :author="reply.author" class="px-2 py-1" />
+    </twig:Ui:Item:Header>
+    <twig:Ui:Item:Content class="justify-between">
+      {{ form_start(form, {
+        attr: {
+          class: 'w-full',
+          'data-action': 'live#action:prevent',
+          'data-live-action-param': 'save'
+        }
+      }) }}
+      <twig:Ui:Field:Set>
+        {{ form_rest(form) }}
+      </twig:Ui:Field:Set>
+      {{ form_end(form) }}
+    </twig:Ui:Item:Content>
+
+    <twig:Ui:Item:Footer class="justify-end">
+      <div class="flex items-center gap-2">
+        {{ ux_icon('tabler:clock', {class: 'size-4'}) }} {{ reply.createdAt|date("d/m/Y H:i") }}
+      </div>
+    </twig:Ui:Item:Footer>
   {% else %}
     <twig:Ui:Item:Header>
       <div class="flex items-center gap-2">
