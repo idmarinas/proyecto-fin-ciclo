@@ -26,9 +26,6 @@ return [
     '@symfony/ux-live-component' => [
         'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
     ],
-    '@symfony/ux-vue' => [
-        'path' => './vendor/symfony/ux-vue/assets/dist/loader.js',
-    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],
@@ -42,7 +39,7 @@ return [
         'version' => '0.52.3',
     ],
     'hotkeys-js' => [
-        'version' => '4.0.1',
+        'version' => '4.0.2',
     ],
     '@stimulus-components/dropdown' => [
         'version' => '3.0.0',
@@ -183,29 +180,5 @@ return [
     'prosemirror-gapcursor/style/gapcursor.min.css' => [
         'version' => '1.4.0',
         'type' => 'css',
-    ],
-    'vue' => [
-        'version' => '3.5.29',
-    ],
-    '@vue/runtime-dom' => [
-        'version' => '3.5.29',
-    ],
-    '@vue/compiler-dom' => [
-        'version' => '3.5.29',
-    ],
-    '@vue/shared' => [
-        'version' => '3.5.29',
-    ],
-    '@vue/runtime-core' => [
-        'version' => '3.5.29',
-    ],
-    '@vue/compiler-core' => [
-        'version' => '3.5.29',
-    ],
-    '@vue/reactivity' => [
-        'version' => '3.5.29',
-    ],
-    '@tiptap/vue-3' => [
-        'version' => '3.20.0',
     ],
 ];
