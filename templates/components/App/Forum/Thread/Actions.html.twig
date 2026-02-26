@@ -1,62 +1,65 @@
 {% props thread %}
 
-<twig:Ui:ButtonGroup>
-  {# Botón Responder #}
-  {% if workflow_can(thread, 'public_reply') %}
-    <twig:Ui:Button as="a" href="#responder" size="sm" variant="secondary" data-turbo="false">
-      {{ ux_icon('tabler:message-reply') }}
-      Responder
-    </twig:Ui:Button>
-  {% elseif workflow_can(thread, 'customer_reply') %}
-    <twig:Ui:Button as="a" href="#responder" size="sm" variant="outline" data-turbo="false">
-      {{ ux_icon('tabler:message-reply') }}
-      Responder
-    </twig:Ui:Button>
-  {% elseif workflow_can(thread, 'staff_reply') %}
-    <twig:Ui:Button as="a" href="#responder" size="sm" data-turbo="false">
-      {{ ux_icon('tabler:message-reply') }}
-      Responder
-    </twig:Ui:Button>
-  {% endif %}
+<div class="flex">
+  <twig:Ui:ButtonGroup>
+    {# Botón Responder #}
+    {% if workflow_can(thread, 'public_reply') %}
+      <twig:Ui:Button as="a" href="#responder" size="sm" variant="secondary" data-turbo="false">
+        {{ ux_icon('tabler:message-reply') }} Responder
+      </twig:Ui:Button>
+    {% elseif workflow_can(thread, 'customer_reply') %}
+      <twig:Ui:Button as="a" href="#responder" size="sm" variant="outline" data-turbo="false">
+        {{ ux_icon('tabler:message-reply') }} Responder
+      </twig:Ui:Button>
+    {% elseif workflow_can(thread, 'staff_reply') %}
+      <twig:Ui:Button as="a" href="#responder" size="sm" data-turbo="false">
+        {{ ux_icon('tabler:message-reply') }} Responder
+      </twig:Ui:Button>
+    {% endif %}
 
-  {# Botón Marcar como resuelto (solo autor o moderador) #}
-  {% if workflow_can(thread, 'resolve') %}
-    <twig:Ui:Button size="sm" class="bg-success text-success-foreground hover:bg-success/70">
-      {{ ux_icon('tabler:message-check') }}
-      Marcar como resuelto
-    </twig:Ui:Button>
-  {% endif %}
+    {# Botón Marcar como resuelto (solo autor o moderador) #}
+    {% if workflow_can(thread, 'resolve') %}
+      <twig:Ui:Button size="sm" class="bg-success text-success-foreground hover:bg-success/70">
+        {{ ux_icon('tabler:message-check') }} Marcar como resuelto
+      </twig:Ui:Button>
+    {% endif %}
 
-  {# Botón: Editar hilo #}
-  {% if is_granted('thread.edit', thread) %}
-    <twig:Ui:Button
-        as="a"
-        size="sm"
-        class="bg-warning text-warning-foreground hover:bg-warning/70"
-        href="{{ path('app_forums_forum_thread_edit', {
-          slug_forum: thread.forum.slug,
-          slug_subforum: thread.forum.parent.slug,
-          slug_thread: thread.slug
-        }) }}"
-    >
-      {{ ux_icon('tabler:pencil') }}
-      Editar hilo
-    </twig:Ui:Button>
-  {% endif %}
+    {# Botón: Editar hilo #}
+    {% if is_granted('thread.edit', thread) %}
+      <twig:Ui:Button
+          as="a"
+          size="sm"
+          class="bg-warning text-warning-foreground hover:bg-warning/70"
+          href="{{ path('app_forums_forum_thread_edit', {
+            slug_forum: thread.forum.slug,
+            slug_subforum: thread.forum.parent.slug,
+            slug_thread: thread.slug
+          }) }}"
+      >
+        {{ ux_icon('tabler:pencil') }} Editar hilo
+      </twig:Ui:Button>
+    {% endif %}
 
-  {# Botón: Cerrar hilo (Confirmación con advertencia) #}
-  {% if workflow_can(thread, 'close') %}
-    <twig:Ui:Button size="sm" class="bg-danger text-danger-foreground hover:bg-danger/70">
-      {{ ux_icon('tabler:lock') }}
-      Cerrar
-    </twig:Ui:Button>
-  {% endif %}
+    {# Botón: Cerrar hilo (Confirmación con advertencia) #}
+    {% if workflow_can(thread, 'close') %}
+      <twig:Ui:Button size="sm" class="bg-orange-100 text-orange-800 hover:bg-orange-100/70">
+        {{ ux_icon('tabler:lock') }} Cerrar
+      </twig:Ui:Button>
+    {% endif %}
+
+    {# Botón: Borrar hilo #}
+    {% if is_granted('thread.delete', thread) %}
+      <twig:Ui:Button size="sm" class="bg-error text-error-foreground hover:bg-error/70">
+        {{ ux_icon('tabler:trash') }} Borrar hilo
+      </twig:Ui:Button>
+    {% endif %}
+  </twig:Ui:ButtonGroup>
 
   {# Botón: Borrar hilo #}
-  {% if is_granted('thread.delete', thread) %}
-    <twig:Ui:Button size="sm" variant="destructive">
-      {{ ux_icon('tabler:trash') }}
-      Borrar hilo
+  {% if is_granted('thread.remove', thread) %}
+    <div class="flex-1"></div>
+    <twig:Ui:Button size="sm" class="bg-danger text-danger-foreground hover:bg-danger/70">
+      {{ ux_icon('tabler:trash') }} Eliminar hilo
     </twig:Ui:Button>
   {% endif %}
-</twig:Ui:ButtonGroup>
+</div>
