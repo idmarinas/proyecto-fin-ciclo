@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 20:00
+ * Last modified by "IDMarinas" on 26/02/2026, 21:53
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,9 +22,8 @@ declare(strict_types=1);
 namespace App\Controller\Forum;
 
 use App\Entity\Forum\Message;
+use App\Repository\Forum\MessageRepository;
 use App\Traits\Controller\NotificationsTrait;
-use DateTime;
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -76,28 +75,24 @@ class MessageController extends AbstractController
     #[IsGranted('message.delete', subject: 'message')]
     public function deleteRemove(
         #[MapEntity(mapping: ['id' => 'id'])]
-        Message                $message,
-        string                 $type,
-        Request                $request,
-        EntityManagerInterface $entityManager
+        Message           $message,
+        string            $type,
+        Request           $request,
+        MessageRepository $repository
     ): Response {
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
         $id = $message->getId();
         $template = 'pages/forum/messages/delete/confirm.stream.html.twig';
 
         try {
-            $message->setDeletedAt(new DateTime());
-
             $notification = 'El mensaje ha sido borrado correctamente.';
 
             if ($type === 'remove') {
-                $entityManager->remove($message);
-
                 $template = 'pages/forum/messages/remove/confirm.stream.html.twig';
                 $notification = 'El mensaje ha sido eliminado correctamente.';
             }
 
-            $entityManager->flush();
+            $repository->deleteRemove($message, $type);
 
             $this->addNotification('success', $notification);
         } catch (Exception) {
