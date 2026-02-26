@@ -26,12 +26,16 @@
           <twig:ux:icon name="tabler:building-skyscraper" class="inline" />
           Compañía
         </h6>
+        <ul class="mt-2 space-y-1 text-sm">
+          <li>
+            <twig:Ui:Button as="a" variant="link" href="{{ path('app_home') }}">
+              Inicio
+            </twig:Ui:Button>
+          </li>
+        </ul>
       </div>
       <div>
-        <h6 class="text-xl">
-          <twig:ux:icon name="tabler:file-text" class="inline" />
-          Legal
-        </h6>
+        <h6 class="text-xl">{{ ux_icon('tabler:file-text', {class: 'inline'}) }} Legal</h6>
         <ul class="mt-2 space-y-1 text-sm">
           <li>
             <twig:Ui:Button as="a" variant="link" href="{{ path('app_legal_aviso_legal') }}">
