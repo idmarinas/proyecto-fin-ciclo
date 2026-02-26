@@ -12,12 +12,12 @@
         <twig:Ui:AlertDialog:Footer class="sm:justify-between">
           <twig:Ui:AlertDialog:Action
               as="a"
-              href="{{ path('app_forums_forum_thread_message_delete_confirm', { id: message.id }) }}"
+              href="{{ path('app_forums_forum_thread_message_delete_confirm', { id: message.id, type }) }}"
               variant="destructive"
               data-action="click->alert-dialog#close"
               data-turbo-stream="true"
           >
-            {{ ux_icon('tabler:trash') }} Eliminar
+            {{ ux_icon('tabler:trash') }} Borrar
           </twig:Ui:AlertDialog:Action>
           <twig:Ui:AlertDialog:Cancel>
             {{ ux_icon('close') }} Cerrar
