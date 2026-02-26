@@ -1,7 +1,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 16/02/2026, 16:07
+ * Last modified by "IDMarinas" on 25/02/2026, 23:11
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
@@ -16,7 +16,7 @@
  * @since 1.0.0
  */
 
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 
 /**
  * @property {HTMLDialogElement} dialogTarget
@@ -37,6 +37,12 @@ export default class extends Controller {
                 return this.dialogTarget.close()
             }
         })
+    }
+
+    connect() {
+        if (this.element.hasAttribute('open')) {
+            this.dialogTarget.showModal();
+        }
     }
 
     async open() {
