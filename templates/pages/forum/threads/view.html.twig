@@ -1,0 +1,123 @@
+{# @var reply \App\Entity\Forum\Message #}
+
+{% extends 'base.html.twig' %}
+
+{% block header_meta %}
+  {{ knp_pagination_rel_links(pagination) }}
+{% endblock %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Layout:Section>
+      <twig:Ui:Item class="items-start">
+        <twig:Ui:Item:Header>
+          <twig:Ui:Item:Title><h1 class="text-2xl">{{ thread.title }}</h1></twig:Ui:Item:Title>
+        </twig:Ui:Item:Header>
+        <twig:Ui:Item:Media class="w-full md:w-auto flex flex-col">
+          {{ parse_img(thread.forum.image, thread.forum.title, { class: 'w-full h-84 object-cover rounded-xl shadow-md'}) }}
+          <div class="w-full flex items-center justify-between gap-2">
+            {# Reportar #}
+            {% if is_granted('ROLE_USER') and app.user.id != thread.author.id and not is_granted('ROLE_SUPPORT') %}
+              <twig:Ui:Button variant="destructive" size="sm">
+                {{ ux_icon('tabler:flag', {class: 'size-4'}) }} Reportar
+              </twig:Ui:Button>
+            {% endif %}
+
+            {% if thread.public %}
+              <twig:App:Button:Share where="thread" />
+            {% endif %}
+          </div>
+        </twig:Ui:Item:Media>
+
+        {# Pregunta + metadatos #}
+        <twig:Ui:Item:Content class="md:col-span-2">
+          <twig:App:Forum:Thread:Actions :thread="thread" />
+          <div class="flex items-center text-sm text-gray-700">
+            <span class="flex gap-2 items-center">{{ ux_icon('tabler:folder', {class: 'size-4'}) }} Subforo:</span>
+            <twig:Ui:Button
+                as="a"
+                variant="link" class="px-2"
+                href="{{ path('app_forums_forum_threads', {
+                  slug_forum: thread.forum.parent.slug,
+                  slug_subforum: thread.forum.slug
+                }) }}"
+            >
+              {{ thread.forum.title }}
+            </twig:Ui:Button>
+            <span class="mr-3 ml-1">|</span>
+            <div class="flex items-center gap-2">
+              {{ ux_icon(pagination.totalItemCount > 0 ? 'tabler:messages' : 'tabler:messages-off', {class:'size-4'}) }}
+              {{ pagination.totalItemCount }} respuestas
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            {# Estado del hilo #}
+            <twig:App:Forum:Thread:Status:Icon
+                :status="thread.status"
+                :replies="pagination.totalItemCount"
+                text colorize
+            />
+            {# Tipo de hilo #}
+            <twig:App:Badge:IsPrivate :is_private="thread.private" />
+            {# Tipo de usuario #}
+            <twig:App:Badge:Role :author="thread.author" />
+            {# Clasificación del problema #}
+            <twig:App:Forum:Thread:Problem :thread="thread" />
+          </div>
+
+          <div class="prose prose-slate max-w-none border-t border-t-primary">
+            {{ thread.description|raw }}
+          </div>
+        </twig:Ui:Item:Content>
+        <twig:Ui:Item:Footer>
+          <div class="flex items-center gap-2 text-sm text-gray-700">
+            {{ ux_icon('tabler:user', {class: 'size-4'}) }}
+            Creado por <em>{{ thread.createdBy }}</em> el {{ thread.createdAt|date("d/m/Y H:i") }}
+          </div>
+
+          {% if thread.status != 'unanswered' %}
+            <div class="flex items-center gap-2 text-sm text-gray-700">
+              {{ ux_icon('tabler:clock', {class: 'size-4'}) }}
+              Última respuesta el {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
+              {{ ux_icon('tabler:user', {class: 'size-4'}) }}
+              <em>{{ thread.lastMessageAuthorName }}</em>
+            </div>
+          {% endif %}
+        </twig:Ui:Item:Footer>
+      </twig:Ui:Item>
+    </twig:Layout:Section>
+
+    <twig:Ui:Separator class="mb-6" />
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div class="md:col-span-3 space-y-6">
+        <twig:Layout:Section class="space-y-6" id="thread-replies">
+          {% for reply in pagination %}
+            <twig:App:Forum:Thread:InLineEditMessage :reply="reply" />
+          {% else %}
+            <twig:Ui:Card variant="full" class="p-6 border bg-yellow-50 text-yellow-800 space-y-2">
+              <twig:Ui:Card:Header>
+                <twig:Ui:Card:Title>
+                  {{ ux_icon('tabler:help-circle', {class: 'size-7 inline'}) }} Este hilo aún no tiene respuestas
+                </twig:Ui:Card:Title>
+              </twig:Ui:Card:Header>
+              <twig:Ui:Card:Content>
+                Si conoces la solución o puedes aportar alguna idea, tu ayuda será muy apreciada por la comunidad.
+              </twig:Ui:Card:Content>
+            </twig:Ui:Card>
+          {% endfor %}
+
+          {{ knp_pagination_render(pagination) }}
+        </twig:Layout:Section>
+
+        {#        Mirar para ponerlo usando turbo, y que no recargue la página completa #}
+        {% if workflow_can(thread, 'public_reply') or workflow_can(thread, 'customer_reply') or workflow_can(thread, 'staff_reply') %}
+          <twig:Ui:Separator class="mb-10" />
+          <twig:Layout:Section id="responder">{{ form(form, {attr: {'data-turbo': 'false'}}) }}</twig:Layout:Section>
+        {% endif %}
+      </div>
+      {# Sidebar #}
+      <twig:Layout:Aside>{% include 'sidebar_comercial.html.twig' %}</twig:Layout:Aside>
+    </div>
+  </twig:Layout:Article>
+{% endblock %}

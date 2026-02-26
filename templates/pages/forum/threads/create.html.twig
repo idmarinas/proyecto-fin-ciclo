@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Layout:Section>
+      {# Breadcrumb #}
+      <twig:Ui:Breadcrumb>
+        <twig:Ui:Breadcrumb:List>
+          <twig:Ui:Breadcrumb:Item>
+            <twig:Ui:Breadcrumb:Link href="{{ path('app_home') }}">Inicio</twig:Ui:Breadcrumb:Link>
+          </twig:Ui:Breadcrumb:Item>
+          <twig:Ui:Breadcrumb:Separator />
+          <twig:Ui:Breadcrumb:Item>
+            <twig:Ui:Breadcrumb:Link href="{{ path('app_forums_index') }}">Foros</twig:Ui:Breadcrumb:Link>
+          </twig:Ui:Breadcrumb:Item>
+          <twig:Ui:Breadcrumb:Separator />
+          <twig:Ui:Breadcrumb:Item>
+            <twig:Ui:Breadcrumb:Link href="{{ path('app_forums_forum', {'slug': forum.parent.slug}) }}">
+              {{ forum.parent.title }}
+            </twig:Ui:Breadcrumb:Link>
+          </twig:Ui:Breadcrumb:Item>
+          <twig:Ui:Breadcrumb:Separator />
+          <twig:Ui:Breadcrumb:Item>
+            <twig:Ui:Breadcrumb:Link href="{{ path('app_forums_forum_threads', {
+              'slug_forum': forum.parent.slug,
+              'slug_subforum': forum.slug}) }}"
+            >
+              {{ forum.title }}
+            </twig:Ui:Breadcrumb:Link>
+          </twig:Ui:Breadcrumb:Item>
+          <twig:Ui:Breadcrumb:Separator />
+          <twig:Ui:Breadcrumb:Item>
+            <twig:Ui:Breadcrumb:Page>Crear hilo</twig:Ui:Breadcrumb:Page>
+          </twig:Ui:Breadcrumb:Item>
+        </twig:Ui:Breadcrumb:List>
+      </twig:Ui:Breadcrumb>
+    </twig:Layout:Section>
+
+    <twig:Layout:Section>
+      <twig:Ui:Item class="flex-col md:flex-row">
+        <twig:Ui:Item:Media class="w-full md:w-auto">
+          {{ parse_img(forum.image, forum.title, { class: 'w-full h-48 rounded-lg object-cover'}) }}
+        </twig:Ui:Item:Media>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Title>
+            <h1 class="text-2xl">
+              <twig:ux:icon name="tabler:folder" class="size-8 inline-block" />
+              {{ forum.title }}
+            </h1>
+          </twig:Ui:Item:Title>
+          <twig:Ui:Item:Description>{{ forum.description }}</twig:Ui:Item:Description>
+          <twig:Ui:Separator class="my-4" />
+          <twig:Ui:Alert variant="{{ type == 'private' ? 'info' : 'warning' }}">
+            {% if type == 'public' %}
+              <twig:ux:icon name="tabler:alert-circle" class="size-6" />
+            {% else %}
+              <twig:ux:icon name="tabler:info-circle" class="size-6" />
+            {% endif %}
+            <twig:Ui:Alert:Title>Este será un hilo {{ type == 'private' ? 'Privado' : 'Público' }}</twig:Ui:Alert:Title>
+            <twig:Ui:Alert:Description>
+              {% if type == 'public' %}
+                Este hilo será visible para todos los usuarios que visiten este subforo. Asegúrate de no incluir información sensible o privada en el título o contenido del hilo, ya que cualquier persona podrá verlo y responderlo.
+              {% else %}
+                Este hilo será privado y solo visible para ti y los moderadores del foro. No se mostrará en la lista de hilos del subforo, pero los moderadores podrán acceder a él para ayudarte con tu consulta. Asegúrate de incluir toda la información relevante para que puedan asistirte de la mejor manera posible.
+              {% endif %}
+            </twig:Ui:Alert:Description>
+          </twig:Ui:Alert>
+        </twig:Ui:Item:Content>
+        <twig:Ui:Item:Footer>
+          <div class="flex items-center gap-2 text-sm text-gray-600">
+            <twig:ux:icon name="tabler:clock" class="w-4 h-4 text-blue-700" />
+            Última actividad: {{ forum.lastMessageAt|date("d/m/Y") }}
+          </div>
+        </twig:Ui:Item:Footer>
+      </twig:Ui:Item>
+    </twig:Layout:Section>
+
+    <twig:Ui:Separator />
+
+    <twig:Layout:Section>
+      {{ form_start(form) }}
+      <div class="flex flex-col md:flex-row gap-2 mb-2">
+        <twig:Ui:Field:Set class="w-1/2">
+          <twig:Ui:Field:Legend>Crea un nuevo hilo</twig:Ui:Field:Legend>
+          <twig:Ui:Field:Description>Describe tu duda o consulta con el mayor detalle posible.
+          </twig:Ui:Field:Description>
+          <twig:Ui:Field:Content>
+            {{ form_row(form.title) }}
+            {{ form_row(form.description) }}
+          </twig:Ui:Field:Content>
+        </twig:Ui:Field:Set>
+        <twig:Ui:Field:Set class="w-1/2">
+          <twig:Ui:Field:Legend>Clasificación del problema</twig:Ui:Field:Legend>
+          <twig:Ui:Field:Description>
+            Selecciona las opciones que mejor describan la naturaleza y el impacto de tu
+            consulta. Estas opciones son opcionales y ayudan al equipo de soporte a priorizar y
+            entender mejor tu caso.
+          </twig:Ui:Field:Description>
+          <twig:Ui:Field:Content>
+            {{ form_row(form.isIncident) }}
+            {{ form_row(form.isCritical) }}
+            {{ form_row(form.affectsBusiness) }}
+          </twig:Ui:Field:Content>
+        </twig:Ui:Field:Set>
+      </div>
+      {{ form_row(form.button) }}
+      {{ form_end(form) }}
+    </twig:Layout:Section>
+  </twig:Layout:Article>
+
+  {# Sidebar #}
+  <twig:Layout:Aside>{% include 'sidebar.html.twig' %}</twig:Layout:Aside>
+{% endblock %}
