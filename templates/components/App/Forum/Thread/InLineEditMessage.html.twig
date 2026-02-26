@@ -1,8 +1,8 @@
 <twig:Ui:Item
     variant="outline"
     class="items-stretch last:mb-0 {{ is_resolver }}"
-    data-turbo="true"
     {{ ...attributes }}
+    :id="item_id"
 >
   {% if is_editing %}
     <twig:Ui:Item:Header>
@@ -49,16 +49,32 @@
 
     <twig:Ui:Item:Footer>
       <twig:Ui:ButtonGroup>
-        <twig:Ui:Button size="xs" variant="destructive">
-          {{ ux_icon('tabler:flag', {class: 'size-4'}) }} Reportar
-        </twig:Ui:Button>
-        <twig:Ui:Button
-            data-action="live#action"
-            data-live-action-param="activateEditing"
-            size="xs"
-        >
-          {{ ux_icon('tabler:pencil') }} Editar
-        </twig:Ui:Button>
+        {% if is_granted('ROLE_USER', reply) and app.user.id != reply.author.id %}
+          <twig:Ui:Button size="xs" variant="destructive">
+            {{ ux_icon('tabler:flag', {class: 'size-4'}) }} Reportar
+          </twig:Ui:Button>
+        {% endif %}
+        {% if is_granted('message.edit', reply) %}
+          <twig:Ui:Button
+              data-action="live#action"
+              data-live-action-param="activateEditing"
+              size="xs"
+              class="bg-warning hover:bg-warning/70 text-warning-foreground border-warning"
+          >
+            {{ ux_icon('tabler:pencil') }} Editar
+          </twig:Ui:Button>
+        {% endif %}
+        {% if is_granted('message.delete', reply) %}
+          <twig:Ui:Button
+              as="a"
+              size="xs"
+              href="{{ path('app_forums_forum_thread_message_delete', {id: reply.id}) }}"
+              class="bg-danger text-danger-foreground hover:bg-danger/70 border-danger"
+              data-turbo-stream="true"
+          >
+            {{ ux_icon('tabler:trash') }} Borrar
+          </twig:Ui:Button>
+        {% endif %}
       </twig:Ui:ButtonGroup>
       <div class="flex items-center gap-2">
         {{ ux_icon('tabler:clock', {class: 'size-4'}) }} {{ reply.createdAt|date("d/m/Y H:i") }}
