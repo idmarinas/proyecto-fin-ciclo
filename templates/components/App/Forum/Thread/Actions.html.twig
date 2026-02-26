@@ -49,7 +49,18 @@
 
     {# Botón: Borrar hilo #}
     {% if is_granted('thread.delete', thread) %}
-      <twig:Ui:Button size="sm" class="bg-error text-error-foreground hover:bg-error/70">
+      <twig:Ui:Button
+          as="a"
+          size="sm"
+          href="{{ path('app_forums_forum_thread_delete', {
+            slug_subforum: thread.forum.slug,
+            slug_forum: thread.forum.parent.slug,
+            id: thread.id,
+            type: 'delete'
+          }) }}"
+          class="bg-error text-error-foreground hover:bg-error/70"
+          data-turbo-stream="true"
+      >
         {{ ux_icon('tabler:trash') }} Borrar hilo
       </twig:Ui:Button>
     {% endif %}
@@ -58,7 +69,18 @@
   {# Botón: Borrar hilo #}
   {% if is_granted('thread.remove', thread) %}
     <div class="flex-1"></div>
-    <twig:Ui:Button size="sm" class="bg-danger text-danger-foreground hover:bg-danger/70">
+    <twig:Ui:Button
+        as="a"
+        size="sm"
+        href="{{ path('app_forums_forum_thread_delete', {
+          slug_subforum: thread.forum.slug,
+          slug_forum: thread.forum.parent.slug,
+          id: thread.id,
+          type: 'remove'
+        }) }}"
+        class="bg-danger text-danger-foreground hover:bg-danger/70"
+        data-turbo-stream="true"
+    >
       {{ ux_icon('tabler:trash') }} Eliminar hilo
     </twig:Ui:Button>
   {% endif %}
