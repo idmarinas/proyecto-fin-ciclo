@@ -76,18 +76,19 @@
           </twig:Ui:Button>
         {% endif %}
 
-        {% if is_granted('message.remove', reply) %}
-          <twig:Ui:Button
-              as="a"
-              size="xs"
-              href="{{ path('app_forums_forum_thread_message_delete', {id: reply.id, type: 'remove'}) }}"
-              class="bg-danger text-danger-foreground hover:bg-danger/70 border-danger"
-              data-turbo-stream="true"
-          >
-            {{ ux_icon('tabler:trash') }} Eliminar
-          </twig:Ui:Button>
-        {% endif %}
       </twig:Ui:ButtonGroup>
+      {% if is_granted('message.remove', reply) %}
+        <div class="flex-1"></div>
+        <twig:Ui:Button
+            as="a"
+            size="xs"
+            href="{{ path('app_forums_forum_thread_message_delete', {id: reply.id, type: 'remove'}) }}"
+            class="bg-danger text-danger-foreground hover:bg-danger/70 border-danger mr-4"
+            data-turbo-stream="true"
+        >
+          {{ ux_icon('tabler:trash') }} Eliminar
+        </twig:Ui:Button>
+      {% endif %}
       <div class="flex items-center gap-2">
         {{ ux_icon('tabler:clock', {class: 'size-4'}) }} {{ reply.createdAt|date("d/m/Y H:i") }}
       </div>
