@@ -8,8 +8,6 @@
   <meta name="csp-nonce" content="{{ csp_nonce('script') }}" data-turbo-track="reload" />
   <meta name="turbo-visit-control" content="reload" />
   <meta name="view-transition" content="same-origin">
-  <meta name="turbo-refresh-scroll" content="preserve" />
-  <meta name="turbo-refresh-method" content="replace">
 
   <title>{% block title %}{{ idm_seo_title() }}{% endblock %}</title>
 
@@ -37,7 +35,7 @@
 
   {% block javascripts %}{% endblock %}
 </head>
-<body class="h-full w-full" data-turbo="false">
+<body class="h-full w-full">
   {% block body %}
     {% block header %}
       <twig:Layout:Header />
@@ -65,5 +63,6 @@
   {% block notifications %}
     <twig:Layout:NotificationMessages />
   {% endblock notifications %}
+  <twig:Turbo:Frame id="global-container-dialog-alert"></twig:Turbo:Frame>
 </body>
 </html>
