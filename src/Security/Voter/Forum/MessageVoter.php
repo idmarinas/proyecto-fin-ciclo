@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 19:39
+ * Last modified by "IDMarinas" on 26/02/2026, 21:45
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -91,7 +91,7 @@ final class MessageVoter extends Voter
 
     private function canEditDelete(Message $subject, TokenInterface $token): bool
     {
-        if (null === $subject->getCreatedAt()) {
+        if (null === $subject->getCreatedAt() || $subject->isSolution()) {
             return false;
         }
 
