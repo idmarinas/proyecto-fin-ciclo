@@ -3,17 +3,17 @@
 <twig:Ui:ButtonGroup>
   {# Botón Responder #}
   {% if workflow_can(thread, 'public_reply') %}
-    <twig:Ui:Button as="a" href="#responder" size="sm" variant="secondary">
+    <twig:Ui:Button as="a" href="#responder" size="sm" variant="secondary" data-turbo="false">
       {{ ux_icon('tabler:message-reply') }}
       Responder
     </twig:Ui:Button>
   {% elseif workflow_can(thread, 'customer_reply') %}
-    <twig:Ui:Button as="a" href="#responder" size="sm" variant="outline">
+    <twig:Ui:Button as="a" href="#responder" size="sm" variant="outline" data-turbo="false">
       {{ ux_icon('tabler:message-reply') }}
       Responder
     </twig:Ui:Button>
   {% elseif workflow_can(thread, 'staff_reply') %}
-    <twig:Ui:Button as="a" href="#responder" size="sm">
+    <twig:Ui:Button as="a" href="#responder" size="sm" data-turbo="false">
       {{ ux_icon('tabler:message-reply') }}
       Responder
     </twig:Ui:Button>
