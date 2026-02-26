@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/02/2026, 22:56
+ * Last modified by "IDMarinas" on 24/02/2026, 19:56
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -147,7 +147,7 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     private ?Forum $forum = null;
 
     #[ORM\Column(length: 255, unique: true, nullable: true)]
-    #[Gedmo\Slug(fields: ['title'])]
+    #[Gedmo\Slug(fields: ['title'], updatable: false)]
     private ?string $slug = null;
 
     #[ORM\ManyToOne(targetEntity: Message::class)]
