@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 12:47
+ * Last modified by "IDMarinas" on 24/02/2026, 19:57
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -126,7 +126,7 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     private string $title = '';
 
     #[ORM\Column(length: 255, unique: true)]
-    #[Gedmo\Slug(fields: ['title'])]
+    #[Gedmo\Slug(fields: ['title'], updatable: false)]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255, nullable: true)]
