@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/02/2026, 23:15
+ * Last modified by "IDMarinas" on 26/02/2026, 21:48
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -77,7 +77,6 @@ final class ThreadRepository extends ServiceEntityRepository
             ->createQueryBuilder('t')
             ->innerJoin('t.lastMessage', 'm')
             ->where('t.forum = :forum')
-            ->andWhere('t.deletedAt IS NULL')
             ->andWhere('t.lastMessage IS NOT NULL')
             ->orderBy('m.createdAt', 'DESC')
             ->setMaxResults(1)
