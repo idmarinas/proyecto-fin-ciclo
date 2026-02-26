@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 21:49
+ * Last modified by "IDMarinas" on 26/02/2026, 22:40
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,6 +21,7 @@ namespace App\Repository\Forum;
 
 use App\Entity\Forum\Message;
 use App\Entity\Forum\Thread;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -75,5 +76,33 @@ final class MessageRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
+    }
+
+    public function deleteRemove(Message $message, string $type): void
+    {
+        $message->setDeletedAt(new DateTime());
+
+        if ('remove' == $type) {
+            $this->getEntityManager()->remove($message);
+        }
+
+        // Actualizar hilo
+        $thread = $message->getThread();
+        $thread->messageCount--;
+        $thread->lastMessage = null;
+
+        // Propaga al foro: totalMessages y lastThread
+        $forum = $thread->getForum();
+        $forum->totalMessages--;
+
+        // Propaga al foro padre si existe
+        if (null !== $forum->parent) {
+            $forum->parent->totalMessages--;
+        }
+
+        $thread->lastMessage = $this->findLastMessageForThread($thread);
+
+        $this->getEntityManager()->persist($thread);
+        $this->getEntityManager()->flush();
     }
 }
