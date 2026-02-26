@@ -49,7 +49,7 @@
 
     <twig:Ui:Item:Footer>
       <twig:Ui:ButtonGroup>
-        {% if is_granted('ROLE_USER', reply) and app.user.id != reply.author.id %}
+        {% if is_granted('ROLE_USER', reply) and app.user.id != reply.author.id and is_granted('ROLE_SUPPORT', reply) %}
           <twig:Ui:Button size="xs" variant="destructive">
             {{ ux_icon('tabler:flag', {class: 'size-4'}) }} Reportar
           </twig:Ui:Button>
