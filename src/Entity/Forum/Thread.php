@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/02/2026, 19:56
+ * Last modified by "IDMarinas" on 26/02/2026, 23:02
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -47,6 +47,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: 'pfc_thread')]
 #[ORM\Entity(repositoryClass: ThreadRepository::class)]
 #[ORM\HasLifecycleCallbacks]
+#[Gedmo\SoftDeleteable]
 class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInterface, Blameable
 {
     use IdTrait;
