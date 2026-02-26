@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 19:36
+ * Last modified by "IDMarinas" on 26/02/2026, 23:07
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,7 +21,6 @@ namespace App\Entity\Forum;
 
 use App\Entity\User\User;
 use App\Repository\Forum\MessageRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Blameable;
@@ -76,11 +75,6 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
     #[ORM\ManyToOne(cascade: ['persist'])]
     #[Assert\Valid]
     private ?Thread $thread = null;
-
-    public function __construct()
-    {
-        $this->reactions = new ArrayCollection();
-    }
 
     public function __toString(): string
     {

@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 23:02
+ * Last modified by "IDMarinas" on 26/02/2026, 23:08
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,13 +20,10 @@
 namespace App\Entity\Forum;
 
 use App\Entity\Forum;
-use App\Entity\Tag;
 use App\Entity\User\User;
 use App\Enums\ThreadStatusEnum;
 use App\Repository\Forum\ThreadRepository;
 use DateTimeInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Blameable;
@@ -160,19 +157,8 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     #[ORM\Column]
     private bool $sticky = false;
 
-    /**
-     * @var Collection<int, Tag>
-     */
-    #[ORM\ManyToMany(targetEntity: Tag::class)]
-    private Collection $tags;
-
     #[ORM\Column]
     private int $viewCount = 0;
-
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
 
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
@@ -281,30 +267,6 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
     public function increaseViewCount(): static
     {
         $this->viewCount++;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Tag>
-     */
-    public function getTags(): Collection
-    {
-        return $this->tags;
-    }
-
-    public function addTag(Tag $tag): static
-    {
-        if (!$this->tags->contains($tag)) {
-            $this->tags->add($tag);
-        }
-
-        return $this;
-    }
-
-    public function removeTag(Tag $tag): static
-    {
-        $this->tags->removeElement($tag);
 
         return $this;
     }
