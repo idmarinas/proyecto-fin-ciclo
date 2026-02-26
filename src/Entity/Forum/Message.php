@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2026, 23:18
+ * Last modified by "IDMarinas" on 26/02/2026, 19:36
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,7 +22,6 @@ namespace App\Entity\Forum;
 use App\Entity\User\User;
 use App\Repository\Forum\MessageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Blameable\Blameable;
@@ -70,13 +69,6 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(allowNull: false)]
     private string $content = '';
-
-    /**
-     * @var Collection<int, MessageReaction>
-     */
-    #[ORM\OneToMany(targetEntity: MessageReaction::class, mappedBy: 'message', cascade: ['persist', 'remove'])]
-    #[Assert\Valid]
-    private Collection $reactions;
 
     #[ORM\Column]
     private bool $solution = false;
@@ -127,36 +119,6 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
     public function setAuthor(?User $author): static
     {
         $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, MessageReaction>
-     */
-    public function getReactions(): Collection
-    {
-        return $this->reactions;
-    }
-
-    public function addReaction(MessageReaction $reaction): static
-    {
-        if (!$this->reactions->contains($reaction)) {
-            $this->reactions->add($reaction);
-            $reaction->setMessage($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReaction(MessageReaction $reaction): static
-    {
-        if ($this->reactions->removeElement($reaction)) {
-            // set the owning side to null (unless already changed)
-            if ($reaction->getMessage() === $this) {
-                $reaction->setMessage(null);
-            }
-        }
 
         return $this;
     }
