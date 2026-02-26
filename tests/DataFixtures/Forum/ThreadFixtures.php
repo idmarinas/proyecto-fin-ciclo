@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 10:58
+ * Last modified by "IDMarinas" on 26/02/2026, 23:34
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -25,6 +25,7 @@ use App\Enums\ThreadStatusEnum;
 use App\Tests\DataFixtures\ForumFixtures;
 use App\Tests\DataFixtures\User\UserFixtures;
 use App\Tests\Factory\Forum\ThreadFactory;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -77,6 +78,8 @@ final class ThreadFixtures extends Fixture implements DependentFixtureInterface
                     'author'        => self::getReference('user_'.$thread['author_id'], User::class),
                     'createdBy'     => self::getReference('user_'.$thread['author_id'], User::class),
                     'updatedBy'     => self::getReference('user_'.$thread['author_id'], User::class),
+                    'createdAt'     => new DateTime($thread['created_at']),
+                    'updatedAt'     => new DateTime($thread['updated_at']),
                 ])
             ;
 
