@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 21:48
+ * Last modified by "IDMarinas" on 26/02/2026, 22:56
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,6 +23,7 @@ use App\Entity\Forum;
 use App\Entity\Forum\Thread;
 use App\Entity\User\User;
 use App\Enums\ThreadStatusEnum;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query\Parameter;
@@ -103,5 +104,52 @@ final class ThreadRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult()
         ;
+    }
+
+    public function deleteRemove(Thread $thread, string $type): void
+    {
+        $thread->setDeletedAt(new DateTime());
+
+        $this->deleteThreadMessages($thread, $type);
+
+        if ('remove' == $type) {
+            $this->getEntityManager()->remove($thread);
+        }
+
+        // Propaga al foro: totalMessages y lastThread
+        $forum = $thread->getForum();
+        $forum->totalMessages--;
+        $forum->lastThread = null;
+
+        // Propaga al foro padre si existe
+        if (null !== $forum->parent) {
+            $forum->parent->totalMessages--;
+        }
+
+        $forum->lastThread = $this->findLastThreadForForum($forum);
+
+        $this->getEntityManager()->persist($forum);
+        $this->getEntityManager()->flush();
+    }
+
+    private function deleteThreadMessages(Thread $thread, string $type): void
+    {
+        $query = $this
+            ->getEntityManager()->createQueryBuilder()
+            ->where('m.thread = :thread')
+            ->setParameter('thread', $thread)
+        ;
+
+        if ('remove' == $type) {
+            $query->delete(Forum\Message::class, 'm');
+        } else {
+            $query
+                ->update(Forum\Message::class, 'm')
+                ->set('m.deletedAt', ':now')
+                ->setParameter('now', new DateTime())
+            ;
+        }
+
+        $query->getQuery()->execute();
     }
 }
