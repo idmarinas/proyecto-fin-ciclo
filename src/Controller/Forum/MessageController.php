@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 19:24
+ * Last modified by "IDMarinas" on 26/02/2026, 20:00
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,6 +23,7 @@ namespace App\Controller\Forum;
 
 use App\Entity\Forum\Message;
 use App\Traits\Controller\NotificationsTrait;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
@@ -39,50 +40,70 @@ class MessageController extends AbstractController
 {
     use NotificationsTrait;
 
-    #[Route('/message/{id}/delete',
+    #[Route('/message/{id}/{type}',
         name        : 'delete',
-        requirements: ['id' => Requirement::DIGITS],
+        requirements: ['id' => Requirement::DIGITS, 'type' => 'delete|remove'],
         methods     : ['GET'],
         condition   : 'request.getPreferredFormat() == "turbo_stream"'
     )]
     #[IsGranted('message.delete', subject: 'message')]
-    public function askDelete(
+    public function askDeleteRemove(
         #[MapEntity(mapping: ['id' => 'id'])]
         Message $message,
+        string  $type,
         Request $request
     ): Response {
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
-        return $this->render('pages/forum/messages/delete/ask.stream.html.twig', [
+        $template = 'pages/forum/messages/delete/ask.stream.html.twig';
+
+        if ($type === 'remove') {
+            $template = 'pages/forum/messages/remove/ask.stream.html.twig';
+        }
+
+        return $this->render($template, [
             'message' => $message,
+            'type'    => $type,
         ]);
     }
 
-    #[Route('/message/{id}/delete/confirm',
+    #[Route('/message/{id}/{type}/confirm',
         name        : 'delete_confirm',
-        requirements: ['id' => Requirement::DIGITS],
+        requirements: ['id' => Requirement::DIGITS, 'type' => 'delete|remove'],
         methods     : ['GET'],
         condition   : 'request.getPreferredFormat() == "turbo_stream"'
     )]
     #[IsGranted('message.delete', subject: 'message')]
-    public function delete(
+    public function deleteRemove(
         #[MapEntity(mapping: ['id' => 'id'])]
         Message                $message,
+        string                 $type,
         Request                $request,
         EntityManagerInterface $entityManager
     ): Response {
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
         $id = $message->getId();
+        $template = 'pages/forum/messages/delete/confirm.stream.html.twig';
 
         try {
-            $entityManager->remove($message);
+            $message->setDeletedAt(new DateTime());
+
+            $notification = 'El mensaje ha sido borrado correctamente.';
+
+            if ($type === 'remove') {
+                $entityManager->remove($message);
+
+                $template = 'pages/forum/messages/remove/confirm.stream.html.twig';
+                $notification = 'El mensaje ha sido eliminado correctamente.';
+            }
+
             $entityManager->flush();
 
-            $this->addNotification('success', 'El mensaje ha sido eliminado correctamente.');
+            $this->addNotification('success', $notification);
         } catch (Exception) {
-            $this->addNotification('error', 'No se pudo eliminar el mensaje.');
+            $this->addNotification('error', 'No se pudo borrar el mensaje.');
         }
 
-        return $this->render('pages/forum/messages/delete/confirm.stream.html.twig', ['reply_id' => $id]);
+        return $this->render($template, ['reply_id' => $id]);
     }
 }
