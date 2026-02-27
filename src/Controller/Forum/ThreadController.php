@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 22:25
+ * Last modified by "IDMarinas" on 27/02/2026, 22:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,6 +19,7 @@
 
 namespace App\Controller\Forum;
 
+use App\Controller\Forum\Thread\CloseTrait;
 use App\Controller\Forum\Thread\DeleteRemoveTrait;
 use App\Entity\Forum;
 use App\Entity\Forum\Message;
@@ -53,6 +54,7 @@ final class ThreadController extends AbstractController
 {
     use NotificationsTrait;
     use DeleteRemoveTrait;
+    use CloseTrait;
 
     public function __construct(
         #[Target('thread_status')]
