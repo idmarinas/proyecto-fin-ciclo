@@ -1,3 +1,3 @@
 <twig:Turbo:Frame id="container-notification-messages">
-  <twig:NotificationMessages :messages="app.notifications" />
+  <twig:NotificationMessages messages="{{ app.request.preferredFormat != 'turbo_stream' ? app.notifications : [] }}" />
 </twig:Turbo:Frame>
