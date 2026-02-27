@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 22:05
+ * Last modified by "IDMarinas" on 27/02/2026, 22:25
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,6 +19,7 @@
 
 namespace App\Controller\Forum;
 
+use App\Controller\Forum\Thread\DeleteRemoveTrait;
 use App\Entity\Forum;
 use App\Entity\Forum\Message;
 use App\Entity\Forum\Thread;
@@ -31,7 +32,6 @@ use App\Security\Voter\Forum\ForumVoter;
 use App\Security\Voter\Forum\ThreadVoter;
 use App\Traits\Controller\NotificationsTrait;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,7 +44,6 @@ use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Workflow\WorkflowInterface;
 use Symfony\Component\Yaml\Yaml;
-use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('{slug_forum}/forum/{slug_subforum}',
     name        : 'forum_',
@@ -53,6 +52,7 @@ use Symfony\UX\Turbo\TurboBundle;
 final class ThreadController extends AbstractController
 {
     use NotificationsTrait;
+    use DeleteRemoveTrait;
 
     public function __construct(
         #[Target('thread_status')]
@@ -260,75 +260,6 @@ final class ThreadController extends AbstractController
 
             ] + $sidebar
         );
-    }
-
-    use NotificationsTrait;
-
-    #[Route('/thread/{id}/{type}',
-        name        : 'thread_delete',
-        requirements: ['id' => Requirement::DIGITS, 'type' => 'delete|remove'],
-        methods     : ['GET'],
-        condition   : 'request.getPreferredFormat() == "turbo_stream"'
-    )]
-    public function askDeleteRemove(
-        #[MapEntity(mapping: ['id' => 'id'])]
-        Thread  $thread,
-        string  $type,
-        Request $request
-    ): Response {
-        $this->denyAccessUnlessGranted(ThreadVoter::{strtoupper($type)}, $thread);
-        $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
-
-        $template = 'pages/forum/threads/delete/ask.stream.html.twig';
-
-        if ($type === 'remove') {
-            $template = 'pages/forum/threads/remove/ask.stream.html.twig';
-        }
-
-        return $this->render($template, [
-            'thread' => $thread,
-            'type'   => $type,
-        ]);
-    }
-
-    #[Route('/thread/{id}/{type}/confirm',
-        name        : 'thread_delete_confirm',
-        requirements: ['id' => Requirement::DIGITS, 'type' => 'delete|remove'],
-        methods     : ['GET'],
-        condition   : 'request.getPreferredFormat() == "turbo_stream"'
-    )]
-    public function deleteRemove(
-        #[MapEntity(mapping: ['id' => 'id'])]
-        Thread           $thread,
-        string           $type,
-        Request          $request,
-        ThreadRepository $repository
-    ): Response {
-        $this->denyAccessUnlessGranted(ThreadVoter::{strtoupper($type)}, $thread);
-        $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
-
-        $url = $this->generateUrl('app_forums_forum_threads', [
-            'slug_forum'    => $thread->getForum()->parent->getSlug(),
-            'slug_subforum' => $thread->getForum()->getSlug(),
-        ]);
-
-        try {
-            $notification = 'El hilo ha sido borrado correctamente.';
-
-            if ($type === 'remove') {
-                $notification = 'El hilo ha sido eliminado correctamente.';
-            }
-
-            $repository->deleteRemove($thread, $type);
-
-            $this->addNotification('success', $notification);
-        } catch (Exception $e) {
-            $this->addNotification('error', 'No se pudo borrar el hilo.');
-
-            return $this->render('pages/forum/threads/delete/error.stream.html.twig');
-        }
-
-        return $this->redirect($url);
     }
 
     private function replyTransition(Thread $thread): string
