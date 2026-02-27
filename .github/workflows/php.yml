@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         php: [ '8.4' ]
-        symfony: [ '8..*' ]
+        symfony: [ '8.0.*' ]
 
     services:
       database_test:
@@ -42,7 +42,7 @@ jobs:
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-cmd="mysqladmin ping -h localhost"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: ${{ (matrix.php == '8.4' && matrix.symfony == '7.3.*') && '0' || '1' }}
+          fetch-depth: ${{ (matrix.php == '8.4' && matrix.symfony == '8.0.*') && '0' || '1' }}
 
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
