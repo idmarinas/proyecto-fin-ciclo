@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 20:17
+ * Last modified by "IDMarinas" on 27/02/2026, 21:51
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -127,6 +127,9 @@ final class ThreadRepository extends ServiceEntityRepository
             $forum->parent->totalMessages--;
             $this->applyStatusCount($forum->parent, $thread->getStatus(), -1);
         }
+
+        $this->getEntityManager()->persist($thread);
+        $this->getEntityManager()->flush();
 
         $forum->lastThread = $this->findLastThreadForForum($forum);
 

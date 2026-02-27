@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 22:40
+ * Last modified by "IDMarinas" on 27/02/2026, 21:48
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -81,6 +81,7 @@ final class MessageRepository extends ServiceEntityRepository
     public function deleteRemove(Message $message, string $type): void
     {
         $message->setDeletedAt(new DateTime());
+        $this->getEntityManager()->persist($message);
 
         if ('remove' == $type) {
             $this->getEntityManager()->remove($message);
@@ -99,6 +100,9 @@ final class MessageRepository extends ServiceEntityRepository
         if (null !== $forum->parent) {
             $forum->parent->totalMessages--;
         }
+
+        $this->getEntityManager()->persist($message);
+        $this->getEntityManager()->flush();
 
         $thread->lastMessage = $this->findLastMessageForThread($thread);
 
