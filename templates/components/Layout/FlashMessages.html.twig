@@ -1,3 +1,5 @@
+{% props forced = false %}
+
 <twig:Turbo:Frame id="container-flash-messages">
-  <twig:FlashMessages messages="{{ app.request.preferredFormat != 'turbo_stream' ? app.flashes : [] }}" />
+  <twig:FlashMessages messages="{{ app.request.preferredFormat != 'turbo_stream' or forced ? app.flashes : [] }}" />
 </twig:Turbo:Frame>
