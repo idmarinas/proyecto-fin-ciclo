@@ -1,0 +1,80 @@
+{# @var thread \App\Entity\Forum\Thread #}
+
+{% props thread %}
+
+<twig:Ui:Item class="items-start" id="thread-view-{{ thread.id }}">
+  <twig:Ui:Item:Header>
+    <twig:Ui:Item:Title><h1 class="text-2xl">{{ thread.title }}</h1></twig:Ui:Item:Title>
+  </twig:Ui:Item:Header>
+  <twig:Ui:Item:Media class="w-full md:w-auto flex flex-col">
+    {{ parse_img(thread.forum.image, thread.forum.title, { class: 'w-full h-84 object-cover rounded-xl shadow-md'}) }}
+    <div class="w-full flex items-center justify-between gap-2">
+      {# Reportar #}
+      {% if is_granted('ROLE_USER') and app.user.id != thread.author.id and not is_granted('ROLE_SUPPORT') %}
+        <twig:Ui:Button variant="destructive" size="sm">
+          {{ ux_icon('tabler:flag', {class: 'size-4'}) }} Reportar
+        </twig:Ui:Button>
+      {% endif %}
+
+      {% if thread.public %}
+        <twig:App:Button:Share where="thread" />
+      {% endif %}
+    </div>
+  </twig:Ui:Item:Media>
+
+  {# Pregunta + metadatos #}
+  <twig:Ui:Item:Content class="md:col-span-2">
+    <twig:App:Forum:Thread:View:Actions :thread="thread" />
+    <div class="flex items-center text-sm text-gray-700">
+      <span class="flex gap-2 items-center">{{ ux_icon('tabler:folder', {class: 'size-4'}) }} Subforo:</span>
+      <twig:Ui:Button
+          as="a"
+          variant="link" class="px-2"
+          href="{{ path('app_forums_forum_threads', {
+            slug_forum: thread.forum.parent.slug,
+            slug_subforum: thread.forum.slug
+          }) }}"
+      >
+        {{ thread.forum.title }}
+      </twig:Ui:Button>
+      <span class="mr-3 ml-1">|</span>
+      <div class="flex items-center gap-2">
+        {{ ux_icon(thread.messageCount > 0 ? 'tabler:messages' : 'tabler:messages-off', {class:'size-4'}) }}
+        {{ thread.messageCount }} respuestas
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      {# Estado del hilo #}
+      <twig:App:Forum:Thread:Status:Icon
+          :status="thread.status"
+          :replies="thread.messageCount"
+          text colorize
+      />
+      {# Tipo de hilo #}
+      <twig:App:Badge:IsPrivate :is_private="thread.private" />
+      {# Tipo de usuario #}
+      <twig:App:Badge:Role :author="thread.author" />
+      {# Clasificación del problema #}
+      <twig:App:Forum:Thread:Problem :thread="thread" />
+    </div>
+
+    <div class="prose prose-slate max-w-none border-t border-t-primary">
+      {{ thread.description|raw }}
+    </div>
+  </twig:Ui:Item:Content>
+  <twig:Ui:Item:Footer>
+    <div class="flex items-center gap-2 text-sm text-gray-700">
+      {{ ux_icon('tabler:user', {class: 'size-4'}) }}
+      Creado por <em>{{ thread.createdBy }}</em> el {{ thread.createdAt|date("d/m/Y H:i") }}
+    </div>
+
+    {% if thread.status != 'unanswered' %}
+      <div class="flex items-center gap-2 text-sm text-gray-700">
+        {{ ux_icon('tabler:clock', {class: 'size-4'}) }}
+        Última respuesta el {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
+        {{ ux_icon('tabler:user', {class: 'size-4'}) }}
+        <em>{{ thread.lastMessageAuthorName }}</em>
+      </div>
+    {% endif %}
+  </twig:Ui:Item:Footer>
+</twig:Ui:Item>
