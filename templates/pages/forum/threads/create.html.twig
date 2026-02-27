@@ -78,33 +78,7 @@
     <twig:Ui:Separator />
 
     <twig:Layout:Section>
-      {{ form_start(form) }}
-      <div class="flex flex-col md:flex-row gap-2 mb-2">
-        <twig:Ui:Field:Set class="w-1/2">
-          <twig:Ui:Field:Legend>Crea un nuevo hilo</twig:Ui:Field:Legend>
-          <twig:Ui:Field:Description>Describe tu duda o consulta con el mayor detalle posible.
-          </twig:Ui:Field:Description>
-          <twig:Ui:Field:Content>
-            {{ form_row(form.title) }}
-            {{ form_row(form.description) }}
-          </twig:Ui:Field:Content>
-        </twig:Ui:Field:Set>
-        <twig:Ui:Field:Set class="w-1/2">
-          <twig:Ui:Field:Legend>Clasificación del problema</twig:Ui:Field:Legend>
-          <twig:Ui:Field:Description>
-            Selecciona las opciones que mejor describan la naturaleza y el impacto de tu
-            consulta. Estas opciones son opcionales y ayudan al equipo de soporte a priorizar y
-            entender mejor tu caso.
-          </twig:Ui:Field:Description>
-          <twig:Ui:Field:Content>
-            {{ form_row(form.isIncident) }}
-            {{ form_row(form.isCritical) }}
-            {{ form_row(form.affectsBusiness) }}
-          </twig:Ui:Field:Content>
-        </twig:Ui:Field:Set>
-      </div>
-      {{ form_row(form.button) }}
-      {{ form_end(form) }}
+      {{ include('pages/forum/threads/create.form.html.twig') }}
     </twig:Layout:Section>
   </twig:Layout:Article>
 
