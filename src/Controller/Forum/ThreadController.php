@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 22:46
+ * Last modified by "IDMarinas" on 27/02/2026, 23:48
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,6 +21,7 @@ namespace App\Controller\Forum;
 
 use App\Controller\Forum\Thread\CloseTrait;
 use App\Controller\Forum\Thread\DeleteRemoveTrait;
+use App\Controller\Forum\Thread\ResolveTrait;
 use App\Entity\Forum;
 use App\Entity\Forum\Message;
 use App\Entity\Forum\Thread;
@@ -45,6 +46,7 @@ use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Workflow\WorkflowInterface;
 use Symfony\Component\Yaml\Yaml;
+use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('{slug_forum}/forum/{slug_subforum}',
     name        : 'forum_',
@@ -55,6 +57,7 @@ final class ThreadController extends AbstractController
     use NotificationsTrait;
     use DeleteRemoveTrait;
     use CloseTrait;
+    use ResolveTrait;
 
     public function __construct(
         #[Target('thread_status')]
@@ -140,6 +143,14 @@ final class ThreadController extends AbstractController
             return $this->redirectToRoute('app_forums_forum_threads', [
                 'slug_forum'    => $forum->parent->getSlug(),
                 'slug_subforum' => $forum->getSlug(),
+            ]);
+        }
+
+        if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+            $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+            return $this->render('pages/forum/threads/streams/create.stream.html.twig', [
+                'form' => $form,
             ]);
         }
 
