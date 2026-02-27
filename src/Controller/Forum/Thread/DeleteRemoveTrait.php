@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 22:41
+ * Last modified by "IDMarinas" on 27/02/2026, 23:22
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -66,7 +66,7 @@ trait DeleteRemoveTrait
         condition   : 'request.getPreferredFormat() == "turbo_stream"'
     )]
     public function deleteRemove(
-        #[MapEntity(mapping: ['id' => 'id'])]
+        #[MapEntity(id: 'id')]
         Thread           $thread,
         string           $type,
         Request          $request,
@@ -93,7 +93,9 @@ trait DeleteRemoveTrait
         } catch (Exception) {
             $this->addNotification('error', 'No se pudo borrar el hilo.');
 
-            return $this->render('pages/forum/threads/streams/confirm.stream.html.twig');
+            return $this->render('pages/forum/threads/streams/confirm.stream.html.twig', [
+                'thread' => $thread,
+            ]);
         }
 
         return $this->redirect($url);
