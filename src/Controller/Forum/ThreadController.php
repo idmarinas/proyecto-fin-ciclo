@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 22:45
+ * Last modified by "IDMarinas" on 27/02/2026, 22:05
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -270,14 +270,13 @@ final class ThreadController extends AbstractController
         methods     : ['GET'],
         condition   : 'request.getPreferredFormat() == "turbo_stream"'
     )]
-    #[IsGranted(ThreadVoter::DELETE, subject: 'thread')]
-    #[IsGranted(ThreadVoter::REMOVE, subject: 'thread')]
     public function askDeleteRemove(
         #[MapEntity(mapping: ['id' => 'id'])]
         Thread  $thread,
         string  $type,
         Request $request
     ): Response {
+        $this->denyAccessUnlessGranted(ThreadVoter::{strtoupper($type)}, $thread);
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
         $template = 'pages/forum/threads/delete/ask.stream.html.twig';
@@ -298,8 +297,6 @@ final class ThreadController extends AbstractController
         methods     : ['GET'],
         condition   : 'request.getPreferredFormat() == "turbo_stream"'
     )]
-    #[IsGranted(ThreadVoter::DELETE, subject: 'thread')]
-    #[IsGranted(ThreadVoter::REMOVE, subject: 'thread')]
     public function deleteRemove(
         #[MapEntity(mapping: ['id' => 'id'])]
         Thread           $thread,
@@ -307,6 +304,7 @@ final class ThreadController extends AbstractController
         Request          $request,
         ThreadRepository $repository
     ): Response {
+        $this->denyAccessUnlessGranted(ThreadVoter::{strtoupper($type)}, $thread);
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
         $url = $this->generateUrl('app_forums_forum_threads', [
@@ -314,7 +312,6 @@ final class ThreadController extends AbstractController
             'slug_subforum' => $thread->getForum()->getSlug(),
         ]);
 
-        dump($url);
         try {
             $notification = 'El hilo ha sido borrado correctamente.';
 
@@ -326,7 +323,7 @@ final class ThreadController extends AbstractController
 
             $this->addNotification('success', $notification);
         } catch (Exception $e) {
-            $this->addNotification('error', 'No se pudo borrar el hilo.'.$e->getMessage());
+            $this->addNotification('error', 'No se pudo borrar el hilo.');
 
             return $this->render('pages/forum/threads/delete/error.stream.html.twig');
         }

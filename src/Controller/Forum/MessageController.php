@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 21:53
+ * Last modified by "IDMarinas" on 27/02/2026, 22:02
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,6 +23,7 @@ namespace App\Controller\Forum;
 
 use App\Entity\Forum\Message;
 use App\Repository\Forum\MessageRepository;
+use App\Security\Voter\Forum\MessageVoter;
 use App\Traits\Controller\NotificationsTrait;
 use Exception;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
@@ -31,7 +32,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('/forum/thread', name: 'forum_thread_message_')]
@@ -45,13 +45,13 @@ class MessageController extends AbstractController
         methods     : ['GET'],
         condition   : 'request.getPreferredFormat() == "turbo_stream"'
     )]
-    #[IsGranted('message.delete', subject: 'message')]
     public function askDeleteRemove(
         #[MapEntity(mapping: ['id' => 'id'])]
         Message $message,
         string  $type,
         Request $request
     ): Response {
+        $this->denyAccessUnlessGranted(MessageVoter::{strtoupper($type)}, $message);
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
         $template = 'pages/forum/messages/delete/ask.stream.html.twig';
@@ -72,7 +72,6 @@ class MessageController extends AbstractController
         methods     : ['GET'],
         condition   : 'request.getPreferredFormat() == "turbo_stream"'
     )]
-    #[IsGranted('message.delete', subject: 'message')]
     public function deleteRemove(
         #[MapEntity(mapping: ['id' => 'id'])]
         Message           $message,
@@ -80,7 +79,9 @@ class MessageController extends AbstractController
         Request           $request,
         MessageRepository $repository
     ): Response {
+        $this->denyAccessUnlessGranted(MessageVoter::{strtoupper($type)}, $message);
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
         $id = $message->getId();
         $template = 'pages/forum/messages/delete/confirm.stream.html.twig';
 
