@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 22:56
+ * Last modified by "IDMarinas" on 27/02/2026, 20:17
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -120,16 +120,28 @@ final class ThreadRepository extends ServiceEntityRepository
         $forum = $thread->getForum();
         $forum->totalMessages--;
         $forum->lastThread = null;
+        $this->applyStatusCount($forum, $thread->getStatus(), -1);
 
         // Propaga al foro padre si existe
         if (null !== $forum->parent) {
             $forum->parent->totalMessages--;
+            $this->applyStatusCount($forum->parent, $thread->getStatus(), -1);
         }
 
         $forum->lastThread = $this->findLastThreadForForum($forum);
 
         $this->getEntityManager()->persist($forum);
         $this->getEntityManager()->flush();
+    }
+
+    private function applyStatusCount(Forum $forum, ThreadStatusEnum $status, int $delta): void
+    {
+        match ($status) {
+            ThreadStatusEnum::CLOSED   => $forum->threadsClosed += $delta,
+            ThreadStatusEnum::OPEN     => $forum->threadsOpen += $delta,
+            ThreadStatusEnum::RESOLVED => $forum->threadsResolved += $delta,
+            default                    => $forum->threadsInProgress += $delta,
+        };
     }
 
     private function deleteThreadMessages(Thread $thread, string $type): void
