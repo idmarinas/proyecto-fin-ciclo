@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 23:22
+ * Last modified by "IDMarinas" on 27/02/2026, 23:38
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -24,12 +24,16 @@ use App\Repository\Forum\ThreadRepository;
 use App\Security\Voter\Forum\ThreadVoter;
 use Exception;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\UX\Turbo\TurboBundle;
 
+/**
+ * @mixin AbstractController
+ */
 trait DeleteRemoveTrait
 {
     #[Route('/thread/{id}/{type}',
