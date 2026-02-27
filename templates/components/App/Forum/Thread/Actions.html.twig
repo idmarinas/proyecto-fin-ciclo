@@ -42,7 +42,17 @@
 
     {# Botón: Cerrar hilo (Confirmación con advertencia) #}
     {% if workflow_can(thread, 'close') %}
-      <twig:Ui:Button size="sm" class="bg-orange-100 text-orange-800 hover:bg-orange-100/70">
+      <twig:Ui:Button
+          as="a"
+          href="{{ path('app_forums_forum_thread_close', {
+            slug_forum: thread.forum.slug,
+            slug_subforum: thread.forum.parent.slug,
+            id: thread.id
+          }) }}"
+          data-turbo-stream="true"
+          size="sm"
+          class="bg-orange-100 text-orange-800 hover:bg-orange-100/70"
+      >
         {{ ux_icon('tabler:lock') }} Cerrar
       </twig:Ui:Button>
     {% endif %}
