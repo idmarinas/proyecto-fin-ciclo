@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/02/2026, 21:22
+ * Last modified by "IDMarinas" on 27/02/2026, 20:07
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,6 +20,7 @@
 namespace App\Repository;
 
 use App\Entity\Forum;
+use App\Entity\Forum\Thread;
 use App\Enums\ThreadStatusEnum;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -77,14 +78,15 @@ final class ForumRepository extends NestedTreeRepository
     public function getStatsForForum(Forum $forum): array
     {
         $rows = $this
-            ->createQueryBuilder('t')
+            ->getEntityManager()->createQueryBuilder()
+            ->from(Thread::class, 't')
             ->select(
-                'COUNT(t.id)                                                         AS totalThreads',
-                'COALESCE(SUM(t.messageCount), 0)                                            AS totalMessages',
-                'SUM(CASE WHEN t.status = :open        THEN 1 ELSE 0 END)                    AS threadsOpen',
-                'SUM(CASE WHEN t.status = :waitCust OR t.status = :waitSupp THEN 1 ELSE 0 EN AS threadsInProgress',
-                'SUM(CASE WHEN t.status = :resolved    THEN 1 ELSE 0 END)                    AS threadsResolved',
-                'SUM(CASE WHEN t.status = :closed      THEN 1 ELSE 0 END)                    AS threadsClosed',
+                'COUNT(t.id)                                                          AS totalThreads',
+                'COALESCE(SUM(t.messageCount), 0)                                             AS totalMessages',
+                'SUM(CASE WHEN t.status = :open        THEN 1 ELSE 0 END)                     AS threadsOpen',
+                'SUM(CASE WHEN t.status = :waitCust OR t.status = :waitSupp THEN 1 ELSE 0 END) AS threadsInProgress',
+                'SUM(CASE WHEN t.status = :resolved    THEN 1 ELSE 0 END)                     AS threadsResolved',
+                'SUM(CASE WHEN t.status = :closed      THEN 1 ELSE 0 END)                     AS threadsClosed',
             )
             ->where('t.forum = :forum')
             ->setParameter('forum', $forum)
