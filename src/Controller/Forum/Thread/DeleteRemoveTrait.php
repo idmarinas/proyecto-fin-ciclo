@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 22:26
+ * Last modified by "IDMarinas" on 27/02/2026, 22:41
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -47,10 +47,10 @@ trait DeleteRemoveTrait
         $this->denyAccessUnlessGranted(ThreadVoter::{strtoupper($type)}, $thread);
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
-        $template = 'pages/forum/threads/delete/ask.stream.html.twig';
+        $template = 'pages/forum/threads/streams/delete.stream.html.twig';
 
         if ($type === 'remove') {
-            $template = 'pages/forum/threads/remove/ask.stream.html.twig';
+            $template = 'pages/forum/threads/streams/remove.stream.html.twig';
         }
 
         return $this->render($template, [
@@ -93,7 +93,7 @@ trait DeleteRemoveTrait
         } catch (Exception) {
             $this->addNotification('error', 'No se pudo borrar el hilo.');
 
-            return $this->render('pages/forum/threads/delete/error.stream.html.twig');
+            return $this->render('pages/forum/threads/streams/confirm.stream.html.twig');
         }
 
         return $this->redirect($url);
