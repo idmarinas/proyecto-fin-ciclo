@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/02/2026, 21:11
+ * Last modified by "IDMarinas" on 27/02/2026, 23:43
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -31,16 +31,17 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 final class ThreadVoter extends Voter
 {
-    public const string VIEW   = 'thread.view';
-    public const string EDIT   = 'thread.edit';
-    public const string DELETE = 'thread.delete';
-    public const string REMOVE = 'thread.remove';
-    public const string CLOSE  = 'thread.close';
-    public const string OPEN   = 'thread.open';
-    public const string PIN    = 'thread.pin';
-    public const string UNPIN  = 'thread.unpin';
-    public const string REPORT = 'thread.report';
-    public const string OWNER  = 'thread.owner';
+    public const string VIEW    = 'thread.view';
+    public const string EDIT    = 'thread.edit';
+    public const string DELETE  = 'thread.delete';
+    public const string REMOVE  = 'thread.remove';
+    public const string CLOSE   = 'thread.close';
+    public const string OPEN    = 'thread.open';
+    public const string PIN     = 'thread.pin';
+    public const string UNPIN   = 'thread.unpin';
+    public const string REPORT  = 'thread.report';
+    public const string OWNER   = 'thread.owner';
+    public const string RESOLVE = 'thread.resolve';
 
     public const array  ATTRIBUTES = [
         self::EDIT,
@@ -53,6 +54,7 @@ final class ThreadVoter extends Voter
         self::UNPIN,
         self::REPORT,
         self::OWNER,
+        self::RESOLVE,
     ];
 
     public function __construct(
@@ -95,6 +97,7 @@ final class ThreadVoter extends Voter
             self::OWNER => $this->isOwner($subject, $token),
             self::DELETE,
             self::EDIT  => $this->canEditDelete($subject, $token),
+            self::RESOLVE,
             self::CLOSE => $this->canClose($subject, $token),
             default     => false,
         };
