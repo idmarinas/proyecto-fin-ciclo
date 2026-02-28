@@ -34,9 +34,11 @@
   </component>
   <component name="PhpIncludePathManager">
     <exclude_path>
+      <path value="F:/Tools/Scoop/persist/composer/home/vendor/deployer/deployer/vendor" />
       <path value="$PROJECT_DIR$/vendor/rector/rector/stubs-rector" />
     </exclude_path>
     <include_path>
+      <path value="F:/Tools/Scoop/persist/composer/home/vendor/deployer/deployer" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
@@ -60,8 +62,10 @@
       <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
       <path value="$PROJECT_DIR$/vendor/idmarinas/common-bundle" />
       <path value="$PROJECT_DIR$/vendor/idmarinas/seo-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-menu" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-menu-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/league/uri" />
       <path value="$PROJECT_DIR$/vendor/league/uri-interfaces" />
       <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
@@ -180,6 +184,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/type-info" />
       <path value="$PROJECT_DIR$/vendor/symfony/uid" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-icons" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-live-component" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-toolkit" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-turbo" />
       <path value="$PROJECT_DIR$/vendor/symfony/ux-twig-component" />
@@ -203,9 +208,6 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/zenstruck/assert" />
       <path value="$PROJECT_DIR$/vendor/zenstruck/foundry" />
-      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
-      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/ux-live-component" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
