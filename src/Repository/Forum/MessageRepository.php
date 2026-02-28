@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 21:48
+ * Last modified by "IDMarinas" on 28/02/2026, 18:10
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,6 +21,7 @@ namespace App\Repository\Forum;
 
 use App\Entity\Forum\Message;
 use App\Entity\Forum\Thread;
+use App\Entity\User\User;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -108,5 +109,29 @@ final class MessageRepository extends ServiceEntityRepository
 
         $this->getEntityManager()->persist($thread);
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * Devuelve los usuarios únicos que han participado en un hilo
+     * (autor del hilo + autores de los mensajes), sin duplicados.
+     *
+     * @return User[]
+     */
+    public function findParticipantsByThread(Thread $thread): array
+    {
+        // Usamos DQL directo con raíz User para evitar el error de identificación de entidad
+        /** @var User[] $messageAuthors */
+        $messageAuthors = $this
+            ->getEntityManager()
+            ->createQuery(
+                'SELECT DISTINCT u FROM App\Entity\User\User u
+                 JOIN App\Entity\Forum\Message m WITH m.author = u
+                 WHERE m.thread = :thread AND m.deletedAt IS NULL'
+            )
+            ->setParameter('thread', $thread)
+            ->getResult()
+        ;
+
+        return $messageAuthors;
     }
 }
