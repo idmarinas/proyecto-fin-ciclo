@@ -9,13 +9,8 @@
   <twig:Ui:Item:Media class="w-full md:w-auto flex flex-col">
     {{ parse_img(thread.forum.image, thread.forum.title, { class: 'w-full h-84 object-cover rounded-xl shadow-md'}) }}
     <div class="w-full flex items-center justify-between gap-2">
-      {# Reportar #}
-      {% if is_granted('ROLE_USER') and app.user.id != thread.author.id and not is_granted('ROLE_SUPPORT') %}
-        <twig:Ui:Button variant="destructive" size="sm">
-          {{ ux_icon('tabler:flag', {class: 'size-4'}) }} Reportar
-        </twig:Ui:Button>
-      {% endif %}
-
+      <twig:App:Forum:Thread:View:Participants :thread="thread" />
+      
       {% if thread.public %}
         <twig:App:Button:Share where="thread" />
       {% endif %}
