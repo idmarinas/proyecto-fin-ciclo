@@ -16,29 +16,33 @@
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
       <div class="md:col-span-3 space-y-6">
-        <twig:Layout:Section class="space-y-6" id="thread-replies">
-          {% for reply in pagination %}
-            <twig:App:Forum:Thread:View:InLineEditMessage :reply="reply" />
-          {% else %}
-            <twig:Ui:Card variant="full" class="p-6 border bg-yellow-50 text-yellow-800 space-y-2">
-              <twig:Ui:Card:Header>
-                <twig:Ui:Card:Title>
-                  {{ ux_icon('tabler:help-circle', {class: 'size-7 inline'}) }} Este hilo aún no tiene respuestas
-                </twig:Ui:Card:Title>
-              </twig:Ui:Card:Header>
-              <twig:Ui:Card:Content>
-                Si conoces la solución o puedes aportar alguna idea, tu ayuda será muy apreciada por la comunidad.
-              </twig:Ui:Card:Content>
-            </twig:Ui:Card>
-          {% endfor %}
+        <twig:Turbo:Frame id="thread-replies-frame">
+          <twig:Layout:Section class="space-y-6">
+            {% for reply in pagination %}
+              <twig:App:Forum:Thread:View:InLineEditMessage :reply="reply" />
+            {% else %}
+              <twig:Ui:Card variant="full" class="p-6 border bg-yellow-50 text-yellow-800 space-y-2">
+                <twig:Ui:Card:Header>
+                  <twig:Ui:Card:Title>
+                    {{ ux_icon('tabler:help-circle', {class: 'size-7 inline'}) }} Este hilo aún no tiene respuestas
+                  </twig:Ui:Card:Title>
+                </twig:Ui:Card:Header>
+                <twig:Ui:Card:Content>
+                  Si conoces la solución o puedes aportar alguna idea, tu ayuda será muy apreciada por la comunidad.
+                </twig:Ui:Card:Content>
+              </twig:Ui:Card>
+            {% endfor %}
 
-          {{ knp_pagination_render(pagination) }}
-        </twig:Layout:Section>
+            {{ knp_pagination_render(pagination) }}
+          </twig:Layout:Section>
+        </twig:Turbo:Frame>
 
         {#        Mirar para ponerlo usando turbo, y que no recargue la página completa #}
         {% if workflow_can(thread, 'public_reply') or workflow_can(thread, 'customer_reply') or workflow_can(thread, 'staff_reply') %}
-          <twig:Ui:Separator class="mb-10" />
-          <twig:Layout:Section id="responder">{{ form(form, {attr: {'data-turbo': 'false'}}) }}</twig:Layout:Section>
+          <twig:Turbo:Frame id="thread-reply-form-frame">
+            <twig:Ui:Separator class="mb-10" />
+            <twig:Layout:Section id="responder">{{ form(form, {attr: {'data-turbo': 'false'}}) }}</twig:Layout:Section>
+          </twig:Turbo:Frame>
         {% endif %}
       </div>
       {# Sidebar #}
