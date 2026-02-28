@@ -1,0 +1,21 @@
+{# @var thread \App\Entity\Forum\Thread #}
+{# @var participants \App\Entity\User\User[] #}
+
+{% set total = participants|length %}
+{% set extra = total - max_visible %}
+
+<div class="flex items-center gap-2">
+  <twig:Ui:Avatar:Group>
+    {% for user in participants|slice(0, max_visible) %}
+      <twig:App:User:Avatar :user="user" />
+    {% endfor %}
+
+    {% if extra > 0 %}
+      <twig:Ui:Avatar:GroupCount>+{{ extra }}</twig:Ui:Avatar:GroupCount>
+    {% endif %}
+  </twig:Ui:Avatar:Group>
+
+  <span class="text-xs text-gray-500">
+    {{ '{0}Sin participantes|{1}1 participante|]1,Inf[ %count% participantes'|trans({'%count%': total}) }}
+  </span>
+</div>
