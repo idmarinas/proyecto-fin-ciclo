@@ -49,11 +49,6 @@
 
     <twig:Ui:Item:Footer>
       <twig:Ui:ButtonGroup>
-        {% if is_granted('ROLE_USER') and app.user.id != reply.author.id and not is_granted('ROLE_SUPPORT') %}
-          <twig:Ui:Button size="xs" variant="destructive">
-            {{ ux_icon('tabler:flag', {class: 'size-4'}) }} Reportar
-          </twig:Ui:Button>
-        {% endif %}
         {% if is_granted('message.edit', reply) %}
           <twig:Ui:Button
               data-action="live#action"
