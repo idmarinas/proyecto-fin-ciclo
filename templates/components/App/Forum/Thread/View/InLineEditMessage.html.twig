@@ -1,3 +1,5 @@
+{# @var reply \App\Entity\Forum\Message #}
+
 <twig:Ui:Item
     variant="outline"
     class="items-stretch last:mb-0 {{ is_resolver }}"
@@ -72,8 +74,26 @@
         {% endif %}
 
       </twig:Ui:ButtonGroup>
+      <div class="flex-1"></div>
+      {# Botón Marcar como resuelto (solo autor o moderador) #}
+      {% if workflow_can(reply.thread, 'resolve') %}
+        <twig:Ui:Button
+            as="a"
+            size="xs"
+            class="bg-success text-success-foreground hover:bg-success/70"
+            href="{{ path('app_forums_forum_thread_resolve', {
+              slug_forum: reply.thread.forum.slug,
+              slug_subforum: reply.thread.forum.parent.slug,
+              id: reply.thread.id,
+              id_message: reply.id
+            }) }}"
+            data-turbo-stream="true"
+        >
+          {{ ux_icon('tabler:message-check') }} Marcar como solución
+        </twig:Ui:Button>
+      {% endif %}
+
       {% if is_granted('message.remove', reply) %}
-        <div class="flex-1"></div>
         <twig:Ui:Button
             as="a"
             size="xs"
