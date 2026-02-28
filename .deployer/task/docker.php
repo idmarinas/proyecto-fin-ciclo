@@ -4,32 +4,34 @@ namespace Deployer;
 
 import('recipe/common.php');
 
-set('docker/compose/files', '--env-file .env.docker -f compose.yaml -f compose.prod.yaml');
-set('docker/services/start', 'webserver database');
-set('docker/project_name', 'template_symfony');
-set('docker/image/name', 'idmarinas/{{docker/project_name}}:{{app/version}}-build.{{app/version/build}}');
-set('docker/image/tar', 'deployer_{{docker/project_name}}_{{app/version}}_build.{{app/version/build}}.tar');
-
 //
 // Tasks
 //
-desc('Construir la imagen Docker (PROD)');
+desc('Construir la imagen Docker (PROD) y subirla a GHCR');
 task('docker:image:build', function () {
-    if (!testLocally('[ -f .deployer/{{docker/image/tar}} ]')) {
-        writeln('<info>Construyendo imagen Docker</>');
-        runLocally('docker build --target prod -f .docker/Dockerfile -t {{docker/image/name}} .', timeout: null);
+    writeln('<info>Construyendo imagen Docker</>');
+    runLocally('docker build --target prod -f .docker/Dockerfile -t {{docker/image/name}} .', timeout: null);
 
-        writeln('<info>Creando archivo .tar de la imagen Docker</>');
-        runLocally('docker save -o .deployer/{{docker/image/tar}} {{docker/image/name}}', timeout: null);
-    } else {
-        writeln('<info>Imagen Docker y archivo .tar ya construidos</>');
-    }
+    writeln('<info>Subiendo imagen a {{docker/registry}}</>');
+    runLocally('docker push {{docker/image/name}}', timeout: null);
 });
 
-desc('Docker Image for Prod');
-task('docker:image:load', function () {
-    writeln('<info>Cargando imagen en "{{text_prod}}"</>');
-    run('docker load -i {{release_path}}/{{docker/image/tar}}');
+desc('Autenticarse en GHCR en el servidor');
+task('docker:registry:login', function () {
+    writeln('<info>Autenticándose en {{docker/registry}} en {{text_prod}}</>');
+    $pat = run('echo $GHCR_PAT');
+
+    if (empty(trim($pat))) {
+        throw error('La variable de entorno GHCR_PAT no está definida en el servidor.');
+    }
+
+    run("echo $pat | docker login {{docker/registry}} -u {{github/repository/user}} --password-stdin");
+});
+
+desc('Descargar imagen Docker desde GHCR en el servidor');
+task('docker:image:pull', function () {
+    writeln('<info>Descargando imagen {{docker/image/name}} en {{text_prod}}</>');
+    run('docker pull {{docker/image/name}}', timeout: null);
 });
 
 desc('Copiar archivo .env.docker de la imagen Docker');
@@ -56,7 +58,7 @@ task('docker:image:prune', function () {
     $output = run('docker image prune -f');
     $lines = explode("\n", trim($output));
 
-    writeln('<info>' . end($lines) . '</>');
+    writeln('<info>'.end($lines).'</>');
 });
 
 before('deploy:cleanup', 'docker:image:prune');

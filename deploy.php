@@ -19,21 +19,21 @@
 
 namespace Deployer;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Dotenv\Dotenv;
 
 // Obtener las variables .env en $_ENV
-new Dotenv()->loadEnv(__DIR__ . '/.env');
+new Dotenv()->loadEnv(__DIR__.'/.env');
 
-import(__DIR__ . '/.deployer/common.php');
-import(__DIR__ . '/.deployer/task/docker.php');
-import(__DIR__ . '/.deployer/task/upload_files.php');
-import(__DIR__ . '/.deployer/task/doctrine.php');
-import(__DIR__ . '/.deployer/task/maintenance.php');
-import(__DIR__ . '/.deployer/task/symfony_workers.php');
-import(__DIR__ . '/.deployer/task/download_files.php');
-import(__DIR__ . '/.deployer/task/restore_volumes.php');
+import(__DIR__.'/.deployer/common.php');
+import(__DIR__.'/.deployer/task/docker.php');
+import(__DIR__.'/.deployer/task/upload_files.php');
+import(__DIR__.'/.deployer/task/doctrine.php');
+import(__DIR__.'/.deployer/task/maintenance.php');
+import(__DIR__.'/.deployer/task/symfony_workers.php');
+import(__DIR__.'/.deployer/task/download_files.php');
+import(__DIR__.'/.deployer/task/restore_volumes.php');
 
 //
 // Config
@@ -56,7 +56,9 @@ set('cleanup_use_sudo', true);
 set('app/version', $_ENV['APP_VERSION'] ?? '0.0.0');
 set('app/version/build', $_ENV['APP_VERSION_BUILD'] ?? 1);
 set('docker/project_name', $_ENV['APP_PROJECT_NAME'] ?? 'your_project_name');
-set('docker/services/start', 'webserver database worker_async worker_scheduler');
+set('github/user', $_ENV['GITHUB_USER'] ?? 'idmarinas');
+set('github/repository', $_ENV['GITHUB_REPOSITORY'] ?? '');
+set('github/repository/name', $_ENV['GITHUB_REPOSITORY_NAME'] ?? 'your-project-name');
 
 // Path to the bin *.
 set('bin/webserver', 'docker exec {{docker/project_name}}-webserver-1');
@@ -66,6 +68,12 @@ set('bin/console', '{{bin/php}} bin/console');
 
 set('http_user', 'www-data');
 set('http_group', 'www-data');
+
+// Docker
+set('docker/compose/files', '--env-file .env.docker -f compose.yaml -f compose.prod.yaml');
+set('docker/registry', 'ghcr.io');
+set('docker/services/start', 'webserver database worker_async worker_scheduler');
+set('docker/image/name', '{{docker/registry}}/{{github/repository}}:{{app/version}}-build.{{app/version/build}}');
 
 //
 // Hosts
@@ -87,7 +95,8 @@ task('deploy', [
     'deploy:prepare',
     'download:backups',
     'deploy:upload_files',
-    'docker:image:load',
+    'docker:registry:login',
+    'docker:image:pull',
     'docker:copy:env_docker',
     'deploy:symfony:workers:stop',
     'docker:service:start',
