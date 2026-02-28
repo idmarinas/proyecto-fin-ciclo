@@ -18,7 +18,7 @@
       <div class="md:col-span-3 space-y-6">
         <twig:Layout:Section class="space-y-6" id="thread-replies">
           {% for reply in pagination %}
-            <twig:App:Forum:Thread:InLineEditMessage :reply="reply" />
+            <twig:App:Forum:Thread:View:InLineEditMessage :reply="reply" />
           {% else %}
             <twig:Ui:Card variant="full" class="p-6 border bg-yellow-50 text-yellow-800 space-y-2">
               <twig:Ui:Card:Header>

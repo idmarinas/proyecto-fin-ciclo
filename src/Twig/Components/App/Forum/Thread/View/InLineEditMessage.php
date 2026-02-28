@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 25/02/2026, 20:46
+ * Last modified by "IDMarinas" on 28/02/2026, 13:11
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -17,7 +17,7 @@
  * @since   1.0.0
  */
 
-namespace App\Twig\Components\App\Forum\Thread;
+namespace App\Twig\Components\App\Forum\Thread\View;
 
 use App\Entity\Forum\Message;
 use App\Form\Forum\Thread\EditReplyFormType;
