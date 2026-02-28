@@ -1,0 +1,33 @@
+<twig:Turbo:Stream:Replace target="#global-container-dialog-alert">
+  <twig:Turbo:Frame id="global-container-dialog-alert">
+    <twig:Ui:AlertDialog id="close-thread" open>
+      <twig:Ui:AlertDialog:Content>
+        <twig:Ui:AlertDialog:Header>
+          <twig:Ui:AlertDialog:Title>¿Seguro qué quieres resolver el hilo?</twig:Ui:AlertDialog:Title>
+        </twig:Ui:AlertDialog:Header>
+        <twig:Ui:AlertDialog:Description>
+          Una vez resuelto el hilo. Es posible volver a abrirlo, por ti o por el personal de Lúmina.
+        </twig:Ui:AlertDialog:Description>
+        <twig:Ui:AlertDialog:Footer class="sm:justify-between">
+          <twig:Ui:AlertDialog:Action
+              as="a"
+              href="{{ path('app_forums_forum_thread_resolve_confirm', {
+                slug_subforum: thread.forum.slug,
+                slug_forum: thread.forum.parent.slug,
+                id: thread.id,
+                id_message: message.id|default(null)
+              }) }}"
+              variant="destructive"
+              data-action="click->alert-dialog#close"
+              data-turbo-stream="true"
+          >
+            {{ ux_icon('tabler:lock') }} Resolver hilo
+          </twig:Ui:AlertDialog:Action>
+          <twig:Ui:AlertDialog:Cancel>
+            {{ ux_icon('close') }} Cerrar
+          </twig:Ui:AlertDialog:Cancel>
+        </twig:Ui:AlertDialog:Footer>
+      </twig:Ui:AlertDialog:Content>
+    </twig:Ui:AlertDialog>
+  </twig:Turbo:Frame>
+</twig:Turbo:Stream:Replace>
