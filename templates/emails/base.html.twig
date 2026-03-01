@@ -1,0 +1,60 @@
+{# @var email \Symfony\Bridge\Twig\Mime\WrappedTemplatedEmail #}
+
+{% apply inky_to_html|inline_css(source('@email/foundation-emails.css')) %}
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html lang="{{ app.locale }}" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    {% block styles %}{% endblock %}
+    <title>{% block title %}Email{% endblock %} - {{ app_title }}</title>
+  </head>
+
+  <body>
+    <wrapper class="header" bgcolor="#8a8a8a">
+      <container>
+        <row class="collapse">
+          <columns small="6" valign="middle">
+            <img
+                src="{{ email.image('@images/favicons/favicon-64x64.png') }}"
+                alt="{{ app_title }}"
+                width="57"
+                height="57"
+            />
+          </columns>
+          <columns small="6" valign="middle">
+            <p class="text-right">{{ app_title }}</p>
+          </columns>
+        </row>
+      </container>
+    </wrapper>
+
+    <container>
+      <spacer size="16"></spacer>
+
+      <row>
+        <columns>
+          {% block body %}{% endblock %}
+        </columns>
+      </row>
+    </container>
+
+    <wrapper class="secondary text-center">
+      <spacer size="16"></spacer>
+
+      <row>
+        <columns small="12" large="12">
+          &copy; 2025 - {{ 'now'|date('Y') }} {{ app_title }} — <a href="https://x.com/idmarinas">@IDMarinas</a>
+        </columns>
+      </row>
+
+      <row>
+        <columns small="12" large="12">
+          <p><small>{{ 'footer.note'|trans({ app_title }, 'emails') }}</small></p>
+        </columns>
+      </row>
+    </wrapper>
+  </body>
+  </html>
+{% endapply %}
