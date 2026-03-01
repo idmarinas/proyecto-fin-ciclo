@@ -23,9 +23,10 @@
           :id="label ~ '-' ~ loop.parent.loop.index0"
           :variant="label"
           :description="message"
+          :title="title|default('')"
           :duration="duration"
       >
-        <twig:ux:icon :name="icon_name" class="size-5" />
+        {{ ux_icon(icon_name, {class: 'size-5'}) }}
         {% if title is not empty %}
           <twig:Ui:Notification:Title>{{ outerScope.title }}</twig:Ui:Notification:Title>
         {% endif %}

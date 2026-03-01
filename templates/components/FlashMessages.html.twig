@@ -12,7 +12,7 @@
       {% endif %}
 
       <twig:Ui:Alert :variant="label" :title="title|default('')" :description="message">
-        <twig:ux:icon :name="icon_name" class="size-4" />
+        {{ ux_icon(icon_name, {class: 'size-4'}) }}
         {% if title is not empty %}
           <twig:Ui:Alert:Title>{{ outerScope.title }}</twig:Ui:Alert:Title>
         {% endif %}
