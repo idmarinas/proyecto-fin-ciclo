@@ -6,7 +6,9 @@
       <twig:Ui:Card:Title>Editar perfil</twig:Ui:Card:Title>
     </twig:Ui:Card:Header>
     <twig:Ui:Card:Content>
-      {{ form(form) }}
+      <twig:Turbo:Frame id="form-frame-{{ form.vars.id }}">
+        {{ form(form) }}
+      </twig:Turbo:Frame>
     </twig:Ui:Card:Content>
   </twig:Ui:Card>
 {% endblock %}
