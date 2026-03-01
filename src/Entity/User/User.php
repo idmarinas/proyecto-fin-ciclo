@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/02/2026, 12:57
+ * Last modified by "IDMarinas" on 01/03/2026, 13:23
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -95,41 +95,41 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     #[ORM\Column]
     private bool $privacyAccepted = false;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 300, nullable: true)]
     private ?string $signature = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $lastActiveAt = null;
 
-    public function __construct ()
+    public function __construct()
     {
         $this->createdFromIp = '';
         $this->updatedFromIp = '';
     }
 
-    public function __toString (): string
+    public function __toString(): string
     {
-        return (string)$this->username ?: $this->email;
+        return (string)$this->username ?: $this->id;
     }
 
-    public function getEmail (): ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail (string $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getUsername (): ?string
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    public function setUsername (?string $username): static
+    public function setUsername(?string $username): static
     {
         $this->username = $username;
 
@@ -141,7 +141,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
      *
      * @see UserInterface
      */
-    public function getUserIdentifier (): string
+    public function getUserIdentifier(): string
     {
         return $this->username ?: $this->email;
     }
@@ -149,7 +149,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     /**
      * @see UserInterface
      */
-    public function getRoles (): array
+    public function getRoles(): array
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
@@ -161,7 +161,7 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     /**
      * @param list<string> $roles
      */
-    public function setRoles (array $roles): static
+    public function setRoles(array $roles): static
     {
         $this->roles = $roles;
 
@@ -171,72 +171,72 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword (): ?string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function setPassword (string $password): static
+    public function setPassword(string $password): static
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function isVerified (): bool
+    public function isVerified(): bool
     {
         return $this->isVerified;
     }
 
-    public function setIsVerified (bool $isVerified): static
+    public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
 
         return $this;
     }
 
-    public function isTermsAccepted (): bool
+    public function isTermsAccepted(): bool
     {
         return $this->termsAccepted;
     }
 
-    public function setTermsAccepted (bool $termsAccepted): static
+    public function setTermsAccepted(bool $termsAccepted): static
     {
         $this->termsAccepted = $termsAccepted;
 
         return $this;
     }
 
-    public function isPrivacyAccepted (): bool
+    public function isPrivacyAccepted(): bool
     {
         return $this->privacyAccepted;
     }
 
-    public function setPrivacyAccepted (bool $privacyAccepted): static
+    public function setPrivacyAccepted(bool $privacyAccepted): static
     {
         $this->privacyAccepted = $privacyAccepted;
 
         return $this;
     }
 
-    public function getSignature (): ?string
+    public function getSignature(): ?string
     {
         return $this->signature;
     }
 
-    public function setSignature (?string $signature): static
+    public function setSignature(?string $signature): static
     {
         $this->signature = $signature;
 
         return $this;
     }
 
-    public function getLastActiveAt (): ?DateTimeInterface
+    public function getLastActiveAt(): ?DateTimeInterface
     {
         return $this->lastActiveAt;
     }
 
-    public function setLastActiveAt (?DateTimeInterface $lastActiveAt): static
+    public function setLastActiveAt(?DateTimeInterface $lastActiveAt): static
     {
         $this->lastActiveAt = $lastActiveAt;
 
@@ -246,10 +246,10 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     /**
      * Ensure the session doesn't contain actual password hashes by CRC32C-hashing them, as supported since Symfony 7.3.
      */
-    public function __serialize (): array
+    public function __serialize(): array
     {
         $data = (array)$this;
-        $data["\0" . self::class . "\0password"] = hash('crc32c', (string)$this->password);
+        $data["\0".self::class."\0password"] = hash('crc32c', (string)$this->password);
 
         return $data;
     }

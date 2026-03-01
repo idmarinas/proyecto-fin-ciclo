@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/03/2026, 12:55
+ * Last modified by "IDMarinas" on 01/03/2026, 13:41
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,16 +22,19 @@ namespace App\Repository\User;
 use App\Entity\User\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Contracts\Cache\TagAwareCacheInterface;
 
 /**
  * @extends ServiceEntityRepository<User>
  */
 final class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private readonly TagAwareCacheInterface $cache)
     {
         parent::__construct($registry, User::class);
     }
@@ -67,10 +70,14 @@ final class UserRepository extends ServiceEntityRepository implements PasswordUp
      *     last_message_date: string|null,
      *     last_thread_date: string|null,
      * }
+     * @throws InvalidArgumentException
      */
     public function getUserStats(User $user): array
     {
-        $sql = <<<SQL
+        return $this->cache->get('user_profile.stats_'.$user->getId(), function (ItemInterface $item) use ($user) {
+            $item->tag(['user_profile.stats', 'user_profile.stats_'.$user->getId()]);
+
+            $sql = <<<SQL
             SELECT
                 (
                     SELECT COUNT(t.id) FROM pfc_thread t
@@ -91,8 +98,7 @@ final class UserRepository extends ServiceEntityRepository implements PasswordUp
                 (
                     SELECT m.created_at FROM pfc_message m
                     WHERE m.author_id = :userId AND m.deleted_at IS NULL
-                    ORDER BY m.created_at DESC
-                    LIMIT 1
+                    ORDER BY m.created_at DESC LIMIT 1
                 ) AS last_message_date,
 
                 (
@@ -102,19 +108,20 @@ final class UserRepository extends ServiceEntityRepository implements PasswordUp
                 ) AS last_thread_date
             SQL;
 
-        $result = $this
-            ->getEntityManager()
-            ->getConnection()
-            ->executeQuery($sql, ['userId' => $user->getId()])
-            ->fetchAssociative()
-        ;
+            $result = $this
+                ->getEntityManager()
+                ->getConnection()
+                ->executeQuery($sql, ['userId' => $user->getId()])
+                ->fetchAssociative()
+            ;
 
-        return [
-            'total_threads'     => (int)$result['total_threads'],
-            'total_replies'     => (int)$result['total_replies'],
-            'solved_threads'    => (int)$result['solved_threads'],
-            'last_message_date' => $result['last_message_date'],
-            'last_thread_date'  => $result['last_thread_date'],
-        ];
+            return [
+                'total_threads'     => (int)$result['total_threads'],
+                'total_replies'     => (int)$result['total_replies'],
+                'solved_threads'    => (int)$result['solved_threads'],
+                'last_message_date' => $result['last_message_date'],
+                'last_thread_date'  => $result['last_thread_date'],
+            ];
+        });
     }
 }

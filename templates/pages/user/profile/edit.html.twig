@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Ui:Card class="mx-auto">
+    <twig:Ui:Card:Header>
+      <twig:Ui:Card:Title>Editar perfil</twig:Ui:Card:Title>
+    </twig:Ui:Card:Header>
+    <twig:Ui:Card:Content>
+      {{ form(form) }}
+    </twig:Ui:Card:Content>
+  </twig:Ui:Card>
+{% endblock %}
