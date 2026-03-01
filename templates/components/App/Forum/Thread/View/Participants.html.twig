@@ -7,7 +7,7 @@
 <div class="flex items-center gap-2">
   <twig:Ui:Avatar:Group>
     {% for user in participants|slice(0, max_visible) %}
-      <twig:App:User:Avatar :user="user" />
+      <twig:App:User:Avatar :user="user" tooltip />
     {% endfor %}
 
     {% if extra > 0 %}
