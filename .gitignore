@@ -3,6 +3,7 @@
 /build/
 /.env.docker
 /package*.json
+/node_modules/
 ###< idmarinas/proyecto-fin-ciclo ###
 
 ###> symfony/framework-bundle ###
