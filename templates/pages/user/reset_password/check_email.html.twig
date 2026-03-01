@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se ha enviado el correo electrónico para restablecer la contraseña.{% endblock %}
+
+{% block article %}
+  <twig:Layout:Section>
+    <twig:Ui:Card class="mx-auto">
+      <twig:Ui:Card:Header>
+        <twig:Ui:Card:Title>Envió del email correcto</twig:Ui:Card:Title>
+      </twig:Ui:Card:Header>
+      <twig:Ui:Card:Content class="prose prose-slate max-w-none">
+        <p>
+          Si existe una cuenta que coincide con tu correo electrónico, se acaba de enviar un correo electrónico con un
+          enlace que puedes utilizar para restablecer tu contraseña.
+        </p>
+        <p>
+          Este enlace caducará en
+          {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+        </p>
+        <p>
+          Si no recibe un correo electrónico, compruebe su carpeta de correo no deseado o
+          <a href="{{ path('app_user_forgot_password_request') }}">inténtalo de nuevo</a>.
+        </p>
+      </twig:Ui:Card:Content>
+    </twig:Ui:Card>
+  </twig:Layout:Section>
+{% endblock %}
