@@ -13,10 +13,16 @@
         <twig:Layout:FlashMessages />
         {{ include('pages/user/login/partials/_form.html.twig') }}
       </twig:Ui:Card:Content>
-      <twig:Ui:Card:Footer class="justify-center">
+      <twig:Ui:Card:Footer class="flex-col justify-center">
         <div class="text-sm text-gray-600 dark:text-gray-300">
           ¿No tienes cuenta?
           <twig:Ui:Button as="a" variant="link" href="{{ path('app_user_register') }}">Crea una cuenta</twig:Ui:Button>
+        </div>
+        <div class="text-sm text-gray-600 dark:text-gray-300">
+          ¿Olvidaste la contraseña?
+          <twig:Ui:Button as="a" variant="link" href="{{ path('app_user_forgot_password_request') }}">
+            Restablece la contraseña
+          </twig:Ui:Button>
         </div>
       </twig:Ui:Card:Footer>
     </twig:Ui:Card>
