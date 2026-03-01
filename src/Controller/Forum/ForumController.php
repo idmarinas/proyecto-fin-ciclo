@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 22/02/2026, 15:42
+ * Last modified by "IDMarinas" on 01/03/2026, 12:03
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -33,15 +33,20 @@ use Symfony\Component\Yaml\Yaml;
 
 final class ForumController extends AbstractController
 {
-    public function __construct(private readonly EntityManagerInterface $entityManager) {}
+    public function __construct(
+        private readonly EntityManagerInterface $entityManager,
+        private readonly SeoPageInterface       $seo
+    ) {}
 
     #[Seo, Sitemap]
     #[Route('', name: 'index', methods: ['GET'])]
-    public function index(SeoPageInterface $seo): Response
+    public function index(): Response
     {
-        $seo
-            ->setTitle('Foro de ayuda y soporte')
-            ->setDescription('Foro de ayuda y soporte')
+        $this->seo
+            ->setTitle('Foro de Ayuda y Soporte')
+            ->setDescription(
+                'Bienvenido a los foros de ayuda y soporte de Lúmina. Encuentra respuestas, reporta incidencias y conecta con nuestro equipo de soporte.'
+            )
         ;
 
         $repository = $this->entityManager->getRepository(Forum::class);
@@ -57,6 +62,9 @@ final class ForumController extends AbstractController
         );
     }
 
+    #[Seo(entity: Forum::class), Sitemap('forums', entity: Forum::class, urlParameters: [
+        'slug' => new Sitemap\Prop('slug'),
+    ])]
     #[Route('/{slug}', name: 'forum', requirements: ['slug' => Requirement::ASCII_SLUG], methods: ['GET'])]
     public function forumParent(
         #[MapEntity(mapping: ['slug' => 'slug'])]
