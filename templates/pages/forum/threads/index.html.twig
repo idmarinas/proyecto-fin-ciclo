@@ -153,7 +153,7 @@
             <div class="flex gap-1 items-center">
               Creado por
               <twig:App:User:Avatar size="sm" :user="thread.author" />
-              <em>{{ thread.author }}</em> el
+              <em>{{ thread.author|u.truncate(10, '...') }}</em> el
               <twig:ux:icon name="tabler:clock" class="size-4" /> {{ thread.createdAt|date("d/m/Y H:i") }}
             </div>
             <div class="flex gap-1 items-center">
@@ -162,7 +162,7 @@
                 <twig:ux:icon name="tabler:clock" class="size-4" />
                 {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
                 <twig:App:User:Avatar size="sm" :user="thread.lastMessage.author" />
-                <em>{{ thread.lastMessage.author }}</em>
+                <em>{{ thread.lastMessage.author|u.truncate(10, '...') }}</em>
               {% else %}
                 Sin respuestas todavía
               {% endif %}
