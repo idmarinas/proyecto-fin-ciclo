@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 28/02/2026, 18:10
+ * Last modified by "IDMarinas" on 02/03/2026, 23:42
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,6 +19,7 @@
 
 namespace App\Repository\Forum;
 
+use App\Entity\Forum;
 use App\Entity\Forum\Message;
 use App\Entity\Forum\Thread;
 use App\Entity\User\User;
@@ -109,6 +110,44 @@ final class MessageRepository extends ServiceEntityRepository
 
         $this->getEntityManager()->persist($thread);
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * Devuelve los 3 últimos mensajes publicados en un foro concreto.
+     *
+     * @return Message[]
+     */
+    public function findLatestByForum(Forum $forum, int $limit = 3): array
+    {
+        return $this
+            ->createQueryBuilder('m')
+            ->join('m.thread', 't')
+            ->where('t.forum = :forum')
+            ->andWhere('t.private = false')
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->setParameter('forum', $forum)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * Devuelve los 3 últimos mensajes publicados en todos los foros.
+     *
+     * @return Message[]
+     */
+    public function findLatest(int $limit = 3): array
+    {
+        return $this
+            ->createQueryBuilder('m')
+            ->join('m.thread', 't')
+            ->andWhere('t.private = false')
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     /**

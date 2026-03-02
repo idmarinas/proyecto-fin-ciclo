@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 21:51
+ * Last modified by "IDMarinas" on 02/03/2026, 23:42
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -135,6 +135,42 @@ final class ThreadRepository extends ServiceEntityRepository
 
         $this->getEntityManager()->persist($forum);
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * Devuelve los 3 últimos hilos creados en un foro concreto (no privados).
+     *
+     * @return Thread[]
+     */
+    public function findLatestByForum(Forum $forum, int $limit = 3): array
+    {
+        return $this
+            ->createQueryBuilder('t')
+            ->where('t.forum = :forum')
+            ->andWhere('t.private = false')
+            ->orderBy('t.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->setParameter('forum', $forum)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * Devuelve los 3 últimos hilos creados en todos los foros (no privados).
+     *
+     * @return Thread[]
+     */
+    public function findLatest(int $limit = 3): array
+    {
+        return $this
+            ->createQueryBuilder('t')
+            ->andWhere('t.private = false')
+            ->orderBy('t.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     private function applyStatusCount(Forum $forum, ThreadStatusEnum $status, int $delta): void
