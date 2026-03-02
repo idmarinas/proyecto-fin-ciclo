@@ -72,5 +72,7 @@
       {% endfor %}
     </section>
   </twig:Layout:Article>
-  <twig:Layout:Aside>{% include 'sidebar.html.twig' %}</twig:Layout:Aside>
+  <twig:Layout:Aside>
+    <twig:Layout:Sidebar />
+  </twig:Layout:Aside>
 {% endblock %}
