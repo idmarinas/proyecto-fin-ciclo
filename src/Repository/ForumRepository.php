@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 20:07
+ * Last modified by "IDMarinas" on 02/03/2026, 23:39
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -95,6 +95,38 @@ final class ForumRepository extends NestedTreeRepository
             ->setParameter('waitSupp', ThreadStatusEnum::WAITING_SUPPORT)
             ->setParameter('resolved', ThreadStatusEnum::RESOLVED)
             ->setParameter('closed', ThreadStatusEnum::CLOSED)
+            ->getQuery()
+            ->getSingleResult()
+        ;
+
+        return [
+            'totalThreads'      => (int)$rows['totalThreads'],
+            'totalMessages'     => (int)$rows['totalMessages'],
+            'threadsOpen'       => (int)$rows['threadsOpen'],
+            'threadsInProgress' => (int)$rows['threadsInProgress'],
+            'threadsResolved'   => (int)$rows['threadsResolved'],
+            'threadsClosed'     => (int)$rows['threadsClosed'],
+        ];
+    }
+
+    /**
+     * Devuelve estadísticas globales de todos los foros (raíces del árbol).
+     * Suma los contadores des-normalizados almacenados en cada foro raíz.
+     */
+    public function getGlobalStats(): array
+    {
+        $rows = $this
+            ->getEntityManager()->createQueryBuilder()
+            ->from(Forum::class, 'f')
+            ->select(
+                'COALESCE(SUM(f.totalThreads), 0)      AS totalThreads',
+                'COALESCE(SUM(f.totalMessages), 0)     AS totalMessages',
+                'COALESCE(SUM(f.threadsOpen), 0)       AS threadsOpen',
+                'COALESCE(SUM(f.threadsInProgress), 0) AS threadsInProgress',
+                'COALESCE(SUM(f.threadsResolved), 0)   AS threadsResolved',
+                'COALESCE(SUM(f.threadsClosed), 0)     AS threadsClosed',
+            )
+            ->where('f.parent IS NULL')
             ->getQuery()
             ->getSingleResult()
         ;
