@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Layout:Section class="prose prose-slate dark:prose-invert mx-auto">
+
+      <div class="flex items-center gap-3 mb-2">
+        <h1>
+          <twig:ux:icon name="tabler:shield-check" class="size-8 text-primary inline" />
+          Reglas del foro
+        </h1>
+      </div>
+      <p class="text-sm text-muted-foreground">Última actualización: 1 de enero de 2025</p>
+
+      <twig:Ui:Separator class="my-6" />
+
+      <p>
+        El foro de <strong>Lúmina</strong> es un espacio de ayuda mutua, soporte técnico y comunicación entre
+        usuarios y el equipo de Lúmina. Para garantizar un entorno seguro, respetuoso y útil para todos,
+        es obligatorio respetar las siguientes normas.
+      </p>
+      <p>
+        La participación en el foro implica la aceptación de estas reglas, así como de los
+        <a href="{{ path('app_legal_terminos') }}">Términos y Condiciones</a> generales de la plataforma.
+      </p>
+
+      <twig:Ui:Separator class="my-6" />
+
+      <h2>
+        <twig:ux:icon name="tabler:users" class="size-6 inline align-middle mr-1" />
+        1. Respeto y convivencia
+      </h2>
+      <p>
+        Trata a todos los participantes con respeto y educación. No se tolerarán insultos, descalificaciones,
+        amenazas ni ningún tipo de acoso o discriminación por motivos de origen, género, orientación sexual,
+        religión o cualquier otra condición personal.
+      </p>
+      <ul>
+        <li>Escribe de forma constructiva, aunque no estés de acuerdo con otra persona.</li>
+        <li>Evita el lenguaje agresivo, irónico o condescendiente.</li>
+        <li>Si tienes un conflicto con otro usuario, contacta con el equipo de soporte en lugar de responder en el
+            hilo.
+        </li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:pencil" class="size-6 inline align-middle mr-1" />
+        2. Títulos descriptivos y claros
+      </h2>
+      <p>
+        Un buen título ayuda a otros usuarios a entender tu problema y a que la comunidad pueda encontrar
+        soluciones similares en el futuro.
+      </p>
+      <ul>
+        <li>Usa títulos concretos que describan el problema o la consulta. <strong>Mal:</strong> «Ayuda»,
+          <strong>Bien:</strong> «Error 500 al generar factura en PDF».
+        </li>
+        <li>No uses mayúsculas en exceso ni signos de puntuación innecesarios.</li>
+        <li>Evita títulos vagos como «Urgente», «Problema» o «¿Alguien puede ayudarme?».</li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:ban" class="size-6 inline align-middle mr-1" />
+        3. Prohibición de spam y publicidad
+      </h2>
+      <p>
+        Está terminantemente prohibido publicar contenido con fines publicitarios, comerciales o promocionales
+        no relacionados con el uso de la plataforma Lúmina.
+      </p>
+      <ul>
+        <li>No publiques enlaces a servicios externos con fines promocionales.</li>
+        <li>No repitas el mismo mensaje en varios hilos o subforos.</li>
+        <li>No crees hilos para redirigir tráfico hacia sitios externos.</li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:lock" class="size-6 inline align-middle mr-1" />
+        4. Privacidad y datos sensibles
+      </h2>
+      <p>
+        La privacidad de todos los usuarios es prioritaria. No publiques en el foro datos personales propios
+        ni de terceros, especialmente si son sensibles.
+      </p>
+      <ul>
+        <li>No incluyas contraseñas, tokens, claves API ni datos de acceso en ningún mensaje.</li>
+        <li>No publiques datos fiscales, bancarios, NIF, DNI u otra información personal identificativa.</li>
+        <li>Si necesitas compartir información confidencial con el equipo de soporte, utiliza la opción de hilo
+            privado.
+        </li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:category" class="size-6 inline align-middle mr-1" />
+        5. Publicar en el subforo correcto
+      </h2>
+      <p>
+        Cada subforo está diseñado para un tipo de consulta o incidencia específica. Publicar en el lugar
+        correcto agiliza la respuesta y mantiene el foro organizado.
+      </p>
+      <ul>
+        <li>Antes de crear un hilo, revisa si tu duda ya ha sido respondida.</li>
+        <li>Selecciona el tipo de ayuda adecuado al crear tu hilo (consulta, incidencia, facturación, etc.).</li>
+        <li>Si no sabes en qué subforo publicar, usa «Consultas generales».</li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:check" class="size-6 inline align-middle mr-1" />
+        6. Marcar hilos como resueltos
+      </h2>
+      <p>
+        Cuando tu problema haya sido solucionado, marca el hilo como <strong>Resuelto</strong>. Esto ayuda a otros
+        usuarios con la misma duda y permite al equipo gestionar mejor las incidencias abiertas.
+      </p>
+      <ul>
+        <li>No dejes hilos abiertos indefinidamente si ya tienen solución.</li>
+        <li>Si una respuesta te fue útil, reconócelo con un comentario de agradecimiento.</li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:file-code" class="size-6 inline align-middle mr-1" />
+        7. Formato y calidad del contenido
+      </h2>
+      <p>
+        Los mensajes bien estructurados son más fáciles de leer y de responder. Cuanto más detallado y claro sea
+        tu hilo, más rápido recibirás ayuda.
+      </p>
+      <ul>
+        <li>Describe el problema con detalle: qué esperabas, qué ha ocurrido y qué has probado.</li>
+        <li>Usa el formato de código para incluir fragmentos de código, mensajes de error o trazas.</li>
+        <li>Adjunta capturas de pantalla si ayudan a comprender el problema.</li>
+        <li>No abuses de mayúsculas, emojis ni negritas innecesarias.</li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:user-check" class="size-6 inline align-middle mr-1" />
+        8. Suplantación de identidad
+      </h2>
+      <p>
+        Está prohibido hacerse pasar por otro usuario, por un miembro del equipo de Lúmina o por cualquier otra
+        persona o entidad, tanto en el nombre de usuario como en el contenido de los mensajes.
+      </p>
+
+      <h2>
+        <twig:ux:icon name="tabler:alert-triangle" class="size-6 inline align-middle mr-1" />
+        9. Incidencias críticas
+      </h2>
+      <p>
+        Si tu incidencia afecta directamente a la actividad de tu negocio (pérdida de datos, imposibilidad de
+        facturar, caída del servicio, etc.), utiliza el tipo de hilo <strong>«Incidencia crítica»</strong> o
+        contacta directamente con el equipo de soporte para una atención prioritaria.
+      </p>
+      <ul>
+        <li>No uses el tipo «Incidencia crítica» para consultas o dudas generales.</li>
+        <li>Proporciona toda la información posible para agilizar la resolución.</li>
+      </ul>
+
+      <h2>
+        <twig:ux:icon name="tabler:gavel" class="size-6 inline align-middle mr-1" />
+        10. Moderación y sanciones
+      </h2>
+      <p>
+        El equipo de Lúmina se reserva el derecho de editar, mover, cerrar o eliminar cualquier hilo o mensaje
+        que incumpla estas normas, sin previo aviso. Ante reincidencias, se podrá suspender o cancelar la cuenta
+        del usuario infractor.
+      </p>
+      <p>
+        Si detectas contenido inapropiado, utiliza la opción <strong>«Reportar»</strong> disponible en cada hilo
+        y mensaje. No respondas al contenido inapropiado: repórtalo y deja que la moderación actúe.
+      </p>
+
+      <twig:Ui:Separator class="my-8" />
+
+      <twig:Ui:Alert variant="info" class="not-prose">
+        <twig:ux:icon name="tabler:info-circle" class="size-5" />
+        <twig:Ui:Alert:Title>¿Tienes dudas sobre las reglas?</twig:Ui:Alert:Title>
+        <twig:Ui:Alert:Description>
+          Si tienes alguna pregunta sobre estas normas o necesitas reportar un incidente grave,
+          puedes contactar directamente con el equipo de moderación a través del área de soporte.
+        </twig:Ui:Alert:Description>
+      </twig:Ui:Alert>
+
+    </twig:Layout:Section>
+  </twig:Layout:Article>
+{% endblock %}

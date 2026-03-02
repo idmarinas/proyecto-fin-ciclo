@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/03/2026, 12:03
+ * Last modified by "IDMarinas" on 02/03/2026, 22:43
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -50,16 +50,12 @@ final class ForumController extends AbstractController
         ;
 
         $repository = $this->entityManager->getRepository(Forum::class);
-        $sidebar = Yaml::parseFile(dirname(__DIR__).'/../../templates/dummy_sidebar.yaml');
 
         $forums = $repository->childrenHierarchy();
 
-        return $this->render(
-            'pages/forum/index.html.twig',
-            [
-                'forums' => $forums,
-            ] + $sidebar
-        );
+        return $this->render('pages/forum/index.html.twig', [
+            'forums' => $forums,
+        ]);
     }
 
     #[Seo(entity: Forum::class), Sitemap('forums', entity: Forum::class, urlParameters: [
@@ -80,5 +76,14 @@ final class ForumController extends AbstractController
                 'forum' => $forum,
             ] + $extra
         );
+    }
+
+    #[Seo, Sitemap]
+    #[Route('/rules', name: 'rules', methods: ['GET'], priority: 1)]
+    public function rules(): Response
+    {
+        $this->seo->setTitle('Reglas de Lúmina Foro de Ayuda y Soporte');
+
+        return $this->render('pages/forum/rules.html.twig');
     }
 }
