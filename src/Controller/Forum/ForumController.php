@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2026, 22:43
+ * Last modified by "IDMarinas" on 02/03/2026, 22:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,7 +29,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
-use Symfony\Component\Yaml\Yaml;
 
 final class ForumController extends AbstractController
 {
@@ -66,16 +65,9 @@ final class ForumController extends AbstractController
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Forum $forum
     ): Response {
-        $sidebar = Yaml::parseFile(dirname(__DIR__).'/../../templates/dummy_sidebar.yaml');
-
-        $extra = array_replace_recursive($sidebar);
-
-        return $this->render(
-            'pages/forum/forums.html.twig',
-            [
-                'forum' => $forum,
-            ] + $extra
-        );
+        return $this->render('pages/forum/forums.html.twig', [
+            'forum' => $forum,
+        ]);
     }
 
     #[Seo, Sitemap]
