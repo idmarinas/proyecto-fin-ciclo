@@ -1,6 +1,6 @@
 <aside
     data-slot="aside"
-    class="{{ ('hidden md:block space-y-10 ' ~ attributes.render('class'))|tailwind_merge }}"
+    class="{{ ('hidden md:block ' ~ attributes.render('class'))|tailwind_merge }}"
     {{ attributes }}
 >
   {% block content %}{% endblock %}
