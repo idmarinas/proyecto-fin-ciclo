@@ -1,0 +1,20 @@
+login:
+    user_name: Usuario
+    password: Contraseña
+    button: Conectar
+
+register:
+    email:
+        label: Correo electrónico
+    agree_terms:
+        label: Aceptar términos
+        help: Al hacer clic en esta casilla, aceptas los términos y condiciones.
+    agree_privacy:
+        label: Aceptar política de privacidad
+        help: Al hacer clic en esta casilla, aceptas la política de privacidad.
+    password:
+        label: Contraseña
+    repeat_password:
+        label: Repetir contraseña
+    button:
+        label: Crear cuenta

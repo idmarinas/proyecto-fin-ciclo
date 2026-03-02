@@ -1,0 +1,17 @@
+connect_with_us: 'Conecta con nosotros:'
+contact_info: 'Info de contacto:'
+footer.note: |
+    Estás recibiendo este mensaje porque tienes una cuenta en "{app_title}"
+
+# Títulos para los correos
+title:
+    reset_password: Restablecimiento de contraseña
+    verify_email: Verificar correo electrónico
+
+# Email para confirmar el correo electrónico
+verify_email:
+    subject: Por favor confirma tu correo
+    title: 'Hola, Por favor confirma tu correo'
+    click: 'Por favor confirma tu dirección de correo electrónico haciendo clic en el siguiente enlace.'
+    button: Confirmar mi correo
+    note: 'Este enlace expirará en {expiration}, es necesario iniciar sesión para poder verificar el correo.'
