@@ -2,18 +2,34 @@
 
 {% block article %}
   <twig:Layout:Article>
-    <section class="bg-white py-16 border-b">
-      <div class="max-w-7xl mx-auto px-6 text-center">
+    <twig:Layout:Section class="flex flex-col md:flex-row py-16">
+      <div class="px-6 text-center flex-1">
         <h2 class="text-4xl font-extrabold text-blue-900">Foros principales</h2>
         <p class="mt-4 text-lg text-gray-600">
           Explora los foros padre y accede a sus subforos especializados.
           Encuentra soporte, comparte conocimientos y participa en la comunidad.
         </p>
       </div>
-    </section>
 
-    <section class="py-16 space-y-12">
+      <twig:Ui:Item as="a" href="{{ path('app_forums_rules') }}" class="w-full md:w-2xs">
+        <twig:Ui:Item:Media variant="icon">{{ ux_icon('tabler:shield', {class: 'size-9'}) }}</twig:Ui:Item:Media>
+        <twig:Ui:Item:Content>
+          <twig:Ui:Item:Title><h3>Reglas de los foros</h3></twig:Ui:Item:Title>
+          <twig:Ui:Item:Description>
+            <ul class="grid grid-cols-2 md:grid-cols-1 gap-1">
+              <li>Respeto entre usuarios</li>
+              <li>No spam</li>
+              <li>No publicar datos sensibles</li>
+              <li>Usar títulos descriptivos</li>
+            </ul>
+          </twig:Ui:Item:Description>
+        </twig:Ui:Item:Content>
+      </twig:Ui:Item>
+    </twig:Layout:Section>
 
+    <twig:Ui:Separator class="mt-0" />
+
+    <twig:Layout:Section>
       {% for forum in forums %}
         <twig:Ui:Card variant="full" class="overflow-hidden border shadow-sm bg-white rounded-xl">
 
@@ -70,7 +86,7 @@
           </twig:Ui:Alert:Description>
         </twig:Ui:Alert>
       {% endfor %}
-    </section>
+    </twig:Layout:Section>
   </twig:Layout:Article>
   <twig:Layout:Aside>
     <twig:Layout:Sidebar />
