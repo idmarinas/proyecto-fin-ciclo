@@ -108,6 +108,7 @@
     </twig:Layout:Section>
   </twig:Layout:Article>
 
-  {# Sidebar #}
-  <twig:Layout:Aside>{% include 'sidebar.html.twig' %}</twig:Layout:Aside>
+  <twig:Layout:Aside>
+    <twig:Layout:Sidebar showRules />
+  </twig:Layout:Aside>
 {% endblock %}

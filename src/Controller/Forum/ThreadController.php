@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 23:48
+ * Last modified by "IDMarinas" on 02/03/2026, 23:14
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -45,7 +45,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Workflow\WorkflowInterface;
-use Symfony\Component\Yaml\Yaml;
 use Symfony\UX\Turbo\TurboBundle;
 
 #[Route('{slug_forum}/forum/{slug_subforum}',
@@ -73,21 +72,16 @@ final class ThreadController extends AbstractController
         PaginatorInterface $paginator,
         Request            $request
     ): Response {
-        $sidebar = Yaml::parseFile(dirname(__DIR__).'/../../templates/dummy_sidebar.yaml');
-
         $canSeePrivate = $security->isGranted('ROLE_ALLOW_PRIVATE_THREADS_VIEW');
         $pagination = $paginator->paginate(
             $threadRepository->findAllByForum($forum, $canSeePrivate, $this->getUser()),
             $request->query->getInt('page', 1)
         );
 
-        return $this->render(
-            'pages/forum/threads/index.html.twig',
-            [
-                'forum'      => $forum,
-                'pagination' => $pagination,
-            ] + $sidebar
-        );
+        return $this->render('pages/forum/threads/index.html.twig', [
+            'forum'      => $forum,
+            'pagination' => $pagination,
+        ]);
     }
 
     #[Route('/thread/create/{type}',
@@ -114,8 +108,6 @@ final class ThreadController extends AbstractController
                 'slug_subforum' => $forum->getSlug(),
             ]);
         }
-
-        $sidebar = Yaml::parseFile(dirname(__DIR__).'/../../templates/dummy_sidebar.yaml');
 
         $form = $this->createForm(CreateFormType::class, $thread);
         $form->handleRequest($request);
@@ -154,14 +146,11 @@ final class ThreadController extends AbstractController
             ]);
         }
 
-        return $this->render(
-            'pages/forum/threads/create.html.twig',
-            [
-                'forum' => $forum,
-                'form'  => $form,
-                'type'  => $type,
-            ] + $sidebar
-        );
+        return $this->render('pages/forum/threads/create.html.twig', [
+            'forum' => $forum,
+            'form'  => $form,
+            'type'  => $type,
+        ]);
     }
 
     #[Route('/thread/{slug_thread}/edit',
@@ -176,8 +165,6 @@ final class ThreadController extends AbstractController
         Request                $request,
         EntityManagerInterface $entityManager
     ): Response {
-        $sidebar = Yaml::parseFile(dirname(__DIR__).'/../../templates/dummy_sidebar.yaml');
-
         $form = $this->createForm(EditFormType::class, $thread);
         $form->handleRequest($request);
 
@@ -194,13 +181,10 @@ final class ThreadController extends AbstractController
             ]);
         }
 
-        return $this->render(
-            'pages/forum/threads/edit.html.twig',
-            [
-                'form'   => $form,
-                'thread' => $thread,
-            ] + $sidebar
-        );
+        return $this->render('pages/forum/threads/edit.html.twig', [
+            'form'   => $form,
+            'thread' => $thread,
+        ]);
     }
 
     // #[Seo]
@@ -218,8 +202,6 @@ final class ThreadController extends AbstractController
         PaginatorInterface     $paginator,
         EntityManagerInterface $entityManager,
     ): Response {
-        $sidebar = Yaml::parseFile(dirname(__DIR__).'/../../templates/dummy_sidebar.yaml');
-
         $page = $request->query->getInt('page', 1);
         $form = $this->createForm(ReplyFormType::class, new Message()->setThread($thread));
         $formEmpty = clone $form;
@@ -264,15 +246,12 @@ final class ThreadController extends AbstractController
 
         $pagination = $paginator->paginate($messageRepository->findAllByThread($thread), $page);
 
-        return $this->render(
-            'pages/forum/threads/view.html.twig',
-            [
-                'thread'     => $thread,
-                'pagination' => $pagination,
-                'form'       => $form,
+        return $this->render('pages/forum/threads/view.html.twig', [
+            'thread'     => $thread,
+            'pagination' => $pagination,
+            'form'       => $form,
 
-            ] + $sidebar
-        );
+        ]);
     }
 
     private function replyTransition(Thread $thread): string

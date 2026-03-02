@@ -45,8 +45,9 @@
           </twig:Turbo:Frame>
         {% endif %}
       </div>
-      {# Sidebar #}
-      <twig:Layout:Aside>{% include 'sidebar_comercial.html.twig' %}</twig:Layout:Aside>
+      <twig:Layout:Aside>
+        <twig:Layout:Sidebar />
+      </twig:Layout:Aside>
     </div>
   </twig:Layout:Article>
 {% endblock %}
