@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/03/2026, 19:48
+ * Last modified by "IDMarinas" on 02/03/2026, 21:17
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -28,6 +28,7 @@ use DateMalformedStringException;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Idm\Bundle\Seo\Service\SeoPageInterface;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,7 +43,10 @@ final class ProfileController extends AbstractController
 {
     use NotificationsTrait;
 
-    public function __construct(private readonly TagAwareCacheInterface $cache) {}
+    public function __construct(
+        private readonly TagAwareCacheInterface $cache,
+        private readonly SeoPageInterface       $seo
+    ) {}
 
     /**
      * @throws InvalidArgumentException
@@ -52,6 +56,8 @@ final class ProfileController extends AbstractController
     {
         /** @var User $user */
         $user = $this->getUser();
+
+        $this->seo->setTitle('Perfil de '.$user->getUserIdentifier());
 
         return $this->render('pages/user/profile/index.html.twig', [
             'stats' => $repository->getUserStats($user),
@@ -63,6 +69,8 @@ final class ProfileController extends AbstractController
     {
         /** @var User $user */
         $user = $this->getUser();
+
+        $this->seo->setTitle('Editar perfil de '.$user->getUserIdentifier());
 
         $form = $this->createForm(EditUserFormType::class, $user);
         $form->handleRequest($request);
@@ -102,6 +110,8 @@ final class ProfileController extends AbstractController
         $form = $this->createForm(ChangePasswordFormType::class);
         $form->handleRequest($request);
 
+        $this->seo->setTitle('Cambiar contraseña de '.$user->getUserIdentifier());
+
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
@@ -129,6 +139,8 @@ final class ProfileController extends AbstractController
     #[Route('/delete', name: 'delete', methods: ['GET'])]
     public function confirmDeletion(): Response
     {
+        $this->seo->setTitle('Confirmar borrado de cuenta');
+
         return $this->render('pages/user/profile/confirm_deletion.html.twig');
     }
 
@@ -140,6 +152,8 @@ final class ProfileController extends AbstractController
     {
         /** @var User $user */
         $user = $this->getUser();
+
+        $this->seo->setTitle('Borrado de cuenta en proceso');
 
         if ($request->isMethod(Request::METHOD_POST)) {
             $user->setDeletedAt(new DateTime('now'));
@@ -157,5 +171,45 @@ final class ProfileController extends AbstractController
         return $this->render('pages/user/profile/deletion_in_progress.html.twig', [
             'delete_remaining_time' => $date->diff(new DateTime('now')),
         ]);
+    }
+
+    /**
+     * Cancela el borrado de la cuenta del usuario, restaurando su estado activo.
+     */
+    #[Route('/delete/cancel', name: 'delete_cancel', methods: ['POST'])]
+    public function cancelDeletion(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if (!$this->isCsrfTokenValid('cancel_deletion', $request->getPayload()->get('_token'))) {
+            $this->addNotification('error', 'Token de seguridad inválido. Por favor, inténtalo de nuevo.');
+
+            return $this->redirectToRoute('app_user_profile_delete_in_progress');
+        }
+
+        if (!$user->isDeleted()) {
+            return $this->redirectToRoute('app_user_profile_index');
+        }
+
+        try {
+            // Restaurar la cuenta estableciendo deletedAt a null
+            $user->setDeletedAt();
+            $entityManager->flush();
+
+            $this->addNotification(
+                'success',
+                '¡Tu cuenta ha sido restaurada correctamente! Ya puedes usar el foro con normalidad.'
+            );
+        } catch (Exception) {
+            $this->addNotification(
+                'error',
+                'Ocurrió un error al restaurar tu cuenta. Por favor, inténtalo de nuevo más tarde.'
+            );
+
+            return $this->redirectToRoute('app_user_profile_delete_in_progress');
+        }
+
+        return $this->redirectToRoute('app_user_profile_index');
     }
 }
