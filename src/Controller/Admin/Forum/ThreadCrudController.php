@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:39
+ * Last modified by "IDMarinas" on 03/03/2026, 21:15
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -37,13 +37,13 @@ use Override;
 final class ThreadCrudController extends AbstractCrudController
 {
     #[Override]
-    public static function getEntityFqcn (): string
+    public static function getEntityFqcn(): string
     {
         return Thread::class;
     }
 
     #[Override]
-    public function configureCrud (Crud $crud): Crud
+    public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->setEntityLabelInSingular('Thread')
@@ -54,7 +54,7 @@ final class ThreadCrudController extends AbstractCrudController
     }
 
     #[Override]
-    public function configureFields (string $pageName): iterable
+    public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')
             ->hideOnForm()
@@ -86,10 +86,13 @@ final class ThreadCrudController extends AbstractCrudController
             ->setLabel('Is Private')
         ;
 
+        yield BooleanField::new('sticky')
+            ->setLabel('Pinned')
+        ;
+
         yield ChoiceField::new('status')
             ->setChoices([
                 'Open'             => ThreadStatusEnum::OPEN,
-                'In Review'        => ThreadStatusEnum::IN_REVIEW,
                 'Waiting Customer' => ThreadStatusEnum::WAITING_CUSTOMER,
                 'Waiting Support'  => ThreadStatusEnum::WAITING_SUPPORT,
                 'Resolved'         => ThreadStatusEnum::RESOLVED,
@@ -97,12 +100,16 @@ final class ThreadCrudController extends AbstractCrudController
             ])
             ->renderAsBadges([
                 ThreadStatusEnum::OPEN->value             => 'success',
-                ThreadStatusEnum::IN_REVIEW->value        => 'info',
                 ThreadStatusEnum::WAITING_CUSTOMER->value => 'warning',
                 ThreadStatusEnum::WAITING_SUPPORT->value  => 'warning',
                 ThreadStatusEnum::RESOLVED->value         => 'success',
                 ThreadStatusEnum::CLOSED->value           => 'secondary',
             ])
+        ;
+
+        yield AssociationField::new('solvedMessage')
+            ->setLabel('Solution Message')
+            ->hideOnIndex()
         ;
 
         yield IntegerField::new('viewCount')
