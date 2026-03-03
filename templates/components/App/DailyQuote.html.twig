@@ -1,0 +1,17 @@
+<twig:Ui:Card class="border bg-purple-50 rounded-xl space-y-3">
+  <twig:Ui:Card:Header>
+    <twig:Ui:Card:Title>
+      <h3 class="text-purple-900">
+        {{ ux_icon('tabler:quote', {class: 'inline-block w-5 h-5 mr-1 text-purple-500'}) }}
+        Frase del día
+      </h3>
+    </twig:Ui:Card:Title>
+  </twig:Ui:Card:Header>
+
+  <twig:Ui:Card:Content>
+    <blockquote class="text-sm text-purple-800 italic leading-relaxed">
+      &ldquo;{{ quote.text }}&rdquo;
+    </blockquote>
+    <p class="text-xs text-purple-600 text-right mt-2">&mdash; {{ quote.author }}</p>
+  </twig:Ui:Card:Content>
+</twig:Ui:Card>
