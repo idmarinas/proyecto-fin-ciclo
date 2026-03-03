@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 23/01/2026, 22:39
+ * Last modified by "IDMarinas" on 03/03/2026, 21:14
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,6 +23,7 @@ use App\Entity\Forum\Message;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -31,13 +32,13 @@ use Override;
 final class MessageCrudController extends AbstractCrudController
 {
     #[Override]
-    public static function getEntityFqcn (): string
+    public static function getEntityFqcn(): string
     {
         return Message::class;
     }
 
     #[Override]
-    public function configureCrud (Crud $crud): Crud
+    public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->setEntityLabelInSingular('Message')
@@ -48,7 +49,7 @@ final class MessageCrudController extends AbstractCrudController
     }
 
     #[Override]
-    public function configureFields (string $pageName): iterable
+    public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')
             ->hideOnForm()
@@ -70,6 +71,10 @@ final class MessageCrudController extends AbstractCrudController
         yield AssociationField::new('parent')
             ->setLabel('Parent Message')
             ->hideOnIndex()
+        ;
+
+        yield BooleanField::new('solution')
+            ->setLabel('Is Solution')
         ;
 
         yield DateTimeField::new('createdAt')
