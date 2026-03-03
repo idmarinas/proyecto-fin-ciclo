@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 03/03/2026, 22:48
+ * Last modified by "IDMarinas" on 03/03/2026, 23:03
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,14 +19,10 @@
 
 namespace App\Scheduler\Handler\Default\User;
 
-use App\Entity\User\User;
 use App\Repository\User\UserRepository;
+use App\Service\UserMailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Scheduler\Attribute\AsPeriodicTask;
 use Throwable;
 
@@ -36,9 +32,8 @@ final readonly class SendDeletionWarningHandler
     public function __construct(
         private UserRepository         $userRepository,
         private EntityManagerInterface $em,
-        private MailerInterface        $mailer,
-        private LoggerInterface        $logger,
-        private string                 $appTitle,
+        private UserMailer             $mailer,
+        private LoggerInterface        $logger
     ) {}
 
     public function __invoke(): void
@@ -51,7 +46,7 @@ final readonly class SendDeletionWarningHandler
 
         foreach ($users as $user) {
             try {
-                $this->sendWarning($user);
+                $this->mailer->sendAccountRemoveWarning($user);
                 $user->markDeletionWarningSent();
                 $this->em->persist($user);
             } catch (Throwable $e) {
@@ -64,31 +59,5 @@ final readonly class SendDeletionWarningHandler
         }
 
         $this->em->flush();
-    }
-
-    /**
-     * @throws TransportExceptionInterface
-     */
-    private function sendWarning(User $user): void
-    {
-        $deletedAt = $user->getDeletedAt();
-
-        $email = new TemplatedEmail()
-            ->to(new Address((string)$user->getEmail(), $user->getUserIdentifier()))
-            ->subject(sprintf('[%s] Tu cuenta será eliminada en menos de 24 horas', $this->appTitle))
-            ->htmlTemplate('emails/user/deletion_warning.html.twig')
-            ->textTemplate('emails/user/deletion_warning.txt.twig')
-            ->context([
-                'user'      => $user,
-                'deletedAt' => $deletedAt,
-            ])
-        ;
-
-        $this->mailer->send($email);
-
-        $this->logger->info('Aviso de eliminación enviado a {email}, eliminación prevista: {date}', [
-            'email' => $user->getEmail(),
-            'date'  => $deletedAt?->format('d/m/Y H:i'),
-        ]);
     }
 }

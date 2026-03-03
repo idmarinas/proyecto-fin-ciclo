@@ -1,0 +1,19 @@
+{{ 'account_deletion_request.title'|trans({}, 'emails') }}
+=====================================
+
+{{ 'account_deletion_request.greeting'|trans({ username: user.userIdentifier }, 'emails') }}
+
+{{ 'account_deletion_request.body'|trans({}, 'emails') }}
+
+⚠ {{ 'account_deletion_request.ip'|trans({ ip: requestIp, date: requestedAt|date('d/m/Y'), time: requestedAt|date('H:i') }, 'emails') }}
+
+📅 {{ 'account_deletion_request.deadline'|trans({ date: deletedAt|date_modify('+30 days')|date('d/m/Y'), time: deletedAt|date_modify('+30 days')|date('H:i') }, 'emails') }}
+
+{{ 'account_deletion_request.not_you'|trans({}, 'emails') }}
+
+{{ 'account_deletion_request.farewell'|trans({}, 'emails') }}
+
+---
+Copyright 2025 - {{ 'now'|date('Y') }} {{ app_title }}
+
+{{ 'footer.note'|trans({ app_title }, 'emails') }}

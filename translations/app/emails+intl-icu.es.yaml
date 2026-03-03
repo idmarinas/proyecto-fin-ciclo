@@ -1,3 +1,15 @@
+# Email de confirmación de solicitud de borrado de cuenta
+account_deletion_request:
+    title: 'Solicitud de borrado de cuenta recibida'
+    greeting: 'Hola, {username}.'
+    body: |
+        Hemos recibido una solicitud para borrar tu cuenta permanentemente.
+        Si has sido tú, no necesitas hacer nada más.
+    ip: 'La solicitud se realizó el {date} a las {time} desde la dirección IP: {ip}.'
+    deadline: 'Tu cuenta y todos tus datos serán eliminados definitivamente el {date} a las {time}. Antes de esa fecha puedes cancelar el proceso desde tu perfil.'
+    not_you: 'Si no has sido tú quien ha solicitado el borrado, accede a tu cuenta inmediatamente y cancela el proceso. Si no puedes acceder, contacta con el soporte.'
+    farewell: 'Si ya no deseas usar el foro, no es necesario que hagas nada más. Lamentamos verte partir.'
+
 # Email de aviso de eliminación definitiva de cuenta
 deletion_warning:
     title: 'Tu cuenta será eliminada en menos de 24 horas'

@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2026, 21:17
+ * Last modified by "IDMarinas" on 03/03/2026, 23:00
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,6 +23,7 @@ use App\Entity\User\User;
 use App\Form\User\ChangePasswordFormType;
 use App\Form\User\EditUserFormType;
 use App\Repository\User\UserRepository;
+use App\Service\UserMailer;
 use App\Traits\Controller\NotificationsTrait;
 use DateMalformedStringException;
 use DateTime;
@@ -33,6 +34,7 @@ use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Cache\TagAwareCacheInterface;
@@ -148,7 +150,7 @@ final class ProfileController extends AbstractController
      * @throws DateMalformedStringException
      */
     #[Route('/delete/in-progress', name: 'delete_in_progress', methods: ['GET', 'POST'])]
-    public function delete(Request $request, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, EntityManagerInterface $entityManager, UserMailer $mailer): Response
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -158,6 +160,12 @@ final class ProfileController extends AbstractController
         if ($request->isMethod(Request::METHOD_POST)) {
             $user->setDeletedAt(new DateTime('now'));
             $entityManager->flush();
+
+            try {
+                $mailer->sendAccountDeletionRequest($user, $request->getClientIp() ?? 'desconocida');
+            } catch (TransportExceptionInterface) {
+                $this->addNotification('error', 'Error al enviar el correo de borrado de cuenta.');
+            }
         }
 
         if (!$user->isDeleted()) {

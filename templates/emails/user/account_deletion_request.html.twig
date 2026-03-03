@@ -1,0 +1,48 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block title %}{{ 'account_deletion_request.title'|trans({}, 'emails') }}{% endblock %}
+
+{% block styles %}
+  <style>
+    body, html { background: #f3f3f3 !important; }
+    .body-border { border-top: 8px solid #f97316; }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <spacer size="16"></spacer>
+
+  <container class="body-border">
+    <row>
+      <columns>
+        <spacer size="32"></spacer>
+
+        <h1 class="text-center">{{ 'account_deletion_request.title'|trans({}, 'emails') }}</h1>
+
+        <spacer size="16"></spacer>
+
+        <p>{{ 'account_deletion_request.greeting'|trans({ username: user.userIdentifier }, 'emails') }}</p>
+
+        <p>{{ 'account_deletion_request.body'|trans({}, 'emails') }}</p>
+
+        <callout class="warning">
+          <p>
+            <strong>{{ 'account_deletion_request.ip'|trans({ ip: requestIp, date: requestedAt|date('d/m/Y'), time: requestedAt|date('H:i') }, 'emails') }}</strong>
+          </p>
+        </callout>
+
+        <callout>
+          <p>
+            {{ 'account_deletion_request.deadline'|trans({ date: deletedAt|date_modify('+30 days')|date('d/m/Y'), time: deletedAt|date_modify('+30 days')|date('H:i') }, 'emails') }}
+          </p>
+        </callout>
+
+        <p>{{ 'account_deletion_request.not_you'|trans({}, 'emails') }}</p>
+
+        <p>{{ 'account_deletion_request.farewell'|trans({}, 'emails') }}</p>
+
+        <spacer size="32"></spacer>
+      </columns>
+    </row>
+  </container>
+{% endblock %}
