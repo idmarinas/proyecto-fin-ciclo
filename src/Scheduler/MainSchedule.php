@@ -2,7 +2,7 @@
 /**
  * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/01/2026, 21:25
+ * Last modified by "IDMarinas" on 03/03/2026, 22:48
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,13 +29,13 @@ use Symfony\Contracts\Cache\CacheInterface;
 #[AsSchedule]
 final readonly class MainSchedule implements ScheduleProviderInterface
 {
-    public function __construct (
+    public function __construct(
         #[Target('scheduler.cache')]
         private CacheInterface $cache,
         private LockFactory    $lockFactory
     ) {}
 
-    public function getSchedule (): Schedule
+    public function getSchedule(): Schedule
     {
         return new Schedule()
             ->stateful($this->cache)

@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/03/2026, 13:41
+ * Last modified by "IDMarinas" on 03/03/2026, 22:50
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,6 +20,7 @@
 namespace App\Repository\User;
 
 use App\Entity\User\User;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\Cache\InvalidArgumentException;
@@ -123,5 +124,41 @@ final class UserRepository extends ServiceEntityRepository implements PasswordUp
                 'last_thread_date'  => $result['last_thread_date'],
             ];
         });
+    }
+
+    /**
+     * Devuelve los usuarios con deletedAt entre 23 h y 25 h desde ahora,
+     * que aún no han recibido el aviso de eliminación definitiva.
+     * El flag deletion_warning_sent garantiza que solo se envía 1 correo.
+     *
+     * @return User[]
+     */
+    public function findPendingDeletionWarning(): array
+    {
+        $filters = $this->getEntityManager()->getFilters();
+        $from = new DateTimeImmutable('+23 hours');
+        $to = new DateTimeImmutable('+25 hours');
+
+        $softDeleteEnabled = $filters->isEnabled('softdeleteable');
+        if ($softDeleteEnabled) {
+            $filters->disable('softdeleteable');
+        }
+
+        $result = $this
+            ->createQueryBuilder('u')
+            ->where('u.deletedAt BETWEEN :from AND :to')
+            ->andWhere('u.deletionWarningSent = false')
+            ->setParameter('from', $from)
+            ->setParameter('to', $to)
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        if ($softDeleteEnabled) {
+            $filters->enable('softdeleteable');
+        }
+
+        return $result;
     }
 }

@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/03/2026, 13:23
+ * Last modified by "IDMarinas" on 03/03/2026, 21:37
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -66,6 +66,12 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     public bool $client = false {
         get => $this->client;
         set => $this->client = $value;
+    }
+
+    /** Marca que ya se ha enviado el aviso de eliminación definitiva en 24h. */
+    #[ORM\Column(type: Types::BOOLEAN, options: ['default' => false])]
+    public bool $deletionWarningSent = false {
+        get => $this->deletionWarningSent;
     }
 
     #[ORM\Column(length: 180, unique: true)]
@@ -239,6 +245,13 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     public function setLastActiveAt(?DateTimeInterface $lastActiveAt): static
     {
         $this->lastActiveAt = $lastActiveAt;
+
+        return $this;
+    }
+
+    public function markDeletionWarningSent(): static
+    {
+        $this->deletionWarningSent = true;
 
         return $this;
     }

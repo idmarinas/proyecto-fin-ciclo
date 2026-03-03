@@ -1,0 +1,44 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block title %}{{ 'deletion_warning.title'|trans({}, 'emails') }}{% endblock %}
+
+{% block styles %}
+  <style>
+    body, html { background: #f3f3f3 !important; }
+    .body-border { border-top: 8px solid #dc2626; }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <spacer size="16"></spacer>
+
+  <container class="body-border">
+    <row>
+      <columns>
+        <spacer size="32"></spacer>
+
+        <h1 class="text-center">{{ 'deletion_warning.title'|trans({}, 'emails') }}</h1>
+
+        <spacer size="16"></spacer>
+
+        <p>{{ 'deletion_warning.greeting'|trans({ username: user.userIdentifier }, 'emails') }}</p>
+
+        <p>{{ 'deletion_warning.body'|trans({}, 'emails') }}</p>
+
+        <callout class="alert">
+          <p>
+            {{ 'deletion_warning.date'|trans({ date: deletedAt|date('d/m/Y') , time: deletedAt|date('H:i') }, 'emails') }}
+          </p>
+        </callout>
+
+        <p>{{ 'deletion_warning.recover'|trans({}, 'emails') }}</p>
+
+        <spacer size="8"></spacer>
+
+        <p>{{ 'deletion_warning.farewell'|trans({}, 'emails') }}</p>
+
+        <spacer size="32"></spacer>
+      </columns>
+    </row>
+  </container>
+{% endblock %}

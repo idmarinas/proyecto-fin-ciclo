@@ -1,3 +1,17 @@
+# Email de aviso de eliminación definitiva de cuenta
+deletion_warning:
+    title: 'Tu cuenta será eliminada en menos de 24 horas'
+    greeting: 'Hola, {username}.'
+    body: |
+        Hemos detectado que tu cuenta está programada para ser eliminada definitivamente.
+        Una vez eliminada, todos tus datos, hilos y mensajes serán borrados de forma permanente
+        y no podrán recuperarse.
+    date: 'La eliminación está programada para el {date} a las {time}.'
+    recover: |
+        Si deseas conservar tu cuenta, inicia sesión antes de esa fecha y cancela
+        el proceso de eliminación desde los ajustes de tu perfil.
+    farewell: 'Si ya no deseas usar el foro, no es necesario que hagas nada. Lamentamos verte partir.'
+
 connect_with_us: 'Conecta con nosotros:'
 contact_info: 'Info de contacto:'
 footer.note: |

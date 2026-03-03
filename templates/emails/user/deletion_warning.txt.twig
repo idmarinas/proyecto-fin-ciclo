@@ -1,0 +1,17 @@
+{{ 'deletion_warning.title'|trans({}, 'emails') }}
+=====================================
+
+{{ 'deletion_warning.greeting'|trans({ username: user.userIdentifier }, 'emails') }}
+
+{{ 'deletion_warning.body'|trans({}, 'emails') }}
+
+⚠ {{ 'deletion_warning.date'|trans({ date: deletedAt|date('d/m/Y'), time: deletedAt|date('H:i') }, 'emails') }}
+
+{{ 'deletion_warning.recover'|trans({}, 'emails') }}
+
+{{ 'deletion_warning.farewell'|trans({}, 'emails') }}
+
+---
+Copyright 2025 - {{ 'now'|date('Y') }} {{ app_title }}
+
+{{ 'footer.note'|trans({ app_title }, 'emails') }}
