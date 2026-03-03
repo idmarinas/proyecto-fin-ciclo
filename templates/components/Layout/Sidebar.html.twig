@@ -1,0 +1,263 @@
+<div
+    class="{{ ('space-y-10 ' ~ attributes.render('class'))|tailwind_merge }}"
+    {{ attributes }}
+>
+  {# ESTADISTICAS DEL FORO #}
+  <twig:Ui:Card class="space-y-3">
+    <twig:Ui:Card:Header>
+      <twig:Ui:Card:Title>
+        <h3>
+          {{ ux_icon('tabler:chart-bar', {class: 'inline-block w-5 h-5 mr-1 text-blue-600'}) }}
+          {{ forum.title|default('Estadísticas globales') }}
+        </h3>
+      </twig:Ui:Card:Title>
+      {% if forum is not null and forum.description %}
+        <p class="text-sm text-gray-500 mt-1">{{ forum.description }}</p>
+      {% endif %}
+    </twig:Ui:Card:Header>
+
+    <twig:Ui:Card:Content>
+      <ul class="text-sm text-gray-700 space-y-2">
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-1.5 text-gray-600">
+            {{ ux_icon('tabler:messages', {class: 'size-4'}) }} Hilos totales
+          </span>
+          <span class="font-semibold tabular-nums">{{ forum_stats.totalThreads|number_format(0, ',', '.') }}</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-1.5 text-gray-600">
+            {{ ux_icon('tabler:message', {class: 'size-4'}) }} Mensajes totales
+          </span>
+          <span class="font-semibold tabular-nums">{{ forum_stats.totalMessages|number_format(0, ',', '.') }}</span>
+        </li>
+
+        <li class="border-t border-gray-100 pt-2 mt-1"></li>
+
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            {{ ux_icon('tabler:circle', {class: 'size-4 text-blue-500'}) }} Abiertos
+          </span>
+          <span class="font-semibold tabular-nums text-blue-600">{{ forum_stats.threadsOpen|number_format(0, ',', '.') }}</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            {{ ux_icon('tabler:clock', {class: 'size-4 text-yellow-500'}) }} En progreso
+          </span>
+          <span class="font-semibold tabular-nums text-yellow-600">{{ forum_stats.threadsInProgress|number_format(0, ',', '.') }}</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            {{ ux_icon('tabler:circle-check', {class: 'size-4 text-green-500'}) }} Resueltos
+          </span>
+          <span class="font-semibold tabular-nums text-green-600">{{ forum_stats.threadsResolved|number_format(0, ',', '.') }}</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            {{ ux_icon('tabler:lock', {class: 'size-4 text-gray-400'}) }} Cerrados
+          </span>
+          <span class="font-semibold tabular-nums text-gray-500">{{ forum_stats.threadsClosed|number_format(0, ',', '.') }}</span>
+        </li>
+      </ul>
+    </twig:Ui:Card:Content>
+  </twig:Ui:Card>
+
+  {# HILOS QUE NECESITAN ATENCION #}
+  <twig:Ui:Card class="bg-orange-50 border border-orange-300">
+    <twig:Ui:Card:Header>
+      <twig:Ui:Card:Title>
+        <h3 class="text-orange-900">
+          {{ ux_icon('tabler:alert-triangle', {class: 'inline-block size-5 mr-1 text-orange-500'}) }}
+          Requieren Ayuda
+        </h3>
+      </twig:Ui:Card:Title>
+    </twig:Ui:Card:Header>
+
+    <twig:Ui:Card:Content>
+      {% if threads_needing_attention is empty %}
+        <p class="text-sm text-orange-700 italic">No hay hilos pendientes. ¡Todo al día!</p>
+      {% else %}
+        <ul class="space-y-3 text-sm">
+          {% for thread in threads_needing_attention %}
+            <li class="flex gap-2 items-start">
+
+              {# Indicador de estado #}
+              {% if thread.status.value == 'open' %}
+                {{ ux_icon('tabler:circle', {class: 'size-4 text-blue-500 mt-0.5 shrink-0'}) }}
+              {% else %}
+                {{ ux_icon('tabler:clock', {class: 'size-4 text-yellow-500 mt-0.5 shrink-0'}) }}
+              {% endif %}
+
+              <div class="flex-1">
+                <a
+                    href="{{ path('app_forums_forum_thread_view', {
+                      slug_forum: thread.forum.parent.slug,
+                      slug_subforum: thread.forum.slug,
+                      slug_thread: thread.slug
+                    }) }}"
+                    class="block font-medium text-orange-900 hover:underline leading-snug truncate"
+                    title="{{ thread.title }}"
+                >
+                  {{ thread.title }}
+                </a>
+
+                <div class="flex flex-wrap items-center gap-x-2 mt-0.5 text-xs text-orange-700">
+                  {# Prioridad: solo se muestra si es > 0 #}
+                  {% if thread.priority > 0 %}
+                    <span class="inline-flex items-center gap-0.5 font-semibold">
+                      {{ ux_icon('tabler:urgent', {class: 'size-3'}) }} P{{ thread.priority }}
+                    </span>
+                  {% endif %}
+
+                  {# Etiquetas de tipo #}
+                  <twig:App:Forum:Thread:Problem :thread="thread" />
+
+                  {# Fecha #}
+                  <span class="ml-auto">
+                    {{ ux_icon('tabler:calendar', {class: 'inline size-3'}) }}
+                    {{ thread.createdAt|date('d/m/Y') }}
+                  </span>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </twig:Ui:Card:Content>
+  </twig:Ui:Card>
+
+  {# ULTIMOS HILOS Y MENSAJES #}
+  <twig:Ui:Card class="space-y-4">
+    <twig:Ui:Card:Header>
+      <twig:Ui:Card:Title>
+        <h3>
+          {{ ux_icon('tabler:clock', {class: 'inline size-5 mr-1 text-blue-600'}) }} Actividad reciente
+        </h3>
+      </twig:Ui:Card:Title>
+    </twig:Ui:Card:Header>
+
+    <twig:Ui:Card:Content>
+      {# --- Ultimos hilos --- #}
+      <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
+        {{ ux_icon('tabler:messages', {class: 'inline w-3.5 h-3.5 mr-0.5'}) }} Últimos hilos
+      </p>
+      {% if latest_threads is empty %}
+        <p class="text-sm text-gray-400 italic">Sin hilos aún.</p>
+      {% else %}
+        <ul class="space-y-2.5 text-sm">
+          {% for thread in latest_threads %}
+            <li>
+              <a
+                  href="{{ path('app_forums_forum_thread_view', {
+                    slug_forum: thread.forum.parent.slug,
+                    slug_subforum: thread.forum.slug,
+                    slug_thread: thread.slug
+                  }) }}"
+                  class="block font-medium text-blue-700 hover:underline leading-snug truncate"
+                  title="{{ thread.title }}"
+              >
+                {{ thread.title }}
+              </a>
+              <span class="text-xs text-gray-400">
+                {{ ux_icon('tabler:user', {class: 'inline size-3'}) }}
+                {{ thread.author ? thread.author.userIdentifier|u.truncate(10, '...') : '—' }}
+                &middot;
+                {{ ux_icon('tabler:calendar', {class: 'inline size-3'}) }}
+                {{ thread.createdAt|date('d/m/Y H:i') }}
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div class="border-t border-gray-100 my-3"></div>
+
+      {# --- Ultimos mensajes --- #}
+      <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
+        {{ ux_icon('tabler:message', {class: 'inline w-3.5 h-3.5 mr-0.5'}) }} Últimos mensajes
+      </p>
+      {% if latest_messages is empty %}
+        <p class="text-sm text-gray-400 italic">Sin mensajes aún.</p>
+      {% else %}
+        <ul class="space-y-2.5 text-sm">
+          {% for message in latest_messages %}
+            <li>
+              <a
+                  href="{{ path('app_forums_forum_thread_view', {
+                    slug_forum: message.thread.forum.parent.slug,
+                    slug_subforum: message.thread.forum.slug,
+                    slug_thread: message.thread.slug
+                  }) }}"
+                  class="block font-medium text-blue-700 hover:underline leading-snug truncate"
+                  title="{{ message.thread.title }}"
+              >
+                {{ message.thread.title }}
+              </a>
+              <p class="text-xs text-gray-500 truncate">{{ message.content|u.truncate(80, '…') }}</p>
+              <span class="text-xs text-gray-400">
+                {{ ux_icon('tabler:user', {class: 'inline size-3'}) }}
+                {{ message.author ? message.author.userIdentifier|u.truncate(10, '...') : '—' }}
+                &middot;
+                {{ ux_icon('tabler:calendar', {class: 'inline size-3'}) }}
+                {{ message.createdAt|date('d/m/Y H:i') }}
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+    </twig:Ui:Card:Content>
+  </twig:Ui:Card>
+
+  {# REGLAS DEL FORO #}
+  {% if show_rules %}
+    <twig:Ui:Card class="space-y-3">
+      <twig:Ui:Card:Header>
+        <twig:Ui:Card:Title><h3>Reglas del foro</h3></twig:Ui:Card:Title>
+      </twig:Ui:Card:Header>
+      <twig:Ui:Card:Content>
+        <ul class="list-disc">
+          <li>Respeto entre usuarios</li>
+          <li>No spam</li>
+          <li>No publicar datos sensibles</li>
+          <li>Usar títulos descriptivos</li>
+        </ul>
+      </twig:Ui:Card:Content>
+      <twig:Ui:Card:Footer>
+        <twig:Ui:Button as="a" href="{{ path('app_forums_rules') }}" class="w-full">
+          {{ ux_icon('tabler:shield', {class: 'inline'}) }} Ver reglas completas
+        </twig:Ui:Button>
+      </twig:Ui:Card:Footer>
+    </twig:Ui:Card>
+  {% endif %}
+
+
+  {# 10. BLOQUE: Seguridad y privacidad #}
+  <twig:Ui:Card class="bg-red-50">
+    <twig:Ui:Card:Header>
+      <twig:Ui:Card:Title>
+        <h3 class="text-lg text-red-900">
+          {{ ux_icon('tabler:shield', {class: 'inline-block size-5 mr-1 text-red-500'}) }}
+          Seguridad
+        </h3>
+      </twig:Ui:Card:Title>
+    </twig:Ui:Card:Header>
+    <twig:Ui:Card:Content>
+      <p class="text-sm text-red-800">
+        Mantén tu cuenta segura activando la verificación en dos pasos.
+      </p>
+    </twig:Ui:Card:Content>
+    {% if is_granted('ROLE_USER') %}
+      <twig:Ui:Card:Footer>
+        <twig:Ui:Button as="a" variant="destructive" href="{{ path('app_user_profile_index') }}" class="w-full">
+          Configurar seguridad
+        </twig:Ui:Button>
+      </twig:Ui:Card:Footer>
+    {% endif %}
+  </twig:Ui:Card>
+
+  {# FRASE DEL DIA #}
+  <twig:App:DailyQuote />
+
+  {# ESTADO DE LOS SERVICIOS #}
+  <twig:App:ServiceStatus />
+</div>
