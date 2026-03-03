@@ -1,0 +1,33 @@
+<twig:Ui:Card class="space-y-3">
+  <twig:Ui:Card:Header>
+    <twig:Ui:Card:Title>
+      <h3>
+        {{ ux_icon('tabler:server', {class: 'inline-block size-5 mr-1 text-gray-600'}) }}
+        Estado de los servicios
+      </h3>
+    </twig:Ui:Card:Title>
+
+    {# Resumen global #}
+    <p class="flex items-center gap-1.5 text-xs mt-1 font-medium {{ global_status.color }}">
+      {{ ux_icon(global_status.icon, {class: 'size-3.5 shrink-0'}) }}
+      {{ global_status.label }}
+    </p>
+  </twig:Ui:Card:Header>
+
+  <twig:Ui:Card:Content>
+    <ul class="space-y-2 text-sm">
+      {% for service in services %}
+        <li class="flex items-center justify-between gap-2">
+          <span class="flex items-center gap-1.5 text-gray-700 min-w-0">
+            {{ ux_icon(service.icon, {class: 'size-4 shrink-0 text-gray-400'}) }}
+            <span class="truncate">{{ service.name }}</span>
+          </span>
+          <span class="flex items-center gap-1 shrink-0 font-medium {{ service.color }}">
+            {{ ux_icon(service.statusIcon, {class: 'size-4'}) }}
+            <span class="text-xs">{{ service.label }}</span>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  </twig:Ui:Card:Content>
+</twig:Ui:Card>
