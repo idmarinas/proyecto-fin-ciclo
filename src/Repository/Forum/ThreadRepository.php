@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2026, 23:42
+ * Last modified by "IDMarinas" on 03/03/2026, 19:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -135,6 +135,42 @@ final class ThreadRepository extends ServiceEntityRepository
 
         $this->getEntityManager()->persist($forum);
         $this->getEntityManager()->flush();
+    }
+
+    /**
+     * Devuelve hasta 5 hilos de máxima prioridad que necesitan atención.
+     *
+     * Criterio de ordenación global (una sola query):
+     *   1. priority DESC          → los más urgentes primero
+     *   2. unanswered DESC        → sin respuesta (OPEN) antes que en progreso (WAITING_*)
+     *   3. createdAt ASC          → más antiguos primero como desempate final
+     *
+     * @return Thread[]
+     */
+    public function findNeedingAttention(?Forum $forum = null, int $limit = 5): array
+    {
+        $qb = $this
+            ->createQueryBuilder('t')
+            ->andWhere('t.private = false')
+            ->andWhere('t.status IN (:statuses)')
+            ->setParameter('statuses', [
+                ThreadStatusEnum::OPEN,
+                ThreadStatusEnum::WAITING_CUSTOMER,
+                ThreadStatusEnum::WAITING_SUPPORT,
+            ])
+            ->addSelect('CASE WHEN t.status = :open THEN 1 ELSE 0 END AS HIDDEN unanswered')
+            ->setParameter('open', ThreadStatusEnum::OPEN)
+            ->addOrderBy('unanswered', 'DESC')
+            ->orderBy('t.priority', 'DESC')
+            ->addOrderBy('t.createdAt', 'ASC')
+            ->setMaxResults($limit)
+        ;
+
+        if (null !== $forum) {
+            $qb->andWhere('t.forum = :forum')->setParameter('forum', $forum);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     /**
