@@ -45,7 +45,7 @@ framework:
 
                 # El hilo se marca como resuelto (staff o creador del hilo)
                 resolve:
-                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject) and not subject.isDeleted()'
+                    guard: '!subject.isDeleted() and (is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject))'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
@@ -54,7 +54,7 @@ framework:
 
                 # Cierre definitivo (solo staff o creador)
                 close:
-                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject) and not subject.isDeleted()'
+                    guard: '!subject.isDeleted() and (is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject))'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
