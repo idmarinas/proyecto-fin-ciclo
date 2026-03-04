@@ -2,16 +2,37 @@
 
 {% props thread %}
 
-<twig:Ui:Item class="items-start" id="thread-view-{{ thread.id }}">
+{% set thread_deleted  = thread.deletedAt is not null %}
+{% set author_deleted  = thread.author is not null and thread.author.deletedAt is not null %}
+
+{# ── Banner: hilo borrado ── #}
+{% if thread_deleted %}
+  <div class="w-full mb-0 flex items-center gap-2 rounded-t bg-red-600 px-4 py-2 text-sm font-semibold text-white">
+    <twig:ux:icon name="tabler:trash" class="size-4 shrink-0" />
+    Este hilo ha sido borrado
+    {% if thread.deletedAt %}
+      <span class="ml-auto font-normal text-red-200 text-xs">{{ thread.deletedAt|date("d/m/Y H:i") }}</span>
+    {% endif %}
+  </div>
+{% endif %}
+
+<twig:Ui:Item
+    class="items-start {{ thread_deleted ? 'opacity-70 border-red-300 bg-red-50 dark:bg-red-950/30 rounded-t-none' : '' }}"
+    id="thread-view-{{ thread.id }}"
+>
   <twig:Ui:Item:Header>
-    <twig:Ui:Item:Title><h1 class="text-2xl">{{ thread.title }}</h1></twig:Ui:Item:Title>
+    <twig:Ui:Item:Title>
+      <h1 class="text-2xl {{ thread_deleted ? 'line-through text-red-400' : '' }}">{{ thread.title }}</h1>
+    </twig:Ui:Item:Title>
   </twig:Ui:Item:Header>
+
   <twig:Ui:Item:Media class="w-full md:w-auto flex flex-col">
-    {{ parse_img(thread.forum.image, thread.forum.title, { class: 'w-full h-84 object-cover rounded-xl shadow-md'}) }}
+    {{ parse_img(thread.forum.image, thread.forum.title, {
+      class: 'w-full h-84 object-cover rounded-xl shadow-md' ~ (thread_deleted ? ' grayscale opacity-50' : '')
+    }) }}
     <div class="w-full flex items-center justify-between gap-2">
       <twig:App:Forum:Thread:View:Participants :thread="thread" />
-      
-      {% if thread.public %}
+      {% if thread.public and not thread_deleted %}
         <twig:App:Button:Share where="thread" />
       {% endif %}
     </div>
@@ -19,7 +40,10 @@
 
   {# Pregunta + metadatos #}
   <twig:Ui:Item:Content class="md:col-span-2">
+    {#    {% if not thread_deleted %} #}
     <twig:App:Forum:Thread:View:Actions :thread="thread" />
+    {#    {% endif %} #}
+
     <div class="flex items-center text-sm text-gray-700">
       <span class="flex gap-2 items-center">{{ ux_icon('tabler:folder', {class: 'size-4'}) }} Subforo:</span>
       <twig:Ui:Button
@@ -38,7 +62,8 @@
         {{ thread.messageCount }} respuestas
       </div>
     </div>
-    <div class="flex items-center gap-3">
+
+    <div class="flex flex-wrap items-center gap-3">
       {# Estado del hilo #}
       <twig:App:Forum:Thread:Status:Icon
           :status="thread.status"
@@ -47,28 +72,48 @@
       />
       {# Tipo de hilo #}
       <twig:App:Badge:IsPrivate :is_private="thread.private" />
-      {# Tipo de usuario #}
-      <twig:App:Badge:Role :author="thread.author" />
+      {# Rol del autor — omitir si está borrado #}
+      {% if not author_deleted %}
+        <twig:App:Badge:Role :author="thread.author" />
+      {% else %}
+        <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 border border-amber-200 px-2.5 py-0.5 text-xs font-medium text-amber-700">
+            <twig:ux:icon name="tabler:user-x" class="size-3" />
+            Autor borrado
+          </span>
+      {% endif %}
       {# Clasificación del problema #}
       <twig:App:Forum:Thread:Problem :thread="thread" />
     </div>
 
-    <div class="prose prose-slate max-w-none border-t border-t-primary">
+    <div class="prose prose-slate max-w-none border-t border-t-primary {{ thread_deleted ? 'opacity-50 select-none' : '' }}">
       {{ thread.description|raw }}
     </div>
   </twig:Ui:Item:Content>
+
   <twig:Ui:Item:Footer>
-    <div class="flex items-center gap-2 text-sm text-gray-700">
+    <div class="flex items-center gap-2 text-sm {{ thread_deleted ? 'text-red-400' : 'text-gray-700' }}">
       {{ ux_icon('tabler:user', {class: 'size-4'}) }}
-      Creado por <em>{{ thread.createdBy }}</em> el {{ thread.createdAt|date("d/m/Y H:i") }}
+      Creado por
+      {# Avatar gestiona internamente el usuario borrado #}
+      {% if author_deleted %}
+        <em class="{{ thread_deleted ? 'text-red-300' : 'text-amber-600' }}">[Usuario borrado]</em>
+      {% else %}
+        <em>{{ thread.createdBy }}</em>
+      {% endif %}
+      el {{ thread.createdAt|date("d/m/Y H:i") }}
     </div>
 
-    {% if thread.status != 'unanswered' %}
-      <div class="flex items-center gap-2 text-sm text-gray-700">
+    {% if thread.lastMessage is not null %}
+      <div class="flex items-center gap-2 text-sm {{ thread_deleted ? 'text-red-400' : 'text-gray-700' }}">
         {{ ux_icon('tabler:clock', {class: 'size-4'}) }}
         Última respuesta el {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
         {{ ux_icon('tabler:user', {class: 'size-4'}) }}
-        <em>{{ thread.lastMessageAuthorName }}</em>
+        {% set last_author = thread.lastMessage.author %}
+        {% if last_author is not null and last_author.deletedAt is not null %}
+          <em class="{{ thread_deleted ? 'text-red-300' : 'text-amber-600' }}">[Usuario borrado]</em>
+        {% else %}
+          <em>{{ thread.lastMessageAuthorName }}</em>
+        {% endif %}
       </div>
     {% endif %}
   </twig:Ui:Item:Footer>

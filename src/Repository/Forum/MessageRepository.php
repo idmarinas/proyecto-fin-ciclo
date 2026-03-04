@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2026, 23:42
+ * Last modified by "IDMarinas" on 04/03/2026, 22:13
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -177,7 +177,7 @@ final class MessageRepository extends ServiceEntityRepository
             ->createQuery(
                 'SELECT DISTINCT u FROM App\Entity\User\User u
                  JOIN App\Entity\Forum\Message m WITH m.author = u
-                 WHERE m.thread = :thread AND m.deletedAt IS NULL'
+                 WHERE m.thread = :thread'
             )
             ->setParameter('thread', $thread)
             ->getResult()
