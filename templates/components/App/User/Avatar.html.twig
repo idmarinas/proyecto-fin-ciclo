@@ -1,7 +1,17 @@
-{# @var user \App\Entity\User\User #}
+{# @var user \App\Entity\User\User|null #}
 
 {% props user, tooltip = false %}
-{% if tooltip %}
+
+{# ── Usuario borrado: avatar genérico (deletedAt no nulo) ── #}
+{% set is_deleted = user is null or user.deletedAt is not null %}
+
+{% if is_deleted %}
+  <twig:Ui:Avatar {{ ...attributes }}>
+    <twig:Ui:Avatar:Fallback class="bg-amber-100 text-amber-600 border border-amber-300">
+      {{ ux_icon('tabler:user-x', {class: 'size-4'}) }}
+    </twig:Ui:Avatar:Fallback>
+  </twig:Ui:Avatar>
+{% elseif tooltip %}
   <twig:Ui:Tooltip id="user-avatar-{{ user.id }}">
     <twig:Ui:Tooltip:Trigger>
       <twig:Ui:Avatar {{ ...trigger_attrs, ...attributes }}>
