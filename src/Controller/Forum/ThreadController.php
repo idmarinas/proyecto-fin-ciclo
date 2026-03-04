@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 02/03/2026, 23:14
+ * Last modified by "IDMarinas" on 04/03/2026, 21:56
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -60,20 +60,20 @@ final class ThreadController extends AbstractController
 
     public function __construct(
         #[Target('thread_status')]
-        private readonly WorkflowInterface $workflow
+        private readonly WorkflowInterface $workflow,
+        private readonly Security          $security
     ) {}
 
     #[Route('', name: 'threads', requirements: ['page' => Requirement::POSITIVE_INT], methods: ['GET'])]
     public function index(
         #[MapEntity(mapping: ['slug_subforum' => 'slug'])]
         Forum              $forum,
-        Security           $security,
         ThreadRepository   $threadRepository,
         PaginatorInterface $paginator,
         Request            $request
     ): Response {
-        $canSeePrivate = $security->isGranted('ROLE_ALLOW_PRIVATE_THREADS_VIEW');
-        $canSeeDeleted = $security->isGranted('ROLE_ALLOW_VIEW_THREAD_DELETED');
+        $canSeePrivate = $this->security->isGranted('ROLE_ALLOW_PRIVATE_THREADS_VIEW');
+        $canSeeDeleted = $this->security->isGranted('ROLE_ALLOW_VIEW_THREAD_DELETED');
 
         $query = $threadRepository->findAllByForum($forum, $canSeePrivate, $canSeeDeleted, $this->getUser());
         $pagination = $paginator->paginate($query, $request->query->getInt('page', 1));
@@ -244,13 +244,15 @@ final class ThreadController extends AbstractController
             }
         }
 
-        $pagination = $paginator->paginate($messageRepository->findAllByThread($thread), $page);
+        $canSeeDeleted = $this->security->isGranted('ROLE_ALLOW_VIEW_MESSAGE_DELETED');
+        $query = $messageRepository->findAllByThread($thread, $canSeeDeleted);
+
+        $pagination = $paginator->paginate($query, $page);
 
         return $this->render('pages/forum/threads/view.html.twig', [
             'thread'     => $thread,
             'pagination' => $pagination,
             'form'       => $form,
-
         ]);
     }
 
