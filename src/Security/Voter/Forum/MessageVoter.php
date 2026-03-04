@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2026, 20:59
+ * Last modified by "IDMarinas" on 04/03/2026, 23:28
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -31,18 +31,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class MessageVoter extends Voter
 {
-    public const string EDIT         = 'message.edit';
-    public const string DELETE       = 'message.delete';
-    public const string REMOVE       = 'message.remove';
-    public const string OWNER        = 'message.owner';
-    public const string VIEW_DELETED = 'message.view.deleted';
+    public const string EDIT   = 'message.edit';
+    public const string DELETE = 'message.delete';
+    public const string REMOVE = 'message.remove';
+    public const string OWNER  = 'message.owner';
 
     public const array  ATTRIBUTES = [
         self::EDIT,
         self::DELETE,
         self::REMOVE,
         self::OWNER,
-        self::VIEW_DELETED,
     ];
 
     public function __construct(
@@ -84,11 +82,10 @@ final class MessageVoter extends Voter
         }
 
         return match ($attribute) {
-            self::OWNER        => $this->isOwner($subject, $token),
-            self::VIEW_DELETED => $this->canViewDeleted($token),
+            self::OWNER => $this->isOwner($subject, $token),
             self::DELETE,
-            self::EDIT         => $this->canEditDelete($subject, $token),
-            default            => false,
+            self::EDIT  => $this->canEditDelete($subject, $token),
+            default     => false,
         };
     }
 
