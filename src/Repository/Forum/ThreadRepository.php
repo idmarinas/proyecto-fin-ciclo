@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 03/03/2026, 19:46
+ * Last modified by "IDMarinas" on 04/03/2026, 21:30
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -40,8 +40,12 @@ final class ThreadRepository extends ServiceEntityRepository
         parent::__construct($registry, Thread::class);
     }
 
-    public function findAllByForum(Forum $forum, bool $canSeePrivate, ?User $user = null): QueryBuilder
-    {
+    public function findAllByForum(
+        Forum $forum,
+        bool  $canSeePrivate,
+        bool  $canSeeDeleted,
+        ?User $user = null
+    ): QueryBuilder {
         $query = $this
             ->createQueryBuilder('t')
             ->where('t.forum = :forum')
@@ -57,13 +61,24 @@ final class ThreadRepository extends ServiceEntityRepository
 
         if (null === $user) {
             $query->andWhere('t.private = false');
-        } else {
-            if (!$canSeePrivate) {
-                $query
-                    ->andWhere('t.private = false OR t.private = true AND t.author = :user')
-                    ->setParameter('user', $user)
-                ;
-            }
+        } elseif (!$canSeePrivate) {
+            $query
+                ->andWhere('t.private = false OR t.private = true AND t.author = :user')
+                ->setParameter('user', $user)
+            ;
+        }
+
+        if (null === $user) {
+            $query->andWhere('t.deletedAt IS NULL');
+        } elseif ($canSeeDeleted) {
+            // Hilos borrados siempre al final
+            $query
+                ->addSelect('CASE WHEN t.deletedAt IS NOT NULL THEN 0 ELSE 1 END AS HIDDEN is_not_deleted')
+                ->orderBy('is_not_deleted', 'DESC')
+                ->addOrderBy('is_active', 'DESC')
+                ->addOrderBy('effective_priority', 'DESC')
+                ->addOrderBy('t.createdAt', 'DESC')
+            ;
         }
 
         return $query;
@@ -79,6 +94,7 @@ final class ThreadRepository extends ServiceEntityRepository
             ->innerJoin('t.lastMessage', 'm')
             ->where('t.forum = :forum')
             ->andWhere('t.lastMessage IS NOT NULL')
+            ->andWhere('t.deletedAt IS NULL')
             ->orderBy('m.createdAt', 'DESC')
             ->setMaxResults(1)
             ->setParameter('forum', $forum)
@@ -93,6 +109,7 @@ final class ThreadRepository extends ServiceEntityRepository
             ->createQueryBuilder('t')
             ->select('COUNT(t)')
             ->where('t.private = true AND t.author = :user')
+            ->andWhere('t.deletedAt IS NULL')
             ->andWhere('t.status !=  :closed OR t.status != :resolved')
             ->setParameters(
                 new ArrayCollection([
@@ -152,6 +169,7 @@ final class ThreadRepository extends ServiceEntityRepository
         $qb = $this
             ->createQueryBuilder('t')
             ->andWhere('t.private = false')
+            ->andWhere('t.deletedAt IS NULL')
             ->andWhere('t.status IN (:statuses)')
             ->setParameter('statuses', [
                 ThreadStatusEnum::OPEN,
@@ -174,7 +192,7 @@ final class ThreadRepository extends ServiceEntityRepository
     }
 
     /**
-     * Devuelve los 3 últimos hilos creados en un foro concreto (no privados).
+     * Devuelve los 3 últimos hilos creados en un foro concreto (no privados, no borrados).
      *
      * @return Thread[]
      */
@@ -184,6 +202,7 @@ final class ThreadRepository extends ServiceEntityRepository
             ->createQueryBuilder('t')
             ->where('t.forum = :forum')
             ->andWhere('t.private = false')
+            ->andWhere('t.deletedAt IS NULL')
             ->orderBy('t.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->setParameter('forum', $forum)
@@ -193,7 +212,7 @@ final class ThreadRepository extends ServiceEntityRepository
     }
 
     /**
-     * Devuelve los 3 últimos hilos creados en todos los foros (no privados).
+     * Devuelve los 3 últimos hilos creados en todos los foros (no privados, no borrados).
      *
      * @return Thread[]
      */
@@ -202,6 +221,7 @@ final class ThreadRepository extends ServiceEntityRepository
         return $this
             ->createQueryBuilder('t')
             ->andWhere('t.private = false')
+            ->andWhere('t.deletedAt IS NULL')
             ->orderBy('t.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
