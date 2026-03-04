@@ -73,10 +73,10 @@ final class ThreadController extends AbstractController
         Request            $request
     ): Response {
         $canSeePrivate = $security->isGranted('ROLE_ALLOW_PRIVATE_THREADS_VIEW');
-        $pagination = $paginator->paginate(
-            $threadRepository->findAllByForum($forum, $canSeePrivate, $this->getUser()),
-            $request->query->getInt('page', 1)
-        );
+        $canSeeDeleted = $security->isGranted('ROLE_ALLOW_VIEW_THREAD_DELETED');
+
+        $query = $threadRepository->findAllByForum($forum, $canSeePrivate, $canSeeDeleted, $this->getUser());
+        $pagination = $paginator->paginate($query, $request->query->getInt('page', 1));
 
         return $this->render('pages/forum/threads/index.html.twig', [
             'forum'      => $forum,
