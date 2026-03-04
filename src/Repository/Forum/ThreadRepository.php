@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2026, 22:56
+ * Last modified by "IDMarinas" on 04/03/2026, 23:44
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -68,9 +68,9 @@ final class ThreadRepository extends ServiceEntityRepository
             ;
         }
 
-        if (null === $user) {
+        if (null === $user || !$canSeeDeleted) {
             $query->andWhere('t.deletedAt IS NULL');
-        } elseif ($canSeeDeleted) {
+        } else {
             // Hilos borrados siempre al final
             $query
                 ->addSelect('CASE WHEN t.deletedAt IS NOT NULL THEN 0 ELSE 1 END AS HIDDEN is_not_deleted')
