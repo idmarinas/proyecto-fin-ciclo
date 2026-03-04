@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2026, 23:00
+ * Last modified by "IDMarinas" on 04/03/2026, 23:41
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -106,8 +106,8 @@ final class ThreadVoter extends Voter
     private function canView(Thread $subject, TokenInterface $token): bool
     {
         // Un hilo borrado no es accesible para el resto de usuarios
-        if ($this->decision->decide($token, ['ROLE_ALLOW_VIEW_DELETED_THREADS']) && $subject->isDeleted()) {
-            return true;
+        if ($subject->isDeleted()) {
+            return $this->decision->decide($token, ['ROLE_ALLOW_VIEW_THREAD_DELETED']);
         }
 
         if ($subject->isPublic() || $this->decision->decide($token, ['ROLE_ALLOW_PRIVATE_THREADS_VIEW'])) {
