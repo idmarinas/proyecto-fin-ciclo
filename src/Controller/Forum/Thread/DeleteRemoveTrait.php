@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 23:38
+ * Last modified by "IDMarinas" on 04/03/2026, 22:53
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -50,6 +50,10 @@ trait DeleteRemoveTrait
     ): Response {
         $this->denyAccessUnlessGranted(ThreadVoter::{strtoupper($type)}, $thread);
         $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+        if ($thread->isDeleted()) {
+            $type = 'remove';
+        }
 
         $template = 'pages/forum/threads/streams/delete.stream.html.twig';
 
