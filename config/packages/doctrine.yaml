@@ -37,7 +37,7 @@ doctrine:
         filters:
             softdeleteable:
                 class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
-                enabled: true
+                enabled: false
 
 #when@test:
 #    doctrine:
