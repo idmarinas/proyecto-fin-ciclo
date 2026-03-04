@@ -296,5 +296,7 @@ Separate security contexts for admin (`/admin`) and main app (`/user`, `/`) with
 Production deployments use Deployer (`deploy.php`) with custom task orchestration in `.deployer/`. Never use manual Docker commands for production—use Deployer tasks instead.
 
 ---
+THIS FILE MUST ALWAYS BE UPDATED WITH THE CHANGES MADE TO THE PROJECT.
+---
 
     **Last Updated**: January 2026 | **Symfony Version**: 8.0 | **PHP**: ≥8.4
