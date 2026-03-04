@@ -30,8 +30,7 @@
                     name="{{ forum.totalMessages > 0 ? 'tabler:messages' : 'tabler:messages-off' }}"
                     class="text-blue-600 size-6"
                 />
-                <span>Hilos <twig:Ui:Badge
-                      class="bg-blue-100 text-blue-600">{{ forum.totalThreads }}</twig:Ui:Badge></span>
+                <span>Hilos <twig:Ui:Badge class="bg-blue-100 text-blue-600">{{ forum.totalThreads }}</twig:Ui:Badge></span>
               </div>
               <div class="flex items-center gap-2">
                 <twig:ux:icon name="tabler:message" class="text-blue-600 size-6" />
@@ -98,77 +97,22 @@
     <twig:Ui:Separator class="my-6" />
 
     <twig:Layout:Section class="space-y-6">
-      {# Lista de hilos #}
       {% for thread in pagination %}
-        <twig:Ui:Item
-            variant="outline"
-            as="a"
-            href="{{ path('app_forums_forum_thread_view', {
-              slug_forum: forum.parent.slug,
-              slug_subforum: forum.slug,
-              slug_thread: thread.slug
-            }) }}"
-        >
-          <twig:Ui:Item:Header>
-            <div class="flex items-center gap-3">
-              {# Tipo de hilo #}
-              <twig:App:Badge:IsPrivate :is_private="thread.private" />
-              {# Tipo de usuario #}
-              <twig:App:Badge:Role :author="thread.author" />
-              {# Clasificación del problema #}
-              <twig:App:Forum:Thread:Problem :thread="thread" />
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="flex items-center gap-1">
-                {{ ux_icon(thread.messageCount > 0 ? 'tabler:message' : 'tabler:message-off', {class: 'size-6'}) }}
-                {{ thread.messageCount }} respuestas
-              </div>
+        {% set thread_deleted  = thread.deletedAt is not null %}
+        {% set author_deleted  = thread.author is not null and thread.author.deletedAt is not null %}
 
-              <twig:App:Forum:Thread:Status:Icon
-                  :status="thread.status"
-                  :replies="thread.messageCount"
-                  class="size-6"
-                  colorize text
-              />
-            </div>
+        {# ── Hilo borrado: solo visible para admin/superadmin ── #}
+        {% if thread_deleted %}
+          <twig:App:Forum:Thread:Item:Deleted
+              :forum="forum"
+              :thread="thread"
+              :author_deleted="author_deleted"
+          />
+          {# ── Hilo activo (normal) ── #}
+        {% else %}
+          <twig:App:Forum:Thread:Item :forum="forum" :thread="thread" :author_deleted="author_deleted" />
+        {% endif %}
 
-          </twig:Ui:Item:Header>
-          <twig:Ui:Item:Media>
-            <twig:App:Forum:Thread:Status:Icon
-                :status="thread.status"
-                :replies="thread.messageCount"
-                class="size-19"
-                colorize
-            />
-          </twig:Ui:Item:Media>
-
-          <twig:Ui:Item:Content class="flex-1 space-y-3">
-            <twig:Ui:Item:Title><h3>{{ thread.title }}</h3></twig:Ui:Item:Title>
-            <twig:Ui:Item:Description>
-              {{ thread.description|raw }}
-            </twig:Ui:Item:Description>
-          </twig:Ui:Item:Content>
-
-          <twig:Ui:Item:Footer class="flex items-center justify-between">
-            <div class="flex gap-1 items-center">
-              Creado por
-              <twig:App:User:Avatar size="sm" :user="thread.author" />
-              <em>{{ thread.author|u.truncate(10, '...') }}</em> el
-              <twig:ux:icon name="tabler:clock" class="size-4" /> {{ thread.createdAt|date("d/m/Y H:i") }}
-            </div>
-            <div class="flex gap-1 items-center">
-              {% if thread.lastMessage %}
-                Última respuesta el
-                <twig:ux:icon name="tabler:clock" class="size-4" />
-                {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
-                <twig:App:User:Avatar size="sm" :user="thread.lastMessage.author" />
-                <em>{{ thread.lastMessage.author|u.truncate(10, '...') }}</em>
-              {% else %}
-                Sin respuestas todavía
-              {% endif %}
-            </div>
-          </twig:Ui:Item:Footer>
-        </twig:Ui:Item>
       {% else %}
         <twig:Ui:Alert variant="warning" class="p-5">
           <twig:ux:icon name="tabler:message-off" class="size-12" />
