@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2026, 21:30
+ * Last modified by "IDMarinas" on 04/03/2026, 22:56
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -125,7 +125,14 @@ final class ThreadRepository extends ServiceEntityRepository
 
     public function deleteRemove(Thread $thread, string $type): void
     {
-        $thread->setDeletedAt(new DateTime());
+        $date = new DateTime();
+
+        if ($thread->isDeleted()) {
+            $type = 'remove';
+            $date = $thread->getDeletedAt();
+        }
+
+        $thread->setDeletedAt($date);
 
         $this->deleteThreadMessages($thread, $type);
 
