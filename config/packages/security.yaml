@@ -10,7 +10,9 @@ security:
         # Provider personalizado que permite cargar usuarios con cuenta marcada como borrada
         # para poder redirigirles a la página de recuperación de cuenta tras el login.
         app_user_provider:
-            id: App\Security\Provider\SoftDeleteableUserProvider
+            entity:
+                class: App\Entity\User\User
+                property: email
 
     firewalls:
         dev:
