@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 27/02/2026, 23:43
+ * Last modified by "IDMarinas" on 04/03/2026, 23:00
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -105,6 +105,11 @@ final class ThreadVoter extends Voter
 
     private function canView(Thread $subject, TokenInterface $token): bool
     {
+        // Un hilo borrado no es accesible para el resto de usuarios
+        if ($this->decision->decide($token, ['ROLE_ALLOW_VIEW_DELETED_THREADS']) && $subject->isDeleted()) {
+            return true;
+        }
+
         if ($subject->isPublic() || $this->decision->decide($token, ['ROLE_ALLOW_PRIVATE_THREADS_VIEW'])) {
             return true;
         }
@@ -121,7 +126,7 @@ final class ThreadVoter extends Voter
 
     private function canEditDelete(Thread $subject, TokenInterface $token): bool
     {
-        if (null === $subject->getCreatedAt()) {
+        if (null === $subject->getCreatedAt() || $subject->isDeleted()) {
             return false;
         }
 
@@ -144,6 +149,10 @@ final class ThreadVoter extends Voter
 
     private function canClose(Thread $subject, TokenInterface $token): bool
     {
+        if ($subject->isDeleted()) {
+            return false;
+        }
+
         return $this->decision->decide($token, ['ROLE_SUPPORT']) || $this->isOwner($subject, $token);
     }
 
