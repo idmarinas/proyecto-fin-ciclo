@@ -38,18 +38,24 @@ final class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
-    public function findAllByThread(Thread $thread): QueryBuilder
+    public function findAllByThread(Thread $thread, bool $canSeeDeleted): QueryBuilder
     {
-        return $this
+        $query = $this
             ->createQueryBuilder('m')
             ->where('m.thread = :thread')
             ->orderBy('m.createdAt', 'ASC')
             ->setParameter('thread', $thread)
         ;
+
+        if (!$canSeeDeleted) {
+            $query->andWhere('m.deletedAt IS NULL');
+        }
+
+        return $query;
     }
 
     /**
-     * Cuenta los mensajes visibles (no eliminados por SoftDelete) de un hilo.
+     * Cuenta los mensajes visibles (no borrados) de un hilo.
      */
     public function countMessagesForThread(Thread $thread): int
     {
@@ -57,6 +63,7 @@ final class MessageRepository extends ServiceEntityRepository
             ->createQueryBuilder('m')
             ->select('COUNT(m.id)')
             ->where('m.thread = :thread')
+            ->andWhere('m.deletedAt IS NULL')
             ->setParameter('thread', $thread)
             ->getQuery()
             ->getSingleScalarResult()
@@ -64,14 +71,15 @@ final class MessageRepository extends ServiceEntityRepository
     }
 
     /**
-     * Devuelve el último mensaje visible (no eliminado por SoftDelete) de un hilo.
-     * Devuelve null si el hilo no tiene ningún mensaje.
+     * Devuelve el último mensaje visible (no borrado) de un hilo.
+     * Devuelve null si el hilo no tiene ningún mensaje activo.
      */
     public function findLastMessageForThread(Thread $thread): ?Message
     {
         return $this
             ->createQueryBuilder('m')
             ->where('m.thread = :thread')
+            ->andWhere('m.deletedAt IS NULL')
             ->orderBy('m.createdAt', 'DESC')
             ->setMaxResults(1)
             ->setParameter('thread', $thread)
@@ -113,7 +121,7 @@ final class MessageRepository extends ServiceEntityRepository
     }
 
     /**
-     * Devuelve los 3 últimos mensajes publicados en un foro concreto.
+     * Devuelve los últimos mensajes publicados en un foro concreto (no borrados).
      *
      * @return Message[]
      */
@@ -124,6 +132,8 @@ final class MessageRepository extends ServiceEntityRepository
             ->join('m.thread', 't')
             ->where('t.forum = :forum')
             ->andWhere('t.private = false')
+            ->andWhere('t.deletedAt IS NULL')
+            ->andWhere('m.deletedAt IS NULL')
             ->orderBy('m.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->setParameter('forum', $forum)
@@ -133,7 +143,7 @@ final class MessageRepository extends ServiceEntityRepository
     }
 
     /**
-     * Devuelve los 3 últimos mensajes publicados en todos los foros.
+     * Devuelve los últimos mensajes publicados en todos los foros (no borrados).
      *
      * @return Message[]
      */
@@ -143,6 +153,8 @@ final class MessageRepository extends ServiceEntityRepository
             ->createQueryBuilder('m')
             ->join('m.thread', 't')
             ->andWhere('t.private = false')
+            ->andWhere('t.deletedAt IS NULL')
+            ->andWhere('m.deletedAt IS NULL')
             ->orderBy('m.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
