@@ -14,7 +14,12 @@ framework:
             transitions:
                 # Un hilo público puede responder cualquiera sin cambiar el estado
                 public_reply:
-                    guard: 'is_granted("ROLE_USER") and not is_granted("ROLE_SUPPORT") and subject.isPublic() and not is_granted("thread.owner", subject)'
+                    guard: |
+                        is_granted("ROLE_USER")
+                        and not is_granted("ROLE_SUPPORT")
+                        and subject.isPublic()
+                        and not is_granted("thread.owner", subject)
+                        and not subject.isDeleted()
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
@@ -23,7 +28,7 @@ framework:
 
                 # El staff responde → espera al cliente
                 staff_reply:
-                    guard: 'is_granted("ROLE_SUPPORT")'
+                    guard: 'is_granted("ROLE_SUPPORT") and not subject.isDeleted()'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_SUPPORT
@@ -32,7 +37,7 @@ framework:
 
                 # El cliente responde → espera al staff (solo el creador del hilo)
                 customer_reply:
-                    guard: 'is_granted("thread.owner", subject) and not is_granted("ROLE_SUPPORT")'
+                    guard: 'is_granted("thread.owner", subject) and not is_granted("ROLE_SUPPORT") and not subject.isDeleted()'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
                         - !php/enum App\Enums\ThreadStatusEnum::RESOLVED
@@ -40,7 +45,7 @@ framework:
 
                 # El hilo se marca como resuelto (staff o creador del hilo)
                 resolve:
-                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject)'
+                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject) and not subject.isDeleted()'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
@@ -49,7 +54,7 @@ framework:
 
                 # Cierre definitivo (solo staff o creador)
                 close:
-                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject)'
+                    guard: 'is_granted("ROLE_SUPPORT") or is_granted("thread.owner", subject) and not subject.isDeleted()'
                     from:
                         - !php/enum App\Enums\ThreadStatusEnum::OPEN
                         - !php/enum App\Enums\ThreadStatusEnum::WAITING_CUSTOMER
