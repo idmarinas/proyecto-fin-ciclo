@@ -1,0 +1,74 @@
+{% props thread, forum, author_deleted %}
+
+<div class="relative opacity-60">
+  {# Banda superior de borrado #}
+  <div class="absolute inset-x-0 top-0 z-10 flex items-center gap-2 rounded-t-md bg-red-600 px-4 py-1.5 text-xs font-semibold text-white">
+    <twig:ux:icon name="tabler:trash" class="size-3.5 shrink-0" />
+    Hilo borrado
+    {% if thread.deletedAt %}
+      · {{ thread.deletedAt|date("d/m/Y H:i") }}
+    {% endif %}
+  </div>
+
+  <twig:Ui:Item
+      variant="outline"
+      as="a"
+      href="{{ path('app_forums_forum_thread_view', {
+        slug_forum: forum.parent.slug,
+        slug_subforum: forum.slug,
+        slug_thread: thread.slug
+      }) }}"
+      class="pt-8 border-red-300 bg-red-50 dark:bg-red-950/30"
+  >
+    <twig:Ui:Item:Header>
+      <div class="flex items-center gap-3">
+        <twig:App:Badge:IsPrivate :is_private="thread.private" />
+        <twig:App:Badge:Role :author="thread.author" />
+        <twig:App:Forum:Thread:Problem :thread="thread" />
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1 text-red-400">
+          {{ ux_icon(thread.messageCount > 0 ? 'tabler:message' : 'tabler:message-off', {class: 'size-6'}) }}
+          {{ thread.messageCount }} respuestas
+        </div>
+        <twig:App:Forum:Thread:Status:Icon
+            :status="thread.status"
+            :replies="thread.messageCount"
+            class="size-6"
+            colorize text
+        />
+      </div>
+    </twig:Ui:Item:Header>
+    <twig:Ui:Item:Media>
+      <twig:App:Forum:Thread:Status:Icon
+          :status="thread.status"
+          :replies="thread.messageCount"
+          class="size-19 text-red-300"
+      />
+    </twig:Ui:Item:Media>
+
+    <twig:Ui:Item:Content class="flex-1 space-y-3">
+      <twig:Ui:Item:Title>
+        <h3 class="line-through text-red-500">{{ thread.title }}</h3>
+      </twig:Ui:Item:Title>
+      <twig:Ui:Item:Description class="text-red-400">
+        {{ thread.description|raw }}
+      </twig:Ui:Item:Description>
+    </twig:Ui:Item:Content>
+
+    <twig:Ui:Item:Footer class="flex items-center justify-between text-xs text-red-400">
+      <div class="flex gap-1 items-center">
+        Creado por
+        {# Avatar gestiona internamente el caso de usuario borrado #}
+        <twig:App:User:Avatar size="sm" :user="thread.author" />
+        {% if author_deleted %}
+          <em>[Usuario borrado]</em>
+        {% else %}
+          <em>{{ thread.author|u.truncate(10, '...') }}</em>
+        {% endif %}
+        el
+        <twig:ux:icon name="tabler:clock" class="size-4" /> {{ thread.createdAt|date("d/m/Y H:i") }}
+      </div>
+    </twig:Ui:Item:Footer>
+  </twig:Ui:Item>
+</div>
