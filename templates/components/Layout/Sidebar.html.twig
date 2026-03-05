@@ -81,7 +81,7 @@
             <li class="flex gap-2 items-start">
 
               {# Indicador de estado #}
-              {% if thread.status.value == 'open' %}
+              {% if thread.status == 'open' %}
                 {{ ux_icon('tabler:circle', {class: 'size-4 text-blue-500 mt-0.5 shrink-0'}) }}
               {% else %}
                 {{ ux_icon('tabler:clock', {class: 'size-4 text-yellow-500 mt-0.5 shrink-0'}) }}

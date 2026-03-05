@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 03/03/2026, 19:18
+ * Last modified by "IDMarinas" on 05/03/2026, 22:30
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -26,11 +26,16 @@ use App\Repository\Forum\MessageRepository;
 use App\Repository\Forum\ThreadRepository;
 use App\Repository\ForumRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Target;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Contracts\Cache\TagAwareCacheInterface;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
 #[AsTwigComponent]
-class Sidebar
+final class Sidebar
 {
     #[ExposeInTemplate('show_rules')]
     public bool $showRules = false;
@@ -39,7 +44,12 @@ class Sidebar
     #[ExposeInTemplate('forum')]
     public ?Forum $forum = null;
 
-    public function __construct(private readonly EntityManagerInterface $em) {}
+    public function __construct(
+        private readonly EntityManagerInterface $em,
+        private readonly TagAwareCacheInterface $cache,
+        #[Target('camelCase.normalizer')]
+        private readonly NormalizerInterface    $normalizer
+    ) {}
 
     /** Estadísticas del foro o globales si forum es null. */
     #[ExposeInTemplate('forum_stats')]
@@ -56,10 +66,14 @@ class Sidebar
             ];
         }
 
-        /** @var ForumRepository $repo */
-        $repo = $this->em->getRepository(Forum::class);
+        return $this->cache->get('app.layout.sidebar.forum_stats', function (ItemInterface $item) {
+            $item->expiresAfter(60);
+            $item->tag(['layout', 'sidebar', 'forum_stats']);
+            /** @var ForumRepository $repo */
+            $repo = $this->em->getRepository(Forum::class);
 
-        return $repo->getGlobalStats();
+            return $this->normalizer->normalize($repo->getGlobalStats());
+        });
     }
 
     /**
@@ -70,12 +84,31 @@ class Sidebar
     #[ExposeInTemplate('latest_threads')]
     public function getLatestThreads(): array
     {
-        /** @var ThreadRepository $repo */
-        $repo = $this->em->getRepository(Thread::class);
+        return $this->cache->get('app.layout.sidebar.latest_threads', function (ItemInterface $item) {
+            $item->expiresAfter(60);
+            $item->tag(['layout', 'sidebar', 'latest_threads']);
+            /** @var ThreadRepository $repo */
+            $repo = $this->em->getRepository(Thread::class);
 
-        return null !== $this->forum
-            ? $repo->findLatestByForum($this->forum)
-            : $repo->findLatest();
+            $data = null !== $this->forum
+                ? $repo->findLatestByForum($this->forum)
+                : $repo->findLatest();
+
+            return $this->normalizer->normalize($data, context: [
+                AbstractNormalizer::ATTRIBUTES => [
+                    'slug',
+                    'title',
+                    'createdAt',
+                    'forum'  => [
+                        'parent' => ['slug'],
+                        'slug',
+                    ],
+                    'author' => [
+                        'userIdentifier',
+                    ],
+                ],
+            ]);
+        });
     }
 
     /**
@@ -87,10 +120,29 @@ class Sidebar
     #[ExposeInTemplate('threads_needing_attention')]
     public function getThreadsNeedingAttention(): array
     {
-        /** @var ThreadRepository $repo */
-        $repo = $this->em->getRepository(Thread::class);
+        return $this->cache->get('app.layout.sidebar.threads_needing_attention', function (ItemInterface $item) {
+            $item->expiresAfter(60);
+            $item->tag(['layout', 'sidebar', 'threads_needing_attention']);
+            /** @var ThreadRepository $repo */
+            $repo = $this->em->getRepository(Thread::class);
 
-        return $repo->findNeedingAttention($this->forum);
+            return $this->normalizer->normalize($repo->findNeedingAttention($this->forum), context: [
+                AbstractNormalizer::ATTRIBUTES => [
+                    'slug',
+                    'title',
+                    'priority',
+                    'createdAt',
+                    'status',
+                    'isIncident',
+                    'isCritical',
+                    'affectsBusiness',
+                    'forum' => [
+                        'parent' => ['slug'],
+                        'slug',
+                    ],
+                ],
+            ]);
+        });
     }
 
     /**
@@ -101,11 +153,33 @@ class Sidebar
     #[ExposeInTemplate('latest_messages')]
     public function getLatestMessages(): array
     {
-        /** @var MessageRepository $repo */
-        $repo = $this->em->getRepository(Message::class);
+        return $this->cache->get('app.layout.sidebar.latest_messages', function (ItemInterface $item) {
+            $item->expiresAfter(60);
+            $item->tag(['layout', 'sidebar', 'latest_messages']);
+            /** @var MessageRepository $repo */
+            $repo = $this->em->getRepository(Message::class);
 
-        return null !== $this->forum
-            ? $repo->findLatestByForum($this->forum)
-            : $repo->findLatest();
+            $data = null !== $this->forum
+                ? $repo->findLatestByForum($this->forum)
+                : $repo->findLatest();
+
+            return $this->normalizer->normalize($data, context: [
+                AbstractNormalizer::ATTRIBUTES => [
+                    'content',
+                    'createdAt',
+                    'author' => [
+                        'userIdentifier',
+                    ],
+                    'thread' => [
+                        'slug',
+                        'title',
+                        'forum' => [
+                            'parent' => ['slug'],
+                            'slug',
+                        ],
+                    ],
+                ],
+            ]);
+        });
     }
 }
