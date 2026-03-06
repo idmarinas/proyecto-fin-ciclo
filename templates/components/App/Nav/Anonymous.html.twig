@@ -1,8 +1,8 @@
 <twig:Ui:Button variant="ghost" as="a" href="{{ path('app_user_login') }}">
   Conectar
-  <twig:ux:icon name="tabler:login" />
+  {{ ux_icon('tabler:login') }}
 </twig:Ui:Button>
 <twig:Ui:Button as="a" href="{{ path('app_user_register') }}">
   Registrarse
-  <twig:ux:icon name="tabler:user-plus" />
+  {{ ux_icon('tabler:user-plus') }}
 </twig:Ui:Button>

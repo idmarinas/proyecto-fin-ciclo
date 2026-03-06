@@ -18,8 +18,7 @@
       {# Indicador autor borrado (solo admins lo verán si el hilo no está borrado) #}
       {% if author_deleted and can_see_deleted %}
         <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 border border-amber-200">
-          <twig:ux:icon name="tabler:user-x" class="size-3" />
-          Autor borrado
+          {{ ux_icon('tabler:user-x', {class: 'size-3'}) }} Autor borrado
         </span>
       {% endif %}
     </div>
@@ -62,15 +61,13 @@
       {% else %}
         <em>{{ thread.author|u.truncate(10, '...') }}</em>
       {% endif %}
-      el
-      <twig:ux:icon name="tabler:clock" class="size-4" /> {{ thread.createdAt|date("d/m/Y H:i") }}
+      el {{ ux_icon('tabler:clock', {class: 'size-4'}) }} {{ thread.createdAt|date("d/m/Y H:i") }}
     </div>
     <div class="flex gap-1 items-center">
       {% if thread.lastMessage %}
         {% set last_author_deleted = thread.lastMessage.author is not null and thread.lastMessage.author.deletedAt is not null %}
         Última respuesta el
-        <twig:ux:icon name="tabler:clock" class="size-4" />
-        {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
+        {{ ux_icon('tabler:clock', {class: 'size-4'}) }} {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
         {# Avatar gestiona internamente el caso de usuario borrado #}
         <twig:App:User:Avatar size="sm" :user="thread.lastMessage.author" />
         {% if last_author_deleted %}
