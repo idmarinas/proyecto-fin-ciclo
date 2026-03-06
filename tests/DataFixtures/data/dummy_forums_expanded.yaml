@@ -316,8 +316,8 @@ forums:
       messages_count: 43
       last_thread_id: 155
   - id: 72
-    slug: foro-vacio-sin-contenido
-    title: Foro Vacío - Sin Contenido
+    slug: errores-y-disputas-en-pagos
+    title: Errores y disputas en pagos
     description: Espacio para reportar errores en pagos, fallos de transacción y discrepancias
       en registros.
     image: https://images.pexels.com/photos/6863253/pexels-photo-6863253.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
@@ -447,8 +447,8 @@ forums:
     position: 1
     is_active: true
     stats:
-      threads_count: 9
-      messages_count: 36
+      threads_count: 12
+      messages_count: 55
       last_thread_id: 211
   - id: 102
     slug: anuncios-y-novedades
@@ -459,8 +459,8 @@ forums:
     position: 2
     is_active: true
     stats:
-      threads_count: 6
-      messages_count: 25
+      threads_count: 9
+      messages_count: 44
       last_thread_id: 217
   - id: 103
     slug: comunidad-y-networking
@@ -471,28 +471,18 @@ forums:
     position: 3
     is_active: true
     stats:
-      threads_count: 9
-      messages_count: 38
+      threads_count: 12
+      messages_count: 57
       last_thread_id: 226
   - id: 104
-    slug: subforo-vacio
-    title: Subforo vacío
-    description: Subforo sin contenido para pruebas y desarrollo.
-    image: https://images.pexels.com/photos/5632408/pexels-photo-5632408.jpeg?auto=compress&cs=tinysrgb&w=600&q=80
+    slug: feedback-y-valoraciones
+    title: Feedback y valoraciones
+    description: Espacio para que los usuarios compartan su experiencia, valoren el
+      servicio y aporten sugerencias de mejora continua.
+    image: https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 4
     is_active: true
     stats:
       threads_count: 5
       messages_count: 15
       last_thread_id: 231
-  - id: 105
-    slug: subforo-vacio-pruebas
-    title: Subforo vacío
-    description: Subforo sin contenido para pruebas y desarrollo de nuevas funcionalidades.
-    image: https://images.pexels.com/photos/5632408/pexels-photo-5632408.jpeg?auto=compress&cs=tinysrgb&w=600&q=80
-    position: 4
-    is_active: true
-    stats:
-      threads_count: 9
-      messages_count: 57
-      last_thread_id: 240

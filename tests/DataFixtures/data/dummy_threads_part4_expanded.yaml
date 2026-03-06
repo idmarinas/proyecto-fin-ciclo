@@ -969,7 +969,7 @@ threads:
         slug: thread-228
         solved_message_id: null
     -   id: 232
-        subforum_id: 105
+        subforum_id: 101
         author_id: 7
         title: Thread 232 en subforo 105
         description: Descripción del thread 232
@@ -986,7 +986,7 @@ threads:
         slug: thread-232
         solved_message_id: null
     -   id: 236
-        subforum_id: 105
+        subforum_id: 102
         author_id: 82
         title: Thread 236 en subforo 105
         description: Descripción del thread 236
@@ -1003,7 +1003,7 @@ threads:
         slug: thread-236
         solved_message_id: 1084
     -   id: 240
-        subforum_id: 105
+        subforum_id: 103
         author_id: 129
         title: Thread 240 en subforo 105
         description: Descripción del thread 240
