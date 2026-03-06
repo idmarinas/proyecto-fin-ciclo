@@ -2,7 +2,7 @@
 /**
  * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 05/03/2026, 22:46
+ * Last modified by "IDMarinas" on 06/03/2026, 22:42
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -77,14 +77,6 @@ final class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Gestión del foro');
 
         yield MenuItem::linkTo(ForumCrudController::class, 'Foro', 'fa fa-comments')
-            ->setAction(Action::INDEX)
-        ;
-
-        yield MenuItem::linkTo(ThreadCrudController::class, 'Hilos', 'fa fa-list')
-            ->setAction(Action::INDEX)
-        ;
-
-        yield MenuItem::linkTo(MessageCrudController::class, 'Mensajes', 'fa fa-comment')
             ->setAction(Action::INDEX)
         ;
 
