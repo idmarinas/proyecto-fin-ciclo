@@ -254,7 +254,7 @@ forums:
   title: Seguridad y privacidad
   description: Foro dedicado a temas de seguridad, autenticación, cifrado, RGPD y
     protección de datos.
-  image: https://images.pexels.com/photos/60483/pexels-photo-60483.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+  image: https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
   position: 6
   is_active: true
   subforums:
