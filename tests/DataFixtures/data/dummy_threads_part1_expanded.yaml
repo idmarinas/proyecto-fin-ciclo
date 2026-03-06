@@ -2,9 +2,9 @@ threads:
     -   id: 1
         subforum_id: 11
         author_id: 114
-        title: Thread 1 en subforo 11
-        description: Descripción del thread 1
-        content: Contenido detallado del thread 1
+        title: 'Thread 1 en subforo 11'
+        description: 'Descripción del thread 1'
+        content: 'Contenido detallado del thread 1'
         status: open
         help_type: consulta_facturacion
         is_private: true
@@ -19,9 +19,9 @@ threads:
     -   id: 5
         subforum_id: 11
         author_id: 122
-        title: Thread 5 en subforo 11
-        description: Descripción del thread 5
-        content: Contenido detallado del thread 5
+        title: 'Thread 5 en subforo 11'
+        description: 'Descripción del thread 5'
+        content: 'Contenido detallado del thread 5'
         status: resolved
         help_type: problemas_facturacion
         is_private: true
@@ -36,9 +36,9 @@ threads:
     -   id: 9
         subforum_id: 11
         author_id: 100
-        title: Thread 9 en subforo 11
-        description: Descripción del thread 9
-        content: Contenido detallado del thread 9
+        title: 'Thread 9 en subforo 11'
+        description: 'Descripción del thread 9'
+        content: 'Contenido detallado del thread 9'
         status: waiting_support
         help_type: incidencia_servicio
         is_private: false
@@ -53,9 +53,9 @@ threads:
     -   id: 13
         subforum_id: 12
         author_id: 95
-        title: Thread 13 en subforo 12
-        description: Descripción del thread 13
-        content: Contenido detallado del thread 13
+        title: 'Thread 13 en subforo 12'
+        description: 'Descripción del thread 13'
+        content: 'Contenido detallado del thread 13'
         status: waiting_customer
         help_type: consulta_facturacion
         is_private: true
@@ -70,9 +70,9 @@ threads:
     -   id: 17
         subforum_id: 12
         author_id: 109
-        title: Thread 17 en subforo 12
-        description: Descripción del thread 17
-        content: Contenido detallado del thread 17
+        title: 'Thread 17 en subforo 12'
+        description: 'Descripción del thread 17'
+        content: 'Contenido detallado del thread 17'
         status: closed
         help_type: otro_motivo
         is_private: false
@@ -87,9 +87,9 @@ threads:
     -   id: 21
         subforum_id: 13
         author_id: 66
-        title: Thread 21 en subforo 13
-        description: Descripción del thread 21
-        content: Contenido detallado del thread 21
+        title: 'Thread 21 en subforo 13'
+        description: 'Descripción del thread 21'
+        content: 'Contenido detallado del thread 21'
         status: waiting_support
         help_type: otro_motivo
         is_private: false
@@ -104,9 +104,9 @@ threads:
     -   id: 25
         subforum_id: 14
         author_id: 66
-        title: Thread 25 en subforo 14
-        description: Descripción del thread 25
-        content: Contenido detallado del thread 25
+        title: 'Thread 25 en subforo 14'
+        description: 'Descripción del thread 25'
+        content: 'Contenido detallado del thread 25'
         status: waiting_customer
         help_type: incidencia_critica
         is_private: true
@@ -121,9 +121,9 @@ threads:
     -   id: 29
         subforum_id: 14
         author_id: 113
-        title: Thread 29 en subforo 14
-        description: Descripción del thread 29
-        content: Contenido detallado del thread 29
+        title: 'Thread 29 en subforo 14'
+        description: 'Descripción del thread 29'
+        content: 'Contenido detallado del thread 29'
         status: waiting_support
         help_type: consulta_facturacion
         is_private: false
@@ -138,9 +138,9 @@ threads:
     -   id: 33
         subforum_id: 21
         author_id: 101
-        title: Thread 33 en subforo 21
-        description: Descripción del thread 33
-        content: Contenido detallado del thread 33
+        title: 'Thread 33 en subforo 21'
+        description: 'Descripción del thread 33'
+        content: 'Contenido detallado del thread 33'
         status: waiting_support
         help_type: consulta_facturacion
         is_private: false
@@ -155,9 +155,9 @@ threads:
     -   id: 37
         subforum_id: 21
         author_id: 93
-        title: Thread 37 en subforo 21
-        description: Descripción del thread 37
-        content: Contenido detallado del thread 37
+        title: 'Thread 37 en subforo 21'
+        description: 'Descripción del thread 37'
+        content: 'Contenido detallado del thread 37'
         status: closed
         help_type: incidencia_servicio
         is_private: true
@@ -172,9 +172,9 @@ threads:
     -   id: 41
         subforum_id: 22
         author_id: 47
-        title: Thread 41 en subforo 22
-        description: Descripción del thread 41
-        content: Contenido detallado del thread 41
+        title: 'Thread 41 en subforo 22'
+        description: 'Descripción del thread 41'
+        content: 'Contenido detallado del thread 41'
         status: waiting_customer
         help_type: consulta_facturacion
         is_private: false
@@ -189,9 +189,9 @@ threads:
     -   id: 45
         subforum_id: 23
         author_id: 85
-        title: Thread 45 en subforo 23
-        description: Descripción del thread 45
-        content: Contenido detallado del thread 45
+        title: 'Thread 45 en subforo 23'
+        description: 'Descripción del thread 45'
+        content: 'Contenido detallado del thread 45'
         status: resolved
         help_type: otro_motivo
         is_private: false
@@ -206,9 +206,9 @@ threads:
     -   id: 49
         subforum_id: 23
         author_id: 71
-        title: Thread 49 en subforo 23
-        description: Descripción del thread 49
-        content: Contenido detallado del thread 49
+        title: 'Thread 49 en subforo 23'
+        description: 'Descripción del thread 49'
+        content: 'Contenido detallado del thread 49'
         status: closed
         help_type: incidencia_servicio
         is_private: false
@@ -223,9 +223,9 @@ threads:
     -   id: 53
         subforum_id: 24
         author_id: 1
-        title: Thread 53 en subforo 24
-        description: Descripción del thread 53
-        content: Contenido detallado del thread 53
+        title: 'Thread 53 en subforo 24'
+        description: 'Descripción del thread 53'
+        content: 'Contenido detallado del thread 53'
         status: waiting_support
         help_type: otro_motivo
         is_private: true
@@ -240,9 +240,9 @@ threads:
     -   id: 57
         subforum_id: 31
         author_id: 74
-        title: Thread 57 en subforo 31
-        description: Descripción del thread 57
-        content: Contenido detallado del thread 57
+        title: 'Thread 57 en subforo 31'
+        description: 'Descripción del thread 57'
+        content: 'Contenido detallado del thread 57'
         status: open
         help_type: problemas_facturacion
         is_private: true
@@ -257,9 +257,9 @@ threads:
     -   id: 61
         subforum_id: 31
         author_id: 9
-        title: Thread 61 en subforo 31
-        description: Descripción del thread 61
-        content: Contenido detallado del thread 61
+        title: 'Thread 61 en subforo 31'
+        description: 'Descripción del thread 61'
+        content: 'Contenido detallado del thread 61'
         status: resolved
         help_type: incidencia_servicio
         is_private: false
@@ -274,9 +274,9 @@ threads:
     -   id: 65
         subforum_id: 31
         author_id: 59
-        title: Thread 65 en subforo 31
-        description: Descripción del thread 65
-        content: Contenido detallado del thread 65
+        title: 'Thread 65 en subforo 31'
+        description: 'Descripción del thread 65'
+        content: 'Contenido detallado del thread 65'
         status: resolved
         help_type: consulta_facturacion
         is_private: false
@@ -287,13 +287,13 @@ threads:
         deletedAt: null
         has_messages: true
         slug: thread-65
-        solved_message_id: 597
+        solved_message_id: 301
     -   id: 69
         subforum_id: 32
         author_id: 86
-        title: Thread 69 en subforo 32
-        description: Descripción del thread 69
-        content: Contenido detallado del thread 69
+        title: 'Thread 69 en subforo 32'
+        description: 'Descripción del thread 69'
+        content: 'Contenido detallado del thread 69'
         status: waiting_customer
         help_type: incidencia_servicio
         is_private: false
@@ -308,9 +308,9 @@ threads:
     -   id: 73
         subforum_id: 32
         author_id: 65
-        title: Thread 73 en subforo 32
-        description: Descripción del thread 73
-        content: Contenido detallado del thread 73
+        title: 'Thread 73 en subforo 32'
+        description: 'Descripción del thread 73'
+        content: 'Contenido detallado del thread 73'
         status: waiting_support
         help_type: problemas_facturacion
         is_private: false
@@ -325,9 +325,9 @@ threads:
     -   id: 77
         subforum_id: 33
         author_id: 2
-        title: Thread 77 en subforo 33
-        description: Descripción del thread 77
-        content: Contenido detallado del thread 77
+        title: 'Thread 77 en subforo 33'
+        description: 'Descripción del thread 77'
+        content: 'Contenido detallado del thread 77'
         status: waiting_support
         help_type: problemas_facturacion
         is_private: true
@@ -342,9 +342,9 @@ threads:
     -   id: 81
         subforum_id: 41
         author_id: 19
-        title: Thread 81 en subforo 41
-        description: Descripción del thread 81
-        content: Contenido detallado del thread 81
+        title: 'Thread 81 en subforo 41'
+        description: 'Descripción del thread 81'
+        content: 'Contenido detallado del thread 81'
         status: open
         help_type: otro_motivo
         is_private: true
@@ -359,9 +359,9 @@ threads:
     -   id: 85
         subforum_id: 41
         author_id: 53
-        title: Thread 85 en subforo 41
-        description: Descripción del thread 85
-        content: Contenido detallado del thread 85
+        title: 'Thread 85 en subforo 41'
+        description: 'Descripción del thread 85'
+        content: 'Contenido detallado del thread 85'
         status: resolved
         help_type: incidencia_critica
         is_private: true
@@ -376,9 +376,9 @@ threads:
     -   id: 89
         subforum_id: 42
         author_id: 113
-        title: Thread 89 en subforo 42
-        description: Descripción del thread 89
-        content: Contenido detallado del thread 89
+        title: 'Thread 89 en subforo 42'
+        description: 'Descripción del thread 89'
+        content: 'Contenido detallado del thread 89'
         status: open
         help_type: incidencia_critica
         is_private: false
@@ -393,9 +393,9 @@ threads:
     -   id: 93
         subforum_id: 42
         author_id: 128
-        title: Thread 93 en subforo 42
-        description: Descripción del thread 93
-        content: Contenido detallado del thread 93
+        title: 'Thread 93 en subforo 42'
+        description: 'Descripción del thread 93'
+        content: 'Contenido detallado del thread 93'
         status: resolved
         help_type: otro_motivo
         is_private: false
@@ -410,9 +410,9 @@ threads:
     -   id: 97
         subforum_id: 42
         author_id: 52
-        title: Thread 97 en subforo 42
-        description: Descripción del thread 97
-        content: Contenido detallado del thread 97
+        title: 'Thread 97 en subforo 42'
+        description: 'Descripción del thread 97'
+        content: 'Contenido detallado del thread 97'
         status: waiting_customer
         help_type: otro_motivo
         is_private: true
@@ -427,9 +427,9 @@ threads:
     -   id: 101
         subforum_id: 43
         author_id: 54
-        title: Thread 101 en subforo 43
-        description: Descripción del thread 101
-        content: Contenido detallado del thread 101
+        title: 'Thread 101 en subforo 43'
+        description: 'Descripción del thread 101'
+        content: 'Contenido detallado del thread 101'
         status: waiting_customer
         help_type: otro_motivo
         is_private: false
@@ -444,9 +444,9 @@ threads:
     -   id: 105
         subforum_id: 51
         author_id: 29
-        title: Thread 105 en subforo 51
-        description: Descripción del thread 105
-        content: Contenido detallado del thread 105
+        title: 'Thread 105 en subforo 51'
+        description: 'Descripción del thread 105'
+        content: 'Contenido detallado del thread 105'
         status: open
         help_type: incidencia_critica
         is_private: true
@@ -461,9 +461,9 @@ threads:
     -   id: 109
         subforum_id: 51
         author_id: 23
-        title: Thread 109 en subforo 51
-        description: Descripción del thread 109
-        content: Contenido detallado del thread 109
+        title: 'Thread 109 en subforo 51'
+        description: 'Descripción del thread 109'
+        content: 'Contenido detallado del thread 109'
         status: resolved
         help_type: consulta_facturacion
         is_private: false
@@ -478,9 +478,9 @@ threads:
     -   id: 113
         subforum_id: 52
         author_id: 45
-        title: Thread 113 en subforo 52
-        description: Descripción del thread 113
-        content: Contenido detallado del thread 113
+        title: 'Thread 113 en subforo 52'
+        description: 'Descripción del thread 113'
+        content: 'Contenido detallado del thread 113'
         status: waiting_support
         help_type: otro_motivo
         is_private: true
@@ -495,9 +495,9 @@ threads:
     -   id: 117
         subforum_id: 53
         author_id: 57
-        title: Thread 117 en subforo 53
-        description: Descripción del thread 117
-        content: Contenido detallado del thread 117
+        title: 'Thread 117 en subforo 53'
+        description: 'Descripción del thread 117'
+        content: 'Contenido detallado del thread 117'
         status: open
         help_type: problemas_facturacion
         is_private: true
@@ -512,9 +512,9 @@ threads:
     -   id: 121
         subforum_id: 53
         author_id: 81
-        title: Thread 121 en subforo 53
-        description: Descripción del thread 121
-        content: Contenido detallado del thread 121
+        title: 'Thread 121 en subforo 53'
+        description: 'Descripción del thread 121'
+        content: 'Contenido detallado del thread 121'
         status: resolved
         help_type: consulta_facturacion
         is_private: true
@@ -529,9 +529,9 @@ threads:
     -   id: 125
         subforum_id: 61
         author_id: 87
-        title: Thread 125 en subforo 61
-        description: Descripción del thread 125
-        content: Contenido detallado del thread 125
+        title: 'Thread 125 en subforo 61'
+        description: 'Descripción del thread 125'
+        content: 'Contenido detallado del thread 125'
         status: open
         help_type: consulta_facturacion
         is_private: true
@@ -546,9 +546,9 @@ threads:
     -   id: 129
         subforum_id: 61
         author_id: 120
-        title: Thread 129 en subforo 61
-        description: Descripción del thread 129
-        content: Contenido detallado del thread 129
+        title: 'Thread 129 en subforo 61'
+        description: 'Descripción del thread 129'
+        content: 'Contenido detallado del thread 129'
         status: resolved
         help_type: incidencia_critica
         is_private: false
@@ -563,9 +563,9 @@ threads:
     -   id: 133
         subforum_id: 62
         author_id: 48
-        title: Thread 133 en subforo 62
-        description: Descripción del thread 133
-        content: Contenido detallado del thread 133
+        title: 'Thread 133 en subforo 62'
+        description: 'Descripción del thread 133'
+        content: 'Contenido detallado del thread 133'
         status: waiting_customer
         help_type: incidencia_critica
         is_private: false
@@ -580,9 +580,9 @@ threads:
     -   id: 137
         subforum_id: 62
         author_id: 121
-        title: Thread 137 en subforo 62
-        description: Descripción del thread 137
-        content: Contenido detallado del thread 137
+        title: 'Thread 137 en subforo 62'
+        description: 'Descripción del thread 137'
+        content: 'Contenido detallado del thread 137'
         status: waiting_support
         help_type: otro_motivo
         is_private: false
@@ -597,9 +597,9 @@ threads:
     -   id: 141
         subforum_id: 63
         author_id: 79
-        title: Thread 141 en subforo 63
-        description: Descripción del thread 141
-        content: Contenido detallado del thread 141
+        title: 'Thread 141 en subforo 63'
+        description: 'Descripción del thread 141'
+        content: 'Contenido detallado del thread 141'
         status: waiting_customer
         help_type: incidencia_critica
         is_private: false
@@ -614,9 +614,9 @@ threads:
     -   id: 145
         subforum_id: 63
         author_id: 68
-        title: Thread 145 en subforo 63
-        description: Descripción del thread 145
-        content: Contenido detallado del thread 145
+        title: 'Thread 145 en subforo 63'
+        description: 'Descripción del thread 145'
+        content: 'Contenido detallado del thread 145'
         status: resolved
         help_type: consulta_facturacion
         is_private: false
@@ -631,9 +631,9 @@ threads:
     -   id: 149
         subforum_id: 71
         author_id: 97
-        title: Thread 149 en subforo 71
-        description: Descripción del thread 149
-        content: Contenido detallado del thread 149
+        title: 'Thread 149 en subforo 71'
+        description: 'Descripción del thread 149'
+        content: 'Contenido detallado del thread 149'
         status: closed
         help_type: consulta_facturacion
         is_private: false
@@ -648,9 +648,9 @@ threads:
     -   id: 153
         subforum_id: 71
         author_id: 89
-        title: Thread 153 en subforo 71
-        description: Descripción del thread 153
-        content: Contenido detallado del thread 153
+        title: 'Thread 153 en subforo 71'
+        description: 'Descripción del thread 153'
+        content: 'Contenido detallado del thread 153'
         status: closed
         help_type: problemas_facturacion
         is_private: true
@@ -665,9 +665,9 @@ threads:
     -   id: 157
         subforum_id: 73
         author_id: 41
-        title: Thread 157 en subforo 73
-        description: Descripción del thread 157
-        content: Contenido detallado del thread 157
+        title: 'Thread 157 en subforo 73'
+        description: 'Descripción del thread 157'
+        content: 'Contenido detallado del thread 157'
         status: resolved
         help_type: otro_motivo
         is_private: false
@@ -678,13 +678,13 @@ threads:
         deletedAt: null
         has_messages: true
         slug: thread-157
-        solved_message_id: 106
+        solved_message_id: 715
     -   id: 161
         subforum_id: 73
         author_id: 55
-        title: Thread 161 en subforo 73
-        description: Descripción del thread 161
-        content: Contenido detallado del thread 161
+        title: 'Thread 161 en subforo 73'
+        description: 'Descripción del thread 161'
+        content: 'Contenido detallado del thread 161'
         status: closed
         help_type: incidencia_critica
         is_private: false
@@ -699,9 +699,9 @@ threads:
     -   id: 165
         subforum_id: 81
         author_id: 50
-        title: Thread 165 en subforo 81
-        description: Descripción del thread 165
-        content: Contenido detallado del thread 165
+        title: 'Thread 165 en subforo 81'
+        description: 'Descripción del thread 165'
+        content: 'Contenido detallado del thread 165'
         status: waiting_customer
         help_type: incidencia_critica
         is_private: false
@@ -716,9 +716,9 @@ threads:
     -   id: 169
         subforum_id: 81
         author_id: 54
-        title: Thread 169 en subforo 81
-        description: Descripción del thread 169
-        content: Contenido detallado del thread 169
+        title: 'Thread 169 en subforo 81'
+        description: 'Descripción del thread 169'
+        content: 'Contenido detallado del thread 169'
         status: waiting_support
         help_type: incidencia_critica
         is_private: false
@@ -733,9 +733,9 @@ threads:
     -   id: 173
         subforum_id: 82
         author_id: 104
-        title: Thread 173 en subforo 82
-        description: Descripción del thread 173
-        content: Contenido detallado del thread 173
+        title: 'Thread 173 en subforo 82'
+        description: 'Descripción del thread 173'
+        content: 'Contenido detallado del thread 173'
         status: waiting_support
         help_type: otro_motivo
         is_private: false
@@ -750,9 +750,9 @@ threads:
     -   id: 177
         subforum_id: 83
         author_id: 11
-        title: Thread 177 en subforo 83
-        description: Descripción del thread 177
-        content: Contenido detallado del thread 177
+        title: 'Thread 177 en subforo 83'
+        description: 'Descripción del thread 177'
+        content: 'Contenido detallado del thread 177'
         status: waiting_support
         help_type: otro_motivo
         is_private: true
@@ -767,9 +767,9 @@ threads:
     -   id: 181
         subforum_id: 83
         author_id: 115
-        title: Thread 181 en subforo 83
-        description: Descripción del thread 181
-        content: Contenido detallado del thread 181
+        title: 'Thread 181 en subforo 83'
+        description: 'Descripción del thread 181'
+        content: 'Contenido detallado del thread 181'
         status: closed
         help_type: problemas_facturacion
         is_private: false
@@ -784,9 +784,9 @@ threads:
     -   id: 185
         subforum_id: 91
         author_id: 116
-        title: Thread 185 en subforo 91
-        description: Descripción del thread 185
-        content: Contenido detallado del thread 185
+        title: 'Thread 185 en subforo 91'
+        description: 'Descripción del thread 185'
+        content: 'Contenido detallado del thread 185'
         status: waiting_support
         help_type: problemas_facturacion
         is_private: false
@@ -801,9 +801,9 @@ threads:
     -   id: 189
         subforum_id: 91
         author_id: 97
-        title: Thread 189 en subforo 91
-        description: Descripción del thread 189
-        content: Contenido detallado del thread 189
+        title: 'Thread 189 en subforo 91'
+        description: 'Descripción del thread 189'
+        content: 'Contenido detallado del thread 189'
         status: closed
         help_type: incidencia_critica
         is_private: false
@@ -818,9 +818,9 @@ threads:
     -   id: 193
         subforum_id: 92
         author_id: 122
-        title: Thread 193 en subforo 92
-        description: Descripción del thread 193
-        content: Contenido detallado del thread 193
+        title: 'Thread 193 en subforo 92'
+        description: 'Descripción del thread 193'
+        content: 'Contenido detallado del thread 193'
         status: waiting_support
         help_type: consulta_facturacion
         is_private: true
@@ -835,9 +835,9 @@ threads:
     -   id: 197
         subforum_id: 93
         author_id: 6
-        title: Thread 197 en subforo 93
-        description: Descripción del thread 197
-        content: Contenido detallado del thread 197
+        title: 'Thread 197 en subforo 93'
+        description: 'Descripción del thread 197'
+        content: 'Contenido detallado del thread 197'
         status: open
         help_type: incidencia_critica
         is_private: false
@@ -852,9 +852,9 @@ threads:
     -   id: 201
         subforum_id: 93
         author_id: 30
-        title: Thread 201 en subforo 93
-        description: Descripción del thread 201
-        content: Contenido detallado del thread 201
+        title: 'Thread 201 en subforo 93'
+        description: 'Descripción del thread 201'
+        content: 'Contenido detallado del thread 201'
         status: resolved
         help_type: incidencia_servicio
         is_private: false
@@ -869,9 +869,9 @@ threads:
     -   id: 205
         subforum_id: 101
         author_id: 89
-        title: Thread 205 en subforo 101
-        description: Descripción del thread 205
-        content: Contenido detallado del thread 205
+        title: 'Thread 205 en subforo 101'
+        description: 'Descripción del thread 205'
+        content: 'Contenido detallado del thread 205'
         status: waiting_customer
         help_type: consulta_facturacion
         is_private: false
@@ -886,9 +886,9 @@ threads:
     -   id: 209
         subforum_id: 101
         author_id: 116
-        title: Thread 209 en subforo 101
-        description: Descripción del thread 209
-        content: Contenido detallado del thread 209
+        title: 'Thread 209 en subforo 101'
+        description: 'Descripción del thread 209'
+        content: 'Contenido detallado del thread 209'
         status: waiting_customer
         help_type: otro_motivo
         is_private: false
@@ -903,9 +903,9 @@ threads:
     -   id: 213
         subforum_id: 102
         author_id: 74
-        title: Thread 213 en subforo 102
-        description: Descripción del thread 213
-        content: Contenido detallado del thread 213
+        title: 'Thread 213 en subforo 102'
+        description: 'Descripción del thread 213'
+        content: 'Contenido detallado del thread 213'
         status: waiting_customer
         help_type: consulta_facturacion
         is_private: true
@@ -920,9 +920,9 @@ threads:
     -   id: 217
         subforum_id: 102
         author_id: 12
-        title: Thread 217 en subforo 102
-        description: Descripción del thread 217
-        content: Contenido detallado del thread 217
+        title: 'Thread 217 en subforo 102'
+        description: 'Descripción del thread 217'
+        content: 'Contenido detallado del thread 217'
         status: closed
         help_type: otro_motivo
         is_private: false
@@ -937,9 +937,9 @@ threads:
     -   id: 221
         subforum_id: 103
         author_id: 58
-        title: Thread 221 en subforo 103
-        description: Descripción del thread 221
-        content: Contenido detallado del thread 221
+        title: 'Thread 221 en subforo 103'
+        description: 'Descripción del thread 221'
+        content: 'Contenido detallado del thread 221'
         status: waiting_support
         help_type: consulta_facturacion
         is_private: false
@@ -954,9 +954,9 @@ threads:
     -   id: 225
         subforum_id: 103
         author_id: 50
-        title: Thread 225 en subforo 103
-        description: Descripción del thread 225
-        content: Contenido detallado del thread 225
+        title: 'Thread 225 en subforo 103'
+        description: 'Descripción del thread 225'
+        content: 'Contenido detallado del thread 225'
         status: waiting_support
         help_type: incidencia_servicio
         is_private: false
@@ -971,9 +971,9 @@ threads:
     -   id: 229
         subforum_id: 104
         author_id: 85
-        title: Thread 229 en subforo 104
-        description: Descripción del thread 229
-        content: Contenido detallado del thread 229
+        title: 'Thread 229 en subforo 104'
+        description: 'Descripción del thread 229'
+        content: 'Contenido detallado del thread 229'
         status: waiting_customer
         help_type: incidencia_servicio
         is_private: false
@@ -988,9 +988,9 @@ threads:
     -   id: 233
         subforum_id: 101
         author_id: 49
-        title: Thread 233 en subforo 105
-        description: Descripción del thread 233
-        content: Contenido detallado del thread 233
+        title: 'Thread 233 en subforo 105'
+        description: 'Descripción del thread 233'
+        content: 'Contenido detallado del thread 233'
         status: waiting_support
         help_type: incidencia_critica
         is_private: true
@@ -1005,9 +1005,9 @@ threads:
     -   id: 237
         subforum_id: 102
         author_id: 96
-        title: Thread 237 en subforo 105
-        description: Descripción del thread 237
-        content: Contenido detallado del thread 237
+        title: 'Thread 237 en subforo 105'
+        description: 'Descripción del thread 237'
+        content: 'Contenido detallado del thread 237'
         status: closed
         help_type: consulta_facturacion
         is_private: false
@@ -1022,9 +1022,9 @@ threads:
     -   id: 241
         subforum_id: 13
         author_id: 110
-        title: Thread cerrado en subforo 13
-        description: Descripción del thread cerrado 241
-        content: Contenido del thread cerrado 241
+        title: 'Thread cerrado en subforo 13'
+        description: 'Descripción del thread cerrado 241'
+        content: 'Contenido del thread cerrado 241'
         status: closed
         help_type: otro_motivo
         is_private: false
