@@ -218,7 +218,7 @@ forums:
     title: Widgets y dashboards
     description: Subforo para consultas sobre widgets, gráficos, métricas y customización
       de dashboards.
-    image: https://images.pexels.com/photos/5473567/pexels-photo-5473567.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/5474051/pexels-photo-5474051.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 1
     is_active: true
     stats:
@@ -230,7 +230,7 @@ forums:
     title: Accesos rápidos y navegación
     description: Espacio para mejorar navegación, crear atajos personalizados y optimizar
       flujo de trabajo.
-    image: https://images.pexels.com/photos/5473568/pexels-photo-5473568.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/5474055/pexels-photo-5474055.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 2
     is_active: true
     stats:
@@ -242,7 +242,7 @@ forums:
     title: Personalización avanzada
     description: Subforo para usuarios que quieren customizar profundamente su experiencia
       en la plataforma.
-    image: https://images.pexels.com/photos/5473569/pexels-photo-5473569.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/5474056/pexels-photo-5474056.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 3
     is_active: true
     stats:
@@ -254,7 +254,7 @@ forums:
   title: Seguridad y privacidad
   description: Foro dedicado a temas de seguridad, autenticación, cifrado, RGPD y
     protección de datos.
-  image: https://images.pexels.com/photos/3808517/pexels-photo-3808517.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+  image: https://images.pexels.com/photos/60483/pexels-photo-60483.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
   position: 6
   is_active: true
   subforums:
@@ -263,7 +263,7 @@ forums:
     title: Autenticación y 2FA
     description: Subforo para configurar autenticación de dos factores, tokens y recuperación
       de acceso.
-    image: https://images.pexels.com/photos/3808518/pexels-photo-3808518.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/5473954/pexels-photo-5473954.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 1
     is_active: true
     stats:
@@ -275,7 +275,7 @@ forums:
     title: RGPD y protección de datos
     description: Espacio para consultas sobre regulaciones de privacidad, exportación
       de datos y cumplimiento normativo.
-    image: https://images.pexels.com/photos/3808519/pexels-photo-3808519.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 2
     is_active: true
     stats:
@@ -287,7 +287,7 @@ forums:
     title: Cumplimiento normativo
     description: Subforo para asuntos relacionados con leyes, regulaciones y certificaciones
       de seguridad.
-    image: https://images.pexels.com/photos/3808520/pexels-photo-3808520.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/5473956/pexels-photo-5473956.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 3
     is_active: true
     stats:
@@ -299,7 +299,7 @@ forums:
   title: Pagos y pasarelas
   description: Foro especializado en integraciones de pasarelas de pago, métodos de
     pago y procesamiento de transacciones.
-  image: https://images.pexels.com/photos/6863251/pexels-photo-6863251.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+  image: https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
   position: 7
   is_active: true
   subforums:
@@ -308,7 +308,7 @@ forums:
     title: Integración de pasarelas
     description: Subforo para configurar integraciones con Stripe, Redsys, PayPal
       y otras pasarelas.
-    image: https://images.pexels.com/photos/6863252/pexels-photo-6863252.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 1
     is_active: true
     stats:
@@ -344,7 +344,7 @@ forums:
   title: Reportes y análisis
   description: Foro dedicado a generación de reportes, análisis de datos, exportaciones
     y auditoría financiera.
-  image: https://images.pexels.com/photos/5632401/pexels-photo-5632401.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+  image: https://images.pexels.com/photos/669619/pexels-photo-669619.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
   position: 8
   is_active: true
   subforums:
@@ -353,7 +353,7 @@ forums:
     title: Generación de reportes
     description: Subforo para crear reportes personalizados, exportar datos a diferentes
       formatos y programar reportes.
-    image: https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 1
     is_active: true
     stats:
@@ -389,7 +389,7 @@ forums:
   title: Formaciones y recursos
   description: Foro con tutoriales, guías, webinars, documentación y recursos para
     aprovechar Lumina al máximo.
-  image: https://images.pexels.com/photos/3808517/pexels-photo-3808517.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+  image: https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
   position: 9
   is_active: true
   subforums:
@@ -398,7 +398,7 @@ forums:
     title: Tutoriales y guías
     description: Subforo con tutoriales paso a paso, guías de inicio rápido y mejores
       prácticas.
-    image: https://images.pexels.com/photos/3808518/pexels-photo-3808518.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 1
     is_active: true
     stats:
@@ -410,7 +410,7 @@ forums:
     title: Casos de uso
     description: Espacio para compartir casos de uso reales, implementaciones exitosas
       e historias de éxito.
-    image: https://images.pexels.com/photos/3808519/pexels-photo-3808519.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 2
     is_active: true
     stats:
@@ -422,7 +422,7 @@ forums:
     title: Webinars y eventos
     description: Subforo para anunciar y discutir webinars, eventos, charlas y conferencias
       de Lumina.
-    image: https://images.pexels.com/photos/3808520/pexels-photo-3808520.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
+    image: https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop
     position: 3
     is_active: true
     stats:
@@ -434,7 +434,7 @@ forums:
   title: Sugerencias y comunidad
   description: Foro para sugerencias de mejora, feedback, anuncios de novedades y
     comunicación con la comunidad.
-  image: https://images.pexels.com/photos/5632404/pexels-photo-5632404.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+  image: https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
   position: 10
   is_active: true
   subforums:
