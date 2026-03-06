@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 01/02/2026, 16:55
+ * Last modified by "IDMarinas" on 05/03/2026, 22:49
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,18 +29,19 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Override;
 
 final class ForumCrudController extends AbstractCrudController
 {
     #[Override]
-    public static function getEntityFqcn (): string
+    public static function getEntityFqcn(): string
     {
         return Forum::class;
     }
 
     #[Override]
-    public function configureCrud (Crud $crud): Crud
+    public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->setEntityLabelInSingular('Foro')
@@ -51,7 +52,7 @@ final class ForumCrudController extends AbstractCrudController
     }
 
     #[Override]
-    public function configureFields (string $pageName): iterable
+    public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')
             ->hideOnForm()
@@ -72,17 +73,15 @@ final class ForumCrudController extends AbstractCrudController
 
         yield ImageField::new('image')
             ->setBasePath('uploads')
-            ->setUploadDir('public/uploads/forums/' . date('Y/m'))
+            ->setUploadDir('public/uploads/forums/'.date('Y/m'))
             ->setUploadedFileNamePattern('forums/[year]/[month]/[slug]-[contenthash].[extension]')
+            ->hideOnForm()
         ;
+
+        yield UrlField::new('image')->onlyOnForms();
 
         yield AssociationField::new('parent')
             ->setLabel('Parent Forum')
-            ->hideOnIndex()
-        ;
-
-        yield AssociationField::new('tags')
-            ->setLabel('Tags')
             ->hideOnIndex()
         ;
 
