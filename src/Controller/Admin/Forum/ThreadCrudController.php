@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 03/03/2026, 21:15
+ * Last modified by "IDMarinas" on 05/03/2026, 22:47
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -114,10 +114,6 @@ final class ThreadCrudController extends AbstractCrudController
 
         yield IntegerField::new('viewCount')
             ->hideOnForm()
-        ;
-
-        yield AssociationField::new('tags')
-            ->hideOnIndex()
         ;
 
         yield AssociationField::new('messages')
