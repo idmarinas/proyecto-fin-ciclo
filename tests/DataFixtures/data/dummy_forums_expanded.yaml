@@ -209,7 +209,7 @@ forums:
   title: Panel de control y personalización
   description: Foro para dudas sobre el panel de control, personalización de widgets,
     dashboard y configuración.
-  image: https://images.pexels.com/photos/5473566/pexels-photo-5473566.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
+  image: https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop
   position: 5
   is_active: true
   subforums:
