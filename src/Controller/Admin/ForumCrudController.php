@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 06/03/2026, 23:04
+ * Last modified by "IDMarinas" on 06/03/2026, 23:19
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -33,7 +33,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Idm\Bundle\Seo\Traits\Admin\SeoTrait;
 use Override;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
+#[AutoconfigureTag('controller.service_arguments')]
 final class ForumCrudController extends AbstractCrudController
 {
     use SeoTrait;
