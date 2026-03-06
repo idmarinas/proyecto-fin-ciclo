@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 05/03/2026, 22:49
+ * Last modified by "IDMarinas" on 06/03/2026, 23:04
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -24,16 +24,20 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use Idm\Bundle\Seo\Traits\Admin\SeoTrait;
 use Override;
 
 final class ForumCrudController extends AbstractCrudController
 {
+    use SeoTrait;
+
     #[Override]
     public static function getEntityFqcn(): string
     {
@@ -54,6 +58,7 @@ final class ForumCrudController extends AbstractCrudController
     #[Override]
     public function configureFields(string $pageName): iterable
     {
+        yield FormField::addTab('Foro');
         yield IdField::new('id')
             ->hideOnForm()
         ;
@@ -75,7 +80,7 @@ final class ForumCrudController extends AbstractCrudController
             ->setBasePath('uploads')
             ->setUploadDir('public/uploads/forums/'.date('Y/m'))
             ->setUploadedFileNamePattern('forums/[year]/[month]/[slug]-[contenthash].[extension]')
-            ->hideOnForm()
+            ->onlyOnIndex()
         ;
 
         yield UrlField::new('image')->onlyOnForms();
@@ -83,10 +88,6 @@ final class ForumCrudController extends AbstractCrudController
         yield AssociationField::new('parent')
             ->setLabel('Parent Forum')
             ->hideOnIndex()
-        ;
-
-        yield AssociationField::new('threads')
-            ->onlyOnDetail()
         ;
 
         yield DateTimeField::new('createdAt')
@@ -98,7 +99,10 @@ final class ForumCrudController extends AbstractCrudController
         ;
 
         yield DateTimeField::new('deletedAt')
-            ->onlyOnDetail()
+            ->hideOnIndex()
+            ->hideWhenCreating()
         ;
+
+        yield from $this->getSeoFields();
     }
 }
