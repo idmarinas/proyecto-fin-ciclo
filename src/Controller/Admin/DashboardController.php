@@ -2,7 +2,7 @@
 /**
  * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 31/01/2026, 23:06
+ * Last modified by "IDMarinas" on 05/03/2026, 22:46
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,16 +19,9 @@
 
 namespace App\Controller\Admin;
 
-use Admin\Enums\Crud\ActionsEnum;
-use App\Entity\Forum;
-use App\Entity\Forum\Message;
-use App\Entity\Forum\MessageAttachment;
-use App\Entity\Forum\MessageReaction;
-use App\Entity\Forum\Thread;
-use App\Entity\Report;
-use App\Entity\Subscription;
-use App\Entity\Tag;
-use App\Entity\User\User;
+use App\Controller\Admin\Forum\MessageCrudController;
+use App\Controller\Admin\Forum\ThreadCrudController;
+use App\Controller\Admin\User\UserCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -48,18 +41,18 @@ use Symfony\Component\HttpFoundation\Response;
 )]
 final class DashboardController extends AbstractDashboardController
 {
-    public function __construct (
+    public function __construct(
         private readonly Packages $packages,
     ) {}
 
     #[Override]
-    public function index (): Response
+    public function index(): Response
     {
         return $this->render('admin/dashboard.html.twig');
     }
 
     #[Override]
-    public function configureDashboard (): Dashboard
+    public function configureDashboard(): Dashboard
     {
         $title = sprintf(
             '<img class="mx-auto d-block text-center" src="%s" alt="" /><small>%s</small>',
@@ -76,40 +69,35 @@ final class DashboardController extends AbstractDashboardController
     }
 
     #[Override]
-    public function configureMenuItems (): iterable
+    public function configureMenuItems(): iterable
     {
         yield from parent::configureMenuItems();
 
         // Forum Management Section
         yield MenuItem::section('Gestión del foro');
 
-        yield MenuItem::linkToCrud('Foro', 'fa fa-comments', Forum::class);
+        yield MenuItem::linkTo(ForumCrudController::class, 'Foro', 'fa fa-comments')
+            ->setAction(Action::INDEX)
+        ;
 
-        yield MenuItem::linkToCrud('Hilos', 'fa fa-list', Thread::class);
+        yield MenuItem::linkTo(ThreadCrudController::class, 'Hilos', 'fa fa-list')
+            ->setAction(Action::INDEX)
+        ;
 
-        yield MenuItem::linkToCrud('Mensajes', 'fa fa-comment', Message::class);
-
-        yield MenuItem::linkToCrud('Adjuntos', 'fa fa-paperclip', MessageAttachment::class);
-
-        yield MenuItem::linkToCrud('Reactions', 'fa fa-smile', MessageReaction::class);
-
-        yield MenuItem::linkToCrud('Etiquetas', 'fa fa-tags', Tag::class);
+        yield MenuItem::linkTo(MessageCrudController::class, 'Mensajes', 'fa fa-comment')
+            ->setAction(Action::INDEX)
+        ;
 
         // User Management Section
         yield MenuItem::section('Gestión de usuarios');
 
-        yield MenuItem::linkToCrud('Usuarios', 'fa fa-users', User::class);
-
-        yield MenuItem::linkToCrud('Suscripciones', 'fa fa-bookmark', Subscription::class);
-
-        // Moderation Section
-        yield MenuItem::section('Moderación');
-
-        yield MenuItem::linkToCrud('Informes', 'fa fa-flag', Report::class);
+        yield MenuItem::linkTo(UserCrudController::class, 'Usuarios', 'fa fa-users')
+            ->setAction(Action::INDEX)
+        ;
     }
 
     #[Override]
-    public function configureActions (): Actions
+    public function configureActions(): Actions
     {
         $detail = fn(Action $action) => $action->setIcon('fas fa-eye');
         $edit = fn(Action $action) => $action->setIcon('fas fa-pen-to-square');
