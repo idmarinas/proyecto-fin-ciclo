@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 23:34
+ * Last modified by "IDMarinas" on 07/03/2026, 12:40
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -53,7 +53,9 @@ final class ThreadFixtures extends Fixture implements DependentFixtureInterface
          * description: Descripción del thread 5
          * content: Contenido detallado del thread 5
          * status: resolved
-         * help_type: problemas_facturacion
+         * is_incident: true
+         * is_critical: false
+         * affects_business: false
          * is_private: true
          * sticky: false
          * viewCount: 85
@@ -67,19 +69,22 @@ final class ThreadFixtures extends Fixture implements DependentFixtureInterface
         foreach ($threads as $thread) {
             $entity = ThreadFactory::new()
                 ->createOne([
-                    'title'         => $thread['title'],
-                    'description'   => $thread['content'],
-                    'private'       => $thread['is_private'],
-                    'viewCount'     => $thread['viewCount'],
-                    'sticky'        => $thread['sticky'],
-                    'solvedMessage' => null,
-                    'status'        => ThreadStatusEnum::from($thread['status']),
-                    'forum'         => self::getReference('subforum_'.$thread['subforum_id'], Forum::class),
-                    'author'        => self::getReference('user_'.$thread['author_id'], User::class),
-                    'createdBy'     => self::getReference('user_'.$thread['author_id'], User::class),
-                    'updatedBy'     => self::getReference('user_'.$thread['author_id'], User::class),
-                    'createdAt'     => new DateTime($thread['created_at']),
-                    'updatedAt'     => new DateTime($thread['updated_at']),
+                    'title'           => $thread['title'],
+                    'description'     => $thread['content'],
+                    'private'         => $thread['is_private'],
+                    'viewCount'       => $thread['viewCount'],
+                    'sticky'          => $thread['sticky'],
+                    'solvedMessage'   => null,
+                    'status'          => ThreadStatusEnum::from($thread['status']),
+                    'isIncident'      => $thread['is_incident'],
+                    'isCritical'      => $thread['is_critical'],
+                    'affectsBusiness' => $thread['affects_business'],
+                    'forum'           => self::getReference('subforum_'.$thread['subforum_id'], Forum::class),
+                    'author'          => self::getReference('user_'.$thread['author_id'], User::class),
+                    'createdBy'       => self::getReference('user_'.$thread['author_id'], User::class),
+                    'updatedBy'       => self::getReference('user_'.$thread['author_id'], User::class),
+                    'createdAt'       => new DateTime($thread['created_at']),
+                    'updatedAt'       => new DateTime($thread['updated_at']),
                 ])
             ;
 

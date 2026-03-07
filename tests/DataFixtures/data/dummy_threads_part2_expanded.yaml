@@ -6,7 +6,9 @@ threads:
         description: 'Descripción del thread 2'
         content: 'Contenido detallado del thread 2'
         status: resolved
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: false
         sticky: true
         viewCount: 62
@@ -23,7 +25,9 @@ threads:
         description: 'Descripción del thread 6'
         content: 'Contenido detallado del thread 6'
         status: closed
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: false
         viewCount: 35
@@ -40,7 +44,9 @@ threads:
         description: 'Descripción del thread 10'
         content: 'Contenido detallado del thread 10'
         status: waiting_support
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 97
@@ -57,7 +63,9 @@ threads:
         description: 'Descripción del thread 14'
         content: 'Contenido detallado del thread 14'
         status: waiting_support
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 47
@@ -74,7 +82,9 @@ threads:
         description: 'Descripción del thread 18'
         content: 'Contenido detallado del thread 18'
         status: open
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: true
         viewCount: 56
@@ -91,7 +101,9 @@ threads:
         description: 'Descripción del thread 22'
         content: 'Contenido detallado del thread 22'
         status: resolved
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 24
@@ -108,7 +120,9 @@ threads:
         description: 'Descripción del thread 26'
         content: 'Contenido detallado del thread 26'
         status: waiting_support
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 79
@@ -125,7 +139,9 @@ threads:
         description: 'Descripción del thread 30'
         content: 'Contenido detallado del thread 30'
         status: open
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 57
@@ -142,7 +158,9 @@ threads:
         description: 'Descripción del thread 34'
         content: 'Contenido detallado del thread 34'
         status: resolved
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: false
         sticky: false
         viewCount: 58
@@ -159,7 +177,9 @@ threads:
         description: 'Descripción del thread 38'
         content: 'Contenido detallado del thread 38'
         status: closed
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: false
         viewCount: 73
@@ -176,7 +196,9 @@ threads:
         description: 'Descripción del thread 42'
         content: 'Contenido detallado del thread 42'
         status: waiting_support
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 79
@@ -193,7 +215,9 @@ threads:
         description: 'Descripción del thread 46'
         content: 'Contenido detallado del thread 46'
         status: waiting_customer
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 37
@@ -210,7 +234,9 @@ threads:
         description: 'Descripción del thread 50'
         content: 'Contenido detallado del thread 50'
         status: open
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: false
         viewCount: 51
@@ -227,7 +253,9 @@ threads:
         description: 'Descripción del thread 54'
         content: 'Contenido detallado del thread 54'
         status: resolved
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: false
         sticky: false
         viewCount: 91
@@ -244,7 +272,9 @@ threads:
         description: 'Descripción del thread 58'
         content: 'Contenido detallado del thread 58'
         status: waiting_customer
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 71
@@ -261,7 +291,9 @@ threads:
         description: 'Descripción del thread 62'
         content: 'Contenido detallado del thread 62'
         status: closed
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 49
@@ -278,7 +310,9 @@ threads:
         description: 'Descripción del thread 66'
         content: 'Contenido detallado del thread 66'
         status: waiting_customer
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: false
         sticky: false
         viewCount: 17
@@ -295,7 +329,9 @@ threads:
         description: 'Descripción del thread 70'
         content: 'Contenido detallado del thread 70'
         status: waiting_support
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 43
@@ -312,7 +348,9 @@ threads:
         description: 'Descripción del thread 74'
         content: 'Contenido detallado del thread 74'
         status: resolved
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 99
@@ -329,7 +367,9 @@ threads:
         description: 'Descripción del thread 78'
         content: 'Contenido detallado del thread 78'
         status: waiting_customer
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 88
@@ -346,7 +386,9 @@ threads:
         description: 'Descripción del thread 82'
         content: 'Contenido detallado del thread 82'
         status: waiting_customer
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 13
@@ -363,7 +405,9 @@ threads:
         description: 'Descripción del thread 86'
         content: 'Contenido detallado del thread 86'
         status: closed
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 100
@@ -380,7 +424,9 @@ threads:
         description: 'Descripción del thread 90'
         content: 'Contenido detallado del thread 90'
         status: waiting_customer
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 87
@@ -397,7 +443,9 @@ threads:
         description: 'Descripción del thread 94'
         content: 'Contenido detallado del thread 94'
         status: closed
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 13
@@ -414,7 +462,9 @@ threads:
         description: 'Descripción del thread 98'
         content: 'Contenido detallado del thread 98'
         status: waiting_support
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 67
@@ -431,7 +481,9 @@ threads:
         description: 'Descripción del thread 102'
         content: 'Contenido detallado del thread 102'
         status: waiting_support
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 53
@@ -448,7 +500,9 @@ threads:
         description: 'Descripción del thread 106'
         content: 'Contenido detallado del thread 106'
         status: waiting_support
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 47
@@ -465,7 +519,9 @@ threads:
         description: 'Descripción del thread 110'
         content: 'Contenido detallado del thread 110'
         status: open
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 61
@@ -482,7 +538,9 @@ threads:
         description: 'Descripción del thread 114'
         content: 'Contenido detallado del thread 114'
         status: resolved
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: false
         viewCount: 84
@@ -499,7 +557,9 @@ threads:
         description: 'Descripción del thread 118'
         content: 'Contenido detallado del thread 118'
         status: resolved
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 69
@@ -516,7 +576,9 @@ threads:
         description: 'Descripción del thread 122'
         content: 'Contenido detallado del thread 122'
         status: closed
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 54
@@ -533,7 +595,9 @@ threads:
         description: 'Descripción del thread 126'
         content: 'Contenido detallado del thread 126'
         status: waiting_customer
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 86
@@ -550,7 +614,9 @@ threads:
         description: 'Descripción del thread 130'
         content: 'Contenido detallado del thread 130'
         status: closed
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 27
@@ -567,7 +633,9 @@ threads:
         description: 'Descripción del thread 134'
         content: 'Contenido detallado del thread 134'
         status: waiting_support
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 45
@@ -584,7 +652,9 @@ threads:
         description: 'Descripción del thread 138'
         content: 'Contenido detallado del thread 138'
         status: waiting_support
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: false
         viewCount: 44
@@ -601,7 +671,9 @@ threads:
         description: 'Descripción del thread 142'
         content: 'Contenido detallado del thread 142'
         status: waiting_support
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 45
@@ -618,7 +690,9 @@ threads:
         description: 'Descripción del thread 146'
         content: 'Contenido detallado del thread 146'
         status: waiting_support
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 72
@@ -635,7 +709,9 @@ threads:
         description: 'Descripción del thread 150'
         content: 'Contenido detallado del thread 150'
         status: waiting_customer
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 26
@@ -652,7 +728,9 @@ threads:
         description: 'Descripción del thread 154'
         content: 'Contenido detallado del thread 154'
         status: resolved
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 90
@@ -669,7 +747,9 @@ threads:
         description: 'Descripción del thread 158'
         content: 'Contenido detallado del thread 158'
         status: waiting_customer
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 96
@@ -686,7 +766,9 @@ threads:
         description: 'Descripción del thread 162'
         content: 'Contenido detallado del thread 162'
         status: waiting_customer
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 5
@@ -703,7 +785,9 @@ threads:
         description: 'Descripción del thread 166'
         content: 'Contenido detallado del thread 166'
         status: waiting_support
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 62
@@ -720,7 +804,9 @@ threads:
         description: 'Descripción del thread 170'
         content: 'Contenido detallado del thread 170'
         status: open
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 84
@@ -737,7 +823,9 @@ threads:
         description: 'Descripción del thread 174'
         content: 'Contenido detallado del thread 174'
         status: resolved
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 7
@@ -754,7 +842,9 @@ threads:
         description: 'Descripción del thread 178'
         content: 'Contenido detallado del thread 178'
         status: waiting_customer
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: false
         sticky: true
         viewCount: 98
@@ -771,7 +861,9 @@ threads:
         description: 'Descripción del thread 182'
         content: 'Contenido detallado del thread 182'
         status: open
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: true
         viewCount: 22
@@ -788,7 +880,9 @@ threads:
         description: 'Descripción del thread 186'
         content: 'Contenido detallado del thread 186'
         status: resolved
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 18
@@ -805,7 +899,9 @@ threads:
         description: 'Descripción del thread 190'
         content: 'Contenido detallado del thread 190'
         status: open
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: true
         viewCount: 54
@@ -822,7 +918,9 @@ threads:
         description: 'Descripción del thread 194'
         content: 'Contenido detallado del thread 194'
         status: resolved
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 57
@@ -839,7 +937,9 @@ threads:
         description: 'Descripción del thread 198'
         content: 'Contenido detallado del thread 198'
         status: waiting_support
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 64
@@ -856,7 +956,9 @@ threads:
         description: 'Descripción del thread 202'
         content: 'Contenido detallado del thread 202'
         status: closed
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: true
         viewCount: 58
@@ -873,7 +975,9 @@ threads:
         description: 'Descripción del thread 206'
         content: 'Contenido detallado del thread 206'
         status: waiting_support
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: false
         viewCount: 36
@@ -890,7 +994,9 @@ threads:
         description: 'Descripción del thread 210'
         content: 'Contenido detallado del thread 210'
         status: waiting_customer
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: false
         viewCount: 16
@@ -907,7 +1013,9 @@ threads:
         description: 'Descripción del thread 214'
         content: 'Contenido detallado del thread 214'
         status: waiting_customer
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: true
         sticky: true
         viewCount: 45
@@ -924,7 +1032,9 @@ threads:
         description: 'Descripción del thread 218'
         content: 'Contenido detallado del thread 218'
         status: open
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: false
         sticky: false
         viewCount: 55
@@ -941,7 +1051,9 @@ threads:
         description: 'Descripción del thread 222'
         content: 'Contenido detallado del thread 222'
         status: resolved
-        help_type: problemas_facturacion
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: true
         sticky: false
         viewCount: 59
@@ -958,7 +1070,9 @@ threads:
         description: 'Descripción del thread 226'
         content: 'Contenido detallado del thread 226'
         status: closed
-        help_type: incidencia_servicio
+        is_incident: true
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 53
@@ -975,7 +1089,9 @@ threads:
         description: 'Descripción del thread 230'
         content: 'Contenido detallado del thread 230'
         status: waiting_support
-        help_type: consulta_facturacion
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 22
@@ -992,7 +1108,9 @@ threads:
         description: 'Descripción del thread 234'
         content: 'Contenido detallado del thread 234'
         status: waiting_customer
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 88
@@ -1009,7 +1127,9 @@ threads:
         description: 'Descripción del thread 238'
         content: 'Contenido detallado del thread 238'
         status: resolved
-        help_type: incidencia_critica
+        is_incident: true
+        is_critical: true
+        affects_business: true
         is_private: false
         sticky: true
         viewCount: 7
@@ -1026,7 +1146,9 @@ threads:
         description: 'Descripción del thread cerrado 242'
         content: 'Contenido del thread cerrado 242'
         status: closed
-        help_type: otro_motivo
+        is_incident: false
+        is_critical: false
+        affects_business: false
         is_private: false
         sticky: false
         viewCount: 17
