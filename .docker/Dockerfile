@@ -116,8 +116,7 @@ RUN composer install --prefer-dist --no-progress --no-interaction --no-dev --opt
 ENV APP_ENV=prod
 
 RUN php bin/console cache:clear \
-    && php bin/console tailwind:build assets/styles/app/app.css --minify \
-    && php bin/console tailwind:build assets/styles/exception_error.css --minify \
+    && composer tailwind:build -- --minify \
     && php bin/console importmap:install \
     && php bin/console asset-map:compile \
     && php bin/console error:dump var/cache/error_pages/ -f \
