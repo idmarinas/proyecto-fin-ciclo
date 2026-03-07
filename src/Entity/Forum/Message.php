@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 23:07
+ * Last modified by "IDMarinas" on 08/03/2026, 24:17
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -47,17 +47,11 @@ class Message implements Stringable, SoftDeleteable, Timestampable, Blameable
 
     #[ORM\Column(nullable: true)]
     #[Gedmo\Blameable(on: 'create')]
-    public ?string $createdBy {
-        get => $this->createdBy;
-        set => $this->createdBy = $value;
-    }
+    public ?string $createdBy;
 
     #[ORM\Column(nullable: true)]
     #[Gedmo\Blameable(on: 'update')]
-    public ?string $updatedBy {
-        get => $this->updatedBy;
-        set => $this->updatedBy = $value;
-    }
+    public ?string $updatedBy;
 
     #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn]

@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 23:08
+ * Last modified by "IDMarinas" on 08/03/2026, 24:15
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -100,10 +100,7 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     /** Último mensaje publicado en cualquier hilo de este foro (o sus subforos). */
     #[ORM\ManyToOne(targetEntity: Thread::class, fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
-    public ?Thread $lastThread = null {
-        get => $this->lastThread;
-        set => $this->lastThread = $value;
-    }
+    public ?Thread $lastThread = null;
 
     /** Fecha del último mensaje en el foro. Derivada de lastThread. */
     public ?DateTimeInterface $lastMessageAt {
@@ -116,10 +113,7 @@ class Forum implements Stringable, SoftDeleteable, Timestampable, SeoEntityInter
     }
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    public ?string $description = null {
-        get => $this->description;
-        set => $this->description = $value;
-    }
+    public ?string $description = null;
 
     #[ORM\Column(length: 255)]
     private string $title = '';

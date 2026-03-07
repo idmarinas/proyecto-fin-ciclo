@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 13:32
+ * Last modified by "IDMarinas" on 08/03/2026, 24:10
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -51,28 +51,17 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     use IpTraceableEntity;
 
     #[ORM\Column(length: 255, nullable: true)]
-    public ?string $avatar = null {
-        get => $this->avatar;
-        set => $this->avatar = $value;
-    }
+    public ?string $avatar = null;
 
     #[ORM\Column]
-    public int $reputation = 0 {
-        get => $this->reputation;
-        set => $this->reputation = $value;
-    }
+    public int $reputation = 0;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    public bool $client = false {
-        get => $this->client;
-        set => $this->client = $value;
-    }
+    public bool $client = false;
 
     /** Marca que ya se ha enviado el aviso de eliminación definitiva en 24h. */
     #[ORM\Column(type: Types::BOOLEAN, options: ['default' => false])]
-    public bool $deletionWarningSent = false {
-        get => $this->deletionWarningSent;
-    }
+    private bool $deletionWarningSent = false;
 
     #[ORM\Column(length: 180, unique: true)]
     private string $email = '';
@@ -276,6 +265,11 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
         $this->lastActiveAt = $lastActiveAt;
 
         return $this;
+    }
+
+    public function isDeletionWarningSent(): bool
+    {
+        return $this->deletionWarningSent;
     }
 
     public function markDeletionWarningSent(): static

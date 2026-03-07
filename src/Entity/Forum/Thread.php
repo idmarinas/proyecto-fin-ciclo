@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 23:08
+ * Last modified by "IDMarinas" on 08/03/2026, 24:16
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -54,25 +54,16 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
 
     #[ORM\Column(nullable: true)]
     #[Gedmo\Blameable(on: 'create')]
-    public ?string $createdBy {
-        get => $this->createdBy;
-        set => $this->createdBy = $value;
-    }
+    public ?string $createdBy;
 
     #[ORM\Column(length: 1000)]
     #[Assert\NotBlank(allowNull: false)]
-    public string $description = '' {
-        get => $this->description;
-        set => $this->description = $value;
-    }
+    public string $description = '';
 
     /** Último mensaje publicado en el hilo. Se actualiza automáticamente al crear/eliminar mensajes. */
     #[ORM\ManyToOne(targetEntity: Message::class, fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
-    public ?Message $lastMessage = null {
-        get => $this->lastMessage;
-        set => $this->lastMessage = $value;
-    }
+    public ?Message $lastMessage = null;
 
     /** Fecha del último mensaje publicado. Derivada de lastMessage. */
     public ?DateTimeInterface $lastMessageAt {
@@ -86,54 +77,31 @@ class Thread implements Stringable, SoftDeleteable, Timestampable, SeoEntityInte
 
     /** Número de mensajes del hilo. Se actualiza automáticamente al crear/eliminar mensajes. */
     #[ORM\Column]
-    public int $messageCount = 0 {
-        get => $this->messageCount;
-        set => $this->messageCount = max(0, $value);
-    }
+    public int $messageCount = 0;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(allowNull: false)]
-    public string $title = '' {
-        get => $this->title;
-        set => $this->title = $value;
-    }
+    public string $title = '';
 
     #[ORM\Column(nullable: true)]
     #[Gedmo\Blameable(on: 'update')]
-    public ?string $updatedBy {
-        get => $this->updatedBy;
-        set => $this->updatedBy = $value;
-    }
+    public ?string $updatedBy;
 
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
-    public bool $isIncident = false {
-        get => $this->isIncident;
-        set => $this->isIncident = $value;
-    }
+    public bool $isIncident = false;
 
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
-    public bool $isCritical = false {
-        get => $this->isCritical;
-        set => $this->isCritical = $value;
-    }
+    public bool $isCritical = false;
 
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
-    public bool $affectsBusiness = false {
-        get => $this->affectsBusiness;
-        set => $this->affectsBusiness = $value;
-    }
+    public bool $affectsBusiness = false;
 
     /** Prioridad calculada del hilo según el tipo de problema y sus combinaciones. */
     #[ORM\Column(type: Types::SMALLINT, options: ['default' => 0], index: true)]
-    public int $priority = 0 {
-        get => $this->priority;
-    }
+    public int $priority = 0;
 
     #[ORM\Column]
-    public bool $private = false {
-        get => $this->private;
-        set => $this->private = $value;
-    }
+    public bool $private = false;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn]
