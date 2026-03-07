@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 17:53
+ * Last modified by "IDMarinas" on 07/03/2026, 18:45
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,6 +23,7 @@ namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
+use Override;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
@@ -32,6 +33,26 @@ final class Version20260307164842 extends AbstractMigration
     public function getDescription(): string
     {
         return '1.0.0';
+    }
+
+    #[Override]
+    public function postUp(Schema $schema): void
+    {
+        foreach ([
+            __DIR__.'/start.sql',
+            __DIR__.'/user.sql',
+            __DIR__.'/pfc_forum.sql',
+            __DIR__.'/pfc_thread.sql',
+            __DIR__.'/pfc_message.sql',
+            __DIR__.'/end.sql',
+        ] as $file) {
+            if (is_file($file)) {
+                $sql = file_get_contents($file);
+                if (!empty(trim($sql))) {
+                    $this->connection->executeStatement($sql);
+                }
+            }
+        }
     }
 
     public function up(Schema $schema): void
