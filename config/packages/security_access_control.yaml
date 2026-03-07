@@ -4,7 +4,7 @@ security:
     access_control:
         # Admin panel
         - { path: ^/%app.route_prefix.admin%/(login|logout)$, roles: PUBLIC_ACCESS }
-        - { path: ^/%app.route_prefix.admin%(|/.*)$, roles: ROLE_ADMIN }
+        - { path: ^/%app.route_prefix.admin%(|/.*)$, roles: ROLE_SUPPORT }
 
         # Rutas para el usuario
         - { path: ^/user/(token|login|login/web|connect)$, roles: PUBLIC_ACCESS }

@@ -2,7 +2,7 @@
 /**
  * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 06/03/2026, 22:42
+ * Last modified by "IDMarinas" on 07/03/2026, 17:19
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -19,8 +19,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\Forum\MessageCrudController;
-use App\Controller\Admin\Forum\ThreadCrudController;
 use App\Controller\Admin\User\UserCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;

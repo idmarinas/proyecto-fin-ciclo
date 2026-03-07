@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 08/02/2026, 19:32
+ * Last modified by "IDMarinas" on 07/03/2026, 17:21
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -29,14 +29,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
 final class AdminChecker extends AbstractChecker
 {
     #[Override]
-    public function checkPreAuth (UserInterface $user): void
+    public function checkPreAuth(UserInterface $user): void
     {
         /** @var User $user */
         parent::checkPreAuth($user);
 
         $token = new PreAuthenticatedToken($user, 'admin', $user->getRoles());
 
-        if (!$this->accessDecisionManager->decide($token, ['ROLE_ADMIN'], null)) {
+        if (!$this->accessDecisionManager->decide($token, ['ROLE_SUPPORT'], null)) {
             throw new AccessDeniedException('user.role.insufficient');
         }
 

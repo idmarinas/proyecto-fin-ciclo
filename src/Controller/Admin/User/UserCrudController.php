@@ -3,7 +3,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 16:48
+ * Last modified by "IDMarinas" on 07/03/2026, 17:26
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -21,6 +21,8 @@
 namespace App\Controller\Admin\User;
 
 use App\Entity\User\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AvatarField;
@@ -150,6 +152,28 @@ final class UserCrudController extends AbstractCrudController
 
         yield DateTimeField::new('deletedAt')
             ->onlyOnDetail()
+        ;
+    }
+
+    #[Override]
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->setPermission(Action::NEW, 'ROLE_ADMIN')
+            ->setPermission(Action::EDIT, 'ROLE_ADMIN')
+            ->setPermission(Action::DELETE, 'ROLE_ADMIN')
+            ->setPermission(Action::BATCH_DELETE, 'ROLE_ADMIN')
+            ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
+                $action->displayIf(function (User $user) {
+                    if ($user->isDeleted()) {
+                        return $this->isGranted('ROLE_ALLOW_ACCOUNT_REMOVE');
+                    }
+
+                    return true;
+                });
+
+                return $action;
+            })
         ;
     }
 }
