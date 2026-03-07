@@ -64,7 +64,7 @@ Lúmina es una plataforma digital orientada a la gestión de soporte técnico pa
 | Capa       | Tecnología                                           |
 |------------|------------------------------------------------------|
 | Backend    | PHP 8.4+, Symfony 8.0, Doctrine ORM 3.6              |
-| Base datos | MySQL 8.4                                            |
+| Base datos | MariaDB 12.0.2                                       |
 | Frontend   | TailwindCSS 4.1, Twig UX Components, Stimulus, Turbo |
 | Admin      | EasyAdmin 4                                          |
 | Deploy     | Docker (FrankenPHP + Caddy), Traefik, Deployer       |
@@ -79,120 +79,6 @@ Lúmina es una plataforma digital orientada a la gestión de soporte técnico pa
 [![Composer](https://img.shields.io/badge/composer-%238c5530?style=for-the-badge&logo=composer&logoColor=white)](https://getcomposer.org)
 
 ---
-
-## Instalación
-
-### Requisitos previos
-
-- [Docker](https://www.docker.com/) y Docker Compose
-
-> **Nota:** No se necesita PHP, Composer ni Node.js instalados localmente. Todo se ejecuta dentro de los contenedores Docker.
-> El `package.json` existe únicamente para que el IDE pueda ofrecer autocompletado de TailwindCSS.
-
----
-
-### 1. Clonar el repositorio
-
-```bash
-git clone https://github.com/idmarinas/proyecto-fin-ciclo.git
-cd proyecto-fin-ciclo
-```
-
----
-
-### 2. Inicializar el entorno
-
-Este script crea el fichero `.env.docker` necesario para los servicios Docker. Instala dependencias, limpia la caché y vuelca las variables de entorno, todo dentro de un contenedor temporal:
-
-```powershell
-# Dev - Init .env.docker
-.\.docker\scripts\dev\init-env-docker.ps1
-```
-
-> Si necesitas regenerar `.env.docker` sin reinstalar dependencias, usa el script de Composer:
-> **Dev - Create .env.docker** → `composer dev:dump:env`
-
----
-
-### 3. Levantar los servicios
-
-```bash
-# Dev - Webserver
-docker compose -f compose.yaml -f compose.override.yaml --env-file .env.docker up -d webserver database database_test mailer
-```
-
-Esto levanta:
-
-| Servicio        | Descripción                                | Puerto local  |
-|-----------------|--------------------------------------------|---------------|
-| `webserver`     | PHP con FrankenPHP + Caddy                 | `443` (HTTPS) |
-| `database`      | MySQL 8.4 para desarrollo                  | `13306`       |
-| `database_test` | MySQL 8.4 para tests                       | `13307`       |
-| `mailer`        | Mailpit — captura de correos en desarrollo | `8025` (web)  |
-
----
-
-### 4. Cargar la base de datos con datos de ejemplo
-
-```bash
-# Dev - Reload DB
-composer dev:fixtures:load
-```
-
-Este comando ejecuta dentro del contenedor: drop del esquema, recreación y carga de fixtures.
-
----
-
-### 5. Compilar los assets (TailwindCSS)
-
-Los assets se compilan con dos comandos de Composer, sin necesidad de npm:
-
-```bash
-# Compila los estilos principales y los estilos de la página de error
-composer tailwind:build
-```
-
-Esto ejecuta internamente:
-
-1. `php bin/console tailwind:build` — estilos principales de la aplicación
-2. `php bin/console tailwind:build assets/styles/exception_error.css` — estilos de la página de error
-
----
-
-### 6. Acceder a la aplicación
-
-| URL                       | Descripción             |
-|---------------------------|-------------------------|
-| `https://localhost`       | Aplicación principal    |
-| `https://localhost/admin` | Panel de administración |
-| `http://localhost:8025`   | Mailpit (correos dev)   |
-
----
-
-## Tests
-
-### Cargar datos de prueba
-
-```bash
-# Test - Reload DB
-composer test:fixtures:load
-```
-
-### Ejecutar la suite
-
-```bash
-php bin/phpunit --exclude-group ignore
-```
-
----
-
-## Otros scripts útiles
-
-| Script Composer           | Descripción                                              |
-|---------------------------|----------------------------------------------------------|
-| `composer auto-scripts`   | Limpia caché, instala assets e importmap *(Clear Cache)* |
-| `composer dev:dump:env`   | Regenera el fichero `.env.docker`                        |
-| `composer tailwind:build` | Compila todos los assets CSS                             |
 
 [//]: # (@formatter:off)
 [sonarcloud]: https://sonarcloud.io/dashboard?id=SONAR_PROJECT_NAME_CHANGE_ME
