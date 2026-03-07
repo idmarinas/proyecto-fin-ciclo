@@ -47,7 +47,12 @@ nelmio_security:
             frame-src: [ self ]
             form-action: [ self ]
             connect-src: [ self ]
-            img-src: [ self, 'data:' ]
+            img-src:
+                - self
+                - data:'
+                - https://images.unsplash.com
+                - https://placehold.net
+                - https://images.pexels.com
             font-src: [ self ]
             script-src: [ self, strict-dynamic ]
 
