@@ -3,7 +3,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 16:39
+ * Last modified by "IDMarinas" on 07/03/2026, 16:48
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -85,7 +85,7 @@ final class UserCrudController extends AbstractCrudController
             $roles['Super Admin'] = 'ROLE_SUPER_ADMIN';
         }
 
-        $rolesChoice = ChoiceField::new('mainRole', 'Roles')
+        $rolesChoice = ChoiceField::new('mainRole', 'Rol')
             ->setChoices($roles)
             ->renderAsBadges()
         ;
@@ -131,8 +131,8 @@ final class UserCrudController extends AbstractCrudController
             ->hideOnForm()
         ;
 
-        yield BooleanField::new('isBanned')
-            ->setLabel('Is Banned')
+        yield BooleanField::new('isDeleted')
+            ->setLabel('¿Borrado?')
             ->renderAsSwitch(false)
         ;
 
