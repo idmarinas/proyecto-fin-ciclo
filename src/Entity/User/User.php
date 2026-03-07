@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 03/03/2026, 21:37
+ * Last modified by "IDMarinas" on 07/03/2026, 13:32
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -170,6 +170,35 @@ class User implements Stringable, UserInterface, PasswordAuthenticatedUserInterf
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getMainRole(): string
+    {
+        $roles = $this->getRoles();
+        if (in_array('ROLE_SUPER_ADMIN', $roles, true)) {
+            return 'ROLE_SUPER_ADMIN';
+        }
+
+        if (in_array('ROLE_ADMIN', $roles, true)) {
+            return 'ROLE_ADMIN';
+        }
+
+        if (in_array('ROLE_SUPPORT', $roles, true)) {
+            return 'ROLE_SUPPORT';
+        }
+
+        if (in_array('ROLE_CLIENT', $roles, true)) {
+            return 'ROLE_CLIENT';
+        }
+
+        return 'ROLE_USER';
+    }
+
+    public function setMainRole(string $role): static
+    {
+        $this->roles = [$role];
 
         return $this;
     }

@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 12:28
+ * Last modified by "IDMarinas" on 07/03/2026, 16:39
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -22,9 +23,9 @@ namespace App\Controller\Admin\User;
 use App\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AvatarField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -61,24 +62,51 @@ final class UserCrudController extends AbstractCrudController
             ->setRequired(true)
         ;
 
+        yield AvatarField::new('avatar');
+
         yield TextField::new('username')
             ->setRequired(true)
         ;
 
-        yield AvatarField::new('avatar')
-            // ->setBasePath('uploads/avatars')
-            // ->setUploadDir('public/uploads/avatars')
-            // ->setUploadedFileNamePattern('[randomhash].[extension]')
-            ->onlyOnIndex()
+        $roles = [];
+        if ($this->isGranted('ROLE_ALLOW_CHANGE_USER_ROLE')) {
+            $roles['User'] = 'ROLE_USER';
+        }
+        if ($this->isGranted('ROLE_ALLOW_CHANGE_CLIENT_ROLE')) {
+            $roles['Client'] = 'ROLE_CLIENT';
+        }
+        if ($this->isGranted('ROLE_ALLOW_CHANGE_SUPPORT_ROLE')) {
+            $roles['Support'] = 'ROLE_SUPPORT';
+        }
+        if ($this->isGranted('ROLE_ALLOW_CHANGE_ADMIN_ROLE')) {
+            $roles['Admin'] = 'ROLE_ADMIN';
+        }
+        if ($this->isGranted('ROLE_ALLOW_CHANGE_SUPER_ADMIN_ROLE')) {
+            $roles['Super Admin'] = 'ROLE_SUPER_ADMIN';
+        }
+
+        $rolesChoice = ChoiceField::new('mainRole', 'Roles')
+            ->setChoices($roles)
+            ->renderAsBadges()
         ;
 
-        yield TextField::new('avatarUrl')
-            ->hideOnIndex()
-        ;
+        $user = $this->getContext()?->getEntity()?->getInstance();
+        if ($user instanceof User) {
+            $mainRole = $user->getMainRole();
+            $canChangeRole = match ($mainRole) {
+                'ROLE_SUPER_ADMIN' => $this->isGranted('ROLE_ALLOW_CHANGE_SUPER_ADMIN_ROLE'),
+                'ROLE_ADMIN'       => $this->isGranted('ROLE_ALLOW_CHANGE_ADMIN_ROLE'),
+                'ROLE_SUPPORT'     => $this->isGranted('ROLE_ALLOW_CHANGE_SUPPORT_ROLE'),
+                'ROLE_CLIENT'      => $this->isGranted('ROLE_ALLOW_CHANGE_CLIENT_ROLE'),
+                default            => $this->isGranted('ROLE_ALLOW_CHANGE_USER_ROLE'),
+            };
 
-        yield ArrayField::new('roles')
-            ->hideOnIndex()
-        ;
+            if (!$canChangeRole) {
+                $rolesChoice->setDisabled();
+            }
+        }
+
+        yield $rolesChoice;
 
         yield BooleanField::new('isVerified')
             ->setLabel('Email Verified')
