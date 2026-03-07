@@ -4,6 +4,7 @@
 /.env.docker
 /package*.json
 /node_modules/
+/.storage/
 ###< idmarinas/proyecto-fin-ciclo ###
 
 ###> symfony/framework-bundle ###

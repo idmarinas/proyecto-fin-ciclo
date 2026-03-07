@@ -28,6 +28,7 @@
 .deployer/
 .github/
 .idea/
+.storage/
 build/
 docs/
 factories/
