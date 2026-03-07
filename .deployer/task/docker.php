@@ -4,6 +4,8 @@ namespace Deployer;
 
 import('recipe/common.php');
 
+set('docker/services/start', 'webserver database');
+
 //
 // Tasks
 //
