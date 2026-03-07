@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 17/02/2026, 16:50
+ * Last modified by "IDMarinas" on 07/03/2026, 18:49
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -25,16 +25,35 @@ use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Yaml\Yaml;
+use function Zenstruck\Foundry\faker;
 
 final class UserFixtures extends Fixture
 {
     /**
      * @throws DateMalformedStringException
      */
-    public function load (ObjectManager $manager): void
+    public function load(ObjectManager $manager): void
     {
         // Cargar YAML
-        $users = Yaml::parseFile(dirname(__DIR__) . '/data/dummy_users_expanded.yaml');
+        $users = Yaml::parseFile(dirname(__DIR__).'/data/dummy_users_expanded.yaml');
+
+        $password = function (string $email): string {
+            $pass = match (true) {
+                str_starts_with($email, 'super@')
+                        => faker()->password(9),
+                str_starts_with($email, 'admin')
+                        => faker()->password(8, 19),
+                str_starts_with($email, 'support')
+                        => faker()->password(8, 18),
+                str_starts_with($email, 'user1@')
+                        => faker()->password(8, 17),
+                str_starts_with($email, 'client1@')
+                        => faker()->password(8, 16),
+                default => faker()->password(7, 15),
+            };
+
+            return $pass;
+        };
 
         foreach ($users['users'] as $user) {
             $createdAt = new DateTime($user['created_at']);
@@ -44,7 +63,7 @@ final class UserFixtures extends Fixture
                     'username'     => $user['username'],
                     'email'        => $user['email'],
                     'roles'        => $user['roles'],
-                    'password'     => 'pass_1234',
+                    'password'     => $password($user['email']),
                     'avatar'       => $user['avatar'],
                     'isVerified'   => $user['is_verified'],
                     'reputation'   => $user['reputation'],
@@ -54,7 +73,7 @@ final class UserFixtures extends Fixture
                     'lastActiveAt' => new DateTime($user['last_login']),
                 ])
             ;
-            self::addReference('user_' . $user['id'], $entity);
+            self::addReference('user_'.$user['id'], $entity);
         }
     }
 }
