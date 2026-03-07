@@ -5,7 +5,7 @@ services:
       resources:
         limits:
           cpus: '0.8'
-          memory: 350M
+          memory: 512M
       restart_policy:
         condition: on-failure
         delay: 5s

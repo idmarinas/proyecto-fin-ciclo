@@ -10,6 +10,7 @@ services:
       MYSQL_USER: ${DATABASE_USER}
       MYSQL_PASSWORD_FILE: /run/secrets/db_password
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_password
+    tty: true
     healthcheck:
       test: mysqladmin ping
       start_period: 10s
