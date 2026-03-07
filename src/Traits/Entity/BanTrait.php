@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 31/01/2026, 23:45
+ * Last modified by "IDMarinas" on 08/03/2026, 24:09
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -28,15 +28,12 @@ trait BanTrait
 {
     /** Date on which the ban is ended */
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    public ?DateTimeInterface $bannedUntil = null {
-        get => $this->bannedUntil;
-        set => $this->bannedUntil = $value;
-    }
+    public ?DateTimeInterface $bannedUntil = null;
 
     /**
      * Gets whether the user is locked out.
      */
-    public function isBanned (): bool
+    public function isBanned(): bool
     {
         if (!$this->bannedUntil instanceof DateTimeInterface || '-0001-11-30' === $this->bannedUntil->format('Y-m-d')) {
             return false;
