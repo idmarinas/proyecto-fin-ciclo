@@ -72,7 +72,6 @@ set('http_group', 'www-data');
 // Docker
 set('docker/compose/files', '--env-file .env.docker -f compose.yaml -f compose.prod.yaml');
 set('docker/registry', 'ghcr.io');
-set('docker/services/start', 'webserver database worker_async worker_scheduler');
 set('docker/image/name', '{{docker/registry}}/{{github/repository}}:{{app/version}}-build.{{app/version/build}}');
 
 //
@@ -101,6 +100,7 @@ task('deploy', [
     'deploy:symfony:workers:stop',
     'docker:service:start',
     'doctrine:migrations',
+    'deploy:symfony:workers:start',
     'deploy:publish',
 ]);
 
