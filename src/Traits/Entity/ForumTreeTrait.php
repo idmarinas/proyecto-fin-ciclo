@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 21/02/2026, 23:17
+ * Last modified by "IDMarinas" on 07/03/2026, 23:05
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,6 +20,7 @@
 namespace App\Traits\Entity;
 
 use App\Entity\Forum;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -29,7 +30,7 @@ trait ForumTreeTrait
     #[Gedmo\TreeRoot]
     #[ORM\ManyToOne(targetEntity: Forum::class)]
     #[ORM\JoinColumn(name: 'tree_root', referencedColumnName: 'id', onDelete: 'CASCADE')]
-    public ?Forum $root {
+    public ?Forum $root = null {
         get => $this->root;
         set => $this->root = $value;
     }
@@ -37,7 +38,7 @@ trait ForumTreeTrait
     #[Gedmo\TreeParent]
     #[ORM\ManyToOne(targetEntity: Forum::class, cascade: ['persist'], inversedBy: 'children')]
     #[ORM\JoinColumn(name: 'parent_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
-    public ?Forum $parent {
+    public ?Forum $parent = null {
         get => $this->parent;
         set => $this->parent = $value;
     }
@@ -45,7 +46,7 @@ trait ForumTreeTrait
     #[ORM\OneToMany(targetEntity: Forum::class, mappedBy: 'parent')]
     #[ORM\OrderBy(['ltf' => 'ASC'])]
     public Collection $children {
-        get => $this->children;
+        get => $this->children ??= new ArrayCollection();
         set => $this->children = $value;
     }
 }
