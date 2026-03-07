@@ -17,7 +17,7 @@ task('deploy:symfony:workers:stop', function () {
     $workers = get('symfony/workers/names');
 
     foreach ($workers as $name => $worker) {
-        if (test('[ -n "$(docker ps -q --filter name=' . $worker . ')" ]')) {
+        if (test('[ -n "$(docker ps -q --filter name='.$worker.')" ]')) {
             info("Deteniendo worker y Borrando contenedor: <options=bold>$name</>");
 
             // Comprobar el estado del worker
@@ -33,11 +33,19 @@ task('deploy:symfony:workers:stop', function () {
                 run("docker stop $worker");
                 run("docker rm -f $worker");
             }
-        } elseif (test('[ -n "$(docker ps -aq --filter name=' . $worker . ')" ]')) {
+        } elseif (test('[ -n "$(docker ps -aq --filter name='.$worker.')" ]')) {
             writeln("<fg=yellow>El worker <options=bold>$name</> no está funcionando se borra el contenedor.</>");
             run("docker rm -f $worker");
         } else {
             writeln("<fg=red>El worker <options=bold>$name</> no tiene un contenedor asociado.</>");
         }
     }
+});
+
+desc('Iniciar contenedores workers');
+task('deploy:symfony:workers:start', function () {
+    info('Creando contenedores workers en "{{text_prod}}"');
+    within('{{release_or_current_path}}', function () {
+        run('docker compose {{docker/compose/files}} up -d --wait worker_async worker_scheduler');
+    });
 });
