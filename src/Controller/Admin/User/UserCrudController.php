@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 24/01/2026, 21:26
+ * Last modified by "IDMarinas" on 07/03/2026, 12:28
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -23,26 +23,24 @@ use App\Entity\User\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AvatarField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Override;
 
 final class UserCrudController extends AbstractCrudController
 {
     #[Override]
-    public static function getEntityFqcn (): string
+    public static function getEntityFqcn(): string
     {
         return User::class;
     }
 
     #[Override]
-    public function configureCrud (Crud $crud): Crud
+    public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->setEntityLabelInSingular('User')
@@ -53,7 +51,7 @@ final class UserCrudController extends AbstractCrudController
     }
 
     #[Override]
-    public function configureFields (string $pageName): iterable
+    public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')
             ->hideOnForm()
@@ -67,10 +65,14 @@ final class UserCrudController extends AbstractCrudController
             ->setRequired(true)
         ;
 
-        yield ImageField::new('avatar')
-            ->setBasePath('uploads/avatars')
-            ->setUploadDir('public/uploads/avatars')
-            ->setUploadedFileNamePattern('[randomhash].[extension]')
+        yield AvatarField::new('avatar')
+            // ->setBasePath('uploads/avatars')
+            // ->setUploadDir('public/uploads/avatars')
+            // ->setUploadedFileNamePattern('[randomhash].[extension]')
+            ->onlyOnIndex()
+        ;
+
+        yield TextField::new('avatarUrl')
             ->hideOnIndex()
         ;
 
@@ -80,6 +82,7 @@ final class UserCrudController extends AbstractCrudController
 
         yield BooleanField::new('isVerified')
             ->setLabel('Email Verified')
+            ->renderAsSwitch(false)
         ;
 
         yield BooleanField::new('termsAccepted')
@@ -96,21 +99,13 @@ final class UserCrudController extends AbstractCrudController
             ->hideOnIndex()
         ;
 
-        yield IntegerField::new('reputation')
-            ->hideOnForm()
-        ;
-
         yield DateTimeField::new('lastActiveAt')
             ->hideOnForm()
         ;
 
-        yield AssociationField::new('subscriptions')
-            ->onlyOnDetail()
-            ->setTemplatePath('admin/fields/collection.html.twig')
-        ;
-
         yield BooleanField::new('isBanned')
             ->setLabel('Is Banned')
+            ->renderAsSwitch(false)
         ;
 
         yield DateTimeField::new('bannedAt')
@@ -122,10 +117,6 @@ final class UserCrudController extends AbstractCrudController
         ;
 
         yield DateTimeField::new('createdAt')
-            ->hideOnForm()
-        ;
-
-        yield DateTimeField::new('updatedAt')
             ->hideOnForm()
         ;
 
