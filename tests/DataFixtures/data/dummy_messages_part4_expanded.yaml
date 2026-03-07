@@ -3,7 +3,6 @@ messages:
         thread_id: 183
         author_id: 3
         content: 'Mensaje 1 del thread 183'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-01-04 00:45:18'
@@ -11,7 +10,6 @@ messages:
         thread_id: 183
         author_id: 79
         content: 'Mensaje 2 del thread 183'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-01 00:02:53'
@@ -19,7 +17,6 @@ messages:
         thread_id: 183
         author_id: 5
         content: 'Mensaje 3 del thread 183'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-08 00:43:25'
@@ -27,7 +24,6 @@ messages:
         thread_id: 183
         author_id: 79
         content: 'Mensaje 4 del thread 183'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-04 00:18:00'
@@ -35,7 +31,6 @@ messages:
         thread_id: 183
         author_id: 2
         content: 'Mensaje 5 del thread 183'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:37:55'
@@ -43,7 +38,6 @@ messages:
         thread_id: 183
         author_id: 10
         content: 'Mensaje 6 del thread 183'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-04 00:44:49'
@@ -51,7 +45,6 @@ messages:
         thread_id: 183
         author_id: 79
         content: 'Mensaje 7 del thread 183'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:48:03'
@@ -59,7 +52,6 @@ messages:
         thread_id: 183
         author_id: 4
         content: 'Mensaje 8 del thread 183'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:59:38'
@@ -67,7 +59,6 @@ messages:
         thread_id: 184
         author_id: 7
         content: 'Mensaje 1 del thread 184'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:48:31'
@@ -75,7 +66,6 @@ messages:
         thread_id: 184
         author_id: 5
         content: 'Mensaje 2 del thread 184'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:54:57'
@@ -83,7 +73,6 @@ messages:
         thread_id: 184
         author_id: 2
         content: 'Mensaje 3 del thread 184'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:58:18'
@@ -91,7 +80,6 @@ messages:
         thread_id: 184
         author_id: 7
         content: 'Mensaje 4 del thread 184'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-31 00:50:51'
@@ -99,7 +87,6 @@ messages:
         thread_id: 185
         author_id: 116
         content: 'Mensaje 1 del thread 185'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-09 00:15:38'
@@ -107,7 +94,6 @@ messages:
         thread_id: 185
         author_id: 7
         content: 'Mensaje 2 del thread 185'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:52:22'
@@ -115,7 +101,6 @@ messages:
         thread_id: 185
         author_id: 5
         content: 'Mensaje 3 del thread 185'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:15:40'
@@ -123,7 +108,6 @@ messages:
         thread_id: 185
         author_id: 2
         content: 'Mensaje 4 del thread 185'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-19 00:13:39'
@@ -131,7 +115,6 @@ messages:
         thread_id: 185
         author_id: 1
         content: 'Mensaje 5 del thread 185'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:17:43'
@@ -139,7 +122,6 @@ messages:
         thread_id: 185
         author_id: 116
         content: 'Mensaje 6 del thread 185'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:49:46'
@@ -147,7 +129,6 @@ messages:
         thread_id: 186
         author_id: 16
         content: 'Mensaje 1 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:50:42'
@@ -155,7 +136,6 @@ messages:
         thread_id: 186
         author_id: 16
         content: 'Mensaje 2 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-16 00:44:53'
@@ -163,7 +143,6 @@ messages:
         thread_id: 186
         author_id: 16
         content: 'Mensaje 3 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-16 00:09:40'
@@ -171,7 +150,6 @@ messages:
         thread_id: 186
         author_id: 16
         content: 'Mensaje 4 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-06 00:07:57'
@@ -179,7 +157,6 @@ messages:
         thread_id: 186
         author_id: 10
         content: 'Mensaje 5 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:41:41'
@@ -187,7 +164,6 @@ messages:
         thread_id: 186
         author_id: 6
         content: 'Mensaje 6 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-04 00:03:19'
@@ -195,7 +171,6 @@ messages:
         thread_id: 186
         author_id: 10
         content: 'Mensaje 7 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-19 00:51:28'
@@ -203,7 +178,6 @@ messages:
         thread_id: 186
         author_id: 10
         content: 'Mensaje 8 del thread 186'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-08 00:03:37'
@@ -211,7 +185,6 @@ messages:
         thread_id: 186
         author_id: 7
         content: 'Mensaje 9 del thread 186'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-02-07 00:24:46'
@@ -219,7 +192,6 @@ messages:
         thread_id: 187
         author_id: 4
         content: 'Mensaje 1 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:09:05'
@@ -227,7 +199,6 @@ messages:
         thread_id: 187
         author_id: 4
         content: 'Mensaje 2 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-01 00:59:18'
@@ -235,7 +206,6 @@ messages:
         thread_id: 187
         author_id: 7
         content: 'Mensaje 3 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-16 00:21:47'
@@ -243,7 +213,6 @@ messages:
         thread_id: 187
         author_id: 5
         content: 'Mensaje 4 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:27:11'
@@ -251,7 +220,6 @@ messages:
         thread_id: 187
         author_id: 4
         content: 'Mensaje 5 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-05 00:13:08'
@@ -259,7 +227,6 @@ messages:
         thread_id: 187
         author_id: 4
         content: 'Mensaje 6 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-08 00:51:34'
@@ -267,7 +234,6 @@ messages:
         thread_id: 187
         author_id: 4
         content: 'Mensaje 7 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-12 00:57:23'
@@ -275,7 +241,6 @@ messages:
         thread_id: 187
         author_id: 4
         content: 'Mensaje 8 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-31 00:34:32'
@@ -283,7 +248,6 @@ messages:
         thread_id: 187
         author_id: 4
         content: 'Mensaje 9 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-09 00:59:17'
@@ -291,7 +255,6 @@ messages:
         thread_id: 187
         author_id: 3
         content: 'Mensaje 10 del thread 187'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-04 00:54:10'
@@ -299,7 +262,6 @@ messages:
         thread_id: 188
         author_id: 110
         content: 'Mensaje 1 del thread 188'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:17:58'
@@ -307,7 +269,6 @@ messages:
         thread_id: 189
         author_id: 5
         content: 'Mensaje 1 del thread 189'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:53:30'
@@ -315,7 +276,6 @@ messages:
         thread_id: 189
         author_id: 97
         content: 'Mensaje 2 del thread 189'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-29 00:52:18'
@@ -323,7 +283,6 @@ messages:
         thread_id: 189
         author_id: 97
         content: 'Mensaje 3 del thread 189'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:48:55'
@@ -331,7 +290,6 @@ messages:
         thread_id: 189
         author_id: 8
         content: 'Mensaje 4 del thread 189'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-02 00:22:51'
@@ -339,7 +297,6 @@ messages:
         thread_id: 189
         author_id: 97
         content: 'Mensaje 5 del thread 189'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-17 00:08:29'
@@ -347,7 +304,6 @@ messages:
         thread_id: 189
         author_id: 97
         content: 'Mensaje 6 del thread 189'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-30 00:05:09'
@@ -355,7 +311,6 @@ messages:
         thread_id: 191
         author_id: 45
         content: 'Mensaje 1 del thread 191'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-03 00:49:14'
@@ -363,7 +318,6 @@ messages:
         thread_id: 191
         author_id: 9
         content: 'Mensaje 2 del thread 191'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:56:43'
@@ -371,7 +325,6 @@ messages:
         thread_id: 191
         author_id: 45
         content: 'Mensaje 3 del thread 191'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-25 00:47:43'
@@ -379,7 +332,6 @@ messages:
         thread_id: 192
         author_id: 10
         content: 'Mensaje 1 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-07 00:26:54'
@@ -387,7 +339,6 @@ messages:
         thread_id: 192
         author_id: 130
         content: 'Mensaje 2 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:52:35'
@@ -395,7 +346,6 @@ messages:
         thread_id: 192
         author_id: 2
         content: 'Mensaje 3 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-14 00:24:05'
@@ -403,7 +353,6 @@ messages:
         thread_id: 192
         author_id: 1
         content: 'Mensaje 4 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:51:25'
@@ -411,7 +360,6 @@ messages:
         thread_id: 192
         author_id: 3
         content: 'Mensaje 5 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-29 00:01:16'
@@ -419,7 +367,6 @@ messages:
         thread_id: 192
         author_id: 130
         content: 'Mensaje 6 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-02 00:35:07'
@@ -427,7 +374,6 @@ messages:
         thread_id: 192
         author_id: 130
         content: 'Mensaje 7 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-09 00:30:23'
@@ -435,7 +381,6 @@ messages:
         thread_id: 192
         author_id: 130
         content: 'Mensaje 8 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-13 00:44:47'
@@ -443,7 +388,6 @@ messages:
         thread_id: 192
         author_id: 4
         content: 'Mensaje 9 del thread 192'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-26 00:44:16'
@@ -451,7 +395,6 @@ messages:
         thread_id: 193
         author_id: 8
         content: 'Mensaje 1 del thread 193'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:38:24'
@@ -459,7 +402,6 @@ messages:
         thread_id: 193
         author_id: 8
         content: 'Mensaje 2 del thread 193'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-04 00:53:40'
@@ -467,7 +409,6 @@ messages:
         thread_id: 193
         author_id: 122
         content: 'Mensaje 3 del thread 193'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-09 00:24:06'
@@ -475,7 +416,6 @@ messages:
         thread_id: 193
         author_id: 122
         content: 'Mensaje 4 del thread 193'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-15 00:44:14'
@@ -483,7 +423,6 @@ messages:
         thread_id: 194
         author_id: 9
         content: 'Mensaje 1 del thread 194'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:31:01'
@@ -491,7 +430,6 @@ messages:
         thread_id: 194
         author_id: 10
         content: 'Mensaje 2 del thread 194'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-15 00:40:56'
@@ -499,7 +437,6 @@ messages:
         thread_id: 194
         author_id: 1
         content: 'Mensaje 3 del thread 194'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-13 00:36:20'
@@ -507,7 +444,6 @@ messages:
         thread_id: 194
         author_id: 2
         content: 'Mensaje 4 del thread 194'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:59:39'
@@ -515,7 +451,6 @@ messages:
         thread_id: 194
         author_id: 3
         content: 'Mensaje 5 del thread 194'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-14 00:15:41'
@@ -523,7 +458,6 @@ messages:
         thread_id: 194
         author_id: 6
         content: 'Mensaje 6 del thread 194'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:05:40'
@@ -531,7 +465,6 @@ messages:
         thread_id: 194
         author_id: 9
         content: 'Mensaje 7 del thread 194'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-20 00:53:29'
@@ -539,7 +472,6 @@ messages:
         thread_id: 194
         author_id: 2
         content: 'Mensaje 8 del thread 194'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-01-03 00:59:44'
@@ -547,7 +479,6 @@ messages:
         thread_id: 195
         author_id: 27
         content: 'Mensaje 1 del thread 195'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-12 00:20:41'
@@ -555,7 +486,6 @@ messages:
         thread_id: 196
         author_id: 46
         content: 'Mensaje 1 del thread 196'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-16 00:27:07'
@@ -563,7 +493,6 @@ messages:
         thread_id: 196
         author_id: 9
         content: 'Mensaje 2 del thread 196'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-13 00:09:02'
@@ -571,7 +500,6 @@ messages:
         thread_id: 196
         author_id: 46
         content: 'Mensaje 3 del thread 196'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:03:19'
@@ -579,7 +507,6 @@ messages:
         thread_id: 196
         author_id: 2
         content: 'Mensaje 4 del thread 196'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:32:07'
@@ -587,7 +514,6 @@ messages:
         thread_id: 196
         author_id: 2
         content: 'Mensaje 5 del thread 196'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-04 00:07:15'
@@ -595,7 +521,6 @@ messages:
         thread_id: 196
         author_id: 46
         content: 'Mensaje 6 del thread 196'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-30 00:57:34'
@@ -603,7 +528,6 @@ messages:
         thread_id: 196
         author_id: 46
         content: 'Mensaje 7 del thread 196'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-26 00:09:24'
@@ -611,7 +535,6 @@ messages:
         thread_id: 198
         author_id: 8
         content: 'Mensaje 1 del thread 198'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-03 00:30:23'
@@ -619,7 +542,6 @@ messages:
         thread_id: 198
         author_id: 120
         content: 'Mensaje 2 del thread 198'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-04 00:43:47'
@@ -627,7 +549,6 @@ messages:
         thread_id: 198
         author_id: 8
         content: 'Mensaje 3 del thread 198'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-18 00:45:34'
@@ -635,7 +556,6 @@ messages:
         thread_id: 198
         author_id: 6
         content: 'Mensaje 4 del thread 198'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:27:37'
@@ -643,7 +563,6 @@ messages:
         thread_id: 198
         author_id: 4
         content: 'Mensaje 5 del thread 198'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-08 00:48:46'
@@ -651,7 +570,6 @@ messages:
         thread_id: 199
         author_id: 106
         content: 'Mensaje 1 del thread 199'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:10:56'
@@ -659,7 +577,6 @@ messages:
         thread_id: 199
         author_id: 7
         content: 'Mensaje 2 del thread 199'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-30 00:27:41'
@@ -667,7 +584,6 @@ messages:
         thread_id: 199
         author_id: 106
         content: 'Mensaje 3 del thread 199'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:07:53'
@@ -675,7 +591,6 @@ messages:
         thread_id: 199
         author_id: 106
         content: 'Mensaje 4 del thread 199'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:32:39'
@@ -683,7 +598,6 @@ messages:
         thread_id: 199
         author_id: 4
         content: 'Mensaje 5 del thread 199'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:27:17'
@@ -691,7 +605,6 @@ messages:
         thread_id: 200
         author_id: 90
         content: 'Mensaje 1 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-08 00:03:44'
@@ -699,7 +612,6 @@ messages:
         thread_id: 200
         author_id: 90
         content: 'Mensaje 2 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-21 00:24:13'
@@ -707,7 +619,6 @@ messages:
         thread_id: 200
         author_id: 90
         content: 'Mensaje 3 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-25 00:29:28'
@@ -715,7 +626,6 @@ messages:
         thread_id: 200
         author_id: 90
         content: 'Mensaje 4 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-02 00:16:54'
@@ -723,7 +633,6 @@ messages:
         thread_id: 200
         author_id: 6
         content: 'Mensaje 5 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-17 00:24:06'
@@ -731,7 +640,6 @@ messages:
         thread_id: 200
         author_id: 9
         content: 'Mensaje 6 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-08 00:44:23'
@@ -739,7 +647,6 @@ messages:
         thread_id: 200
         author_id: 4
         content: 'Mensaje 7 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-03 00:35:57'
@@ -747,7 +654,6 @@ messages:
         thread_id: 200
         author_id: 90
         content: 'Mensaje 8 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-05 00:42:22'
@@ -755,7 +661,6 @@ messages:
         thread_id: 200
         author_id: 90
         content: 'Mensaje 9 del thread 200'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-15 00:04:25'
@@ -763,7 +668,6 @@ messages:
         thread_id: 201
         author_id: 3
         content: 'Mensaje 1 del thread 201'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:18:12'
@@ -771,7 +675,6 @@ messages:
         thread_id: 201
         author_id: 6
         content: 'Mensaje 2 del thread 201'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-05 00:08:54'
@@ -779,7 +682,6 @@ messages:
         thread_id: 201
         author_id: 3
         content: 'Mensaje 3 del thread 201'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-18 00:53:29'
@@ -787,7 +689,6 @@ messages:
         thread_id: 201
         author_id: 30
         content: 'Mensaje 4 del thread 201'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-10 00:06:42'
@@ -795,7 +696,6 @@ messages:
         thread_id: 201
         author_id: 30
         content: 'Mensaje 5 del thread 201'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:14:41'
@@ -803,7 +703,6 @@ messages:
         thread_id: 201
         author_id: 5
         content: 'Mensaje 6 del thread 201'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:41:38'
@@ -811,7 +710,6 @@ messages:
         thread_id: 201
         author_id: 30
         content: 'Mensaje 7 del thread 201'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:02:03'
@@ -819,7 +717,6 @@ messages:
         thread_id: 201
         author_id: 3
         content: 'Mensaje 8 del thread 201'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-02-13 00:51:21'
@@ -827,7 +724,6 @@ messages:
         thread_id: 202
         author_id: 4
         content: 'Mensaje 1 del thread 202'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:16:08'
@@ -835,7 +731,6 @@ messages:
         thread_id: 202
         author_id: 3
         content: 'Mensaje 2 del thread 202'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:51:36'
@@ -843,7 +738,6 @@ messages:
         thread_id: 204
         author_id: 32
         content: 'Mensaje 1 del thread 204'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:14:04'
@@ -851,7 +745,6 @@ messages:
         thread_id: 204
         author_id: 32
         content: 'Mensaje 2 del thread 204'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:54:48'
@@ -859,7 +752,6 @@ messages:
         thread_id: 204
         author_id: 4
         content: 'Mensaje 3 del thread 204'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-06 00:36:13'
@@ -867,7 +759,6 @@ messages:
         thread_id: 204
         author_id: 6
         content: 'Mensaje 4 del thread 204'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-09 00:38:13'
@@ -875,7 +766,6 @@ messages:
         thread_id: 205
         author_id: 5
         content: 'Mensaje 1 del thread 205'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-12 00:53:55'
@@ -883,7 +773,6 @@ messages:
         thread_id: 205
         author_id: 8
         content: 'Mensaje 2 del thread 205'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-29 00:15:21'
@@ -891,7 +780,6 @@ messages:
         thread_id: 205
         author_id: 9
         content: 'Mensaje 3 del thread 205'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:50:09'
@@ -899,7 +787,6 @@ messages:
         thread_id: 206
         author_id: 10
         content: 'Mensaje 1 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-08 00:51:57'
@@ -907,7 +794,6 @@ messages:
         thread_id: 206
         author_id: 42
         content: 'Mensaje 2 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:39:00'
@@ -915,7 +801,6 @@ messages:
         thread_id: 206
         author_id: 4
         content: 'Mensaje 3 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-15 00:18:54'
@@ -923,7 +808,6 @@ messages:
         thread_id: 206
         author_id: 9
         content: 'Mensaje 4 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-06 00:10:08'
@@ -931,7 +815,6 @@ messages:
         thread_id: 206
         author_id: 42
         content: 'Mensaje 5 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-05 00:35:16'
@@ -939,7 +822,6 @@ messages:
         thread_id: 206
         author_id: 42
         content: 'Mensaje 6 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-30 00:52:11'
@@ -947,7 +829,6 @@ messages:
         thread_id: 206
         author_id: 42
         content: 'Mensaje 7 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-23 00:08:42'
@@ -955,7 +836,6 @@ messages:
         thread_id: 206
         author_id: 42
         content: 'Mensaje 8 del thread 206'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-08 00:56:01'
@@ -963,7 +843,6 @@ messages:
         thread_id: 207
         author_id: 5
         content: 'Mensaje 1 del thread 207'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:09:00'
@@ -971,7 +850,6 @@ messages:
         thread_id: 207
         author_id: 4
         content: 'Mensaje 2 del thread 207'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-01 00:23:50'
@@ -979,7 +857,6 @@ messages:
         thread_id: 207
         author_id: 10
         content: 'Mensaje 3 del thread 207'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-13 00:51:15'
@@ -987,7 +864,6 @@ messages:
         thread_id: 207
         author_id: 5
         content: 'Mensaje 4 del thread 207'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-27 00:38:20'
@@ -995,7 +871,6 @@ messages:
         thread_id: 207
         author_id: 51
         content: 'Mensaje 5 del thread 207'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-04 00:02:11'
@@ -1003,7 +878,6 @@ messages:
         thread_id: 207
         author_id: 51
         content: 'Mensaje 6 del thread 207'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-16 00:17:03'
@@ -1011,7 +885,6 @@ messages:
         thread_id: 207
         author_id: 4
         content: 'Mensaje 7 del thread 207'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-02-01 00:09:47'
@@ -1019,7 +892,6 @@ messages:
         thread_id: 208
         author_id: 6
         content: 'Mensaje 1 del thread 208'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-31 00:27:33'
@@ -1027,7 +899,6 @@ messages:
         thread_id: 209
         author_id: 116
         content: 'Mensaje 1 del thread 209'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-02 00:08:47'
@@ -1035,7 +906,6 @@ messages:
         thread_id: 209
         author_id: 5
         content: 'Mensaje 2 del thread 209'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-02 00:05:30'
@@ -1043,7 +913,6 @@ messages:
         thread_id: 210
         author_id: 3
         content: 'Mensaje 1 del thread 210'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:29:49'
@@ -1051,7 +920,6 @@ messages:
         thread_id: 210
         author_id: 2
         content: 'Mensaje 2 del thread 210'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-03 00:24:32'
@@ -1059,7 +927,6 @@ messages:
         thread_id: 211
         author_id: 22
         content: 'Mensaje 1 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:38:06'
@@ -1067,7 +934,6 @@ messages:
         thread_id: 211
         author_id: 4
         content: 'Mensaje 2 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-24 00:29:32'
@@ -1075,7 +941,6 @@ messages:
         thread_id: 211
         author_id: 2
         content: 'Mensaje 3 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:15:39'
@@ -1083,7 +948,6 @@ messages:
         thread_id: 211
         author_id: 22
         content: 'Mensaje 4 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:03:46'
@@ -1091,7 +955,6 @@ messages:
         thread_id: 211
         author_id: 22
         content: 'Mensaje 5 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-06 00:51:58'
@@ -1099,7 +962,6 @@ messages:
         thread_id: 211
         author_id: 1
         content: 'Mensaje 6 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:56:42'
@@ -1107,7 +969,6 @@ messages:
         thread_id: 211
         author_id: 6
         content: 'Mensaje 7 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-25 00:34:19'
@@ -1115,7 +976,6 @@ messages:
         thread_id: 211
         author_id: 22
         content: 'Mensaje 8 del thread 211'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-18 00:30:41'
@@ -1123,7 +983,6 @@ messages:
         thread_id: 211
         author_id: 4
         content: 'Mensaje 9 del thread 211'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-01-12 00:02:03'
@@ -1131,7 +990,6 @@ messages:
         thread_id: 213
         author_id: 9
         content: 'Mensaje 1 del thread 213'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:31:54'
@@ -1139,7 +997,6 @@ messages:
         thread_id: 213
         author_id: 74
         content: 'Mensaje 2 del thread 213'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:26:27'
@@ -1147,7 +1004,6 @@ messages:
         thread_id: 213
         author_id: 6
         content: 'Mensaje 3 del thread 213'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-14 00:44:06'
@@ -1155,7 +1011,6 @@ messages:
         thread_id: 213
         author_id: 5
         content: 'Mensaje 4 del thread 213'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-04 00:32:45'
@@ -1163,7 +1018,6 @@ messages:
         thread_id: 214
         author_id: 7
         content: 'Mensaje 1 del thread 214'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:59:28'
@@ -1171,7 +1025,6 @@ messages:
         thread_id: 214
         author_id: 7
         content: 'Mensaje 2 del thread 214'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-05 00:05:57'
@@ -1179,7 +1032,6 @@ messages:
         thread_id: 214
         author_id: 7
         content: 'Mensaje 3 del thread 214'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-09 00:06:20'
@@ -1187,7 +1039,6 @@ messages:
         thread_id: 214
         author_id: 7
         content: 'Mensaje 4 del thread 214'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-05 00:39:09'
@@ -1195,7 +1046,6 @@ messages:
         thread_id: 214
         author_id: 10
         content: 'Mensaje 5 del thread 214'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:05:08'
@@ -1203,7 +1053,6 @@ messages:
         thread_id: 215
         author_id: 53
         content: 'Mensaje 1 del thread 215'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-21 00:18:39'
@@ -1211,7 +1060,6 @@ messages:
         thread_id: 215
         author_id: 7
         content: 'Mensaje 2 del thread 215'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:41:37'
@@ -1219,7 +1067,6 @@ messages:
         thread_id: 215
         author_id: 53
         content: 'Mensaje 3 del thread 215'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-14 00:36:45'
@@ -1227,7 +1074,6 @@ messages:
         thread_id: 216
         author_id: 8
         content: 'Mensaje 1 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-07 00:21:24'
@@ -1235,7 +1081,6 @@ messages:
         thread_id: 216
         author_id: 1
         content: 'Mensaje 2 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-13 00:39:33'
@@ -1243,7 +1088,6 @@ messages:
         thread_id: 216
         author_id: 3
         content: 'Mensaje 3 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-23 00:19:29'
@@ -1251,7 +1095,6 @@ messages:
         thread_id: 216
         author_id: 6
         content: 'Mensaje 4 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-12 00:33:38'
@@ -1259,7 +1102,6 @@ messages:
         thread_id: 216
         author_id: 84
         content: 'Mensaje 5 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-23 00:28:06'
@@ -1267,7 +1109,6 @@ messages:
         thread_id: 216
         author_id: 1
         content: 'Mensaje 6 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:51:44'
@@ -1275,7 +1116,6 @@ messages:
         thread_id: 216
         author_id: 84
         content: 'Mensaje 7 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-14 00:08:54'
@@ -1283,7 +1123,6 @@ messages:
         thread_id: 216
         author_id: 84
         content: 'Mensaje 8 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-12 00:42:41'
@@ -1291,7 +1130,6 @@ messages:
         thread_id: 216
         author_id: 1
         content: 'Mensaje 9 del thread 216'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-12 00:57:49'
@@ -1299,7 +1137,6 @@ messages:
         thread_id: 216
         author_id: 4
         content: 'Mensaje 10 del thread 216'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-01-05 00:36:46'
@@ -1307,7 +1144,6 @@ messages:
         thread_id: 217
         author_id: 12
         content: 'Mensaje 1 del thread 217'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-12 00:56:13'
@@ -1315,7 +1151,6 @@ messages:
         thread_id: 217
         author_id: 6
         content: 'Mensaje 2 del thread 217'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-06 00:28:28'
@@ -1323,7 +1158,6 @@ messages:
         thread_id: 217
         author_id: 10
         content: 'Mensaje 3 del thread 217'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-11 00:57:14'
@@ -1331,7 +1165,6 @@ messages:
         thread_id: 219
         author_id: 42
         content: 'Mensaje 1 del thread 219'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-29 00:27:21'
@@ -1339,7 +1172,6 @@ messages:
         thread_id: 220
         author_id: 11
         content: 'Mensaje 1 del thread 220'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-09 00:53:29'
@@ -1347,7 +1179,6 @@ messages:
         thread_id: 220
         author_id: 11
         content: 'Mensaje 2 del thread 220'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:26:26'
@@ -1355,7 +1186,6 @@ messages:
         thread_id: 220
         author_id: 3
         content: 'Mensaje 3 del thread 220'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-24 00:47:06'
@@ -1363,7 +1193,6 @@ messages:
         thread_id: 220
         author_id: 3
         content: 'Mensaje 4 del thread 220'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:21:27'
@@ -1371,7 +1200,6 @@ messages:
         thread_id: 220
         author_id: 8
         content: 'Mensaje 5 del thread 220'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-14 00:21:42'
@@ -1379,7 +1207,6 @@ messages:
         thread_id: 221
         author_id: 4
         content: 'Mensaje 1 del thread 221'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:17:23'
@@ -1387,7 +1214,6 @@ messages:
         thread_id: 221
         author_id: 58
         content: 'Mensaje 2 del thread 221'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:10:43'
@@ -1395,7 +1221,6 @@ messages:
         thread_id: 221
         author_id: 3
         content: 'Mensaje 3 del thread 221'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:31:04'
@@ -1403,7 +1228,6 @@ messages:
         thread_id: 221
         author_id: 3
         content: 'Mensaje 4 del thread 221'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-25 00:06:53'
@@ -1411,7 +1235,6 @@ messages:
         thread_id: 221
         author_id: 58
         content: 'Mensaje 5 del thread 221'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:06:05'
@@ -1419,7 +1242,6 @@ messages:
         thread_id: 221
         author_id: 58
         content: 'Mensaje 6 del thread 221'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-24 00:28:06'
@@ -1427,7 +1249,6 @@ messages:
         thread_id: 221
         author_id: 58
         content: 'Mensaje 7 del thread 221'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-18 00:48:47'
@@ -1435,7 +1256,6 @@ messages:
         thread_id: 222
         author_id: 7
         content: 'Mensaje 1 del thread 222'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:24:51'
@@ -1443,7 +1263,6 @@ messages:
         thread_id: 222
         author_id: 88
         content: 'Mensaje 2 del thread 222'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-16 00:09:35'
@@ -1451,7 +1270,6 @@ messages:
         thread_id: 222
         author_id: 88
         content: 'Mensaje 3 del thread 222'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-18 00:04:37'
@@ -1459,7 +1277,6 @@ messages:
         thread_id: 222
         author_id: 88
         content: 'Mensaje 4 del thread 222'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-21 00:36:35'
@@ -1467,7 +1284,6 @@ messages:
         thread_id: 222
         author_id: 88
         content: 'Mensaje 5 del thread 222'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-02 00:22:42'
@@ -1475,7 +1291,6 @@ messages:
         thread_id: 222
         author_id: 2
         content: 'Mensaje 6 del thread 222'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-01-19 00:08:26'
@@ -1483,7 +1298,6 @@ messages:
         thread_id: 223
         author_id: 3
         content: 'Mensaje 1 del thread 223'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-25 00:23:55'
@@ -1491,7 +1305,6 @@ messages:
         thread_id: 223
         author_id: 9
         content: 'Mensaje 2 del thread 223'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-02 00:43:48'
@@ -1499,7 +1312,6 @@ messages:
         thread_id: 223
         author_id: 51
         content: 'Mensaje 3 del thread 223'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-14 00:28:55'
@@ -1507,7 +1319,6 @@ messages:
         thread_id: 223
         author_id: 3
         content: 'Mensaje 4 del thread 223'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-26 00:59:46'
@@ -1515,7 +1326,6 @@ messages:
         thread_id: 223
         author_id: 51
         content: 'Mensaje 5 del thread 223'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-09 00:04:18'
@@ -1523,7 +1333,6 @@ messages:
         thread_id: 224
         author_id: 6
         content: 'Mensaje 1 del thread 224'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-30 00:39:19'
@@ -1531,7 +1340,6 @@ messages:
         thread_id: 224
         author_id: 39
         content: 'Mensaje 2 del thread 224'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-19 00:23:06'
@@ -1539,7 +1347,6 @@ messages:
         thread_id: 224
         author_id: 10
         content: 'Mensaje 3 del thread 224'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:37:32'
@@ -1547,7 +1354,6 @@ messages:
         thread_id: 224
         author_id: 4
         content: 'Mensaje 4 del thread 224'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:14:09'
@@ -1555,7 +1361,6 @@ messages:
         thread_id: 224
         author_id: 5
         content: 'Mensaje 5 del thread 224'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:43:30'
@@ -1563,7 +1368,6 @@ messages:
         thread_id: 224
         author_id: 39
         content: 'Mensaje 6 del thread 224'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-05 00:15:54'
@@ -1571,7 +1375,6 @@ messages:
         thread_id: 224
         author_id: 39
         content: 'Mensaje 7 del thread 224'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-03 00:07:22'
@@ -1579,7 +1382,6 @@ messages:
         thread_id: 225
         author_id: 50
         content: 'Mensaje 1 del thread 225'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-08 00:55:35'
@@ -1587,7 +1389,6 @@ messages:
         thread_id: 225
         author_id: 50
         content: 'Mensaje 2 del thread 225'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-14 00:24:07'
@@ -1595,7 +1396,6 @@ messages:
         thread_id: 225
         author_id: 50
         content: 'Mensaje 3 del thread 225'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-21 00:49:17'
@@ -1603,7 +1403,6 @@ messages:
         thread_id: 226
         author_id: 2
         content: 'Mensaje 1 del thread 226'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-31 00:37:14'
@@ -1611,7 +1410,6 @@ messages:
         thread_id: 226
         author_id: 125
         content: 'Mensaje 2 del thread 226'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:52:27'
@@ -1619,7 +1417,6 @@ messages:
         thread_id: 226
         author_id: 7
         content: 'Mensaje 3 del thread 226'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-30 00:55:35'
@@ -1627,7 +1424,6 @@ messages:
         thread_id: 226
         author_id: 4
         content: 'Mensaje 4 del thread 226'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-22 00:50:52'
@@ -1635,7 +1431,6 @@ messages:
         thread_id: 228
         author_id: 2
         content: 'Mensaje 1 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-20 00:40:39'
@@ -1643,7 +1438,6 @@ messages:
         thread_id: 228
         author_id: 10
         content: 'Mensaje 2 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-10 00:44:41'
@@ -1651,7 +1445,6 @@ messages:
         thread_id: 228
         author_id: 54
         content: 'Mensaje 3 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-12 00:36:01'
@@ -1659,7 +1452,6 @@ messages:
         thread_id: 228
         author_id: 7
         content: 'Mensaje 4 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:39:59'
@@ -1667,7 +1459,6 @@ messages:
         thread_id: 228
         author_id: 5
         content: 'Mensaje 5 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-07 00:43:53'
@@ -1675,7 +1466,6 @@ messages:
         thread_id: 228
         author_id: 54
         content: 'Mensaje 6 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-07 00:45:17'
@@ -1683,7 +1473,6 @@ messages:
         thread_id: 228
         author_id: 54
         content: 'Mensaje 7 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:02:11'
@@ -1691,7 +1480,6 @@ messages:
         thread_id: 228
         author_id: 2
         content: 'Mensaje 8 del thread 228'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-29 00:18:44'
@@ -1699,7 +1487,6 @@ messages:
         thread_id: 229
         author_id: 85
         content: 'Mensaje 1 del thread 229'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-10 00:49:19'
@@ -1707,7 +1494,6 @@ messages:
         thread_id: 229
         author_id: 2
         content: 'Mensaje 2 del thread 229'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-27 00:59:21'
@@ -1715,7 +1501,6 @@ messages:
         thread_id: 230
         author_id: 109
         content: 'Mensaje 1 del thread 230'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-20 00:23:00'
@@ -1723,7 +1508,6 @@ messages:
         thread_id: 230
         author_id: 109
         content: 'Mensaje 2 del thread 230'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:12:55'
@@ -1731,7 +1515,6 @@ messages:
         thread_id: 231
         author_id: 8
         content: 'Mensaje 1 del thread 231'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-01 00:10:36'
@@ -1739,7 +1522,6 @@ messages:
         thread_id: 231
         author_id: 6
         content: 'Mensaje 2 del thread 231'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-04 00:43:25'
@@ -1747,7 +1529,6 @@ messages:
         thread_id: 231
         author_id: 9
         content: 'Mensaje 3 del thread 231'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-01-17 00:05:09'
@@ -1755,7 +1536,6 @@ messages:
         thread_id: 233
         author_id: 49
         content: 'Mensaje 1 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-02 00:48:40'
@@ -1763,7 +1543,6 @@ messages:
         thread_id: 233
         author_id: 49
         content: 'Mensaje 2 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:02:05'
@@ -1771,7 +1550,6 @@ messages:
         thread_id: 233
         author_id: 49
         content: 'Mensaje 3 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-18 00:48:33'
@@ -1779,7 +1557,6 @@ messages:
         thread_id: 233
         author_id: 7
         content: 'Mensaje 4 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-05 00:14:24'
@@ -1787,7 +1564,6 @@ messages:
         thread_id: 233
         author_id: 49
         content: 'Mensaje 5 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-08 00:27:29'
@@ -1795,7 +1571,6 @@ messages:
         thread_id: 233
         author_id: 6
         content: 'Mensaje 6 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-29 00:22:10'
@@ -1803,7 +1578,6 @@ messages:
         thread_id: 233
         author_id: 49
         content: 'Mensaje 7 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-06 00:24:19'
@@ -1811,7 +1585,6 @@ messages:
         thread_id: 233
         author_id: 7
         content: 'Mensaje 8 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:47:20'
@@ -1819,7 +1592,6 @@ messages:
         thread_id: 233
         author_id: 49
         content: 'Mensaje 9 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-31 00:50:36'
@@ -1827,7 +1599,6 @@ messages:
         thread_id: 233
         author_id: 49
         content: 'Mensaje 10 del thread 233'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-13 00:39:05'
@@ -1835,7 +1606,6 @@ messages:
         thread_id: 234
         author_id: 1
         content: 'Mensaje 1 del thread 234'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:57:03'
@@ -1843,7 +1613,6 @@ messages:
         thread_id: 235
         author_id: 55
         content: 'Mensaje 1 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-05 00:10:10'
@@ -1851,7 +1620,6 @@ messages:
         thread_id: 235
         author_id: 55
         content: 'Mensaje 2 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-18 00:49:39'
@@ -1859,7 +1627,6 @@ messages:
         thread_id: 235
         author_id: 55
         content: 'Mensaje 3 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:04:43'
@@ -1867,7 +1634,6 @@ messages:
         thread_id: 235
         author_id: 5
         content: 'Mensaje 4 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-07 00:06:17'
@@ -1875,7 +1641,6 @@ messages:
         thread_id: 235
         author_id: 9
         content: 'Mensaje 5 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-30 00:29:42'
@@ -1883,7 +1648,6 @@ messages:
         thread_id: 235
         author_id: 55
         content: 'Mensaje 6 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-20 00:28:31'
@@ -1891,7 +1655,6 @@ messages:
         thread_id: 235
         author_id: 9
         content: 'Mensaje 7 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-11 00:39:28'
@@ -1899,7 +1662,6 @@ messages:
         thread_id: 235
         author_id: 55
         content: 'Mensaje 8 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-05 00:27:17'
@@ -1907,7 +1669,6 @@ messages:
         thread_id: 235
         author_id: 2
         content: 'Mensaje 9 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-15 00:14:48'
@@ -1915,7 +1676,6 @@ messages:
         thread_id: 235
         author_id: 55
         content: 'Mensaje 10 del thread 235'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-08 00:33:07'
@@ -1923,7 +1683,6 @@ messages:
         thread_id: 236
         author_id: 9
         content: 'Mensaje 1 del thread 236'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-17 00:23:27'
@@ -1931,7 +1690,6 @@ messages:
         thread_id: 236
         author_id: 4
         content: 'Mensaje 2 del thread 236'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:08:18'
@@ -1939,7 +1697,6 @@ messages:
         thread_id: 236
         author_id: 82
         content: 'Mensaje 3 del thread 236'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-15 00:44:43'
@@ -1947,7 +1704,6 @@ messages:
         thread_id: 236
         author_id: 82
         content: 'Mensaje 4 del thread 236'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-04 00:38:31'
@@ -1955,7 +1711,6 @@ messages:
         thread_id: 236
         author_id: 4
         content: 'Mensaje 5 del thread 236'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-05 00:34:42'
@@ -1963,7 +1718,6 @@ messages:
         thread_id: 236
         author_id: 4
         content: 'Mensaje 6 del thread 236'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-27 00:20:02'
@@ -1971,7 +1725,6 @@ messages:
         thread_id: 236
         author_id: 7
         content: 'Mensaje 7 del thread 236'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-02-11 00:15:25'
@@ -1979,7 +1732,6 @@ messages:
         thread_id: 237
         author_id: 10
         content: 'Mensaje 1 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:39:03'
@@ -1987,7 +1739,6 @@ messages:
         thread_id: 237
         author_id: 96
         content: 'Mensaje 2 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-12 00:01:13'
@@ -1995,7 +1746,6 @@ messages:
         thread_id: 237
         author_id: 96
         content: 'Mensaje 3 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-26 00:20:13'
@@ -2003,7 +1753,6 @@ messages:
         thread_id: 237
         author_id: 96
         content: 'Mensaje 4 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:50:08'
@@ -2011,7 +1760,6 @@ messages:
         thread_id: 237
         author_id: 6
         content: 'Mensaje 5 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-24 00:49:16'
@@ -2019,7 +1767,6 @@ messages:
         thread_id: 237
         author_id: 96
         content: 'Mensaje 6 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:19:20'
@@ -2027,7 +1774,6 @@ messages:
         thread_id: 237
         author_id: 3
         content: 'Mensaje 7 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-02 00:08:00'
@@ -2035,7 +1781,6 @@ messages:
         thread_id: 237
         author_id: 1
         content: 'Mensaje 8 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-08 00:32:47'
@@ -2043,7 +1788,6 @@ messages:
         thread_id: 237
         author_id: 96
         content: 'Mensaje 9 del thread 237'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-28 00:28:11'
@@ -2051,7 +1795,6 @@ messages:
         thread_id: 238
         author_id: 61
         content: 'Mensaje 1 del thread 238'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-23 00:09:24'
@@ -2059,7 +1802,6 @@ messages:
         thread_id: 238
         author_id: 61
         content: 'Mensaje 2 del thread 238'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-31 00:35:45'
@@ -2067,7 +1809,6 @@ messages:
         thread_id: 238
         author_id: 2
         content: 'Mensaje 3 del thread 238'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-09 00:15:32'
@@ -2075,7 +1816,6 @@ messages:
         thread_id: 238
         author_id: 61
         content: 'Mensaje 4 del thread 238'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:36:53'
@@ -2083,7 +1823,6 @@ messages:
         thread_id: 238
         author_id: 61
         content: 'Mensaje 5 del thread 238'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-06 00:43:51'
@@ -2091,7 +1830,6 @@ messages:
         thread_id: 238
         author_id: 61
         content: 'Mensaje 6 del thread 238'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:23:04'
@@ -2099,7 +1837,6 @@ messages:
         thread_id: 238
         author_id: 4
         content: 'Mensaje 7 del thread 238'
-        reply_to: null
         solution: true
         deletedAt: null
         created_at: '2025-01-28 00:26:55'
@@ -2107,7 +1844,6 @@ messages:
         thread_id: 239
         author_id: 28
         content: 'Mensaje 1 del thread 239'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:48:02'
@@ -2115,7 +1851,6 @@ messages:
         thread_id: 239
         author_id: 28
         content: 'Mensaje 2 del thread 239'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-20 00:28:01'
@@ -2123,7 +1858,6 @@ messages:
         thread_id: 239
         author_id: 28
         content: 'Mensaje 3 del thread 239'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-03 00:30:58'
@@ -2131,7 +1865,6 @@ messages:
         thread_id: 239
         author_id: 28
         content: 'Mensaje 4 del thread 239'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-05 00:05:55'
@@ -2139,7 +1872,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 1 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-10 00:21:36'
@@ -2147,7 +1879,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 2 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-21 00:28:36'
@@ -2155,7 +1886,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 3 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-02-10 00:26:45'
@@ -2163,7 +1893,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 4 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-17 00:41:26'
@@ -2171,7 +1900,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 5 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-13 00:19:07'
@@ -2179,7 +1907,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 6 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-17 00:26:01'
@@ -2187,7 +1914,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 7 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-05 00:21:10'
@@ -2195,7 +1921,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 8 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-25 00:52:39'
@@ -2203,7 +1928,6 @@ messages:
         thread_id: 240
         author_id: 129
         content: 'Mensaje 9 del thread 240'
-        reply_to: null
         solution: false
         deletedAt: null
         created_at: '2025-01-07 00:30:53'

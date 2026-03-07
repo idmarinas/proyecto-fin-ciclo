@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 26/02/2026, 23:34
+ * Last modified by "IDMarinas" on 07/03/2026, 12:44
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -53,7 +53,6 @@ final class MessageFixtures extends Fixture implements DependentFixtureInterface
          * thread_id: 183
          * author_id: 3
          * content: Mensaje 1 del thread 183
-         * reply_to: null
          * solution: false
          * deletedAt: null
          * created_at: '2025-01-04 00:00:00'
