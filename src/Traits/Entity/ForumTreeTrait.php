@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 08/03/2026, 24:32
+ * Last modified by "IDMarinas" on 08/03/2026, 24:40
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,7 +20,6 @@
 namespace App\Traits\Entity;
 
 use App\Entity\Forum;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -39,8 +38,5 @@ trait ForumTreeTrait
 
     #[ORM\OneToMany(targetEntity: Forum::class, mappedBy: 'parent')]
     #[ORM\OrderBy(['ltf' => 'ASC'])]
-    public Collection $children {
-        get => $this->children ??= new ArrayCollection();
-        set => $this->children = $value;
-    }
+    public Collection $children;
 }
