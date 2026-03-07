@@ -12,6 +12,15 @@ task('docker:image:build', function () {
     writeln('<info>Construyendo imagen Docker</>');
     runLocally('docker build --target prod -f .docker/Dockerfile -t {{docker/image/name}} .', timeout: null);
 
+    writeln('<info>Autenticándose en {{docker/registry}} localmente</>');
+    $ghcr_pat = file_get_contents(dirname(__DIR__, 2).'/.GHCR_PAT');
+    if (empty($ghcr_pat)) {
+        throw error(
+            'La variable de entorno GHCR_PAT no está definida. Se requiere un GitHub Personal Access Token con acceso a ghcr.io'
+        );
+    }
+    runLocally("echo '$ghcr_pat' | docker login {{docker/registry}} -u {{github/user}} --password-stdin");
+
     writeln('<info>Subiendo imagen a {{docker/registry}}</>');
     runLocally('docker push {{docker/image/name}}', timeout: null);
 });
@@ -25,7 +34,7 @@ task('docker:registry:login', function () {
         throw error('La variable de entorno GHCR_PAT no está definida en el servidor.');
     }
 
-    run("echo $pat | docker login {{docker/registry}} -u {{github/repository/user}} --password-stdin");
+    run("echo $pat | docker login {{docker/registry}} -u {{github/user}} --password-stdin");
 });
 
 desc('Descargar imagen Docker desde GHCR en el servidor');
