@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 23:05
+ * Last modified by "IDMarinas" on 08/03/2026, 24:32
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -30,18 +30,12 @@ trait ForumTreeTrait
     #[Gedmo\TreeRoot]
     #[ORM\ManyToOne(targetEntity: Forum::class)]
     #[ORM\JoinColumn(name: 'tree_root', referencedColumnName: 'id', onDelete: 'CASCADE')]
-    public ?Forum $root = null {
-        get => $this->root;
-        set => $this->root = $value;
-    }
+    public ?Forum $root = null;
 
     #[Gedmo\TreeParent]
     #[ORM\ManyToOne(targetEntity: Forum::class, cascade: ['persist'], inversedBy: 'children')]
     #[ORM\JoinColumn(name: 'parent_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
-    public ?Forum $parent = null {
-        get => $this->parent;
-        set => $this->parent = $value;
-    }
+    public ?Forum $parent = null;
 
     #[ORM\OneToMany(targetEntity: Forum::class, mappedBy: 'parent')]
     #[ORM\OrderBy(['ltf' => 'ASC'])]
