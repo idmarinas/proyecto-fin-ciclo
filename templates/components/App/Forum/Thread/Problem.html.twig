@@ -5,7 +5,10 @@
 {% if thread.isIncident %}
   <twig:Ui:Tooltip id="incident-tooltip">
     <twig:Ui:Tooltip:Trigger>
-      <twig:Ui:Badge {{ ...trigger_attrs }} class="px-3 py-1 bg-yellow-200 text-yellow-800" aria-label="Incidente">
+      <twig:Ui:Badge {{ ...trigger_attrs }}
+          class="rounded-full p-1 bg-yellow-200 text-yellow-800"
+          aria-label="Incidente"
+      >
         {{ ux_icon('tabler:alert-triangle', {class: 'size-4!'}) }}
       </twig:Ui:Badge>
     </twig:Ui:Tooltip:Trigger>
@@ -16,7 +19,7 @@
 {% if thread.isCritical %}
   <twig:Ui:Tooltip id="critical-tooltip">
     <twig:Ui:Tooltip:Trigger>
-      <twig:Ui:Badge {{ ...trigger_attrs }} class="px-3 py-1 bg-red-800 text-red-200" aria-label="Crítico">
+      <twig:Ui:Badge {{ ...trigger_attrs }} class="rounded-full p-1 bg-red-800 text-red-200" aria-label="Crítico">
         {{ ux_icon('tabler:flame', {class: 'size-4!'}) }}
       </twig:Ui:Badge>
     </twig:Ui:Tooltip:Trigger>
@@ -27,7 +30,7 @@
 {% if thread.affectsBusiness %}
   <twig:Ui:Tooltip id="business-tooltip">
     <twig:Ui:Tooltip:Trigger>
-      <twig:Ui:Badge {{ ...trigger_attrs }} class="px-3 py-1 bg-blue-800 text-blue-200" aria-label="Afecta a mi
+      <twig:Ui:Badge {{ ...trigger_attrs }} class="rounded-full p-1 bg-blue-800 text-blue-200" aria-label="Afecta a mi
       negocio">
         {{ ux_icon('tabler:building', {class: 'size-4!'}) }}
       </twig:Ui:Badge>
