@@ -123,7 +123,7 @@ RUN php bin/console cache:clear \
     && composer prod:dump:env
 
 RUN chmod 440 .env.local.php .env.docker \
-    && rm -f .env .env.dev .env.prod
+    && rm -f .env .env.dev .env.prod .GHCR_PAT
 
 RUN rm -rf .docker/
 RUN rm -rf config/secrets/
