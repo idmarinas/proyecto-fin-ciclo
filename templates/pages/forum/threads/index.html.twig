@@ -9,6 +9,8 @@
 
 {% block article %}
   <twig:Layout:Article>
+    <twig:App:Breadcrumb :forum="forum.parent" :page="forum" />
+
     <twig:Layout:Section>
       <twig:Ui:Item class="flex-col md:flex-row">
         <twig:Ui:Item:Media class="w-full md:w-auto">

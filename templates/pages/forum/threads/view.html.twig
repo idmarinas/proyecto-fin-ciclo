@@ -8,7 +8,9 @@
 
 {% block article %}
   <twig:Layout:Article>
-    <twig:Layout:Section>
+    <twig:App:Breadcrumb :forum="thread.forum.parent" :subforum="thread.forum" :page="thread" />
+
+    <twig:Layout:Section class="pb-0">
       <twig:App:Forum:Thread:View:Question :thread="thread" />
     </twig:Layout:Section>
 
@@ -21,13 +23,13 @@
             {% for reply in pagination %}
               <twig:App:Forum:Thread:View:InLineEditMessage :reply="reply" />
             {% else %}
-              <twig:Ui:Card variant="full" class="p-6 border bg-yellow-50 text-yellow-800 space-y-2">
+              <twig:Ui:Card variant="full" class="p-6 border border-warning-border bg-warning/20 space-y-2">
                 <twig:Ui:Card:Header>
-                  <twig:Ui:Card:Title>
+                  <twig:Ui:Card:Title class="text-warning-foreground">
                     {{ ux_icon('tabler:help-circle', {class: 'size-7 inline'}) }} Este hilo aún no tiene respuestas
                   </twig:Ui:Card:Title>
                 </twig:Ui:Card:Header>
-                <twig:Ui:Card:Content>
+                <twig:Ui:Card:Content class="text-warning-foreground">
                   Si conoces la solución o puedes aportar alguna idea, tu ayuda será muy apreciada por la comunidad.
                 </twig:Ui:Card:Content>
               </twig:Ui:Card>
