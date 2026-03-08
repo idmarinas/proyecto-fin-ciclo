@@ -12,7 +12,7 @@ Props:
   id = null,
   variant = 'outline' %}
 
-{% set dialogId = id ?? "share-dialog-" ~ random(1000) %}
+{% set dialogId = (id ?? "share-dialog-" ~ random(1000)) %}
 
 {# Textos personalizados según el lugar/contexto #}
 {% set whereTexts = {
