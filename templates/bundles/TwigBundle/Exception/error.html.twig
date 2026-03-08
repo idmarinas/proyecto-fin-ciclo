@@ -19,7 +19,7 @@
       </twig:Ui:Card:Header>
       <twig:Ui:Card:Content class="prose">
         <div class="text-center font-semibold">{{ 'exception.oops'|trans({}, 'exceptions') }}</div>
-        <div class="relative text-9xl tracking-tighter-less text-shadow text-red-600 font-bold text-center">
+        <div class="relative text-9xl tracking-tighter-less text-shadow text-danger-foreground font-bold text-center">
           <span>{{ status_code|split('')|join('</span><span>')|raw }}</span>
         </div>
         {% if show_extra_info is same as(true) %}

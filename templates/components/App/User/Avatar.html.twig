@@ -7,7 +7,7 @@
 
 {% if is_deleted %}
   <twig:Ui:Avatar {{ ...attributes }}>
-    <twig:Ui:Avatar:Fallback class="bg-amber-100 text-amber-600 border border-amber-300">
+    <twig:Ui:Avatar:Fallback class="bg-warning/30 text-warning-foreground border border-warning-border">
       {{ ux_icon('tabler:user-x', {class: 'size-4'}) }}
     </twig:Ui:Avatar:Fallback>
   </twig:Ui:Avatar>

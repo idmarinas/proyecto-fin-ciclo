@@ -53,10 +53,10 @@
     {% set baseClasses = [
       'px-4 py-2 rounded-lg text-sm transition-colors whitespace-nowrap',
       isCurrent
-      ? 'bg-blue-700 text-white'
+      ? 'bg-primary text-primary-foreground'
       : (isAncestor
-      ? 'bg-blue-50 text-blue-800'
-      : 'text-gray-700 hover:bg-gray-100')
+      ? 'bg-primary/10 text-primary'
+      : 'text-foreground hover:bg-accent hover:text-accent-foreground')
     ] %}
 
     {% set orientationClasses = orientation == 'horizontal' ? 'inline-flex items-center' : 'block' %}
@@ -72,7 +72,7 @@
       {%- set childrenClasses = childrenClasses|merge(['menu_level_' ~ item.level]) %}
       {%- set childrenClasses = childrenClasses|merge([
         'mt-2 space-y-1',
-        orientation == 'horizontal' ? 'absolute bg-white border rounded-lg shadow-lg p-2' : 'ml-4 border-l border-gray-200 pl-3'
+        orientation == 'horizontal' ? 'absolute bg-background border border-border rounded-lg shadow-lg p-2' : 'ml-4 border-l border-border pl-3'
       ]) %}
       {%- set listAttributes = item.childrenAttributes|merge({class: childrenClasses|join(' ')}) %}
 
@@ -88,7 +88,7 @@
       {{ knp_menu.attributes(item.linkAttributes|merge({class: (baseClasses|join(' ') ~ ' ' ~ orientationClasses)})) }}
   >
     {% if item.extra('icon') %}
-      <twig:ux:icon name="{{ item.extra('icon') }}" class="size-4 inline-block mr-2 text-gray-500" />
+      <twig:ux:icon name="{{ item.extra('icon') }}" class="size-4 inline-block mr-2 text-muted-foreground" />
     {% endif %}
     {{ block('label') }}
   </a>
@@ -98,7 +98,7 @@
   {% import _self as knp_menu %}
   <span{{ knp_menu.attributes(item.linkAttributes|merge({class: (baseClasses|join(' ') ~ ' ' ~ orientationClasses)
   })) }}>
-    <twig:ux:icon name="{{ item.extra('icon') }}" class="size-4 inline-block mr-2 text-gray-500" />
+    <twig:ux:icon name="{{ item.extra('icon') }}" class="size-4 inline-block mr-2 text-muted-foreground" />
     {{ block('label') }}
   </span>
 {% endblock %}
