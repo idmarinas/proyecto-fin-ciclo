@@ -1,32 +1,14 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 22:36
+ * Last modified by "IDMarinas" on 08/03/2026, 22:33
  *
  * @project Foro de Ayuda y Soporte
  * @see https://github.com/idmarinas/proyecto-fin-ciclo
  *
  * @file user.sql
- * @date 07/03/2026
- * @time 22:55
- *
- * @author Iván Diaz Marinas (IDMarinas)
- * @license proprietary
- *
- * @since 1.0.0
- */
-
-/**
- * Copyright 2026 (C) IDMarinas - All Rights Reserved
- *
- * Last modified by "IDMarinas" on 07/03/2026, 18:17
- *
- * @project Foro de Ayuda y Soporte
- * @see https://github.com/idmarinas/proyecto-fin-ciclo
- *
- * @file user.sql
- * @date 07/03/2026
- * @time 18:48
+ * @date 08/03/2026
+ * @time 22:51
  *
  * @author Iván Diaz Marinas (IDMarinas)
  * @license proprietary
