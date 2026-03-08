@@ -2,7 +2,7 @@
 
 <div class="relative opacity-60">
   {# Banda superior de borrado #}
-  <div class="absolute inset-x-0 top-0 z-10 flex items-center gap-2 rounded-t-md bg-red-600 px-4 py-1.5 text-xs font-semibold text-white">
+  <div class="absolute inset-x-0 top-0 z-10 flex items-center gap-2 rounded-t-md bg-danger px-4 py-1.5 text-xs font-semibold text-danger-foreground">
     <twig:ux:icon name="tabler:trash" class="size-3.5 shrink-0" />
     Hilo borrado
     {% if thread.deletedAt %}
@@ -18,7 +18,7 @@
         slug_subforum: forum.slug,
         slug_thread: thread.slug
       }) }}"
-      class="pt-8 border-red-300 bg-red-50 dark:bg-red-950/30"
+      class="pt-8 border-danger-border bg-error/20"
   >
     <twig:Ui:Item:Header>
       <div class="flex items-center gap-3">
@@ -27,7 +27,7 @@
         <twig:App:Forum:Thread:Problem :thread="thread" />
       </div>
       <div class="flex items-center gap-3">
-        <div class="flex items-center gap-1 text-red-400">
+        <div class="flex items-center gap-1 text-danger-foreground">
           {{ ux_icon(thread.messageCount > 0 ? 'tabler:message' : 'tabler:message-off', {class: 'size-6'}) }}
           {{ thread.messageCount }} respuestas
         </div>
@@ -49,14 +49,14 @@
 
     <twig:Ui:Item:Content class="flex-1 space-y-3">
       <twig:Ui:Item:Title>
-        <h3 class="line-through text-red-500">{{ thread.title }}</h3>
+        <h3 class="line-through text-danger-foreground">{{ thread.title }}</h3>
       </twig:Ui:Item:Title>
-      <twig:Ui:Item:Description class="text-red-400">
+      <twig:Ui:Item:Description class="text-danger-foreground/80">
         {{ thread.description|raw }}
       </twig:Ui:Item:Description>
     </twig:Ui:Item:Content>
 
-    <twig:Ui:Item:Footer class="flex items-center justify-between text-xs text-red-400">
+    <twig:Ui:Item:Footer class="flex items-center justify-between text-xs text-danger-foreground">
       <div class="flex gap-1 items-center">
         Creado por
         {# Avatar gestiona internamente el caso de usuario borrado #}

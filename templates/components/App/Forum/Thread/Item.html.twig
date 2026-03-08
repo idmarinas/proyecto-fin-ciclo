@@ -8,7 +8,7 @@
       slug_subforum: forum.slug,
       slug_thread: thread.slug
     }) }}"
-    class="{{ author_deleted ? 'border-amber-300 bg-amber-50/50 dark:bg-amber-950/10' : '' }}"
+    class="{{ author_deleted ? 'border-warning-border bg-warning/10' : '' }}"
 >
   <twig:Ui:Item:Header>
     <div class="flex items-center gap-3">
@@ -17,7 +17,7 @@
       <twig:App:Forum:Thread:Problem :thread="thread" />
       {# Indicador autor borrado (solo admins lo verán si el hilo no está borrado) #}
       {% if author_deleted and can_see_deleted %}
-        <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700 border border-amber-200">
+        <span class="inline-flex items-center gap-1 rounded-full bg-warning/30 px-2 py-0.5 text-xs font-medium text-warning-foreground border border-warning-border">
           {{ ux_icon('tabler:user-x', {class: 'size-3'}) }} Autor borrado
         </span>
       {% endif %}
@@ -71,7 +71,7 @@
         {# Avatar gestiona internamente el caso de usuario borrado #}
         <twig:App:User:Avatar size="sm" :user="thread.lastMessage.author" />
         {% if last_author_deleted %}
-          <em class="text-amber-600 text-xs">[Usuario borrado]</em>
+          <em class="text-warning-foreground text-xs">[Usuario borrado]</em>
         {% else %}
           <em>{{ thread.lastMessage.author|u.truncate(10, '...') }}</em>
         {% endif %}

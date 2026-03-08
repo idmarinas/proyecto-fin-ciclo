@@ -44,7 +44,7 @@
     <twig:App:Forum:Thread:View:Actions :thread="thread" />
     {#    {% endif %} #}
 
-    <div class="flex items-center text-sm text-gray-700">
+    <div class="flex items-center text-sm text-muted-foreground">
       <span class="flex gap-2 items-center">{{ ux_icon('tabler:folder', {class: 'size-4'}) }} Subforo:</span>
       <twig:Ui:Button
           as="a"
@@ -76,7 +76,7 @@
       {% if not author_deleted %}
         <twig:App:Badge:Role :author="thread.author" />
       {% else %}
-        <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 border border-amber-200 px-2.5 py-0.5 text-xs font-medium text-amber-700">
+        <span class="inline-flex items-center gap-1 rounded-full bg-warning/30 border border-warning-border px-2.5 py-0.5 text-xs font-medium text-warning-foreground">
             <twig:ux:icon name="tabler:user-x" class="size-3" />
             Autor borrado
           </span>
@@ -91,12 +91,12 @@
   </twig:Ui:Item:Content>
 
   <twig:Ui:Item:Footer>
-    <div class="flex items-center gap-2 text-sm {{ thread_deleted ? 'text-red-400' : 'text-gray-700' }}">
+    <div class="flex items-center gap-2 text-sm {{ thread_deleted ? 'text-danger-foreground' : 'text-muted-foreground' }}">
       {{ ux_icon('tabler:user', {class: 'size-4'}) }}
       Creado por
       {# Avatar gestiona internamente el usuario borrado #}
       {% if author_deleted %}
-        <em class="{{ thread_deleted ? 'text-red-300' : 'text-amber-600' }}">[Usuario borrado]</em>
+        <em class="{{ thread_deleted ? 'text-danger-foreground/70' : 'text-warning-foreground' }}">[Usuario borrado]</em>
       {% else %}
         <em>{{ thread.createdBy }}</em>
       {% endif %}
@@ -104,13 +104,13 @@
     </div>
 
     {% if thread.lastMessage is not null %}
-      <div class="flex items-center gap-2 text-sm {{ thread_deleted ? 'text-red-400' : 'text-gray-700' }}">
+      <div class="flex items-center gap-2 text-sm {{ thread_deleted ? 'text-danger-foreground' : 'text-muted-foreground' }}">
         {{ ux_icon('tabler:clock', {class: 'size-4'}) }}
         Última respuesta el {{ thread.lastMessageAt|date("d/m/Y H:i") }} por
         {{ ux_icon('tabler:user', {class: 'size-4'}) }}
         {% set last_author = thread.lastMessage.author %}
         {% if last_author is not null and last_author.deletedAt is not null %}
-          <em class="{{ thread_deleted ? 'text-red-300' : 'text-amber-600' }}">[Usuario borrado]</em>
+          <em class="{{ thread_deleted ? 'text-danger-foreground/70' : 'text-warning-foreground' }}">[Usuario borrado]</em>
         {% else %}
           <em>{{ thread.lastMessageAuthorName }}</em>
         {% endif %}

@@ -2,7 +2,7 @@
   <twig:Ui:Card:Header>
     <twig:Ui:Card:Title>
       <h3>
-        {{ ux_icon('tabler:server', {class: 'inline-block size-5 mr-1 text-gray-600'}) }}
+        {{ ux_icon('tabler:server', {class: 'inline-block size-5 mr-1 text-muted-foreground'}) }}
         Estado de los servicios
       </h3>
     </twig:Ui:Card:Title>
@@ -18,8 +18,8 @@
     <ul class="space-y-2 text-sm">
       {% for service in services %}
         <li class="flex items-center justify-between gap-2">
-          <span class="flex items-center gap-1.5 text-gray-700 min-w-0">
-            {{ ux_icon(service.icon, {class: 'size-4 shrink-0 text-gray-400'}) }}
+          <span class="flex items-center gap-1.5 text-foreground min-w-0">
+            {{ ux_icon(service.icon, {class: 'size-4 shrink-0 text-muted-foreground'}) }}
             <span class="truncate">{{ service.name }}</span>
           </span>
           <span class="flex items-center gap-1 shrink-0 font-medium {{ service.color }}">
