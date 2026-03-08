@@ -1,0 +1,51 @@
+{# @var forum \App\Entity\Forum #}
+{# @var subforum \App\Entity\Forum #}
+
+{% props isForums = false, forum = null, subforum = null, page %}
+
+<twig:Layout:Section class="py-1">
+  {# Breadcrumb #}
+  <twig:Ui:Breadcrumb>
+    <twig:Ui:Breadcrumb:List>
+      <twig:Ui:Breadcrumb:Item>
+        <twig:Ui:Breadcrumb:Link class="flex items-center gap-1" href="{{ path('app_home') }}">
+          {{ ux_icon('tabler:home', {class:'inline-block'}) }} Inicio
+        </twig:Ui:Breadcrumb:Link>
+      </twig:Ui:Breadcrumb:Item>
+      {% if forum is not null or isForums %}
+        <twig:Ui:Breadcrumb:Separator />
+        <twig:Ui:Breadcrumb:Item>
+          <twig:Ui:Breadcrumb:Link class="flex items-center gap-1" href="{{ path('app_forums_index') }}">
+            {{ ux_icon('tabler:messages', {class: 'size-4'}) }} Foros
+          </twig:Ui:Breadcrumb:Link>
+        </twig:Ui:Breadcrumb:Item>
+      {% endif %}
+      {% if forum is not null %}
+        <twig:Ui:Breadcrumb:Separator />
+        <twig:Ui:Breadcrumb:Item>
+          <twig:Ui:Breadcrumb:Link
+              class="flex items-center gap-1"
+              href="{{ path('app_forums_forum', {'slug': forum.slug}) }}"
+          >
+            {{ ux_icon('tabler:message', {class: 'size-4'}) }} {{ forum.title }}
+          </twig:Ui:Breadcrumb:Link>
+        </twig:Ui:Breadcrumb:Item>
+      {% endif %}
+      {% if subforum is not null and forum is not null %}
+        <twig:Ui:Breadcrumb:Separator />
+        <twig:Ui:Breadcrumb:Item>
+          <twig:Ui:Breadcrumb:Link class="flex items-center gap-1" href="{{ path('app_forums_forum_threads', {
+            'slug_forum': forum.slug,
+            'slug_subforum': subforum.slug}) }}"
+          >
+            {{ ux_icon('tabler:message-circle', {class: 'size-4'}) }} {{ subforum.title }}
+          </twig:Ui:Breadcrumb:Link>
+        </twig:Ui:Breadcrumb:Item>
+      {% endif %}
+      <twig:Ui:Breadcrumb:Separator />
+      <twig:Ui:Breadcrumb:Item>
+        <twig:Ui:Breadcrumb:Page>{{ page.title|default(page) }}</twig:Ui:Breadcrumb:Page>
+      </twig:Ui:Breadcrumb:Item>
+    </twig:Ui:Breadcrumb:List>
+  </twig:Ui:Breadcrumb>
+</twig:Layout:Section>
