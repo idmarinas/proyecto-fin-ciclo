@@ -70,27 +70,28 @@
 
   <twig:Ui:Separator class="h-0.5 my-4" />
 
-  <div class="flex flex-col md:flex-row md:items-center justify-center gap-4">
-    <div class="flex-1 md:flex-none">
-      <twig:Ui:Item>
+  <div class="rounded-xl bg-primary/8 border border-primary/20 px-6 py-8">
+    <div class="flex flex-col md:flex-row md:items-center gap-6">
+      <twig:Ui:Item class="flex-1">
         <twig:Ui:Item:Content>
-          <twig:Ui:Item:Title>Suscríbase a nuestro boletín informativo</twig:Ui:Item:Title>
-          <twig:Ui:Item:Description>
+          <twig:Ui:Item:Title class="text-base font-semibold text-foreground flex items-center gap-2">
+            <twig:ux:icon name="tabler:mail-forward" class="size-5 text-primary" />
+            Suscríbase a nuestro boletín informativo
+          </twig:Ui:Item:Title>
+          <twig:Ui:Item:Description class="mt-1 text-sm text-muted-foreground">
             Las últimas noticias, artículos y recursos, enviados semanalmente a tu bandeja de entrada.
           </twig:Ui:Item:Description>
         </twig:Ui:Item:Content>
       </twig:Ui:Item>
-    </div>
-    <div class="hidden md:block flex-1"></div>
-    <div class="flex-1 md:flex-none flex flex-col md:flex-row gap-4">
-      <twig:Ui:InputGroup class="w-full md:w-auto">
-        <twig:Ui:InputGroup:Input id="email" name="email" type="email" placeholder="Escribe tu email" />
-        <twig:Ui:InputGroup:Icon position="end">
-          <twig:ux:icon name="tabler:mail" />
-        </twig:Ui:InputGroup:Icon>
-      </twig:Ui:InputGroup>
-
-      <twig:Ui:Button variant="outline" size="lg" class="w-full md:w-auto">Subscribirse</twig:Ui:Button>
+      <div class="flex flex-col sm:flex-row gap-3 md:flex-none">
+        <twig:Ui:InputGroup class="w-full sm:w-72">
+          <twig:Ui:InputGroup:Input id="email" name="email" type="email" placeholder="Escribe tu email" />
+          <twig:Ui:InputGroup:Icon position="end">
+            <twig:ux:icon name="tabler:mail" />
+          </twig:Ui:InputGroup:Icon>
+        </twig:Ui:InputGroup>
+        <twig:Ui:Button size="lg" class="w-full sm:w-auto">Subscribirse</twig:Ui:Button>
+      </div>
     </div>
   </div>
 
@@ -102,14 +103,42 @@
       - {{ app_title }}, Lúmina Servicios Tecnológicos
     </div>
     <div class="hidden md:block flex-1"></div>
-    <div class="flex gap-4">
-      <twig:ux:icon name="tabler:brand-twitter" class="h-7 w-7" />
-      <twig:ux:icon name="tabler:brand-facebook" class="h-7 w-7" />
-      <twig:ux:icon name="tabler:brand-instagram" class="h-7 w-7" />
-      <twig:ux:icon name="tabler:brand-linkedin" class="h-7 w-7" />
-      <twig:ux:icon name="tabler:brand-github" class="h-7 w-7" />
-      <twig:ux:icon name="tabler:brand-youtube" class="h-7 w-7" />
-      <twig:ux:icon name="tabler:brand-discord" class="h-7 w-7" />
+    <div class="flex gap-3">
+      <a href="#"
+         aria-label="Twitter / X"
+         class="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-150">
+        <twig:ux:icon name="tabler:brand-twitter" class="h-5 w-5" />
+      </a>
+      <a href="#"
+         aria-label="Facebook"
+         class="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-150">
+        <twig:ux:icon name="tabler:brand-facebook" class="h-5 w-5" />
+      </a>
+      <a href="#"
+         aria-label="Instagram"
+         class="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-150">
+        <twig:ux:icon name="tabler:brand-instagram" class="h-5 w-5" />
+      </a>
+      <a href="#"
+         aria-label="LinkedIn"
+         class="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-150">
+        <twig:ux:icon name="tabler:brand-linkedin" class="h-5 w-5" />
+      </a>
+      <a href="#"
+         aria-label="GitHub"
+         class="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-150">
+        <twig:ux:icon name="tabler:brand-github" class="h-5 w-5" />
+      </a>
+      <a href="#"
+         aria-label="YouTube"
+         class="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-150">
+        <twig:ux:icon name="tabler:brand-youtube" class="h-5 w-5" />
+      </a>
+      <a href="#"
+         aria-label="Discord"
+         class="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-150">
+        <twig:ux:icon name="tabler:brand-discord" class="h-5 w-5" />
+      </a>
     </div>
   </div>
 </footer>
