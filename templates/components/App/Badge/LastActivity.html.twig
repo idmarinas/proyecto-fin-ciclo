@@ -4,8 +4,8 @@
 
 <twig:Ui:Badge
     class="{{ html_classes({
-      'bg-green-100 text-green-700': 'Activo' === text,
-      'bg-yellow-100 text-yellow-700': 'Moderado' === text,
-      'bg-gray-200 text-gray-600': 'Tranquilo' === text
+      'bg-success/20 text-success-foreground': 'Activo' === text,
+      'bg-warning/20 text-warning-foreground': 'Moderado' === text,
+      'bg-muted text-muted-foreground':        'Tranquilo' === text
     }) }}"
 >{{ text }}</twig:Ui:Badge>

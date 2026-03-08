@@ -12,12 +12,12 @@
 
 {% if colorize %}
   {% set color = html_classes({
-    'text-slate-600 ': icon_name == 'open',
-    'text-amber-600 ': icon_name == 'progress',
-    'text-blue-600 ': icon_name == 'waiting_customer',
-    'text-blue-600 ': icon_name == 'waiting_support',
-    'text-green-600 ': icon_name == 'resolved',
-    'text-red-600 ': icon_name == 'closed'
+    'text-muted-foreground ': icon_name == 'open',
+    'text-warning-foreground ': icon_name == 'progress',
+    'text-info-foreground ': icon_name == 'waiting_customer',
+    'text-info-foreground ': icon_name == 'waiting_support',
+    'text-success-foreground ': icon_name == 'resolved',
+    'text-danger-foreground ': icon_name == 'closed'
   }) %}
 {% endif %}
 

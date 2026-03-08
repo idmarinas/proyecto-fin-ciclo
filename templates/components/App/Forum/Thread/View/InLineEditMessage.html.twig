@@ -13,34 +13,31 @@ Reglas de visibilidad:
   {# ── Clases del contenedor según estado ── #}
   {% if thread_deleted %}
     {# Borrado por hilo: rojo tenue — diferente al de mensaje borrado individualmente #}
-    {% set wrapper_class = 'border-red-200 bg-red-50/60 dark:bg-red-950/20 opacity-65 rounded-t-none' %}
+    {% set wrapper_class = 'border-error-border bg-error/20 opacity-65 rounded-t-none' %}
   {% elseif message_deleted %}
     {# Borrado individualmente: gris neutro — distinto al de hilo borrado #}
-    {% set wrapper_class = 'border-dashed border-gray-400 bg-gray-100 dark:bg-gray-800/40 opacity-80 rounded-t-none' %}
+    {% set wrapper_class = 'border-dashed border-notice-border bg-notice/40 opacity-80 rounded-t-none' %}
   {% else %}
     {% set wrapper_class = '' %}
   {% endif %}
 
   {# ── Banner: hilo borrado ── #}
   {% if thread_deleted %}
-    <div class="relative mb-0 w-full flex items-center gap-2 rounded-t bg-red-500/80 px-3 py-1.5
-      text-xs
-      font-semibold
-      text-white">
+    <div class="relative mb-0 w-full flex items-center gap-2 rounded-t bg-danger px-3 py-1.5 text-xs font-semibold text-danger-foreground">
       <twig:ux:icon name="tabler:folder-x" class="size-3.5 shrink-0" />
       Mensaje perteneciente a un hilo borrado
       {% if reply.thread.deletedAt %}
-        <span class="ml-auto font-normal text-red-200">{{ reply.thread.deletedAt|date("d/m/Y H:i") }}</span>
+        <span class="ml-auto font-normal text-danger-foreground/70">{{ reply.thread.deletedAt|date("d/m/Y H:i") }}</span>
       {% endif %}
     </div>
   {% endif %}
   {# ── Banner: mensaje borrado individualmente ── diferente al del hilo ── #}
   {% if not thread_deleted and message_deleted %}
-    <div class="col-span-full w-full flex items-center gap-2 rounded-t bg-gray-500 px-3 py-1.5 text-xs font-semibold text-white">
+    <div class="col-span-full w-full flex items-center gap-2 rounded-t bg-notice px-3 py-1.5 text-xs font-semibold text-notice-foreground">
       <twig:ux:icon name="tabler:message-x" class="size-3.5 shrink-0" />
       Mensaje borrado
       {% if reply.deletedAt %}
-        <span class="ml-auto font-normal text-gray-300">{{ reply.deletedAt|date("d/m/Y H:i") }}</span>
+        <span class="ml-auto font-normal text-notice-foreground/70">{{ reply.deletedAt|date("d/m/Y H:i") }}</span>
       {% endif %}
     </div>
   {% endif %}
@@ -85,14 +82,14 @@ Reglas de visibilidad:
         {# Avatar — el componente gestiona el usuario borrado internamente #}
         <twig:App:User:Avatar :user="reply.author" />
         {% if author_deleted %}
-          <span class="italic text-amber-600 text-sm">[Usuario borrado]</span>
+          <span class="italic text-warning-foreground text-sm">[Usuario borrado]</span>
         {% else %}
           {{ reply.createdBy }}
         {% endif %}
       </div>
       <div class="flex items-center gap-2">
         {% if author_deleted %}
-          <span class="inline-flex items-center gap-1 rounded-full bg-amber-100 border border-amber-200 px-2.5 py-0.5 text-xs font-medium text-amber-700">
+          <span class="inline-flex items-center gap-1 rounded-full bg-warning/30 border border-warning-border px-2.5 py-0.5 text-xs font-medium text-warning-foreground">
               <twig:ux:icon name="tabler:user-x" class="size-3" />
               Autor borrado
             </span>
@@ -105,7 +102,7 @@ Reglas de visibilidad:
     <twig:Ui:Item:Content class="justify-between">
       {% if message_deleted %}
         {# Mensaje borrado individualmente: ocultar contenido #}
-        <div class="flex items-center gap-2 text-gray-400 italic text-sm py-2">
+        <div class="flex items-center gap-2 text-muted-foreground italic text-sm py-2">
           <twig:ux:icon name="tabler:message-x" class="size-5 shrink-0" />
           <span>Este mensaje ha sido borrado y su contenido ya no está disponible.</span>
         </div>
@@ -178,7 +175,7 @@ Reglas de visibilidad:
       {% endif %}
 
       <div class="flex items-center gap-2 text-sm ml-auto
-          {{ thread_deleted ? 'text-red-400' : (message_deleted ? 'text-gray-400' : '') }}">
+          {{ thread_deleted ? 'text-danger-foreground' : (message_deleted ? 'text-muted-foreground' : '') }}">
         {{ ux_icon('tabler:clock', {class: 'size-4'}) }} {{ reply.createdAt|date("d/m/Y H:i") }}
       </div>
     </twig:Ui:Item:Footer>
