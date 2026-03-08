@@ -2,7 +2,7 @@
 /**
  * Copyright 2025-2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 17:19
+ * Last modified by "IDMarinas" on 08/03/2026, 24:45
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -20,6 +20,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\User\UserCrudController;
+use App\Repository\Forum\ThreadRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -40,13 +41,16 @@ use Symfony\Component\HttpFoundation\Response;
 final class DashboardController extends AbstractDashboardController
 {
     public function __construct(
-        private readonly Packages $packages,
+        private readonly Packages         $packages,
+        private readonly ThreadRepository $threadRepository,
     ) {}
 
     #[Override]
     public function index(): Response
     {
-        return $this->render('admin/dashboard.html.twig');
+        return $this->render('admin/dashboard.html.twig', [
+            'forum_stats' => $this->threadRepository->getAdminDashboardStats(),
+        ]);
     }
 
     #[Override]

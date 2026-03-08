@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 04/03/2026, 23:44
+ * Last modified by "IDMarinas" on 08/03/2026, 24:45
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -234,6 +234,113 @@ final class ThreadRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * Devuelve las estadísticas globales del foro para el dashboard de administración.
+     *
+     * Utiliza la fecha del `solved_message` como proxy del momento de resolución.
+     * Los tiempos medios se devuelven en horas (float).
+     *
+     * @return array{
+     *     threads_open: int,
+     *     threads_in_progress: int,
+     *     threads_resolved: int,
+     *     threads_closed: int,
+     *     threads_public: int,
+     *     threads_private: int,
+     *     threads_by_user: int,
+     *     threads_by_client: int,
+     *     total_threads: int,
+     *     total_messages: int,
+     *     avg_resolution_hours: float|null,
+     *     avg_resolution_user: float|null,
+     *     avg_resolution_client: float|null,
+     * }
+     */
+    public function getAdminDashboardStats(): array
+    {
+        $sql = <<<SQL
+        SELECT
+            -- Estado de los hilos
+            SUM(t.status = 'open')                                              AS threads_open,
+            SUM(t.status IN ('waiting_customer', 'waiting_support'))            AS threads_in_progress,
+            SUM(t.status = 'resolved')                                          AS threads_resolved,
+            SUM(t.status = 'closed')                                            AS threads_closed,
+
+            -- Visibilidad
+            SUM(t.private = 0)                                                  AS threads_public,
+            SUM(t.private = 1)                                                  AS threads_private,
+
+            -- Tipo de cuenta del autor
+            SUM(u.client = 0)                                                   AS threads_by_user,
+            SUM(u.client = 1)                                                   AS threads_by_client,
+
+            -- Totales
+            COUNT(t.id)                                                         AS total_threads,
+            (SELECT COUNT(m.id) FROM pfc_message m WHERE m.deleted_at IS NULL)  AS total_messages,
+
+            -- Tiempo medio global de resolución en horas (proxy: fecha del solved_message)
+            AVG(
+                CASE
+                    WHEN t.status IN ('resolved', 'closed') AND sm.created_at IS NOT NULL
+                        THEN TIMESTAMPDIFF(SECOND, t.created_at, sm.created_at) / 3600.0
+                END
+            )                                                                   AS avg_resolution_hours,
+
+            -- Tiempo medio para usuarios (client = 0)
+            AVG(
+                CASE
+                    WHEN t.status IN ('resolved', 'closed') AND sm.created_at IS NOT NULL AND u.client = 0
+                        THEN TIMESTAMPDIFF(SECOND, t.created_at, sm.created_at) / 3600.0
+                END
+            )                                                                   AS avg_resolution_user,
+
+            -- Tiempo medio para clientes (client = 1)
+            AVG(
+                CASE
+                    WHEN t.status IN ('resolved', 'closed') AND sm.created_at IS NOT NULL AND u.client = 1
+                        THEN TIMESTAMPDIFF(SECOND, t.created_at, sm.created_at) / 3600.0
+                END
+            )                                                                   AS avg_resolution_client
+
+        FROM pfc_thread t
+        INNER JOIN user u ON u.id = t.author_id AND u.deleted_at IS NULL
+        LEFT JOIN pfc_message sm ON sm.id = t.solved_message_id AND sm.deleted_at IS NULL
+        WHERE t.deleted_at IS NULL
+        SQL;
+
+        $row = $this
+            ->getEntityManager()
+            ->getConnection()
+            ->executeQuery($sql)
+            ->fetchAssociative()
+        ;
+
+        return [
+            'threads_open'          => (int)($row['threads_open'] ?? 0),
+            'threads_in_progress'   => (int)($row['threads_in_progress'] ?? 0),
+            'threads_resolved'      => (int)($row['threads_resolved'] ?? 0),
+            'threads_closed'        => (int)($row['threads_closed'] ?? 0),
+            'threads_public'        => (int)($row['threads_public'] ?? 0),
+            'threads_private'       => (int)($row['threads_private'] ?? 0),
+            'threads_by_user'       => (int)($row['threads_by_user'] ?? 0),
+            'threads_by_client'     => (int)($row['threads_by_client'] ?? 0),
+            'total_threads'         => (int)($row['total_threads'] ?? 0),
+            'total_messages'        => (int)($row['total_messages'] ?? 0),
+            'avg_resolution_hours'  => isset($row['avg_resolution_hours']) ? round(
+                (float)$row['avg_resolution_hours'],
+                2
+            ) : null,
+            'avg_resolution_user'   => isset($row['avg_resolution_user']) ? round(
+                (float)$row['avg_resolution_user'],
+                2
+            ) : null,
+            'avg_resolution_client' => isset($row['avg_resolution_client']) ? round(
+                (float)$row['avg_resolution_client'],
+                2
+            ) : null,
+        ];
     }
 
     private function applyStatusCount(Forum $forum, ThreadStatusEnum $status, int $delta): void
