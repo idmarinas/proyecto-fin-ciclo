@@ -118,7 +118,7 @@ Los botones siguen un patrón consistente.
 **Ejemplo:**
 
 <code>
-&lt;button class="px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800"&gt;
+&lt;button class="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90"&gt;
     Guardar cambios
 &lt;/button&gt;
 </code>
@@ -139,7 +139,7 @@ Pequeños indicadores visuales para estados o categorías.
 **Ejemplo:**
 
 <code>
-&lt;span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded"&gt;
+&lt;span class="px-2 py-1 text-xs bg-success/20 text-success-foreground rounded"&gt;
     Resuelto
 &lt;/span&gt;
 </code>
@@ -153,16 +153,16 @@ Cada estado del hilo tiene un bloque visual grande.
 #### 🟢 Resuelto
 
 <code>
-&lt;div class="p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3"&gt;
-    &lt;ux:icon name="check-circle" class="w-8 h-8 text-green-600" /&gt;
+&lt;div class="p-4 bg-success/10 border border-success/20 rounded-xl flex items-center gap-3"&gt;
+    &lt;ux:icon name="check-circle" class="w-8 h-8 text-success-foreground" /&gt;
     &lt;div&gt;
-        &lt;h3 class="text-green-900 font-semibold"&gt;Este hilo está resuelto&lt;/h3&gt;
-        &lt;p class="text-green-800 text-sm"&gt;El autor ha marcado este hilo como solucionado.&lt;/p&gt;
+        &lt;h3 class="text-success-foreground font-semibold"&gt;Este hilo está resuelto&lt;/h3&gt;
+        &lt;p class="text-success-foreground/80 text-sm"&gt;El autor ha marcado este hilo como solucionado.&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code>
 
-*(Los demás estados siguen el mismo patrón con colores e iconos distintos: amarillo para “En progreso”, rojo para “Sin respuestas”, gris para “Cerrado”).*
+*(Los demás estados siguen el mismo patrón con tokens e iconos distintos: advertencia para “En progreso”, peligro para “Sin respuestas”, neutro para “Cerrado”).*
 
 ---
 
@@ -227,26 +227,24 @@ Los detalles completos de los sidebars se documentan en `sidebars.md`.
 
 ### 3.9. Breadcrumbs
 
-Jerarquía visual para navegación.
+Jerarquía visual para navegación, gestionada de forma centralizada.
 
 **Ejemplo:**
 
 <code>
-&lt;nav class="text-sm text-gray-600 mb-4"&gt;
-    Foros › Desarrollo y Tecnología › Symfony › Error en controlador
-&lt;/nav&gt;
+&lt;twig:App:Breadcrumb :forum="forum" :subforum="subforum" :thread="thread" /&gt;
 </code>
 
 ---
 
 ### 3.10. Avatares
 
-Representan usuarios.
+Representan usuarios. Utilizan el filtro `default('')` en los templates para evitar errores con URLs de avatar nulas.
 
 **Ejemplo:**
 
 <code>
-&lt;img src="/avatar.jpg" class="w-10 h-10 rounded-full border" /&gt;
+&lt;img src="{{ user.avatar|default('') }}" class="w-10 h-10 rounded-full border" /&gt;
 </code>
 
 ---

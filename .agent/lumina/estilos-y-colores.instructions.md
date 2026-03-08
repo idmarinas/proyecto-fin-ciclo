@@ -37,11 +37,11 @@ Lúmina utiliza una paleta basada en tonos suaves, profesionales y accesibles.
 
 | Uso              | Color    | Clase Tailwind                    |
 |------------------|----------|-----------------------------------|
-| Acción principal | Azul     | `bg-blue-700`, `text-blue-700`    |
-| Éxito            | Verde    | `bg-green-50`, `text-green-800`   |
-| Advertencia      | Amarillo | `bg-yellow-50`, `text-yellow-800` |
-| Error            | Rojo     | `bg-red-50`, `text-red-800`       |
-| Neutro           | Gris     | `text-gray-600`, `bg-gray-100`    |
+| Acción principal | Primario    | `bg-primary`, `text-primary`                    |
+| Éxito            | Éxito       | `bg-success/20`, `text-success-foreground`      |
+| Advertencia      | Advertencia | `bg-warning/20`, `text-warning-foreground`      |
+| Error            | Peligro     | `bg-danger/20`, `text-danger-foreground`        |
+| Neutro           | Neutro      | `text-muted-foreground`, `text-foreground`      |
 
 ---
 
@@ -122,7 +122,7 @@ Pequeños indicadores de estado o categoría.
 Ejemplo:
 
 <code>
-&lt;span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded"&gt;
+&lt;span class="px-2 py-1 text-xs bg-success/20 text-success-foreground rounded"&gt;
     Resuelto
 &lt;/span&gt;
 </code>
@@ -133,10 +133,10 @@ Ejemplo:
 
 | Estado         | Color    | Icono          |
 |----------------|----------|----------------|
-| Resuelto       | Verde    | `check-circle` |
-| En progreso    | Amarillo | `clock`        |
-| Sin respuestas | Rojo     | `x-circle`     |
-| Cerrado        | Gris     | `lock-closed`  |
+| Resuelto       | Éxito (`text-success-foreground`)       | `check-circle` |
+| En progreso    | Advertencia (`text-warning-foreground`) | `clock`        |
+| Sin respuestas | Peligro (`text-danger-foreground`)      | `x-circle`     |
+| Cerrado        | Neutro (`text-muted-foreground`)        | `lock-closed`  |
 
 ---
 
@@ -144,19 +144,19 @@ Ejemplo:
 
 ### ✔ Primario
 
-`bg-blue-700 text-white hover:bg-blue-800`
+Variables como `bg-primary text-primary-foreground`
 
 ### ✔ Secundario
 
-`bg-gray-200 text-gray-800 hover:bg-gray-300`
+Variables como `bg-secondary text-secondary-foreground`
 
 ### ✔ Peligro
 
-`bg-red-600 text-white hover:bg-red-700`
+Variables como `bg-danger text-danger-foreground`
 
 ### ✔ Éxito
 
-`bg-green-600 text-white hover:bg-green-700`
+Variables como `bg-success text-success-foreground`
 
 ---
 

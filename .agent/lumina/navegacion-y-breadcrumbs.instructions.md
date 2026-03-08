@@ -117,26 +117,27 @@ Título del hilo actual.
 El componente se encuentra en:
 
 <code>
-templates/components/forum/breadcrumbs.html.twig
+templates/components/App/Breadcrumb.html.twig
 </code>
 
-Ejemplo conceptual:
+Ejemplo genérico (Twig UX Component):
 
 <code>
-&lt;nav class="text-sm text-gray-600 mb-4"&gt;
-    Foros › {{ forum.name }} › {{ subforum.name }} › {{ thread.title }}
-&lt;/nav&gt;
+&lt;twig:App:Breadcrumb 
+    :forum="forum"
+    :subforum="subforum"
+    :thread="thread"
+/&gt;
 </code>
 
 ---
 
 # 🟦 6. Reglas de diseño
 
-- Tamaño de texto: `text-sm`
-- Color: `text-gray-600`
-- Separador: `›`
-- Espaciado inferior: `mb-4`
-- No usar enlaces en el último elemento
+- El diseño está centralizado en el componente `App:Breadcrumb` y sus subcomponentes.
+- Usa tokens como `text-muted-foreground` y `text-foreground`.
+- Espaciado inferior integrado o ajustable.
+- El componente se encarga de determinar automáticamente el último elemento para no renderizar enlace.
 
 ---
 
