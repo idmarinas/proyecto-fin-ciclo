@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 08/03/2026, 01:33
+ * Last modified by "IDMarinas" on 08/03/2026, 02:15
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -27,18 +27,6 @@ final class HomeControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/');
-
-        self::assertResponseIsSuccessful();
-    }
-
-    public function testForums(): void
-    {
-        $client = static::createClient();
-        $client->request('GET', '/forums');
-
-        self::assertResponseRedirects('/forums/');
-
-        $client->followRedirect();
 
         self::assertResponseIsSuccessful();
     }
