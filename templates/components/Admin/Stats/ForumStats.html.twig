@@ -1,7 +1,7 @@
 {#
-  Panel de estadísticas del foro para el dashboard de administración (Bootstrap 5).
+Panel de estadísticas del foro para el dashboard de administración (Bootstrap 5).
 
-  @prop array stats Datos de estadísticas pasados desde el controller.
+@prop array stats Datos de estadísticas pasados desde el controller.
 #}
 {%- props stats = {} -%}
 
@@ -11,170 +11,166 @@
 {%- set resolution_pct = total > 0 ? ((resolved + closed) / total * 100)|round : 0 -%}
 
 {%- macro format_hours(hours) -%}
-    {%- if hours is null or hours == 0 -%}
-        —
-    {%- elseif hours < 1 -%}
-        {{ (hours * 60)|round }} min
-    {%- elseif hours < 24 -%}
-        {{ hours|round(1) }} h
-    {%- else -%}
-        {{ (hours / 24)|round(1) }} días
-    {%- endif -%}
+  {%- if hours is null or hours == 0 -%}
+    —
+  {%- elseif hours < 1 -%}
+    {{ (hours * 60)|round }} min
+  {%- elseif hours < 24 -%}
+    {{ hours|round(1) }} h
+  {%- else -%}
+    {{ (hours / 24)|round(1) }} días
+  {%- endif -%}
 {%- endmacro -%}
 
-<section>
-
     {# ── Cabecera ────────────────────────────────────────────────────── #}
-    <div class="d-flex align-items-center gap-2 border-bottom pb-3 mb-4">
-        <twig:ux:icon name="tabler:chart-bar" style="width:1.25rem;height:1.25rem;" class="text-primary" />
-        <h5 class="mb-0 fw-semibold">Estadísticas del Foro</h5>
-    </div>
+<div class="d-flex align-items-center gap-2 border-bottom pb-3 mb-4">
+  <twig:ux:icon name="tabler:chart-bar" style="width:1.25rem;height:1.25rem;" class="text-primary" />
+  <h5 class="mb-0 fw-semibold">Estadísticas del Foro</h5>
+</div>
 
-    {# ── Estado de los hilos ─────────────────────────────────────────── #}
-    <h6 class="text-uppercase text-muted small fw-semibold mb-3">Estado de los hilos</h6>
-    <div class="row g-3 mb-4">
-        <div class="col-6 col-lg-3">
-            <twig:Admin:Stats:StatCard
-                label="Abiertos"
-                value="{{ stats.threads_open ?? 0 }}"
-                icon="tabler:message-question"
-                color="warning"
-                sub="Sin respuesta del soporte"
-            />
-        </div>
-        <div class="col-6 col-lg-3">
-            <twig:Admin:Stats:StatCard
-                label="En progreso"
-                value="{{ stats.threads_in_progress ?? 0 }}"
-                icon="tabler:clock-hour-4"
-                color="info"
-                sub="Esperando respuesta"
-            />
-        </div>
-        <div class="col-6 col-lg-3">
-            <twig:Admin:Stats:StatCard
-                label="Resueltos"
-                value="{{ stats.threads_resolved ?? 0 }}"
-                icon="tabler:circle-check"
-                color="success"
-                sub="{{ resolution_pct }}% del total"
-            />
-        </div>
-        <div class="col-6 col-lg-3">
-            <twig:Admin:Stats:StatCard
-                label="Cerrados"
-                value="{{ stats.threads_closed ?? 0 }}"
-                icon="tabler:lock"
-                color="secondary"
-                sub="Cerrados definitivamente"
-            />
-        </div>
-    </div>
+{# ── Estado de los hilos ─────────────────────────────────────────── #}
+<h6 class="text-uppercase text-muted small fw-semibold mb-3">Estado de los hilos</h6>
+<div class="row g-3 mb-4">
+  <div class="col-6 col-lg-3">
+    <twig:Admin:Stats:StatCard
+        label="Abiertos"
+        value="{{ stats.threads_open ?? 0 }}"
+        icon="tabler:message-question"
+        color="warning"
+        sub="Sin respuesta del soporte"
+    />
+  </div>
+  <div class="col-6 col-lg-3">
+    <twig:Admin:Stats:StatCard
+        label="En progreso"
+        value="{{ stats.threads_in_progress ?? 0 }}"
+        icon="tabler:clock-hour-4"
+        color="info"
+        sub="Esperando respuesta"
+    />
+  </div>
+  <div class="col-6 col-lg-3">
+    <twig:Admin:Stats:StatCard
+        label="Resueltos"
+        value="{{ stats.threads_resolved ?? 0 }}"
+        icon="tabler:circle-check"
+        color="success"
+        sub="{{ resolution_pct }}% del total"
+    />
+  </div>
+  <div class="col-6 col-lg-3">
+    <twig:Admin:Stats:StatCard
+        label="Cerrados"
+        value="{{ stats.threads_closed ?? 0 }}"
+        icon="tabler:lock"
+        color="secondary"
+        sub="Cerrados definitivamente"
+    />
+  </div>
+</div>
 
-    {# ── Visibilidad y tipo de cuenta ────────────────────────────────── #}
-    <div class="row g-4 mb-4 align-items-start">
+{# ── Visibilidad y tipo de cuenta ────────────────────────────────── #}
+<div class="row g-4 mb-4 align-items-start">
 
-        <div class="col-12 col-md-6">
-            <h6 class="text-uppercase text-muted small fw-semibold mb-3">Visibilidad</h6>
-            <div class="row g-3">
-                <div class="col-6">
-                    <twig:Admin:Stats:StatCard
-                        label="Hilos públicos"
-                        value="{{ stats.threads_public ?? 0 }}"
-                        icon="tabler:world"
-                        color="primary"
-                    />
-                </div>
-                <div class="col-6">
-                    <twig:Admin:Stats:StatCard
-                        label="Hilos privados"
-                        value="{{ stats.threads_private ?? 0 }}"
-                        icon="tabler:lock-access"
-                        color="danger"
-                    />
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6">
-            <h6 class="text-uppercase text-muted small fw-semibold mb-3">Por tipo de cuenta</h6>
-            <div class="row g-3">
-                <div class="col-6">
-                    <twig:Admin:Stats:StatCard
-                        label="De usuarios"
-                        value="{{ stats.threads_by_user ?? 0 }}"
-                        icon="tabler:user"
-                        color="primary"
-                        sub="Servicios gratuitos"
-                    />
-                </div>
-                <div class="col-6">
-                    <twig:Admin:Stats:StatCard
-                        label="De clientes"
-                        value="{{ stats.threads_by_client ?? 0 }}"
-                        icon="tabler:user-star"
-                        color="warning"
-                        sub="Servicios de pago"
-                    />
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    {# ── Tiempos medios de resolución ────────────────────────────────── #}
-    <h6 class="text-uppercase text-muted small fw-semibold mb-3">Tiempo medio de resolución</h6>
-    <div class="row g-3 mb-4">
-        <div class="col-12 col-md-4">
-            <twig:Admin:Stats:StatCard
-                label="Tiempo medio global"
-                value="{{ _self.format_hours(stats.avg_resolution_hours ?? 0) }}"
-                icon="tabler:hourglass"
-                color="primary"
-                sub="Desde apertura hasta resolución"
-            />
-        </div>
-        <div class="col-12 col-md-4">
-            <twig:Admin:Stats:StatCard
-                label="Tiempo medio (Usuarios)"
-                value="{{ _self.format_hours(stats.avg_resolution_user ?? 0) }}"
-                icon="tabler:hourglass-low"
-                color="info"
-                sub="Solo hilos de usuarios"
-            />
-        </div>
-        <div class="col-12 col-md-4">
-            <twig:Admin:Stats:StatCard
-                label="Tiempo medio (Clientes)"
-                value="{{ _self.format_hours(stats.avg_resolution_client ?? 0) }}"
-                icon="tabler:hourglass-high"
-                color="warning"
-                sub="Solo hilos de clientes"
-            />
-        </div>
-    </div>
-
-    {# ── Actividad total ─────────────────────────────────────────────── #}
-    <h6 class="text-uppercase text-muted small fw-semibold mb-3">Actividad total</h6>
+  <div class="col-12 col-md-6">
+    <h6 class="text-uppercase text-muted small fw-semibold mb-3">Visibilidad</h6>
     <div class="row g-3">
-        <div class="col-12 col-md-4">
-            <twig:Admin:Stats:StatCard
-                label="Hilos totales"
-                value="{{ stats.total_threads ?? 0 }}"
-                icon="tabler:messages"
-                color="primary"
-                layout="horizontal"
-            />
-        </div>
-        <div class="col-12 col-md-4">
-            <twig:Admin:Stats:StatCard
-                label="Mensajes totales"
-                value="{{ stats.total_messages ?? 0 }}"
-                icon="tabler:message"
-                color="success"
-                layout="horizontal"
-            />
-        </div>
+      <div class="col-6">
+        <twig:Admin:Stats:StatCard
+            label="Hilos públicos"
+            value="{{ stats.threads_public ?? 0 }}"
+            icon="tabler:world"
+            color="primary"
+        />
+      </div>
+      <div class="col-6">
+        <twig:Admin:Stats:StatCard
+            label="Hilos privados"
+            value="{{ stats.threads_private ?? 0 }}"
+            icon="tabler:lock-access"
+            color="danger"
+        />
+      </div>
     </div>
+  </div>
 
-</section>
+  <div class="col-12 col-md-6">
+    <h6 class="text-uppercase text-muted small fw-semibold mb-3">Por tipo de cuenta</h6>
+    <div class="row g-3">
+      <div class="col-6">
+        <twig:Admin:Stats:StatCard
+            label="De usuarios"
+            value="{{ stats.threads_by_user ?? 0 }}"
+            icon="tabler:user"
+            color="primary"
+            sub="Servicios gratuitos"
+        />
+      </div>
+      <div class="col-6">
+        <twig:Admin:Stats:StatCard
+            label="De clientes"
+            value="{{ stats.threads_by_client ?? 0 }}"
+            icon="tabler:user-star"
+            color="warning"
+            sub="Servicios de pago"
+        />
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{# ── Tiempos medios de resolución ────────────────────────────────── #}
+<h6 class="text-uppercase text-muted small fw-semibold mb-3">Tiempo medio de resolución</h6>
+<div class="row g-3 mb-4">
+  <div class="col-12 col-md-4">
+    <twig:Admin:Stats:StatCard
+        label="Tiempo medio global"
+        value="{{ _self.format_hours(stats.avg_resolution_hours ?? 0) }}"
+        icon="tabler:hourglass"
+        color="primary"
+        sub="Desde apertura hasta resolución"
+    />
+  </div>
+  <div class="col-12 col-md-4">
+    <twig:Admin:Stats:StatCard
+        label="Tiempo medio (Usuarios)"
+        value="{{ _self.format_hours(stats.avg_resolution_user ?? 0) }}"
+        icon="tabler:hourglass-low"
+        color="info"
+        sub="Solo hilos de usuarios"
+    />
+  </div>
+  <div class="col-12 col-md-4">
+    <twig:Admin:Stats:StatCard
+        label="Tiempo medio (Clientes)"
+        value="{{ _self.format_hours(stats.avg_resolution_client ?? 0) }}"
+        icon="tabler:hourglass-high"
+        color="warning"
+        sub="Solo hilos de clientes"
+    />
+  </div>
+</div>
+
+{# ── Actividad total ─────────────────────────────────────────────── #}
+<h6 class="text-uppercase text-muted small fw-semibold mb-3">Actividad total</h6>
+<div class="row g-3">
+  <div class="col-12 col-md-4">
+    <twig:Admin:Stats:StatCard
+        label="Hilos totales"
+        value="{{ stats.total_threads ?? 0 }}"
+        icon="tabler:messages"
+        color="primary"
+        layout="horizontal"
+    />
+  </div>
+  <div class="col-12 col-md-4">
+    <twig:Admin:Stats:StatCard
+        label="Mensajes totales"
+        value="{{ stats.total_messages ?? 0 }}"
+        icon="tabler:message"
+        color="success"
+        layout="horizontal"
+    />
+  </div>
+</div>
