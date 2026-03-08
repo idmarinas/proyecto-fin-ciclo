@@ -1,0 +1,264 @@
+{% extends 'base.html.twig' %}
+
+{% block article %}
+  <twig:Layout:Article>
+    <twig:Layout:Section class="prose prose-slate dark:prose-invert mx-auto">
+
+      <div class="flex items-center gap-3 mb-2">
+        <h1>
+          <twig:ux:icon name="tabler:prism-light" class="size-8 text-primary inline" />
+          Sobre Nosotros
+        </h1>
+      </div>
+
+      {# ──────────────────────────────────────────────────────────────────── #}
+      {# AVISO ACADÉMICO                                                       #}
+      {# ──────────────────────────────────────────────────────────────────── #}
+      <twig:Ui:Alert variant="warning" class="not-prose mb-6">
+        <twig:ux:icon name="tabler:school" class="size-5" />
+        <twig:Ui:Alert:Title>Proyecto de fin de ciclo — Contenido ficticio</twig:Ui:Alert:Title>
+        <twig:Ui:Alert:Description>
+          <p>
+            Este sitio web es el resultado de un <strong>Proyecto de Fin de Ciclo</strong> del
+            <strong>Grado Superior de Desarrollo de Aplicaciones Web (DAW)</strong>, elaborado con
+            fines exclusivamente académicos y de evaluación.
+          </p>
+          <p class="mt-2">
+            <strong>Lúmina</strong>, así como todos sus servicios, datos, empresas, personas,
+            precios, marcas, logotipos y cualquier otro contenido que aparezca en esta plataforma
+            son <strong>completamente ficticios</strong>. Cualquier parecido con la realidad es
+            pura coincidencia. Este proyecto no tiene ninguna intención comercial ni pretende
+            representar un servicio o empresa real.
+          </p>
+        </twig:Ui:Alert:Description>
+      </twig:Ui:Alert>
+      {# ──────────────────────────────────────────────────────────────────── #}
+
+      <twig:Ui:Separator class="my-6" />
+
+      {# ── ¿Qué es Lúmina? ── #}
+      <h2>¿Qué es Lúmina?</h2>
+      <p>
+        Lúmina es una plataforma digital diseñada para ofrecer herramientas profesionales orientadas a la gestión
+        de negocios, la facturación electrónica, la administración de servicios, la automatización de procesos y la
+        asistencia técnica. Nuestra misión es proporcionar a empresas y profesionales un ecosistema sólido, moderno
+        y eficiente que les permita operar con claridad, control y seguridad.
+      </p>
+      <p>
+        Combinamos un diseño intuitivo con funcionalidades avanzadas, integraciones flexibles y un enfoque modular
+        que facilita la adopción tanto por usuarios técnicos como por usuarios sin experiencia previa. Lúmina está
+        construida para ser escalable, segura y adaptable a las necesidades reales de los negocios.
+      </p>
+
+      <twig:Ui:Separator class="my-6" />
+
+      {# ── Filosofía ── #}
+      <h2>Nuestra filosofía</h2>
+      <p>Lúmina se sustenta sobre cuatro pilares fundamentales que guían cada decisión de diseño y desarrollo:</p>
+
+    </twig:Layout:Section>
+
+    {# ── Tarjetas de pilares — fuera de prose para layout en grid ── #}
+    <twig:Layout:Section class="not-prose">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <twig:Ui:Card>
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
+              <twig:ux:icon name="tabler:eye" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Claridad</twig:Ui:Card:Title>
+          </twig:Ui:Card:Header>
+          <twig:Ui:Card:Content class="text-muted-foreground text-sm">
+            Toda la interfaz, documentación y flujo de trabajo está diseñada para ser comprensible, directa y libre
+            de fricción. Priorizamos la experiencia del usuario en cada detalle.
+          </twig:Ui:Card:Content>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card>
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
+              <twig:ux:icon name="tabler:award" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Profesionalidad</twig:Ui:Card:Title>
+          </twig:Ui:Card:Header>
+          <twig:Ui:Card:Content class="text-muted-foreground text-sm">
+            Cada módulo, servicio y herramienta está construido con estándares altos de calidad, estabilidad y
+            coherencia visual. Buscamos transmitir confianza y solidez en cada interacción.
+          </twig:Ui:Card:Content>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card>
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
+              <twig:ux:icon name="tabler:layout-grid" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Modularidad</twig:Ui:Card:Title>
+          </twig:Ui:Card:Header>
+          <twig:Ui:Card:Content class="text-muted-foreground text-sm">
+            El sistema está compuesto por bloques independientes que pueden crecer, reorganizarse o ampliarse sin
+            comprometer la estructura general, permitiendo una evolución continua y ordenada.
+          </twig:Ui:Card:Content>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card>
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-3">
+              <twig:ux:icon name="tabler:chart-arrows-vertical" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Escalabilidad</twig:Ui:Card:Title>
+          </twig:Ui:Card:Header>
+          <twig:Ui:Card:Content class="text-muted-foreground text-sm">
+            Lúmina está preparada para acompañar a negocios en crecimiento, desde pequeñas empresas hasta
+            operaciones complejas que requieren automatización, integraciones y soporte avanzado.
+          </twig:Ui:Card:Content>
+        </twig:Ui:Card>
+
+      </div>
+    </twig:Layout:Section>
+
+    {# ── Servicios ── #}
+    <twig:Layout:Section class="prose prose-slate dark:prose-invert mx-auto">
+      <h2>Nuestros servicios</h2>
+      <p>
+        Lúmina ofrece un conjunto de módulos integrados que cubren las principales necesidades operativas de
+        cualquier negocio digital:
+      </p>
+    </twig:Layout:Section>
+
+    <twig:Layout:Section class="not-prose">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <twig:Ui:Card class="group hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl
+                        bg-primary/10 text-primary
+                        group-hover:bg-primary group-hover:text-primary-foreground
+                        transition-colors duration-200 mb-3">
+              <twig:ux:icon name="tabler:receipt" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Facturación electrónica</twig:Ui:Card:Title>
+            <twig:Ui:Card:Description>
+              Emite, gestiona y automatiza facturas, presupuestos y documentos relacionados con cumplimiento legal
+              garantizado.
+            </twig:Ui:Card:Description>
+          </twig:Ui:Card:Header>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card class="group hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl
+                        bg-primary/10 text-primary
+                        group-hover:bg-primary group-hover:text-primary-foreground
+                        transition-colors duration-200 mb-3">
+              <twig:ux:icon name="tabler:server-cog" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Gestión de servicios</twig:Ui:Card:Title>
+            <twig:Ui:Card:Description>
+              Control total sobre los servicios contratados: estado, consumo, incidencias, renovaciones y
+              configuración centralizada.
+            </twig:Ui:Card:Description>
+          </twig:Ui:Card:Header>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card class="group hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl
+                        bg-primary/10 text-primary
+                        group-hover:bg-primary group-hover:text-primary-foreground
+                        transition-colors duration-200 mb-3">
+              <twig:ux:icon name="tabler:layout-dashboard" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Panel de control</twig:Ui:Card:Title>
+            <twig:Ui:Card:Description>
+              Un espacio centralizado para visualizar métricas, estados, alertas y accesos rápidos a todas las
+              funciones de la plataforma.
+            </twig:Ui:Card:Description>
+          </twig:Ui:Card:Header>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card class="group hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl
+                        bg-primary/10 text-primary
+                        group-hover:bg-primary group-hover:text-primary-foreground
+                        transition-colors duration-200 mb-3">
+              <twig:ux:icon name="tabler:api" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Integraciones API</twig:Ui:Card:Title>
+            <twig:Ui:Card:Description>
+              Conecta Lúmina con tiendas online, pasarelas de pago, sistemas de automatización y otras herramientas
+              externas mediante nuestra API REST.
+            </twig:Ui:Card:Description>
+          </twig:Ui:Card:Header>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card class="group hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl
+                        bg-primary/10 text-primary
+                        group-hover:bg-primary group-hover:text-primary-foreground
+                        transition-colors duration-200 mb-3">
+              <twig:ux:icon name="tabler:messages" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Soporte técnico</twig:Ui:Card:Title>
+            <twig:Ui:Card:Description>
+              Foro de ayuda, sistema de incidencias, documentación detallada y contacto directo con el equipo
+              técnico de Lúmina.
+            </twig:Ui:Card:Description>
+          </twig:Ui:Card:Header>
+        </twig:Ui:Card>
+
+        <twig:Ui:Card class="group hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+          <twig:Ui:Card:Header>
+            <div class="flex size-12 items-center justify-center rounded-xl
+                        bg-primary/10 text-primary
+                        group-hover:bg-primary group-hover:text-primary-foreground
+                        transition-colors duration-200 mb-3">
+              <twig:ux:icon name="tabler:robot" class="size-6" />
+            </div>
+            <twig:Ui:Card:Title>Automatización</twig:Ui:Card:Title>
+            <twig:Ui:Card:Description>
+              Programa tareas, flujos y procesos repetitivos para ahorrar tiempo, reducir errores y ganar eficiencia
+              operativa.
+            </twig:Ui:Card:Description>
+          </twig:Ui:Card:Header>
+        </twig:Ui:Card>
+
+      </div>
+    </twig:Layout:Section>
+
+    {# ── El foro ── #}
+    <twig:Layout:Section class="prose prose-slate dark:prose-invert mx-auto">
+      <h2>El foro de Lúmina</h2>
+      <p>
+        El foro es una pieza esencial de la plataforma. Es el punto de encuentro donde usuarios y equipo técnico
+        colaboran para resolver dudas, reportar incidencias y compartir conocimiento. Está diseñado para mantener
+        un historial público de soluciones que beneficia a toda la comunidad.
+      </p>
+      <ul>
+        <li>Subforos temáticos bien organizados</li>
+        <li>Hilos con estados visuales claros: <strong>Resuelto</strong>, <strong>En progreso</strong>, <strong>Sin respuestas</strong> y <strong>Cerrado</strong></li>
+        <li>Clasificación por tipo de incidencia y criticidad</li>
+        <li>Hilos públicos y privados según permisos</li>
+        <li>Acciones rápidas: responder, seguir, compartir, reportar y marcar como resuelto</li>
+      </ul>
+
+      <twig:Ui:Separator class="my-6" />
+
+      {# ── CTA ── #}
+      <div class="not-prose flex flex-col sm:flex-row gap-4">
+        <twig:Ui:Button size="lg" as="a" href="{{ path('app_forums_index') }}">
+          <twig:ux:icon name="tabler:messages" class="size-5" />
+          Acceder al foro
+        </twig:Ui:Button>
+        <twig:Ui:Button size="lg" variant="outline" as="a" href="{{ path('app_home') }}">
+          <twig:ux:icon name="tabler:home" class="size-5" />
+          Volver al inicio
+        </twig:Ui:Button>
+      </div>
+
+    </twig:Layout:Section>
+
+  </twig:Layout:Article>
+{% endblock %}

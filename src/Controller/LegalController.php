@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 19/02/2026, 19:25
+ * Last modified by "IDMarinas" on 08/03/2026, 18:34
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -32,11 +32,25 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/legal', name: 'legal_')]
 final class LegalController extends AbstractController
 {
-    public function __construct (private readonly SeoPageInterface $seo) {}
+    public function __construct(private readonly SeoPageInterface $seo) {}
+
+    #[Seo, Sitemap(priority: '0.5', changefreq: SitemapInterface::CHANGEFREQ_MONTHLY)]
+    #[Route('/sobre-nosotros', name: 'sobre_nosotros')]
+    public function sobreNosotros(): Response
+    {
+        $this->seo
+            ->setTitle('Sobre Nosotros')
+            ->setDescription(
+                'Conoce Lúmina: nuestra misión, filosofía, servicios y el equipo que trabaja para ofrecerte una plataforma profesional, moderna y fiable.'
+            )
+        ;
+
+        return $this->render('pages/legal/sobre_nosotros.html.twig');
+    }
 
     #[Seo, Sitemap(priority: '0.2', changefreq: SitemapInterface::CHANGEFREQ_MONTHLY)]
     #[Route('/aviso-legal', name: 'aviso_legal')]
-    public function avisoLegal (): Response
+    public function avisoLegal(): Response
     {
         $this->seo
             ->setTitle('Aviso Legal')
@@ -50,7 +64,7 @@ final class LegalController extends AbstractController
 
     #[Seo, Sitemap(priority: '0.2', changefreq: SitemapInterface::CHANGEFREQ_MONTHLY)]
     #[Route('/politica-de-privacidad', name: 'privacidad')]
-    public function privacidad (): Response
+    public function privacidad(): Response
     {
         $this->seo
             ->setTitle('Política de Privacidad')
@@ -64,7 +78,7 @@ final class LegalController extends AbstractController
 
     #[Seo, Sitemap(priority: '0.2', changefreq: SitemapInterface::CHANGEFREQ_MONTHLY)]
     #[Route('/politica-de-cookies', name: 'cookies')]
-    public function cookies (): Response
+    public function cookies(): Response
     {
         $this->seo
             ->setTitle('Política de Cookies')
@@ -78,7 +92,7 @@ final class LegalController extends AbstractController
 
     #[Seo, Sitemap(priority: '0.2', changefreq: SitemapInterface::CHANGEFREQ_MONTHLY)]
     #[Route('/terminos-y-condiciones', name: 'terminos')]
-    public function terminos (): Response
+    public function terminos(): Response
     {
         $this->seo
             ->setTitle('Términos y Condiciones de Uso')
