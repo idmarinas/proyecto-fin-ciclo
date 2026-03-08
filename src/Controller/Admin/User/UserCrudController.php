@@ -3,7 +3,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 17:26
+ * Last modified by "IDMarinas" on 08/03/2026, 10:11
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -138,7 +138,7 @@ final class UserCrudController extends AbstractCrudController
             ->renderAsSwitch(false)
         ;
 
-        yield DateTimeField::new('bannedAt')
+        yield DateTimeField::new('bannedUntil')
             ->onlyOnDetail()
         ;
 

@@ -73,7 +73,7 @@ security:
                 path: /
                 always_remember_me: false
                 secure: true
-                signature_properties: [ 'password', 'updatedAt', 'deletedAt', 'bannedAt' ]
+                signature_properties: [ 'password', 'updatedAt', 'deletedAt', 'bannedUntil' ]
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
