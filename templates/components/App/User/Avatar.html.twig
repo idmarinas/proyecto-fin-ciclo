@@ -15,7 +15,7 @@
   <twig:Ui:Tooltip id="user-avatar-{{ user.id }}">
     <twig:Ui:Tooltip:Trigger>
       <twig:Ui:Avatar {{ ...trigger_attrs, ...attributes }}>
-        <twig:Ui:Avatar:Image src="{{ user.avatar|avatar_url }}" alt="{{ user.userIdentifier }}" />
+        <twig:Ui:Avatar:Image src="{{ user.avatar|default('')|avatar_url }}" alt="{{ user.userIdentifier }}" />
         <twig:Ui:Avatar:Fallback>{{ user.userIdentifier[:2]|upper }}</twig:Ui:Avatar:Fallback>
       </twig:Ui:Avatar>
     </twig:Ui:Tooltip:Trigger>
@@ -23,7 +23,7 @@
   </twig:Ui:Tooltip>
 {% else %}
   <twig:Ui:Avatar {{ ...attributes }}>
-    <twig:Ui:Avatar:Image src="{{ user.avatar|avatar_url }}" alt="{{ user.userIdentifier }}" />
+    <twig:Ui:Avatar:Image src="{{ user.avatar|default('')|avatar_url }}" alt="{{ user.userIdentifier }}" />
     <twig:Ui:Avatar:Fallback>{{ user.userIdentifier[:2]|upper }}</twig:Ui:Avatar:Fallback>
   </twig:Ui:Avatar>
 {% endif %}
