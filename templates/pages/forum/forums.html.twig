@@ -20,37 +20,37 @@
           <div class="grid grid-cols-2 md:grid-rows-2 md:grid-cols-1 gap-4 mt-2">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="flex items-center gap-2">
-                <twig:ux:icon name="tabler:messages" class="text-blue-600 size-6" />
-                <span>Hilos <twig:Ui:Badge class="bg-blue-100 text-blue-600">{{ forum.totalThreads }}</twig:Ui:Badge></span>
+                <twig:ux:icon name="tabler:messages" class="text-primary size-6" />
+                <span>Hilos <twig:Ui:Badge variant="secondary">{{ forum.totalThreads }}</twig:Ui:Badge></span>
               </div>
               <div class="flex items-center gap-2">
-                <twig:ux:icon name="tabler:message" class="text-blue-600 size-6" />
-                <span>Mensajes: <twig:Ui:Badge class="bg-blue-100 text-blue-600">{{ forum.totalMessages }}</twig:Ui:Badge></span>
+                <twig:ux:icon name="tabler:message" class="text-primary size-6" />
+                <span>Mensajes: <twig:Ui:Badge variant="secondary">{{ forum.totalMessages }}</twig:Ui:Badge></span>
               </div>
               <div class="flex items-center gap-2 ">
-                <twig:ux:icon name="tabler:message-dots" class="text-blue-600 size-6" />
-                <span>Subforos <twig:Ui:Badge class="bg-blue-100 text-blue-600">{{ forum.children.count }}</twig:Ui:Badge></span>
+                <twig:ux:icon name="tabler:message-dots" class="text-primary size-6" />
+                <span>Subforos <twig:Ui:Badge variant="secondary">{{ forum.children.count }}</twig:Ui:Badge></span>
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="flex items-center gap-2">
-                <twig:ux:icon name="tabler:message-circle-check" class="text-green-600 size-6" />
-                <span>Resueltos: <twig:Ui:Badge class="bg-green-100 text-green-600">{{ forum.threadsResolved }}</twig:Ui:Badge></span>
+                <twig:ux:icon name="tabler:message-circle-check" class="text-success-foreground size-6" />
+                <span>Resueltos: <twig:Ui:Badge class="bg-success text-success-foreground">{{ forum.threadsResolved }}</twig:Ui:Badge></span>
               </div>
               <div class="flex items-center gap-2">
-                <twig:ux:icon name="tabler:message-circle-exclamation" class="text-yellow-600 size-6" />
-                <span>En progreso: <twig:Ui:Badge class="bg-yellow-100 text-yellow-600">{{ forum.threadsInProgress }}</twig:Ui:Badge></span>
+                <twig:ux:icon name="tabler:message-circle-exclamation" class="text-warning-foreground size-6" />
+                <span>En progreso: <twig:Ui:Badge class="bg-warning text-warning-foreground">{{ forum.threadsInProgress }}</twig:Ui:Badge></span>
               </div>
               <div class="flex items-center gap-2">
-                <twig:ux:icon name="tabler:message-circle-question" class="text-red-600 size-6" />
-                <span>Sin respuesta: <twig:Ui:Badge class="bg-red-100 text-red-600">{{ forum.threadsOpen }}</twig:Ui:Badge></span>
+                <twig:ux:icon name="tabler:message-circle-question" class="text-error-foreground size-6" />
+                <span>Sin respuesta: <twig:Ui:Badge class="bg-error text-error-foreground">{{ forum.threadsOpen }}</twig:Ui:Badge></span>
               </div>
             </div>
           </div>
         </twig:Ui:Item:Content>
         <twig:Ui:Item:Footer>
-          <div class="flex items-center gap-2 text-sm text-gray-600">
-            <twig:ux:icon name="tabler:clock" class="w-4 h-4 text-blue-700" />
+          <div class="flex items-center gap-2 text-sm text-muted-foreground">
+            <twig:ux:icon name="tabler:clock" class="w-4 h-4 text-primary" />
             Última actividad: {{ forum.lastMessageAt|date("d/m/Y") }}
           </div>
         </twig:Ui:Item:Footer>
@@ -92,17 +92,17 @@
 
             <div class="flex flex-wrap justify-between gap-4 mt-3">
 
-              <div class="flex items-center gap-1 text-green-700">
+              <div class="flex items-center gap-1 text-success-foreground">
                 <twig:ux:icon name="tabler:check" class="w-4 h-4" />
                 {{ subforum.threadsResolved }} resueltos
               </div>
 
-              <div class="flex items-center gap-1 text-yellow-700">
+              <div class="flex items-center gap-1 text-warning-foreground">
                 <twig:ux:icon name="tabler:clock" class="w-4 h-4" />
                 {{ subforum.threadsInProgress }} en progreso
               </div>
 
-              <div class="flex items-center gap-1 text-red-700">
+              <div class="flex items-center gap-1 text-error-foreground">
                 <twig:ux:icon name="tabler:alert-circle" class="w-4 h-4" />
                 {{ subforum.threadsClosed }} cerrados
               </div>
