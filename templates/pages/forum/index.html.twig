@@ -4,8 +4,8 @@
   <twig:Layout:Article>
     <twig:Layout:Section class="flex flex-col md:flex-row py-16">
       <div class="px-6 text-center flex-1">
-        <h2 class="text-4xl font-extrabold text-blue-900">Foros principales</h2>
-        <p class="mt-4 text-lg text-gray-600">
+        <h2 class="text-4xl font-extrabold text-foreground">Foros principales</h2>
+        <p class="mt-4 text-lg text-muted-foreground">
           Explora los foros padre y accede a sus subforos especializados.
           Encuentra soporte, comparte conocimientos y participa en la comunidad.
         </p>
@@ -33,7 +33,7 @@
 
     <twig:Layout:Section class="space-y-6">
       {% for forum in forums %}
-        <twig:Ui:Card variant="full" class="overflow-hidden border shadow-sm bg-white rounded-xl">
+        <twig:Ui:Card variant="full" class="overflow-hidden border shadow-sm bg-card rounded-xl">
 
           <div class="flex flex-col md:flex-row">
 
@@ -44,15 +44,15 @@
             <div class="md:w-3/4 p-6 space-y-4">
 
               <a href="{{ path('app_forums_forum', { slug: forum.slug }) }}" class="flex items-center gap-3">
-                <twig:ux:icon name="tabler:folder" class="w-6 h-6 text-blue-700" />
-                <h3 class="text-2xl font-bold text-blue-900">{{ forum.title }}</h3>
+                <twig:ux:icon name="tabler:folder" class="w-6 h-6 text-primary" />
+                <h3 class="text-2xl font-bold text-foreground">{{ forum.title }}</h3>
               </a>
 
-              <p class="text-gray-600">
+              <p class="text-muted-foreground">
                 {{ forum.description }}
               </p>
 
-              <p class="text-sm text-gray-500 flex gap-4">
+              <p class="text-sm text-muted-foreground flex gap-4">
                 <span>{{ forum.__children|length }} subforos</span>
                 <span>{{ forum.totalThreads }} hilos</span>
                 <span>{{ forum.totalMessages }} mensajes</span>
