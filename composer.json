@@ -133,8 +133,8 @@
       "php bin/console doctrine:schema:update --force --ansi",
       "php bin/console doctrine:fixtures:load -n --ansi"
     ],
-    "test:fixtures:load": "@composer fixtures:load --env=test",
-    "dev:fixtures:load": "@composer fixtures:load --env=dev",
+    "test:fixtures:load": "@composer fixtures:load -- --env=test",
+    "dev:fixtures:load": "@composer fixtures:load -- --env=dev",
     "dev:dump:env": [
       "php bin/console secrets:decrypt-to-local --force --env=dev",
       "@composer dump-env dev",
