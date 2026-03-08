@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 08/03/2026, 21:47
+ * Last modified by "IDMarinas" on 08/03/2026, 22:11
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -180,8 +180,6 @@ class RegistrationControllerTest extends WebTestCase
         $this->assertEmailCount(1);
         /** @var TemplatedEmail $email */
         $email = $this->getMailerMessage();
-
-        dump($email);
 
         $this->assertEmailAddressContains($email, 'to', 'prueba@test.test');
         $this->assertEmailHeaderSame($email, 'subject', 'Please Confirm your Email');
