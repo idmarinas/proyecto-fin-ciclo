@@ -5,8 +5,8 @@ services:
     ports:
       - "13306:3306"
     environment:
-      MYSQL_DATABASE: ${DATABASE_NAME}_dev
-      MYSQL_USER: ${DATABASE_USER}_dev
+      MARIADB_DATABASE: ${DATABASE_NAME}_dev
+      MARIADB_USER: ${DATABASE_USER}_dev
     volumes:
       - database_data_dev:/var/lib/mysql
   ###< doctrine/doctrine-bundle ###
@@ -19,8 +19,8 @@ services:
     ports:
       - "13307:3306"
     environment:
-      MYSQL_DATABASE: ${DATABASE_NAME}_test
-      MYSQL_USER: ${DATABASE_USER}_test
+      MARIADB_DATABASE: ${DATABASE_NAME}_test
+      MARIADB_USER: ${DATABASE_USER}_test
     volumes:
       - database_data_test:/var/lib/mysql
 
