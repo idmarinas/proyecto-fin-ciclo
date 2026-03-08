@@ -2,39 +2,7 @@
 
 {% block article %}
   <twig:Layout:Article>
-    <twig:Layout:Section>
-      {# Breadcrumb #}
-      <twig:Ui:Breadcrumb>
-        <twig:Ui:Breadcrumb:List>
-          <twig:Ui:Breadcrumb:Item>
-            <twig:Ui:Breadcrumb:Link href="{{ path('app_home') }}">Inicio</twig:Ui:Breadcrumb:Link>
-          </twig:Ui:Breadcrumb:Item>
-          <twig:Ui:Breadcrumb:Separator />
-          <twig:Ui:Breadcrumb:Item>
-            <twig:Ui:Breadcrumb:Link href="{{ path('app_forums_index') }}">Foros</twig:Ui:Breadcrumb:Link>
-          </twig:Ui:Breadcrumb:Item>
-          <twig:Ui:Breadcrumb:Separator />
-          <twig:Ui:Breadcrumb:Item>
-            <twig:Ui:Breadcrumb:Link href="{{ path('app_forums_forum', {'slug': forum.parent.slug}) }}">
-              {{ forum.parent.title }}
-            </twig:Ui:Breadcrumb:Link>
-          </twig:Ui:Breadcrumb:Item>
-          <twig:Ui:Breadcrumb:Separator />
-          <twig:Ui:Breadcrumb:Item>
-            <twig:Ui:Breadcrumb:Link href="{{ path('app_forums_forum_threads', {
-              'slug_forum': forum.parent.slug,
-              'slug_subforum': forum.slug}) }}"
-            >
-              {{ forum.title }}
-            </twig:Ui:Breadcrumb:Link>
-          </twig:Ui:Breadcrumb:Item>
-          <twig:Ui:Breadcrumb:Separator />
-          <twig:Ui:Breadcrumb:Item>
-            <twig:Ui:Breadcrumb:Page>Crear hilo</twig:Ui:Breadcrumb:Page>
-          </twig:Ui:Breadcrumb:Item>
-        </twig:Ui:Breadcrumb:List>
-      </twig:Ui:Breadcrumb>
-    </twig:Layout:Section>
+    <twig:App:Breadcrumb :forum="forum.parent" :subforum="forum" page="Crear hilo" />
 
     <twig:Layout:Section>
       <twig:Ui:Item class="flex-col md:flex-row">
