@@ -2,7 +2,7 @@
 /**
  * Copyright 2026 (C) IDMarinas - All Rights Reserved
  *
- * Last modified by "IDMarinas" on 07/03/2026, 18:49
+ * Last modified by "IDMarinas" on 08/03/2026, 22:21
  *
  * @project Foro de Ayuda y Soporte
  * @see     https://github.com/idmarinas/proyecto-fin-ciclo
@@ -38,21 +38,14 @@ final class UserFixtures extends Fixture
         $users = Yaml::parseFile(dirname(__DIR__).'/data/dummy_users_expanded.yaml');
 
         $password = function (string $email): string {
-            $pass = match (true) {
-                str_starts_with($email, 'super@')
-                        => faker()->password(9),
-                str_starts_with($email, 'admin')
-                        => faker()->password(8, 19),
-                str_starts_with($email, 'support')
-                        => faker()->password(8, 18),
-                str_starts_with($email, 'user1@')
-                        => faker()->password(8, 17),
-                str_starts_with($email, 'client1@')
-                        => faker()->password(8, 16),
-                default => faker()->password(7, 15),
+            return match (true) {
+                str_starts_with($email, 'super@'),
+                str_starts_with($email, 'admin'),
+                str_starts_with($email, 'support'),
+                str_starts_with($email, 'user1@'),
+                str_starts_with($email, 'client1@') => 'pass_1234',
+                default                             => faker()->password(7, 15),
             };
-
-            return $pass;
         };
 
         foreach ($users['users'] as $user) {
